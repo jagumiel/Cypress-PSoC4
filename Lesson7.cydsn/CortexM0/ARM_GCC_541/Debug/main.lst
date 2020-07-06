@@ -1,0 +1,642 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Counter_Int_Handler,"ax",%progbits
+  20              		.align	2
+  21              		.global	Counter_Int_Handler
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Counter_Int_Handler, %function
+  25              	Counter_Int_Handler:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** CY_ISR(Counter_Int_Handler){
+  28              		.loc 1 14 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  15:main.c        ****     Pin_Green_Write(~Pin_Green_Read());   
+  36              		.loc 1 15 0
+  37 0002 FFF7FEFF 		bl	Pin_Green_Read
+  38              	.LVL0:
+  39 0006 C043     		mvns	r0, r0
+  40 0008 C0B2     		uxtb	r0, r0
+  41 000a FFF7FEFF 		bl	Pin_Green_Write
+  42              	.LVL1:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 2
+
+
+  16:main.c        ****     Counter_ClearInterrupt(Counter_INTR_MASK_TC);
+  43              		.loc 1 16 0
+  44 000e 0120     		movs	r0, #1
+  45 0010 FFF7FEFF 		bl	Counter_ClearInterrupt
+  46              	.LVL2:
+  17:main.c        **** }
+  47              		.loc 1 17 0
+  48              		@ sp needed
+  49 0014 10BD     		pop	{r4, pc}
+  50              		.cfi_endproc
+  51              	.LFE32:
+  52              		.size	Counter_Int_Handler, .-Counter_Int_Handler
+  53 0016 C046     		.section	.text.main,"ax",%progbits
+  54              		.align	2
+  55              		.global	main
+  56              		.code	16
+  57              		.thumb_func
+  58              		.type	main, %function
+  59              	main:
+  60              	.LFB33:
+  18:main.c        **** 
+  19:main.c        **** int main(void)
+  20:main.c        **** {
+  61              		.loc 1 20 0
+  62              		.cfi_startproc
+  63              		@ Volatile: function does not return.
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66 0000 10B5     		push	{r4, lr}
+  67              		.cfi_def_cfa_offset 8
+  68              		.cfi_offset 4, -8
+  69              		.cfi_offset 14, -4
+  21:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  70              		.loc 1 21 0
+  71              		.syntax divided
+  72              	@ 21 "main.c" 1
+  73 0002 62B6     		CPSIE   i
+  74              	@ 0 "" 2
+  22:main.c        ****     
+  23:main.c        ****     Counter_Start();
+  75              		.loc 1 23 0
+  76              		.thumb
+  77              		.syntax unified
+  78 0004 FFF7FEFF 		bl	Counter_Start
+  79              	.LVL3:
+  24:main.c        ****     Counter_Int_StartEx(Counter_Int_Handler);
+  80              		.loc 1 24 0
+  81 0008 0148     		ldr	r0, .L4
+  82 000a FFF7FEFF 		bl	Counter_Int_StartEx
+  83              	.LVL4:
+  84              	.L3:
+  85 000e FEE7     		b	.L3
+  86              	.L5:
+  87              		.align	2
+  88              	.L4:
+  89 0010 00000000 		.word	Counter_Int_Handler
+  90              		.cfi_endproc
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 3
+
+
+  91              	.LFE33:
+  92              		.size	main, .-main
+  93              		.text
+  94              	.Letext0:
+  95              		.file 2 "Generated_Source\\PSoC4/Pin_Green.h"
+  96              		.file 3 "Generated_Source\\PSoC4/Counter.h"
+  97              		.file 4 "Generated_Source\\PSoC4/Counter_Int.h"
+  98              		.file 5 "Generated_Source\\PSoC4/cytypes.h"
+  99              		.section	.debug_info,"",%progbits
+ 100              	.Ldebug_info0:
+ 101 0000 3D010000 		.4byte	0x13d
+ 102 0004 0400     		.2byte	0x4
+ 103 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 104 000a 04       		.byte	0x4
+ 105 000b 01       		.uleb128 0x1
+ 106 000c 28010000 		.4byte	.LASF19
+ 107 0010 0C       		.byte	0xc
+ 108 0011 02010000 		.4byte	.LASF20
+ 109 0015 98000000 		.4byte	.LASF21
+ 110 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 111 001d 00000000 		.4byte	0
+ 112 0021 00000000 		.4byte	.Ldebug_line0
+ 113 0025 02       		.uleb128 0x2
+ 114 0026 01       		.byte	0x1
+ 115 0027 06       		.byte	0x6
+ 116 0028 C9010000 		.4byte	.LASF0
+ 117 002c 02       		.uleb128 0x2
+ 118 002d 01       		.byte	0x1
+ 119 002e 08       		.byte	0x8
+ 120 002f E1000000 		.4byte	.LASF1
+ 121 0033 02       		.uleb128 0x2
+ 122 0034 02       		.byte	0x2
+ 123 0035 05       		.byte	0x5
+ 124 0036 E1010000 		.4byte	.LASF2
+ 125 003a 02       		.uleb128 0x2
+ 126 003b 02       		.byte	0x2
+ 127 003c 07       		.byte	0x7
+ 128 003d B6010000 		.4byte	.LASF3
+ 129 0041 02       		.uleb128 0x2
+ 130 0042 04       		.byte	0x4
+ 131 0043 05       		.byte	0x5
+ 132 0044 09010000 		.4byte	.LASF4
+ 133 0048 02       		.uleb128 0x2
+ 134 0049 04       		.byte	0x4
+ 135 004a 07       		.byte	0x7
+ 136 004b 3E000000 		.4byte	.LASF5
+ 137 004f 02       		.uleb128 0x2
+ 138 0050 08       		.byte	0x8
+ 139 0051 05       		.byte	0x5
+ 140 0052 00000000 		.4byte	.LASF6
+ 141 0056 02       		.uleb128 0x2
+ 142 0057 08       		.byte	0x8
+ 143 0058 07       		.byte	0x7
+ 144 0059 50000000 		.4byte	.LASF7
+ 145 005d 03       		.uleb128 0x3
+ 146 005e 04       		.byte	0x4
+ 147 005f 05       		.byte	0x5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 4
+
+
+ 148 0060 696E7400 		.ascii	"int\000"
+ 149 0064 02       		.uleb128 0x2
+ 150 0065 04       		.byte	0x4
+ 151 0066 07       		.byte	0x7
+ 152 0067 EB010000 		.4byte	.LASF8
+ 153 006b 04       		.uleb128 0x4
+ 154 006c 0E000000 		.4byte	.LASF22
+ 155 0070 05       		.byte	0x5
+ 156 0071 E601     		.2byte	0x1e6
+ 157 0073 48000000 		.4byte	0x48
+ 158 0077 02       		.uleb128 0x2
+ 159 0078 04       		.byte	0x4
+ 160 0079 04       		.byte	0x4
+ 161 007a 7B000000 		.4byte	.LASF9
+ 162 007e 02       		.uleb128 0x2
+ 163 007f 08       		.byte	0x8
+ 164 0080 04       		.byte	0x4
+ 165 0081 21010000 		.4byte	.LASF10
+ 166 0085 02       		.uleb128 0x2
+ 167 0086 01       		.byte	0x1
+ 168 0087 08       		.byte	0x8
+ 169 0088 FD000000 		.4byte	.LASF11
+ 170 008c 02       		.uleb128 0x2
+ 171 008d 08       		.byte	0x8
+ 172 008e 04       		.byte	0x4
+ 173 008f D5010000 		.4byte	.LASF12
+ 174 0093 02       		.uleb128 0x2
+ 175 0094 04       		.byte	0x4
+ 176 0095 07       		.byte	0x7
+ 177 0096 F8010000 		.4byte	.LASF13
+ 178 009a 05       		.uleb128 0x5
+ 179 009b 67000000 		.4byte	.LASF23
+ 180 009f 01       		.byte	0x1
+ 181 00a0 0E       		.byte	0xe
+ 182 00a1 00000000 		.4byte	.LFB32
+ 183 00a5 16000000 		.4byte	.LFE32-.LFB32
+ 184 00a9 01       		.uleb128 0x1
+ 185 00aa 9C       		.byte	0x9c
+ 186 00ab D1000000 		.4byte	0xd1
+ 187 00af 06       		.uleb128 0x6
+ 188 00b0 06000000 		.4byte	.LVL0
+ 189 00b4 07010000 		.4byte	0x107
+ 190 00b8 06       		.uleb128 0x6
+ 191 00b9 0E000000 		.4byte	.LVL1
+ 192 00bd 12010000 		.4byte	0x112
+ 193 00c1 07       		.uleb128 0x7
+ 194 00c2 14000000 		.4byte	.LVL2
+ 195 00c6 1D010000 		.4byte	0x11d
+ 196 00ca 08       		.uleb128 0x8
+ 197 00cb 01       		.uleb128 0x1
+ 198 00cc 50       		.byte	0x50
+ 199 00cd 01       		.uleb128 0x1
+ 200 00ce 31       		.byte	0x31
+ 201 00cf 00       		.byte	0
+ 202 00d0 00       		.byte	0
+ 203 00d1 09       		.uleb128 0x9
+ 204 00d2 39000000 		.4byte	.LASF24
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 5
+
+
+ 205 00d6 01       		.byte	0x1
+ 206 00d7 13       		.byte	0x13
+ 207 00d8 5D000000 		.4byte	0x5d
+ 208 00dc 00000000 		.4byte	.LFB33
+ 209 00e0 14000000 		.4byte	.LFE33-.LFB33
+ 210 00e4 01       		.uleb128 0x1
+ 211 00e5 9C       		.byte	0x9c
+ 212 00e6 07010000 		.4byte	0x107
+ 213 00ea 06       		.uleb128 0x6
+ 214 00eb 08000000 		.4byte	.LVL3
+ 215 00ef 29010000 		.4byte	0x129
+ 216 00f3 07       		.uleb128 0x7
+ 217 00f4 0E000000 		.4byte	.LVL4
+ 218 00f8 35010000 		.4byte	0x135
+ 219 00fc 08       		.uleb128 0x8
+ 220 00fd 01       		.uleb128 0x1
+ 221 00fe 50       		.byte	0x50
+ 222 00ff 05       		.uleb128 0x5
+ 223 0100 03       		.byte	0x3
+ 224 0101 00000000 		.4byte	Counter_Int_Handler
+ 225 0105 00       		.byte	0
+ 226 0106 00       		.byte	0
+ 227 0107 0A       		.uleb128 0xa
+ 228 0108 12010000 		.4byte	.LASF14
+ 229 010c 12010000 		.4byte	.LASF14
+ 230 0110 02       		.byte	0x2
+ 231 0111 32       		.byte	0x32
+ 232 0112 0A       		.uleb128 0xa
+ 233 0113 15000000 		.4byte	.LASF15
+ 234 0117 15000000 		.4byte	.LASF15
+ 235 011b 02       		.byte	0x2
+ 236 011c 33       		.byte	0x33
+ 237 011d 0B       		.uleb128 0xb
+ 238 011e 81000000 		.4byte	.LASF16
+ 239 0122 81000000 		.4byte	.LASF16
+ 240 0126 03       		.byte	0x3
+ 241 0127 4701     		.2byte	0x147
+ 242 0129 0B       		.uleb128 0xb
+ 243 012a EF000000 		.4byte	.LASF17
+ 244 012e EF000000 		.4byte	.LASF17
+ 245 0132 03       		.byte	0x3
+ 246 0133 3201     		.2byte	0x132
+ 247 0135 0A       		.uleb128 0xa
+ 248 0136 25000000 		.4byte	.LASF18
+ 249 013a 25000000 		.4byte	.LASF18
+ 250 013e 04       		.byte	0x4
+ 251 013f 18       		.byte	0x18
+ 252 0140 00       		.byte	0
+ 253              		.section	.debug_abbrev,"",%progbits
+ 254              	.Ldebug_abbrev0:
+ 255 0000 01       		.uleb128 0x1
+ 256 0001 11       		.uleb128 0x11
+ 257 0002 01       		.byte	0x1
+ 258 0003 25       		.uleb128 0x25
+ 259 0004 0E       		.uleb128 0xe
+ 260 0005 13       		.uleb128 0x13
+ 261 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 6
+
+
+ 262 0007 03       		.uleb128 0x3
+ 263 0008 0E       		.uleb128 0xe
+ 264 0009 1B       		.uleb128 0x1b
+ 265 000a 0E       		.uleb128 0xe
+ 266 000b 55       		.uleb128 0x55
+ 267 000c 17       		.uleb128 0x17
+ 268 000d 11       		.uleb128 0x11
+ 269 000e 01       		.uleb128 0x1
+ 270 000f 10       		.uleb128 0x10
+ 271 0010 17       		.uleb128 0x17
+ 272 0011 00       		.byte	0
+ 273 0012 00       		.byte	0
+ 274 0013 02       		.uleb128 0x2
+ 275 0014 24       		.uleb128 0x24
+ 276 0015 00       		.byte	0
+ 277 0016 0B       		.uleb128 0xb
+ 278 0017 0B       		.uleb128 0xb
+ 279 0018 3E       		.uleb128 0x3e
+ 280 0019 0B       		.uleb128 0xb
+ 281 001a 03       		.uleb128 0x3
+ 282 001b 0E       		.uleb128 0xe
+ 283 001c 00       		.byte	0
+ 284 001d 00       		.byte	0
+ 285 001e 03       		.uleb128 0x3
+ 286 001f 24       		.uleb128 0x24
+ 287 0020 00       		.byte	0
+ 288 0021 0B       		.uleb128 0xb
+ 289 0022 0B       		.uleb128 0xb
+ 290 0023 3E       		.uleb128 0x3e
+ 291 0024 0B       		.uleb128 0xb
+ 292 0025 03       		.uleb128 0x3
+ 293 0026 08       		.uleb128 0x8
+ 294 0027 00       		.byte	0
+ 295 0028 00       		.byte	0
+ 296 0029 04       		.uleb128 0x4
+ 297 002a 16       		.uleb128 0x16
+ 298 002b 00       		.byte	0
+ 299 002c 03       		.uleb128 0x3
+ 300 002d 0E       		.uleb128 0xe
+ 301 002e 3A       		.uleb128 0x3a
+ 302 002f 0B       		.uleb128 0xb
+ 303 0030 3B       		.uleb128 0x3b
+ 304 0031 05       		.uleb128 0x5
+ 305 0032 49       		.uleb128 0x49
+ 306 0033 13       		.uleb128 0x13
+ 307 0034 00       		.byte	0
+ 308 0035 00       		.byte	0
+ 309 0036 05       		.uleb128 0x5
+ 310 0037 2E       		.uleb128 0x2e
+ 311 0038 01       		.byte	0x1
+ 312 0039 3F       		.uleb128 0x3f
+ 313 003a 19       		.uleb128 0x19
+ 314 003b 03       		.uleb128 0x3
+ 315 003c 0E       		.uleb128 0xe
+ 316 003d 3A       		.uleb128 0x3a
+ 317 003e 0B       		.uleb128 0xb
+ 318 003f 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 7
+
+
+ 319 0040 0B       		.uleb128 0xb
+ 320 0041 27       		.uleb128 0x27
+ 321 0042 19       		.uleb128 0x19
+ 322 0043 11       		.uleb128 0x11
+ 323 0044 01       		.uleb128 0x1
+ 324 0045 12       		.uleb128 0x12
+ 325 0046 06       		.uleb128 0x6
+ 326 0047 40       		.uleb128 0x40
+ 327 0048 18       		.uleb128 0x18
+ 328 0049 9742     		.uleb128 0x2117
+ 329 004b 19       		.uleb128 0x19
+ 330 004c 01       		.uleb128 0x1
+ 331 004d 13       		.uleb128 0x13
+ 332 004e 00       		.byte	0
+ 333 004f 00       		.byte	0
+ 334 0050 06       		.uleb128 0x6
+ 335 0051 898201   		.uleb128 0x4109
+ 336 0054 00       		.byte	0
+ 337 0055 11       		.uleb128 0x11
+ 338 0056 01       		.uleb128 0x1
+ 339 0057 31       		.uleb128 0x31
+ 340 0058 13       		.uleb128 0x13
+ 341 0059 00       		.byte	0
+ 342 005a 00       		.byte	0
+ 343 005b 07       		.uleb128 0x7
+ 344 005c 898201   		.uleb128 0x4109
+ 345 005f 01       		.byte	0x1
+ 346 0060 11       		.uleb128 0x11
+ 347 0061 01       		.uleb128 0x1
+ 348 0062 31       		.uleb128 0x31
+ 349 0063 13       		.uleb128 0x13
+ 350 0064 00       		.byte	0
+ 351 0065 00       		.byte	0
+ 352 0066 08       		.uleb128 0x8
+ 353 0067 8A8201   		.uleb128 0x410a
+ 354 006a 00       		.byte	0
+ 355 006b 02       		.uleb128 0x2
+ 356 006c 18       		.uleb128 0x18
+ 357 006d 9142     		.uleb128 0x2111
+ 358 006f 18       		.uleb128 0x18
+ 359 0070 00       		.byte	0
+ 360 0071 00       		.byte	0
+ 361 0072 09       		.uleb128 0x9
+ 362 0073 2E       		.uleb128 0x2e
+ 363 0074 01       		.byte	0x1
+ 364 0075 3F       		.uleb128 0x3f
+ 365 0076 19       		.uleb128 0x19
+ 366 0077 03       		.uleb128 0x3
+ 367 0078 0E       		.uleb128 0xe
+ 368 0079 3A       		.uleb128 0x3a
+ 369 007a 0B       		.uleb128 0xb
+ 370 007b 3B       		.uleb128 0x3b
+ 371 007c 0B       		.uleb128 0xb
+ 372 007d 27       		.uleb128 0x27
+ 373 007e 19       		.uleb128 0x19
+ 374 007f 49       		.uleb128 0x49
+ 375 0080 13       		.uleb128 0x13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 8
+
+
+ 376 0081 8701     		.uleb128 0x87
+ 377 0083 19       		.uleb128 0x19
+ 378 0084 11       		.uleb128 0x11
+ 379 0085 01       		.uleb128 0x1
+ 380 0086 12       		.uleb128 0x12
+ 381 0087 06       		.uleb128 0x6
+ 382 0088 40       		.uleb128 0x40
+ 383 0089 18       		.uleb128 0x18
+ 384 008a 9742     		.uleb128 0x2117
+ 385 008c 19       		.uleb128 0x19
+ 386 008d 01       		.uleb128 0x1
+ 387 008e 13       		.uleb128 0x13
+ 388 008f 00       		.byte	0
+ 389 0090 00       		.byte	0
+ 390 0091 0A       		.uleb128 0xa
+ 391 0092 2E       		.uleb128 0x2e
+ 392 0093 00       		.byte	0
+ 393 0094 3F       		.uleb128 0x3f
+ 394 0095 19       		.uleb128 0x19
+ 395 0096 3C       		.uleb128 0x3c
+ 396 0097 19       		.uleb128 0x19
+ 397 0098 6E       		.uleb128 0x6e
+ 398 0099 0E       		.uleb128 0xe
+ 399 009a 03       		.uleb128 0x3
+ 400 009b 0E       		.uleb128 0xe
+ 401 009c 3A       		.uleb128 0x3a
+ 402 009d 0B       		.uleb128 0xb
+ 403 009e 3B       		.uleb128 0x3b
+ 404 009f 0B       		.uleb128 0xb
+ 405 00a0 00       		.byte	0
+ 406 00a1 00       		.byte	0
+ 407 00a2 0B       		.uleb128 0xb
+ 408 00a3 2E       		.uleb128 0x2e
+ 409 00a4 00       		.byte	0
+ 410 00a5 3F       		.uleb128 0x3f
+ 411 00a6 19       		.uleb128 0x19
+ 412 00a7 3C       		.uleb128 0x3c
+ 413 00a8 19       		.uleb128 0x19
+ 414 00a9 6E       		.uleb128 0x6e
+ 415 00aa 0E       		.uleb128 0xe
+ 416 00ab 03       		.uleb128 0x3
+ 417 00ac 0E       		.uleb128 0xe
+ 418 00ad 3A       		.uleb128 0x3a
+ 419 00ae 0B       		.uleb128 0xb
+ 420 00af 3B       		.uleb128 0x3b
+ 421 00b0 05       		.uleb128 0x5
+ 422 00b1 00       		.byte	0
+ 423 00b2 00       		.byte	0
+ 424 00b3 00       		.byte	0
+ 425              		.section	.debug_aranges,"",%progbits
+ 426 0000 24000000 		.4byte	0x24
+ 427 0004 0200     		.2byte	0x2
+ 428 0006 00000000 		.4byte	.Ldebug_info0
+ 429 000a 04       		.byte	0x4
+ 430 000b 00       		.byte	0
+ 431 000c 0000     		.2byte	0
+ 432 000e 0000     		.2byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 9
+
+
+ 433 0010 00000000 		.4byte	.LFB32
+ 434 0014 16000000 		.4byte	.LFE32-.LFB32
+ 435 0018 00000000 		.4byte	.LFB33
+ 436 001c 14000000 		.4byte	.LFE33-.LFB33
+ 437 0020 00000000 		.4byte	0
+ 438 0024 00000000 		.4byte	0
+ 439              		.section	.debug_ranges,"",%progbits
+ 440              	.Ldebug_ranges0:
+ 441 0000 00000000 		.4byte	.LFB32
+ 442 0004 16000000 		.4byte	.LFE32
+ 443 0008 00000000 		.4byte	.LFB33
+ 444 000c 14000000 		.4byte	.LFE33
+ 445 0010 00000000 		.4byte	0
+ 446 0014 00000000 		.4byte	0
+ 447              		.section	.debug_line,"",%progbits
+ 448              	.Ldebug_line0:
+ 449 0000 98000000 		.section	.debug_str,"MS",%progbits,1
+ 449      02006E00 
+ 449      00000201 
+ 449      FB0E0D00 
+ 449      01010101 
+ 450              	.LASF6:
+ 451 0000 6C6F6E67 		.ascii	"long long int\000"
+ 451      206C6F6E 
+ 451      6720696E 
+ 451      7400
+ 452              	.LASF22:
+ 453 000e 75696E74 		.ascii	"uint32\000"
+ 453      333200
+ 454              	.LASF15:
+ 455 0015 50696E5F 		.ascii	"Pin_Green_Write\000"
+ 455      47726565 
+ 455      6E5F5772 
+ 455      69746500 
+ 456              	.LASF18:
+ 457 0025 436F756E 		.ascii	"Counter_Int_StartEx\000"
+ 457      7465725F 
+ 457      496E745F 
+ 457      53746172 
+ 457      74457800 
+ 458              	.LASF24:
+ 459 0039 6D61696E 		.ascii	"main\000"
+ 459      00
+ 460              	.LASF5:
+ 461 003e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 461      20756E73 
+ 461      69676E65 
+ 461      6420696E 
+ 461      7400
+ 462              	.LASF7:
+ 463 0050 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 463      206C6F6E 
+ 463      6720756E 
+ 463      7369676E 
+ 463      65642069 
+ 464              	.LASF23:
+ 465 0067 436F756E 		.ascii	"Counter_Int_Handler\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 10
+
+
+ 465      7465725F 
+ 465      496E745F 
+ 465      48616E64 
+ 465      6C657200 
+ 466              	.LASF9:
+ 467 007b 666C6F61 		.ascii	"float\000"
+ 467      7400
+ 468              	.LASF16:
+ 469 0081 436F756E 		.ascii	"Counter_ClearInterrupt\000"
+ 469      7465725F 
+ 469      436C6561 
+ 469      72496E74 
+ 469      65727275 
+ 470              	.LASF21:
+ 471 0098 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 471      73657273 
+ 471      5C6A6167 
+ 471      756D6965 
+ 471      6C5C446F 
+ 472 00c6 3130315C 		.ascii	"101\\PSoC-101\\Lesson7.cydsn\000"
+ 472      50536F43 
+ 472      2D313031 
+ 472      5C4C6573 
+ 472      736F6E37 
+ 473              	.LASF1:
+ 474 00e1 756E7369 		.ascii	"unsigned char\000"
+ 474      676E6564 
+ 474      20636861 
+ 474      7200
+ 475              	.LASF17:
+ 476 00ef 436F756E 		.ascii	"Counter_Start\000"
+ 476      7465725F 
+ 476      53746172 
+ 476      7400
+ 477              	.LASF11:
+ 478 00fd 63686172 		.ascii	"char\000"
+ 478      00
+ 479              	.LASF20:
+ 480 0102 6D61696E 		.ascii	"main.c\000"
+ 480      2E6300
+ 481              	.LASF4:
+ 482 0109 6C6F6E67 		.ascii	"long int\000"
+ 482      20696E74 
+ 482      00
+ 483              	.LASF14:
+ 484 0112 50696E5F 		.ascii	"Pin_Green_Read\000"
+ 484      47726565 
+ 484      6E5F5265 
+ 484      616400
+ 485              	.LASF10:
+ 486 0121 646F7562 		.ascii	"double\000"
+ 486      6C6500
+ 487              	.LASF19:
+ 488 0128 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 488      43313120 
+ 488      352E342E 
+ 488      31203230 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccg6Yelo.s 			page 11
+
+
+ 488      31363036 
+ 489 015b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 489      20726576 
+ 489      6973696F 
+ 489      6E203233 
+ 489      37373135 
+ 490 018e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 490      66756E63 
+ 490      74696F6E 
+ 490      2D736563 
+ 490      74696F6E 
+ 491              	.LASF3:
+ 492 01b6 73686F72 		.ascii	"short unsigned int\000"
+ 492      7420756E 
+ 492      7369676E 
+ 492      65642069 
+ 492      6E7400
+ 493              	.LASF0:
+ 494 01c9 7369676E 		.ascii	"signed char\000"
+ 494      65642063 
+ 494      68617200 
+ 495              	.LASF12:
+ 496 01d5 6C6F6E67 		.ascii	"long double\000"
+ 496      20646F75 
+ 496      626C6500 
+ 497              	.LASF2:
+ 498 01e1 73686F72 		.ascii	"short int\000"
+ 498      7420696E 
+ 498      7400
+ 499              	.LASF8:
+ 500 01eb 756E7369 		.ascii	"unsigned int\000"
+ 500      676E6564 
+ 500      20696E74 
+ 500      00
+ 501              	.LASF13:
+ 502 01f8 73697A65 		.ascii	"sizetype\000"
+ 502      74797065 
+ 502      00
+ 503              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
