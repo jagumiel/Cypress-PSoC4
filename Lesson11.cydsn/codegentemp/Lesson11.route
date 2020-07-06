@@ -1,0 +1,45 @@
+net ClockBlock_HFClk
+	term   ":m0s8clockblockcell.hfclk"
+	switch ":m0s8clockblockcell.hfclk==>:ioport0_clock_io_mux.hfclk"
+	switch ":ioport0_clock_io_mux.clk_in==>:ioport0_clock_io_mux.clk_in_limit"
+	switch ":ioport0_clock_io_mux.clk_in_limit==>:ioport0:pin7.in_clock"
+	term   ":ioport0:pin7.in_clock"
+	switch ":m0s8clockblockcell.hfclk==>:interrupt_11.clock"
+	term   ":interrupt_11.clock"
+end ClockBlock_HFClk
+net Net_152
+	term   ":m0s8tcpwmcell_0.line"
+	switch ":m0s8tcpwmcell_0.line==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26"
+	switch "OStub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26"
+	switch ":dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:24,21"
+	switch ":hvswitch@[UDB=(0,0)][side=left]:15,21_f"
+	switch ":hvswitch@[UDB=(0,0)][side=left]:vseg_15_bot_b"
+	switch ":hvswitch@[UDB=(1,0)][side=left]:vseg_15_bot_b"
+	switch ":hvswitch@[UDB=(2,0)][side=left]:15,55_b"
+	switch ":dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:100,55_f"
+	switch "IStub-:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v100+:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v102+:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v98"
+	switch "Stub-:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v100+:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v102+:dsiswitch_bottom@[DSI=(1,0)][side=bottom]:dsihc_bottom:v98==>:ioport1:inputs2_mux.in_2"
+	switch ":ioport1:inputs2_mux.pin6__pin_input==>:ioport1:hsiom_out6.dsi"
+	switch ":ioport1:hsiom_out6.hsiom6_out==>:ioport1:pin6.pin_input"
+	term   ":ioport1:pin6.pin_input"
+end Net_152
+net Net_175
+	term   ":m0s8scbcell_1.interrupt"
+	switch ":m0s8scbcell_1.interrupt==>:interrupt_idmux_11.in_0"
+	switch ":interrupt_idmux_11.interrupt_idmux_11__out==>:interrupt_11.interrupt"
+	term   ":interrupt_11.interrupt"
+end Net_175
+net Net_192
+	term   ":ioport3:pin0.fb"
+	switch ":ioport3:pin0.fb==>:ioport3:hsiom_in0.hsiom0_in"
+	switch ":ioport3:hsiom_in0.fixed_DPSLP_2==>:m0s8scbcell_1__i2c_scl__hsiom_permute.ioport3__fixed_out_p0_DPSLP_2"
+	switch ":m0s8scbcell_1__i2c_scl__hsiom_permute.m0s8scbcell_1__i2c_scl==>:m0s8scbcell_1.i2c_scl"
+	term   ":m0s8scbcell_1.i2c_scl"
+end Net_192
+net Net_193
+	term   ":ioport3:pin1.fb"
+	switch ":ioport3:pin1.fb==>:ioport3:hsiom_in1.hsiom1_in"
+	switch ":ioport3:hsiom_in1.fixed_DPSLP_2==>:m0s8scbcell_1__i2c_sda__hsiom_permute.ioport3__fixed_out_p1_DPSLP_2"
+	switch ":m0s8scbcell_1__i2c_sda__hsiom_permute.m0s8scbcell_1__i2c_sda==>:m0s8scbcell_1.i2c_sda"
+	term   ":m0s8scbcell_1.i2c_sda"
+end Net_193
