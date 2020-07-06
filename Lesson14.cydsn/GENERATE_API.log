@@ -1,0 +1,8 @@
+--------------- Build Started: 07/06/2020 13:19:36 Project: Lesson14, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\jagumiel\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\Lesson14.cydsn\Lesson14.cyprj" -d CY8C4245AXI-483 -s "D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\Lesson14.cydsn\Generated_Source\PSoC4" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+ADD: sdb.M0017: error: No drivers on signal "Net_104", bit(s) "0".
+ * D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\Lesson14.cydsn\TopDesign\TopDesign.cysch (Signal: Net_104)
+ * D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\Lesson14.cydsn\TopDesign\TopDesign.cysch (Shape_211)
+Error: fit.M0050: The fitter aborted due to errors, please address all errors and rebuild. (App=cydsfit)
+--------------- Build Failed: 07/06/2020 13:19:39 ---------------
