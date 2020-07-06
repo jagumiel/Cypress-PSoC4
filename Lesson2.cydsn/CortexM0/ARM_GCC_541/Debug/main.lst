@@ -1,0 +1,435 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** int main(void)
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 16 0
+  38              		.syntax divided
+  39              	@ 16 "main.c" 1
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 2
+
+
+  42              		.thumb
+  43              		.syntax unified
+  44              	.L2:
+  17:main.c        **** 
+  18:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  19:main.c        **** 
+  20:main.c        ****     for(;;)
+  21:main.c        ****     {
+  22:main.c        ****         Pin_Red_Write(Pin_SW2_Read());
+  45              		.loc 1 22 0 discriminator 1
+  46 0004 FFF7FEFF 		bl	Pin_SW2_Read
+  47              	.LVL0:
+  48 0008 FFF7FEFF 		bl	Pin_Red_Write
+  49              	.LVL1:
+  50 000c FAE7     		b	.L2
+  51              		.cfi_endproc
+  52              	.LFE32:
+  53              		.size	main, .-main
+  54 000e C046     		.text
+  55              	.Letext0:
+  56              		.file 2 "Generated_Source\\PSoC4/Pin_SW2.h"
+  57              		.file 3 "Generated_Source\\PSoC4/Pin_Red.h"
+  58              		.section	.debug_info,"",%progbits
+  59              	.Ldebug_info0:
+  60 0000 CD000000 		.4byte	0xcd
+  61 0004 0400     		.2byte	0x4
+  62 0006 00000000 		.4byte	.Ldebug_abbrev0
+  63 000a 04       		.byte	0x4
+  64 000b 01       		.uleb128 0x1
+  65 000c DD000000 		.4byte	.LASF16
+  66 0010 0C       		.byte	0xc
+  67 0011 29000000 		.4byte	.LASF17
+  68 0015 8D000000 		.4byte	.LASF18
+  69 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  70 001d 00000000 		.4byte	0
+  71 0021 00000000 		.4byte	.Ldebug_line0
+  72 0025 02       		.uleb128 0x2
+  73 0026 01       		.byte	0x1
+  74 0027 06       		.byte	0x6
+  75 0028 7E010000 		.4byte	.LASF0
+  76 002c 02       		.uleb128 0x2
+  77 002d 01       		.byte	0x1
+  78 002e 08       		.byte	0x8
+  79 002f 1B000000 		.4byte	.LASF1
+  80 0033 02       		.uleb128 0x2
+  81 0034 02       		.byte	0x2
+  82 0035 05       		.byte	0x5
+  83 0036 96010000 		.4byte	.LASF2
+  84 003a 02       		.uleb128 0x2
+  85 003b 02       		.byte	0x2
+  86 003c 07       		.byte	0x7
+  87 003d 6B010000 		.4byte	.LASF3
+  88 0041 02       		.uleb128 0x2
+  89 0042 04       		.byte	0x4
+  90 0043 05       		.byte	0x5
+  91 0044 84000000 		.4byte	.LASF4
+  92 0048 02       		.uleb128 0x2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 3
+
+
+  93 0049 04       		.byte	0x4
+  94 004a 07       		.byte	0x7
+  95 004b 35000000 		.4byte	.LASF5
+  96 004f 02       		.uleb128 0x2
+  97 0050 08       		.byte	0x8
+  98 0051 05       		.byte	0x5
+  99 0052 00000000 		.4byte	.LASF6
+ 100 0056 02       		.uleb128 0x2
+ 101 0057 08       		.byte	0x8
+ 102 0058 07       		.byte	0x7
+ 103 0059 47000000 		.4byte	.LASF7
+ 104 005d 03       		.uleb128 0x3
+ 105 005e 04       		.byte	0x4
+ 106 005f 05       		.byte	0x5
+ 107 0060 696E7400 		.ascii	"int\000"
+ 108 0064 02       		.uleb128 0x2
+ 109 0065 04       		.byte	0x4
+ 110 0066 07       		.byte	0x7
+ 111 0067 0E000000 		.4byte	.LASF8
+ 112 006b 02       		.uleb128 0x2
+ 113 006c 04       		.byte	0x4
+ 114 006d 04       		.byte	0x4
+ 115 006e 5E000000 		.4byte	.LASF9
+ 116 0072 02       		.uleb128 0x2
+ 117 0073 08       		.byte	0x8
+ 118 0074 04       		.byte	0x4
+ 119 0075 D6000000 		.4byte	.LASF10
+ 120 0079 02       		.uleb128 0x2
+ 121 007a 01       		.byte	0x1
+ 122 007b 08       		.byte	0x8
+ 123 007c 7F000000 		.4byte	.LASF11
+ 124 0080 02       		.uleb128 0x2
+ 125 0081 08       		.byte	0x8
+ 126 0082 04       		.byte	0x4
+ 127 0083 8A010000 		.4byte	.LASF12
+ 128 0087 02       		.uleb128 0x2
+ 129 0088 04       		.byte	0x4
+ 130 0089 07       		.byte	0x7
+ 131 008a A0010000 		.4byte	.LASF13
+ 132 008e 04       		.uleb128 0x4
+ 133 008f 30000000 		.4byte	.LASF19
+ 134 0093 01       		.byte	0x1
+ 135 0094 0E       		.byte	0xe
+ 136 0095 5D000000 		.4byte	0x5d
+ 137 0099 00000000 		.4byte	.LFB32
+ 138 009d 0E000000 		.4byte	.LFE32-.LFB32
+ 139 00a1 01       		.uleb128 0x1
+ 140 00a2 9C       		.byte	0x9c
+ 141 00a3 BA000000 		.4byte	0xba
+ 142 00a7 05       		.uleb128 0x5
+ 143 00a8 08000000 		.4byte	.LVL0
+ 144 00ac BA000000 		.4byte	0xba
+ 145 00b0 05       		.uleb128 0x5
+ 146 00b1 0C000000 		.4byte	.LVL1
+ 147 00b5 C5000000 		.4byte	0xc5
+ 148 00b9 00       		.byte	0
+ 149 00ba 06       		.uleb128 0x6
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 4
+
+
+ 150 00bb 72000000 		.4byte	.LASF14
+ 151 00bf 72000000 		.4byte	.LASF14
+ 152 00c3 02       		.byte	0x2
+ 153 00c4 32       		.byte	0x32
+ 154 00c5 06       		.uleb128 0x6
+ 155 00c6 64000000 		.4byte	.LASF15
+ 156 00ca 64000000 		.4byte	.LASF15
+ 157 00ce 03       		.byte	0x3
+ 158 00cf 33       		.byte	0x33
+ 159 00d0 00       		.byte	0
+ 160              		.section	.debug_abbrev,"",%progbits
+ 161              	.Ldebug_abbrev0:
+ 162 0000 01       		.uleb128 0x1
+ 163 0001 11       		.uleb128 0x11
+ 164 0002 01       		.byte	0x1
+ 165 0003 25       		.uleb128 0x25
+ 166 0004 0E       		.uleb128 0xe
+ 167 0005 13       		.uleb128 0x13
+ 168 0006 0B       		.uleb128 0xb
+ 169 0007 03       		.uleb128 0x3
+ 170 0008 0E       		.uleb128 0xe
+ 171 0009 1B       		.uleb128 0x1b
+ 172 000a 0E       		.uleb128 0xe
+ 173 000b 55       		.uleb128 0x55
+ 174 000c 17       		.uleb128 0x17
+ 175 000d 11       		.uleb128 0x11
+ 176 000e 01       		.uleb128 0x1
+ 177 000f 10       		.uleb128 0x10
+ 178 0010 17       		.uleb128 0x17
+ 179 0011 00       		.byte	0
+ 180 0012 00       		.byte	0
+ 181 0013 02       		.uleb128 0x2
+ 182 0014 24       		.uleb128 0x24
+ 183 0015 00       		.byte	0
+ 184 0016 0B       		.uleb128 0xb
+ 185 0017 0B       		.uleb128 0xb
+ 186 0018 3E       		.uleb128 0x3e
+ 187 0019 0B       		.uleb128 0xb
+ 188 001a 03       		.uleb128 0x3
+ 189 001b 0E       		.uleb128 0xe
+ 190 001c 00       		.byte	0
+ 191 001d 00       		.byte	0
+ 192 001e 03       		.uleb128 0x3
+ 193 001f 24       		.uleb128 0x24
+ 194 0020 00       		.byte	0
+ 195 0021 0B       		.uleb128 0xb
+ 196 0022 0B       		.uleb128 0xb
+ 197 0023 3E       		.uleb128 0x3e
+ 198 0024 0B       		.uleb128 0xb
+ 199 0025 03       		.uleb128 0x3
+ 200 0026 08       		.uleb128 0x8
+ 201 0027 00       		.byte	0
+ 202 0028 00       		.byte	0
+ 203 0029 04       		.uleb128 0x4
+ 204 002a 2E       		.uleb128 0x2e
+ 205 002b 01       		.byte	0x1
+ 206 002c 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 5
+
+
+ 207 002d 19       		.uleb128 0x19
+ 208 002e 03       		.uleb128 0x3
+ 209 002f 0E       		.uleb128 0xe
+ 210 0030 3A       		.uleb128 0x3a
+ 211 0031 0B       		.uleb128 0xb
+ 212 0032 3B       		.uleb128 0x3b
+ 213 0033 0B       		.uleb128 0xb
+ 214 0034 27       		.uleb128 0x27
+ 215 0035 19       		.uleb128 0x19
+ 216 0036 49       		.uleb128 0x49
+ 217 0037 13       		.uleb128 0x13
+ 218 0038 8701     		.uleb128 0x87
+ 219 003a 19       		.uleb128 0x19
+ 220 003b 11       		.uleb128 0x11
+ 221 003c 01       		.uleb128 0x1
+ 222 003d 12       		.uleb128 0x12
+ 223 003e 06       		.uleb128 0x6
+ 224 003f 40       		.uleb128 0x40
+ 225 0040 18       		.uleb128 0x18
+ 226 0041 9742     		.uleb128 0x2117
+ 227 0043 19       		.uleb128 0x19
+ 228 0044 01       		.uleb128 0x1
+ 229 0045 13       		.uleb128 0x13
+ 230 0046 00       		.byte	0
+ 231 0047 00       		.byte	0
+ 232 0048 05       		.uleb128 0x5
+ 233 0049 898201   		.uleb128 0x4109
+ 234 004c 00       		.byte	0
+ 235 004d 11       		.uleb128 0x11
+ 236 004e 01       		.uleb128 0x1
+ 237 004f 31       		.uleb128 0x31
+ 238 0050 13       		.uleb128 0x13
+ 239 0051 00       		.byte	0
+ 240 0052 00       		.byte	0
+ 241 0053 06       		.uleb128 0x6
+ 242 0054 2E       		.uleb128 0x2e
+ 243 0055 00       		.byte	0
+ 244 0056 3F       		.uleb128 0x3f
+ 245 0057 19       		.uleb128 0x19
+ 246 0058 3C       		.uleb128 0x3c
+ 247 0059 19       		.uleb128 0x19
+ 248 005a 6E       		.uleb128 0x6e
+ 249 005b 0E       		.uleb128 0xe
+ 250 005c 03       		.uleb128 0x3
+ 251 005d 0E       		.uleb128 0xe
+ 252 005e 3A       		.uleb128 0x3a
+ 253 005f 0B       		.uleb128 0xb
+ 254 0060 3B       		.uleb128 0x3b
+ 255 0061 0B       		.uleb128 0xb
+ 256 0062 00       		.byte	0
+ 257 0063 00       		.byte	0
+ 258 0064 00       		.byte	0
+ 259              		.section	.debug_aranges,"",%progbits
+ 260 0000 1C000000 		.4byte	0x1c
+ 261 0004 0200     		.2byte	0x2
+ 262 0006 00000000 		.4byte	.Ldebug_info0
+ 263 000a 04       		.byte	0x4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 6
+
+
+ 264 000b 00       		.byte	0
+ 265 000c 0000     		.2byte	0
+ 266 000e 0000     		.2byte	0
+ 267 0010 00000000 		.4byte	.LFB32
+ 268 0014 0E000000 		.4byte	.LFE32-.LFB32
+ 269 0018 00000000 		.4byte	0
+ 270 001c 00000000 		.4byte	0
+ 271              		.section	.debug_ranges,"",%progbits
+ 272              	.Ldebug_ranges0:
+ 273 0000 00000000 		.4byte	.LFB32
+ 274 0004 0E000000 		.4byte	.LFE32
+ 275 0008 00000000 		.4byte	0
+ 276 000c 00000000 		.4byte	0
+ 277              		.section	.debug_line,"",%progbits
+ 278              	.Ldebug_line0:
+ 279 0000 69000000 		.section	.debug_str,"MS",%progbits,1
+ 279      02004E00 
+ 279      00000201 
+ 279      FB0E0D00 
+ 279      01010101 
+ 280              	.LASF6:
+ 281 0000 6C6F6E67 		.ascii	"long long int\000"
+ 281      206C6F6E 
+ 281      6720696E 
+ 281      7400
+ 282              	.LASF8:
+ 283 000e 756E7369 		.ascii	"unsigned int\000"
+ 283      676E6564 
+ 283      20696E74 
+ 283      00
+ 284              	.LASF1:
+ 285 001b 756E7369 		.ascii	"unsigned char\000"
+ 285      676E6564 
+ 285      20636861 
+ 285      7200
+ 286              	.LASF17:
+ 287 0029 6D61696E 		.ascii	"main.c\000"
+ 287      2E6300
+ 288              	.LASF19:
+ 289 0030 6D61696E 		.ascii	"main\000"
+ 289      00
+ 290              	.LASF5:
+ 291 0035 6C6F6E67 		.ascii	"long unsigned int\000"
+ 291      20756E73 
+ 291      69676E65 
+ 291      6420696E 
+ 291      7400
+ 292              	.LASF7:
+ 293 0047 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 293      206C6F6E 
+ 293      6720756E 
+ 293      7369676E 
+ 293      65642069 
+ 294              	.LASF9:
+ 295 005e 666C6F61 		.ascii	"float\000"
+ 295      7400
+ 296              	.LASF15:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 7
+
+
+ 297 0064 50696E5F 		.ascii	"Pin_Red_Write\000"
+ 297      5265645F 
+ 297      57726974 
+ 297      6500
+ 298              	.LASF14:
+ 299 0072 50696E5F 		.ascii	"Pin_SW2_Read\000"
+ 299      5357325F 
+ 299      52656164 
+ 299      00
+ 300              	.LASF11:
+ 301 007f 63686172 		.ascii	"char\000"
+ 301      00
+ 302              	.LASF4:
+ 303 0084 6C6F6E67 		.ascii	"long int\000"
+ 303      20696E74 
+ 303      00
+ 304              	.LASF18:
+ 305 008d 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 305      73657273 
+ 305      5C6A6167 
+ 305      756D6965 
+ 305      6C5C446F 
+ 306 00bb 3130315C 		.ascii	"101\\PSoC-101\\Lesson2.cydsn\000"
+ 306      50536F43 
+ 306      2D313031 
+ 306      5C4C6573 
+ 306      736F6E32 
+ 307              	.LASF10:
+ 308 00d6 646F7562 		.ascii	"double\000"
+ 308      6C6500
+ 309              	.LASF16:
+ 310 00dd 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 310      43313120 
+ 310      352E342E 
+ 310      31203230 
+ 310      31363036 
+ 311 0110 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 311      20726576 
+ 311      6973696F 
+ 311      6E203233 
+ 311      37373135 
+ 312 0143 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 312      66756E63 
+ 312      74696F6E 
+ 312      2D736563 
+ 312      74696F6E 
+ 313              	.LASF3:
+ 314 016b 73686F72 		.ascii	"short unsigned int\000"
+ 314      7420756E 
+ 314      7369676E 
+ 314      65642069 
+ 314      6E7400
+ 315              	.LASF0:
+ 316 017e 7369676E 		.ascii	"signed char\000"
+ 316      65642063 
+ 316      68617200 
+ 317              	.LASF12:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccDdRPdK.s 			page 8
+
+
+ 318 018a 6C6F6E67 		.ascii	"long double\000"
+ 318      20646F75 
+ 318      626C6500 
+ 319              	.LASF2:
+ 320 0196 73686F72 		.ascii	"short int\000"
+ 320      7420696E 
+ 320      7400
+ 321              	.LASF13:
+ 322 01a0 73697A65 		.ascii	"sizetype\000"
+ 322      74797065 
+ 322      00
+ 323              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
