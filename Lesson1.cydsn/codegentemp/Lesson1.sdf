@@ -1,0 +1,21 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2020-07-06T06:15:46Z")
+ (DESIGN "Lesson1")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.2")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "Lesson1")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT Pin_Green\(0\)_PAD Pin_Green\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT Pin_Red\(0\)_PAD Pin_Red\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT Pin_Blue\(0\)_PAD Pin_Blue\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
