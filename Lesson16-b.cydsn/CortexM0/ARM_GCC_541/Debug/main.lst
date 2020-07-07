@@ -1,0 +1,737 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Pin_SW2_Handler,"ax",%progbits
+  20              		.align	2
+  21              		.global	Pin_SW2_Handler
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Pin_SW2_Handler, %function
+  25              	Pin_SW2_Handler:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include <project.h>
+  13:main.c        **** 
+  14:main.c        **** _Bool sleep = 0;
+  15:main.c        **** 
+  16:main.c        **** CY_ISR(Pin_SW2_Handler){
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  17:main.c        ****     sleep=(!sleep);
+  36              		.loc 1 17 0
+  37 0002 074A     		ldr	r2, .L3
+  38 0004 1178     		ldrb	r1, [r2]
+  39 0006 0123     		movs	r3, #1
+  40 0008 4B40     		eors	r3, r1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 2
+
+
+  41 000a DBB2     		uxtb	r3, r3
+  42 000c 1370     		strb	r3, [r2]
+  18:main.c        ****     if(sleep==0){
+  43              		.loc 1 18 0
+  44 000e 002B     		cmp	r3, #0
+  45 0010 02D1     		bne	.L2
+  19:main.c        ****         UART_UartPutString("Awake!\r\n");
+  46              		.loc 1 19 0
+  47 0012 0448     		ldr	r0, .L3+4
+  48 0014 FFF7FEFF 		bl	UART_UartPutString
+  49              	.LVL0:
+  50              	.L2:
+  20:main.c        ****     }
+  21:main.c        ****     Pin_SW2_ClearInterrupt();
+  51              		.loc 1 21 0
+  52 0018 FFF7FEFF 		bl	Pin_SW2_ClearInterrupt
+  53              	.LVL1:
+  22:main.c        **** }
+  54              		.loc 1 22 0
+  55              		@ sp needed
+  56 001c 10BD     		pop	{r4, pc}
+  57              	.L4:
+  58 001e C046     		.align	2
+  59              	.L3:
+  60 0020 00000000 		.word	.LANCHOR0
+  61 0024 00000000 		.word	.LC1
+  62              		.cfi_endproc
+  63              	.LFE32:
+  64              		.size	Pin_SW2_Handler, .-Pin_SW2_Handler
+  65              		.section	.text.main,"ax",%progbits
+  66              		.align	2
+  67              		.global	main
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	main, %function
+  71              	main:
+  72              	.LFB33:
+  23:main.c        **** 
+  24:main.c        **** int main (void)
+  25:main.c        **** {
+  73              		.loc 1 25 0
+  74              		.cfi_startproc
+  75              		@ Volatile: function does not return.
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 10B5     		push	{r4, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 4, -8
+  81              		.cfi_offset 14, -4
+  26:main.c        ****     CyGlobalIntEnable;      /* Enable global interrupts */
+  82              		.loc 1 26 0
+  83              		.syntax divided
+  84              	@ 26 "main.c" 1
+  85 0002 62B6     		CPSIE   i
+  86              	@ 0 "" 2
+  27:main.c        ****     
+  28:main.c        ****     UART_Start();
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 3
+
+
+  87              		.loc 1 28 0
+  88              		.thumb
+  89              		.syntax unified
+  90 0004 FFF7FEFF 		bl	UART_Start
+  91              	.LVL2:
+  29:main.c        ****     
+  30:main.c        ****     Pin_SW2_Int_StartEx(Pin_SW2_Handler);
+  92              		.loc 1 30 0
+  93 0008 0648     		ldr	r0, .L8
+  94 000a FFF7FEFF 		bl	Pin_SW2_Int_StartEx
+  95              	.LVL3:
+  96              	.L6:
+  31:main.c        ****     
+  32:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  33:main.c        ****     
+  34:main.c        ****     for(;;)
+  35:main.c        ****     {
+  36:main.c        ****         if(sleep==1){
+  97              		.loc 1 36 0
+  98 000e 064B     		ldr	r3, .L8+4
+  99 0010 1B78     		ldrb	r3, [r3]
+ 100 0012 002B     		cmp	r3, #0
+ 101 0014 FBD0     		beq	.L6
+  37:main.c        ****             UART_UartPutString("Sleeping...\r\n");
+ 102              		.loc 1 37 0
+ 103 0016 0548     		ldr	r0, .L8+8
+ 104 0018 FFF7FEFF 		bl	UART_UartPutString
+ 105              	.LVL4:
+  38:main.c        ****             CySysPmSleep();
+ 106              		.loc 1 38 0
+ 107 001c FFF7FEFF 		bl	CySysPmSleep
+ 108              	.LVL5:
+ 109 0020 F5E7     		b	.L6
+ 110              	.L9:
+ 111 0022 C046     		.align	2
+ 112              	.L8:
+ 113 0024 00000000 		.word	Pin_SW2_Handler
+ 114 0028 00000000 		.word	.LANCHOR0
+ 115 002c 0C000000 		.word	.LC5
+ 116              		.cfi_endproc
+ 117              	.LFE33:
+ 118              		.size	main, .-main
+ 119              		.global	sleep
+ 120              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 121              		.align	2
+ 122              	.LC1:
+ 123 0000 4177616B 		.ascii	"Awake!\015\012\000"
+ 123      65210D0A 
+ 123      00
+ 124 0009 000000   		.space	3
+ 125              	.LC5:
+ 126 000c 536C6565 		.ascii	"Sleeping...\015\012\000"
+ 126      70696E67 
+ 126      2E2E2E0D 
+ 126      0A00
+ 127              		.bss
+ 128              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 4
+
+
+ 129              		.type	sleep, %object
+ 130              		.size	sleep, 1
+ 131              	sleep:
+ 132 0000 00       		.space	1
+ 133              		.text
+ 134              	.Letext0:
+ 135              		.file 2 "Generated_Source\\PSoC4/UART_SPI_UART.h"
+ 136              		.file 3 "Generated_Source\\PSoC4/Pin_SW2.h"
+ 137              		.file 4 "Generated_Source\\PSoC4/UART.h"
+ 138              		.file 5 "Generated_Source\\PSoC4/Pin_SW2_Int.h"
+ 139              		.file 6 "Generated_Source\\PSoC4/cyPm.h"
+ 140              		.section	.debug_info,"",%progbits
+ 141              	.Ldebug_info0:
+ 142 0000 6B010000 		.4byte	0x16b
+ 143 0004 0400     		.2byte	0x4
+ 144 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 145 000a 04       		.byte	0x4
+ 146 000b 01       		.uleb128 0x1
+ 147 000c 11010000 		.4byte	.LASF20
+ 148 0010 0C       		.byte	0xc
+ 149 0011 2F000000 		.4byte	.LASF21
+ 150 0015 3B000000 		.4byte	.LASF22
+ 151 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 152 001d 00000000 		.4byte	0
+ 153 0021 00000000 		.4byte	.Ldebug_line0
+ 154 0025 02       		.uleb128 0x2
+ 155 0026 01       		.byte	0x1
+ 156 0027 06       		.byte	0x6
+ 157 0028 B2010000 		.4byte	.LASF0
+ 158 002c 02       		.uleb128 0x2
+ 159 002d 01       		.byte	0x1
+ 160 002e 08       		.byte	0x8
+ 161 002f E2000000 		.4byte	.LASF1
+ 162 0033 02       		.uleb128 0x2
+ 163 0034 02       		.byte	0x2
+ 164 0035 05       		.byte	0x5
+ 165 0036 DD010000 		.4byte	.LASF2
+ 166 003a 02       		.uleb128 0x2
+ 167 003b 02       		.byte	0x2
+ 168 003c 07       		.byte	0x7
+ 169 003d 9F010000 		.4byte	.LASF3
+ 170 0041 02       		.uleb128 0x2
+ 171 0042 04       		.byte	0x4
+ 172 0043 05       		.byte	0x5
+ 173 0044 FB000000 		.4byte	.LASF4
+ 174 0048 02       		.uleb128 0x2
+ 175 0049 04       		.byte	0x4
+ 176 004a 07       		.byte	0x7
+ 177 004b 87000000 		.4byte	.LASF5
+ 178 004f 02       		.uleb128 0x2
+ 179 0050 08       		.byte	0x8
+ 180 0051 05       		.byte	0x5
+ 181 0052 00000000 		.4byte	.LASF6
+ 182 0056 02       		.uleb128 0x2
+ 183 0057 08       		.byte	0x8
+ 184 0058 07       		.byte	0x7
+ 185 0059 99000000 		.4byte	.LASF7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 5
+
+
+ 186 005d 03       		.uleb128 0x3
+ 187 005e 04       		.byte	0x4
+ 188 005f 05       		.byte	0x5
+ 189 0060 696E7400 		.ascii	"int\000"
+ 190 0064 02       		.uleb128 0x2
+ 191 0065 04       		.byte	0x4
+ 192 0066 07       		.byte	0x7
+ 193 0067 22000000 		.4byte	.LASF8
+ 194 006b 02       		.uleb128 0x2
+ 195 006c 04       		.byte	0x4
+ 196 006d 04       		.byte	0x4
+ 197 006e D7010000 		.4byte	.LASF9
+ 198 0072 02       		.uleb128 0x2
+ 199 0073 08       		.byte	0x8
+ 200 0074 04       		.byte	0x4
+ 201 0075 04010000 		.4byte	.LASF10
+ 202 0079 02       		.uleb128 0x2
+ 203 007a 01       		.byte	0x1
+ 204 007b 08       		.byte	0x8
+ 205 007c F0000000 		.4byte	.LASF11
+ 206 0080 02       		.uleb128 0x2
+ 207 0081 08       		.byte	0x8
+ 208 0082 04       		.byte	0x4
+ 209 0083 BE010000 		.4byte	.LASF12
+ 210 0087 02       		.uleb128 0x2
+ 211 0088 04       		.byte	0x4
+ 212 0089 07       		.byte	0x7
+ 213 008a FA010000 		.4byte	.LASF13
+ 214 008e 04       		.uleb128 0x4
+ 215 008f C7000000 		.4byte	.LASF23
+ 216 0093 01       		.byte	0x1
+ 217 0094 10       		.byte	0x10
+ 218 0095 00000000 		.4byte	.LFB32
+ 219 0099 28000000 		.4byte	.LFE32-.LFB32
+ 220 009d 01       		.uleb128 0x1
+ 221 009e 9C       		.byte	0x9c
+ 222 009f C4000000 		.4byte	0xc4
+ 223 00a3 05       		.uleb128 0x5
+ 224 00a4 18000000 		.4byte	.LVL0
+ 225 00a8 36010000 		.4byte	0x136
+ 226 00ac BA000000 		.4byte	0xba
+ 227 00b0 06       		.uleb128 0x6
+ 228 00b1 01       		.uleb128 0x1
+ 229 00b2 50       		.byte	0x50
+ 230 00b3 05       		.uleb128 0x5
+ 231 00b4 03       		.byte	0x3
+ 232 00b5 00000000 		.4byte	.LC1
+ 233 00b9 00       		.byte	0
+ 234 00ba 07       		.uleb128 0x7
+ 235 00bb 1C000000 		.4byte	.LVL1
+ 236 00bf 42010000 		.4byte	0x142
+ 237 00c3 00       		.byte	0
+ 238 00c4 08       		.uleb128 0x8
+ 239 00c5 36000000 		.4byte	.LASF24
+ 240 00c9 01       		.byte	0x1
+ 241 00ca 18       		.byte	0x18
+ 242 00cb 5D000000 		.4byte	0x5d
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 6
+
+
+ 243 00cf 00000000 		.4byte	.LFB33
+ 244 00d3 30000000 		.4byte	.LFE33-.LFB33
+ 245 00d7 01       		.uleb128 0x1
+ 246 00d8 9C       		.byte	0x9c
+ 247 00d9 1E010000 		.4byte	0x11e
+ 248 00dd 07       		.uleb128 0x7
+ 249 00de 08000000 		.4byte	.LVL2
+ 250 00e2 4D010000 		.4byte	0x14d
+ 251 00e6 05       		.uleb128 0x5
+ 252 00e7 0E000000 		.4byte	.LVL3
+ 253 00eb 58010000 		.4byte	0x158
+ 254 00ef FD000000 		.4byte	0xfd
+ 255 00f3 06       		.uleb128 0x6
+ 256 00f4 01       		.uleb128 0x1
+ 257 00f5 50       		.byte	0x50
+ 258 00f6 05       		.uleb128 0x5
+ 259 00f7 03       		.byte	0x3
+ 260 00f8 00000000 		.4byte	Pin_SW2_Handler
+ 261 00fc 00       		.byte	0
+ 262 00fd 05       		.uleb128 0x5
+ 263 00fe 1C000000 		.4byte	.LVL4
+ 264 0102 36010000 		.4byte	0x136
+ 265 0106 14010000 		.4byte	0x114
+ 266 010a 06       		.uleb128 0x6
+ 267 010b 01       		.uleb128 0x1
+ 268 010c 50       		.byte	0x50
+ 269 010d 05       		.uleb128 0x5
+ 270 010e 03       		.byte	0x3
+ 271 010f 0C000000 		.4byte	.LC5
+ 272 0113 00       		.byte	0
+ 273 0114 07       		.uleb128 0x7
+ 274 0115 20000000 		.4byte	.LVL5
+ 275 0119 63010000 		.4byte	0x163
+ 276 011d 00       		.byte	0
+ 277 011e 09       		.uleb128 0x9
+ 278 011f F5000000 		.4byte	.LASF25
+ 279 0123 01       		.byte	0x1
+ 280 0124 0E       		.byte	0xe
+ 281 0125 2F010000 		.4byte	0x12f
+ 282 0129 05       		.uleb128 0x5
+ 283 012a 03       		.byte	0x3
+ 284 012b 00000000 		.4byte	sleep
+ 285 012f 02       		.uleb128 0x2
+ 286 0130 01       		.byte	0x1
+ 287 0131 02       		.byte	0x2
+ 288 0132 0B010000 		.4byte	.LASF14
+ 289 0136 0A       		.uleb128 0xa
+ 290 0137 E7010000 		.4byte	.LASF15
+ 291 013b E7010000 		.4byte	.LASF15
+ 292 013f 02       		.byte	0x2
+ 293 0140 2A03     		.2byte	0x32a
+ 294 0142 0B       		.uleb128 0xb
+ 295 0143 B0000000 		.4byte	.LASF16
+ 296 0147 B0000000 		.4byte	.LASF16
+ 297 014b 03       		.byte	0x3
+ 298 014c 39       		.byte	0x39
+ 299 014d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 7
+
+
+ 300 014e D7000000 		.4byte	.LASF17
+ 301 0152 D7000000 		.4byte	.LASF17
+ 302 0156 04       		.byte	0x4
+ 303 0157 72       		.byte	0x72
+ 304 0158 0B       		.uleb128 0xb
+ 305 0159 0E000000 		.4byte	.LASF18
+ 306 015d 0E000000 		.4byte	.LASF18
+ 307 0161 05       		.byte	0x5
+ 308 0162 18       		.byte	0x18
+ 309 0163 0B       		.uleb128 0xb
+ 310 0164 CA010000 		.4byte	.LASF19
+ 311 0168 CA010000 		.4byte	.LASF19
+ 312 016c 06       		.byte	0x6
+ 313 016d 56       		.byte	0x56
+ 314 016e 00       		.byte	0
+ 315              		.section	.debug_abbrev,"",%progbits
+ 316              	.Ldebug_abbrev0:
+ 317 0000 01       		.uleb128 0x1
+ 318 0001 11       		.uleb128 0x11
+ 319 0002 01       		.byte	0x1
+ 320 0003 25       		.uleb128 0x25
+ 321 0004 0E       		.uleb128 0xe
+ 322 0005 13       		.uleb128 0x13
+ 323 0006 0B       		.uleb128 0xb
+ 324 0007 03       		.uleb128 0x3
+ 325 0008 0E       		.uleb128 0xe
+ 326 0009 1B       		.uleb128 0x1b
+ 327 000a 0E       		.uleb128 0xe
+ 328 000b 55       		.uleb128 0x55
+ 329 000c 17       		.uleb128 0x17
+ 330 000d 11       		.uleb128 0x11
+ 331 000e 01       		.uleb128 0x1
+ 332 000f 10       		.uleb128 0x10
+ 333 0010 17       		.uleb128 0x17
+ 334 0011 00       		.byte	0
+ 335 0012 00       		.byte	0
+ 336 0013 02       		.uleb128 0x2
+ 337 0014 24       		.uleb128 0x24
+ 338 0015 00       		.byte	0
+ 339 0016 0B       		.uleb128 0xb
+ 340 0017 0B       		.uleb128 0xb
+ 341 0018 3E       		.uleb128 0x3e
+ 342 0019 0B       		.uleb128 0xb
+ 343 001a 03       		.uleb128 0x3
+ 344 001b 0E       		.uleb128 0xe
+ 345 001c 00       		.byte	0
+ 346 001d 00       		.byte	0
+ 347 001e 03       		.uleb128 0x3
+ 348 001f 24       		.uleb128 0x24
+ 349 0020 00       		.byte	0
+ 350 0021 0B       		.uleb128 0xb
+ 351 0022 0B       		.uleb128 0xb
+ 352 0023 3E       		.uleb128 0x3e
+ 353 0024 0B       		.uleb128 0xb
+ 354 0025 03       		.uleb128 0x3
+ 355 0026 08       		.uleb128 0x8
+ 356 0027 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 8
+
+
+ 357 0028 00       		.byte	0
+ 358 0029 04       		.uleb128 0x4
+ 359 002a 2E       		.uleb128 0x2e
+ 360 002b 01       		.byte	0x1
+ 361 002c 3F       		.uleb128 0x3f
+ 362 002d 19       		.uleb128 0x19
+ 363 002e 03       		.uleb128 0x3
+ 364 002f 0E       		.uleb128 0xe
+ 365 0030 3A       		.uleb128 0x3a
+ 366 0031 0B       		.uleb128 0xb
+ 367 0032 3B       		.uleb128 0x3b
+ 368 0033 0B       		.uleb128 0xb
+ 369 0034 27       		.uleb128 0x27
+ 370 0035 19       		.uleb128 0x19
+ 371 0036 11       		.uleb128 0x11
+ 372 0037 01       		.uleb128 0x1
+ 373 0038 12       		.uleb128 0x12
+ 374 0039 06       		.uleb128 0x6
+ 375 003a 40       		.uleb128 0x40
+ 376 003b 18       		.uleb128 0x18
+ 377 003c 9742     		.uleb128 0x2117
+ 378 003e 19       		.uleb128 0x19
+ 379 003f 01       		.uleb128 0x1
+ 380 0040 13       		.uleb128 0x13
+ 381 0041 00       		.byte	0
+ 382 0042 00       		.byte	0
+ 383 0043 05       		.uleb128 0x5
+ 384 0044 898201   		.uleb128 0x4109
+ 385 0047 01       		.byte	0x1
+ 386 0048 11       		.uleb128 0x11
+ 387 0049 01       		.uleb128 0x1
+ 388 004a 31       		.uleb128 0x31
+ 389 004b 13       		.uleb128 0x13
+ 390 004c 01       		.uleb128 0x1
+ 391 004d 13       		.uleb128 0x13
+ 392 004e 00       		.byte	0
+ 393 004f 00       		.byte	0
+ 394 0050 06       		.uleb128 0x6
+ 395 0051 8A8201   		.uleb128 0x410a
+ 396 0054 00       		.byte	0
+ 397 0055 02       		.uleb128 0x2
+ 398 0056 18       		.uleb128 0x18
+ 399 0057 9142     		.uleb128 0x2111
+ 400 0059 18       		.uleb128 0x18
+ 401 005a 00       		.byte	0
+ 402 005b 00       		.byte	0
+ 403 005c 07       		.uleb128 0x7
+ 404 005d 898201   		.uleb128 0x4109
+ 405 0060 00       		.byte	0
+ 406 0061 11       		.uleb128 0x11
+ 407 0062 01       		.uleb128 0x1
+ 408 0063 31       		.uleb128 0x31
+ 409 0064 13       		.uleb128 0x13
+ 410 0065 00       		.byte	0
+ 411 0066 00       		.byte	0
+ 412 0067 08       		.uleb128 0x8
+ 413 0068 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 9
+
+
+ 414 0069 01       		.byte	0x1
+ 415 006a 3F       		.uleb128 0x3f
+ 416 006b 19       		.uleb128 0x19
+ 417 006c 03       		.uleb128 0x3
+ 418 006d 0E       		.uleb128 0xe
+ 419 006e 3A       		.uleb128 0x3a
+ 420 006f 0B       		.uleb128 0xb
+ 421 0070 3B       		.uleb128 0x3b
+ 422 0071 0B       		.uleb128 0xb
+ 423 0072 27       		.uleb128 0x27
+ 424 0073 19       		.uleb128 0x19
+ 425 0074 49       		.uleb128 0x49
+ 426 0075 13       		.uleb128 0x13
+ 427 0076 8701     		.uleb128 0x87
+ 428 0078 19       		.uleb128 0x19
+ 429 0079 11       		.uleb128 0x11
+ 430 007a 01       		.uleb128 0x1
+ 431 007b 12       		.uleb128 0x12
+ 432 007c 06       		.uleb128 0x6
+ 433 007d 40       		.uleb128 0x40
+ 434 007e 18       		.uleb128 0x18
+ 435 007f 9742     		.uleb128 0x2117
+ 436 0081 19       		.uleb128 0x19
+ 437 0082 01       		.uleb128 0x1
+ 438 0083 13       		.uleb128 0x13
+ 439 0084 00       		.byte	0
+ 440 0085 00       		.byte	0
+ 441 0086 09       		.uleb128 0x9
+ 442 0087 34       		.uleb128 0x34
+ 443 0088 00       		.byte	0
+ 444 0089 03       		.uleb128 0x3
+ 445 008a 0E       		.uleb128 0xe
+ 446 008b 3A       		.uleb128 0x3a
+ 447 008c 0B       		.uleb128 0xb
+ 448 008d 3B       		.uleb128 0x3b
+ 449 008e 0B       		.uleb128 0xb
+ 450 008f 49       		.uleb128 0x49
+ 451 0090 13       		.uleb128 0x13
+ 452 0091 3F       		.uleb128 0x3f
+ 453 0092 19       		.uleb128 0x19
+ 454 0093 02       		.uleb128 0x2
+ 455 0094 18       		.uleb128 0x18
+ 456 0095 00       		.byte	0
+ 457 0096 00       		.byte	0
+ 458 0097 0A       		.uleb128 0xa
+ 459 0098 2E       		.uleb128 0x2e
+ 460 0099 00       		.byte	0
+ 461 009a 3F       		.uleb128 0x3f
+ 462 009b 19       		.uleb128 0x19
+ 463 009c 3C       		.uleb128 0x3c
+ 464 009d 19       		.uleb128 0x19
+ 465 009e 6E       		.uleb128 0x6e
+ 466 009f 0E       		.uleb128 0xe
+ 467 00a0 03       		.uleb128 0x3
+ 468 00a1 0E       		.uleb128 0xe
+ 469 00a2 3A       		.uleb128 0x3a
+ 470 00a3 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 10
+
+
+ 471 00a4 3B       		.uleb128 0x3b
+ 472 00a5 05       		.uleb128 0x5
+ 473 00a6 00       		.byte	0
+ 474 00a7 00       		.byte	0
+ 475 00a8 0B       		.uleb128 0xb
+ 476 00a9 2E       		.uleb128 0x2e
+ 477 00aa 00       		.byte	0
+ 478 00ab 3F       		.uleb128 0x3f
+ 479 00ac 19       		.uleb128 0x19
+ 480 00ad 3C       		.uleb128 0x3c
+ 481 00ae 19       		.uleb128 0x19
+ 482 00af 6E       		.uleb128 0x6e
+ 483 00b0 0E       		.uleb128 0xe
+ 484 00b1 03       		.uleb128 0x3
+ 485 00b2 0E       		.uleb128 0xe
+ 486 00b3 3A       		.uleb128 0x3a
+ 487 00b4 0B       		.uleb128 0xb
+ 488 00b5 3B       		.uleb128 0x3b
+ 489 00b6 0B       		.uleb128 0xb
+ 490 00b7 00       		.byte	0
+ 491 00b8 00       		.byte	0
+ 492 00b9 00       		.byte	0
+ 493              		.section	.debug_aranges,"",%progbits
+ 494 0000 24000000 		.4byte	0x24
+ 495 0004 0200     		.2byte	0x2
+ 496 0006 00000000 		.4byte	.Ldebug_info0
+ 497 000a 04       		.byte	0x4
+ 498 000b 00       		.byte	0
+ 499 000c 0000     		.2byte	0
+ 500 000e 0000     		.2byte	0
+ 501 0010 00000000 		.4byte	.LFB32
+ 502 0014 28000000 		.4byte	.LFE32-.LFB32
+ 503 0018 00000000 		.4byte	.LFB33
+ 504 001c 30000000 		.4byte	.LFE33-.LFB33
+ 505 0020 00000000 		.4byte	0
+ 506 0024 00000000 		.4byte	0
+ 507              		.section	.debug_ranges,"",%progbits
+ 508              	.Ldebug_ranges0:
+ 509 0000 00000000 		.4byte	.LFB32
+ 510 0004 28000000 		.4byte	.LFE32
+ 511 0008 00000000 		.4byte	.LFB33
+ 512 000c 30000000 		.4byte	.LFE33
+ 513 0010 00000000 		.4byte	0
+ 514 0014 00000000 		.4byte	0
+ 515              		.section	.debug_line,"",%progbits
+ 516              	.Ldebug_line0:
+ 517 0000 A8000000 		.section	.debug_str,"MS",%progbits,1
+ 517      02007900 
+ 517      00000201 
+ 517      FB0E0D00 
+ 517      01010101 
+ 518              	.LASF6:
+ 519 0000 6C6F6E67 		.ascii	"long long int\000"
+ 519      206C6F6E 
+ 519      6720696E 
+ 519      7400
+ 520              	.LASF18:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 11
+
+
+ 521 000e 50696E5F 		.ascii	"Pin_SW2_Int_StartEx\000"
+ 521      5357325F 
+ 521      496E745F 
+ 521      53746172 
+ 521      74457800 
+ 522              	.LASF8:
+ 523 0022 756E7369 		.ascii	"unsigned int\000"
+ 523      676E6564 
+ 523      20696E74 
+ 523      00
+ 524              	.LASF21:
+ 525 002f 6D61696E 		.ascii	"main.c\000"
+ 525      2E6300
+ 526              	.LASF24:
+ 527 0036 6D61696E 		.ascii	"main\000"
+ 527      00
+ 528              	.LASF22:
+ 529 003b 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 529      73657273 
+ 529      5C6A6167 
+ 529      756D6965 
+ 529      6C5C446F 
+ 530 0069 3130315C 		.ascii	"101\\PSoC-101\\Lesson16-b.cydsn\000"
+ 530      50536F43 
+ 530      2D313031 
+ 530      5C4C6573 
+ 530      736F6E31 
+ 531              	.LASF5:
+ 532 0087 6C6F6E67 		.ascii	"long unsigned int\000"
+ 532      20756E73 
+ 532      69676E65 
+ 532      6420696E 
+ 532      7400
+ 533              	.LASF7:
+ 534 0099 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 534      206C6F6E 
+ 534      6720756E 
+ 534      7369676E 
+ 534      65642069 
+ 535              	.LASF16:
+ 536 00b0 50696E5F 		.ascii	"Pin_SW2_ClearInterrupt\000"
+ 536      5357325F 
+ 536      436C6561 
+ 536      72496E74 
+ 536      65727275 
+ 537              	.LASF23:
+ 538 00c7 50696E5F 		.ascii	"Pin_SW2_Handler\000"
+ 538      5357325F 
+ 538      48616E64 
+ 538      6C657200 
+ 539              	.LASF17:
+ 540 00d7 55415254 		.ascii	"UART_Start\000"
+ 540      5F537461 
+ 540      727400
+ 541              	.LASF1:
+ 542 00e2 756E7369 		.ascii	"unsigned char\000"
+ 542      676E6564 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 12
+
+
+ 542      20636861 
+ 542      7200
+ 543              	.LASF11:
+ 544 00f0 63686172 		.ascii	"char\000"
+ 544      00
+ 545              	.LASF25:
+ 546 00f5 736C6565 		.ascii	"sleep\000"
+ 546      7000
+ 547              	.LASF4:
+ 548 00fb 6C6F6E67 		.ascii	"long int\000"
+ 548      20696E74 
+ 548      00
+ 549              	.LASF10:
+ 550 0104 646F7562 		.ascii	"double\000"
+ 550      6C6500
+ 551              	.LASF14:
+ 552 010b 5F426F6F 		.ascii	"_Bool\000"
+ 552      6C00
+ 553              	.LASF20:
+ 554 0111 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 554      43313120 
+ 554      352E342E 
+ 554      31203230 
+ 554      31363036 
+ 555 0144 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 555      20726576 
+ 555      6973696F 
+ 555      6E203233 
+ 555      37373135 
+ 556 0177 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 556      66756E63 
+ 556      74696F6E 
+ 556      2D736563 
+ 556      74696F6E 
+ 557              	.LASF3:
+ 558 019f 73686F72 		.ascii	"short unsigned int\000"
+ 558      7420756E 
+ 558      7369676E 
+ 558      65642069 
+ 558      6E7400
+ 559              	.LASF0:
+ 560 01b2 7369676E 		.ascii	"signed char\000"
+ 560      65642063 
+ 560      68617200 
+ 561              	.LASF12:
+ 562 01be 6C6F6E67 		.ascii	"long double\000"
+ 562      20646F75 
+ 562      626C6500 
+ 563              	.LASF19:
+ 564 01ca 43795379 		.ascii	"CySysPmSleep\000"
+ 564      73506D53 
+ 564      6C656570 
+ 564      00
+ 565              	.LASF9:
+ 566 01d7 666C6F61 		.ascii	"float\000"
+ 566      7400
+ 567              	.LASF2:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc8LzGMF.s 			page 13
+
+
+ 568 01dd 73686F72 		.ascii	"short int\000"
+ 568      7420696E 
+ 568      7400
+ 569              	.LASF15:
+ 570 01e7 55415254 		.ascii	"UART_UartPutString\000"
+ 570      5F556172 
+ 570      74507574 
+ 570      53747269 
+ 570      6E6700
+ 571              	.LASF13:
+ 572 01fa 73697A65 		.ascii	"sizetype\000"
+ 572      74797065 
+ 572      00
+ 573              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
