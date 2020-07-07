@@ -3,11 +3,11 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="PSoC-101" persistent="PSoC-101.cywrk" platform="NOT_USED">
-<current_project name=".\Lesson15.cydsn\Lesson15.cyprj" />
+<current_project name=".\Lesson13-b.cydsn\Lesson13-b.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
-<v>.\Lesson15.cydsn\Lesson15.cyprj</v>
+<v>.\Lesson13-b.cydsn\Lesson13-b.cyprj</v>
 </projects>
 <workspace_id v="f1b3e6e7-5415-474b-b40f-b0f376b92dea" />
 <WriteAppVersionLastSavedWith v="4.2.0.641" />
