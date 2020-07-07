@@ -1,0 +1,13 @@
+# Lesson17
+# 2020-07-07 07:54:54Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "\I2C:sda(0)\" iocell 3 1
+set_io "\I2C:scl(0)\" iocell 3 0
+set_io "Output_Pin_0(0)" iocell 0 3
+set_io "Output_Pin_1(0)" iocell 0 2
+set_io "Output_Pin_2(0)" iocell 1 6
