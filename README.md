@@ -6,6 +6,11 @@ I think Cypress made a great work, the tutorials were short and easy to follow, 
 
 I am using the Cypress CY8CKIT-042, and the projects on this repository were designed and compiled for that board, but in case you are using another PSoC kit, you just have to change the device and adjust the pin-out.
 
+# What do you need?
+
+ - PSoC Creator (IDE)
+ - PSoC 4 Development Kit (Development Board)
+ - Wires
 
 # Repository Structure
 
