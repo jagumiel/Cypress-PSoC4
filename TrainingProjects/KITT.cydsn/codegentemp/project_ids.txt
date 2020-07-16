@@ -1,0 +1,6 @@
+D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\TrainingProjects\KITT.cydsn\KITT.cyprj|d58d2668-15f6-465c-ad3e-3ee4999d103e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|724005b1-f231-4ab4-80fc-c6f97f6a2503
+D:\Users\jagumiel\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|62b2f049-5f40-4179-b46a-9bb8d55e9dce
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|de0c83e2-db79-4261-bdbd-695bd46a8b34
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|87aff1ac-d300-484b-88ab-67efce32d785
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|62799249-38d7-4f30-96f8-5d6dbf539ac9

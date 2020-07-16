@@ -1,0 +1,32 @@
+net ClockBlock_HFClk
+	term   ":m0s8clockblockcell.hfclk"
+	switch ":m0s8clockblockcell.hfclk==>:interrupt_16.clock"
+	term   ":interrupt_16.clock"
+end ClockBlock_HFClk
+net Net_2
+	term   ":m0s8tcpwmcell_0.interrupt"
+	switch ":m0s8tcpwmcell_0.interrupt==>:interrupt_idmux_16.in_0"
+	switch ":interrupt_idmux_16.interrupt_idmux_16__out==>:interrupt_16.interrupt"
+	term   ":interrupt_16.interrupt"
+end Net_2
+net Net_3
+	term   ":m0s8tcpwmcell_0.line"
+	switch ":m0s8tcpwmcell_0.line==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26"
+	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v24+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v26==>:ioport2:hsiom_out4.fixed_ACT_0"
+	switch ":ioport2:hsiom_out4.hsiom4_out==>:ioport2:pin4.pin_input"
+	term   ":ioport2:pin4.pin_input"
+end Net_3
+net Net_4
+	term   ":m0s8tcpwmcell_1.line"
+	switch ":m0s8tcpwmcell_1.line==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v25+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v27"
+	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v25+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v27==>:ioport2:hsiom_out6.fixed_ACT_0"
+	switch ":ioport2:hsiom_out6.hsiom6_out==>:ioport2:pin6.pin_input"
+	term   ":ioport2:pin6.pin_input"
+end Net_4
+net Net_5
+	term   ":m0s8tcpwmcell_2.line"
+	switch ":m0s8tcpwmcell_2.line==>Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v28+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v30"
+	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v28+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v30==>:ioport1:hsiom_out0.fixed_ACT_0"
+	switch ":ioport1:hsiom_out0.hsiom0_out==>:ioport1:pin0.pin_input"
+	term   ":ioport1:pin0.pin_input"
+end Net_5
