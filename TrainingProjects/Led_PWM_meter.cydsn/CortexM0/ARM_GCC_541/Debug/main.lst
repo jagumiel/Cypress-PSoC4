@@ -1,0 +1,1120 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** int main(void)
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 70B5     		push	{r4, r5, r6, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 4, -16
+  35              		.cfi_offset 5, -12
+  36              		.cfi_offset 6, -8
+  37              		.cfi_offset 14, -4
+  16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  38              		.loc 1 16 0
+  39              		.syntax divided
+  40              	@ 16 "main.c" 1
+  41 0002 62B6     		CPSIE   i
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 2
+
+
+  42              	@ 0 "" 2
+  17:main.c        ****     PWM_0_Start();
+  43              		.loc 1 17 0
+  44              		.thumb
+  45              		.syntax unified
+  46 0004 FFF7FEFF 		bl	PWM_0_Start
+  47              	.LVL0:
+  18:main.c        ****     PWM_1_Start();
+  48              		.loc 1 18 0
+  49 0008 FFF7FEFF 		bl	PWM_1_Start
+  50              	.LVL1:
+  19:main.c        ****     PWM_2_Start();
+  51              		.loc 1 19 0
+  52 000c FFF7FEFF 		bl	PWM_2_Start
+  53              	.LVL2:
+  20:main.c        ****     PWM_3_Start();
+  54              		.loc 1 20 0
+  55 0010 FFF7FEFF 		bl	PWM_3_Start
+  56              	.LVL3:
+  21:main.c        ****     
+  22:main.c        ****     uint8 sliderVal;
+  23:main.c        ****     uint8 oldSliderVal=0xFF;
+  24:main.c        ****     
+  25:main.c        ****     CapSense_Start();
+  57              		.loc 1 25 0
+  58 0014 FFF7FEFF 		bl	CapSense_Start
+  59              	.LVL4:
+  26:main.c        ****     CapSense_InitializeAllBaselines();
+  60              		.loc 1 26 0
+  61 0018 FFF7FEFF 		bl	CapSense_InitializeAllBaselines
+  62              	.LVL5:
+  27:main.c        ****     CapSense_ScanEnabledWidgets();
+  63              		.loc 1 27 0
+  64 001c FFF7FEFF 		bl	CapSense_ScanEnabledWidgets
+  65              	.LVL6:
+  23:main.c        ****     
+  66              		.loc 1 23 0
+  67 0020 FF24     		movs	r4, #255
+  68              	.LVL7:
+  69              	.L2:
+  28:main.c        **** 
+  29:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  30:main.c        **** 
+  31:main.c        ****     for(;;)
+  32:main.c        ****     {
+  33:main.c        ****         if(!CapSense_IsBusy()){
+  70              		.loc 1 33 0
+  71 0022 FFF7FEFF 		bl	CapSense_IsBusy
+  72              	.LVL8:
+  73 0026 0028     		cmp	r0, #0
+  74 0028 0FD1     		bne	.L3
+  34:main.c        ****             sliderVal=CapSense_GetCentroidPos(CapSense_LINEAR_SLIDERS_POS_FILTERS_MASK);
+  75              		.loc 1 34 0
+  76 002a 0830     		adds	r0, r0, #8
+  77 002c FFF7FEFF 		bl	CapSense_GetCentroidPos
+  78              	.LVL9:
+  79 0030 C5B2     		uxtb	r5, r0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 3
+
+
+  80              	.LVL10:
+  35:main.c        ****             if(sliderVal!=0xFF && sliderVal!=oldSliderVal){
+  81              		.loc 1 35 0
+  82 0032 FF2D     		cmp	r5, #255
+  83 0034 03D0     		beq	.L9
+  84              		.loc 1 35 0 is_stmt 0 discriminator 1
+  85 0036 AC42     		cmp	r4, r5
+  86 0038 02D1     		bne	.L4
+  87              		.loc 1 35 0
+  88 003a 2500     		movs	r5, r4
+  89              	.LVL11:
+  90 003c 00E0     		b	.L4
+  91              	.LVL12:
+  92              	.L9:
+  93 003e 2500     		movs	r5, r4
+  94              	.LVL13:
+  95              	.L4:
+  36:main.c        ****                 oldSliderVal=sliderVal;
+  37:main.c        ****             }
+  38:main.c        ****             CapSense_UpdateEnabledBaselines();
+  96              		.loc 1 38 0 is_stmt 1
+  97 0040 FFF7FEFF 		bl	CapSense_UpdateEnabledBaselines
+  98              	.LVL14:
+  39:main.c        ****             CapSense_ScanEnabledWidgets();
+  99              		.loc 1 39 0
+ 100 0044 FFF7FEFF 		bl	CapSense_ScanEnabledWidgets
+ 101              	.LVL15:
+ 102 0048 2C00     		movs	r4, r5
+ 103              	.LVL16:
+ 104              	.L3:
+  40:main.c        ****         }
+  41:main.c        ****         
+  42:main.c        ****         if(oldSliderVal<64){
+ 105              		.loc 1 42 0
+ 106 004a 3F2C     		cmp	r4, #63
+ 107 004c 0DD8     		bhi	.L5
+  43:main.c        ****             PWM_0_WriteCompare(oldSliderVal*4);
+ 108              		.loc 1 43 0
+ 109 004e A000     		lsls	r0, r4, #2
+ 110 0050 C0B2     		uxtb	r0, r0
+ 111 0052 FFF7FEFF 		bl	PWM_0_WriteCompare
+ 112              	.LVL17:
+  44:main.c        ****             PWM_1_WriteCompare(0);
+ 113              		.loc 1 44 0
+ 114 0056 0020     		movs	r0, #0
+ 115 0058 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 116              	.LVL18:
+  45:main.c        ****             PWM_2_WriteCompare(0);
+ 117              		.loc 1 45 0
+ 118 005c 0020     		movs	r0, #0
+ 119 005e FFF7FEFF 		bl	PWM_2_WriteCompare
+ 120              	.LVL19:
+  46:main.c        ****             PWM_3_WriteCompare(0);
+ 121              		.loc 1 46 0
+ 122 0062 0020     		movs	r0, #0
+ 123 0064 FFF7FEFF 		bl	PWM_3_WriteCompare
+ 124              	.LVL20:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 4
+
+
+ 125 0068 DBE7     		b	.L2
+ 126              	.L5:
+  47:main.c        ****         }else if(oldSliderVal>63 && oldSliderVal<128){
+ 127              		.loc 1 47 0
+ 128 006a 2300     		movs	r3, r4
+ 129 006c 403B     		subs	r3, r3, #64
+ 130 006e DBB2     		uxtb	r3, r3
+ 131 0070 3F2B     		cmp	r3, #63
+ 132 0072 0DD8     		bhi	.L7
+  48:main.c        ****             PWM_0_WriteCompare(255);
+ 133              		.loc 1 48 0
+ 134 0074 FF20     		movs	r0, #255
+ 135 0076 FFF7FEFF 		bl	PWM_0_WriteCompare
+ 136              	.LVL21:
+  49:main.c        ****             PWM_1_WriteCompare(oldSliderVal*2);
+ 137              		.loc 1 49 0
+ 138 007a 6000     		lsls	r0, r4, #1
+ 139 007c C0B2     		uxtb	r0, r0
+ 140 007e FFF7FEFF 		bl	PWM_1_WriteCompare
+ 141              	.LVL22:
+  50:main.c        ****             PWM_2_WriteCompare(0);
+ 142              		.loc 1 50 0
+ 143 0082 0020     		movs	r0, #0
+ 144 0084 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 145              	.LVL23:
+  51:main.c        ****             PWM_3_WriteCompare(0);
+ 146              		.loc 1 51 0
+ 147 0088 0020     		movs	r0, #0
+ 148 008a FFF7FEFF 		bl	PWM_3_WriteCompare
+ 149              	.LVL24:
+ 150 008e C8E7     		b	.L2
+ 151              	.L7:
+  52:main.c        ****         }else if(oldSliderVal>127 && oldSliderVal<192){
+ 152              		.loc 1 52 0
+ 153 0090 2300     		movs	r3, r4
+ 154 0092 803B     		subs	r3, r3, #128
+ 155 0094 DBB2     		uxtb	r3, r3
+ 156 0096 3F2B     		cmp	r3, #63
+ 157 0098 0FD8     		bhi	.L8
+  53:main.c        ****             PWM_0_WriteCompare(255);
+ 158              		.loc 1 53 0
+ 159 009a FF20     		movs	r0, #255
+ 160 009c FFF7FEFF 		bl	PWM_0_WriteCompare
+ 161              	.LVL25:
+  54:main.c        ****             PWM_1_WriteCompare(255);
+ 162              		.loc 1 54 0
+ 163 00a0 FF20     		movs	r0, #255
+ 164 00a2 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 165              	.LVL26:
+  55:main.c        ****             PWM_2_WriteCompare((oldSliderVal/4)*3);
+ 166              		.loc 1 55 0
+ 167 00a6 A008     		lsrs	r0, r4, #2
+ 168 00a8 4300     		lsls	r3, r0, #1
+ 169 00aa C018     		adds	r0, r0, r3
+ 170 00ac C0B2     		uxtb	r0, r0
+ 171 00ae FFF7FEFF 		bl	PWM_2_WriteCompare
+ 172              	.LVL27:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 5
+
+
+  56:main.c        ****             PWM_3_WriteCompare(0);
+ 173              		.loc 1 56 0
+ 174 00b2 0020     		movs	r0, #0
+ 175 00b4 FFF7FEFF 		bl	PWM_3_WriteCompare
+ 176              	.LVL28:
+ 177 00b8 B3E7     		b	.L2
+ 178              	.L8:
+  57:main.c        ****         }else {
+  58:main.c        ****             PWM_0_WriteCompare(255);
+ 179              		.loc 1 58 0
+ 180 00ba FF20     		movs	r0, #255
+ 181 00bc FFF7FEFF 		bl	PWM_0_WriteCompare
+ 182              	.LVL29:
+  59:main.c        ****             PWM_1_WriteCompare(255);
+ 183              		.loc 1 59 0
+ 184 00c0 FF20     		movs	r0, #255
+ 185 00c2 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 186              	.LVL30:
+  60:main.c        ****             PWM_2_WriteCompare(255);
+ 187              		.loc 1 60 0
+ 188 00c6 FF20     		movs	r0, #255
+ 189 00c8 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 190              	.LVL31:
+  61:main.c        ****             PWM_3_WriteCompare(oldSliderVal);
+ 191              		.loc 1 61 0
+ 192 00cc 2000     		movs	r0, r4
+ 193 00ce FFF7FEFF 		bl	PWM_3_WriteCompare
+ 194              	.LVL32:
+ 195 00d2 A6E7     		b	.L2
+ 196              		.cfi_endproc
+ 197              	.LFE32:
+ 198              		.size	main, .-main
+ 199              		.text
+ 200              	.Letext0:
+ 201              		.file 2 "Generated_Source\\PSoC4/PWM_0.h"
+ 202              		.file 3 "Generated_Source\\PSoC4/PWM_1.h"
+ 203              		.file 4 "Generated_Source\\PSoC4/PWM_2.h"
+ 204              		.file 5 "Generated_Source\\PSoC4/PWM_3.h"
+ 205              		.file 6 "Generated_Source\\PSoC4/CapSense.h"
+ 206              		.file 7 "Generated_Source\\PSoC4/CapSense_CSHL.h"
+ 207              		.file 8 "Generated_Source\\PSoC4/cytypes.h"
+ 208              		.section	.debug_info,"",%progbits
+ 209              	.Ldebug_info0:
+ 210 0000 0F030000 		.4byte	0x30f
+ 211 0004 0400     		.2byte	0x4
+ 212 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 213 000a 04       		.byte	0x4
+ 214 000b 01       		.uleb128 0x1
+ 215 000c 7A010000 		.4byte	.LASF30
+ 216 0010 0C       		.byte	0xc
+ 217 0011 52020000 		.4byte	.LASF31
+ 218 0015 00000000 		.4byte	.LASF32
+ 219 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 220 001d 00000000 		.4byte	0
+ 221 0021 00000000 		.4byte	.Ldebug_line0
+ 222 0025 02       		.uleb128 0x2
+ 223 0026 01       		.byte	0x1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 6
+
+
+ 224 0027 06       		.byte	0x6
+ 225 0028 96020000 		.4byte	.LASF0
+ 226 002c 02       		.uleb128 0x2
+ 227 002d 01       		.byte	0x1
+ 228 002e 08       		.byte	0x8
+ 229 002f C3000000 		.4byte	.LASF1
+ 230 0033 02       		.uleb128 0x2
+ 231 0034 02       		.byte	0x2
+ 232 0035 05       		.byte	0x5
+ 233 0036 5E020000 		.4byte	.LASF2
+ 234 003a 02       		.uleb128 0x2
+ 235 003b 02       		.byte	0x2
+ 236 003c 07       		.byte	0x7
+ 237 003d 8B000000 		.4byte	.LASF3
+ 238 0041 02       		.uleb128 0x2
+ 239 0042 04       		.byte	0x4
+ 240 0043 05       		.byte	0x5
+ 241 0044 6E020000 		.4byte	.LASF4
+ 242 0048 02       		.uleb128 0x2
+ 243 0049 04       		.byte	0x4
+ 244 004a 07       		.byte	0x7
+ 245 004b E1000000 		.4byte	.LASF5
+ 246 004f 02       		.uleb128 0x2
+ 247 0050 08       		.byte	0x8
+ 248 0051 05       		.byte	0x5
+ 249 0052 44020000 		.4byte	.LASF6
+ 250 0056 02       		.uleb128 0x2
+ 251 0057 08       		.byte	0x8
+ 252 0058 07       		.byte	0x7
+ 253 0059 63010000 		.4byte	.LASF7
+ 254 005d 03       		.uleb128 0x3
+ 255 005e 04       		.byte	0x4
+ 256 005f 05       		.byte	0x5
+ 257 0060 696E7400 		.ascii	"int\000"
+ 258 0064 02       		.uleb128 0x2
+ 259 0065 04       		.byte	0x4
+ 260 0066 07       		.byte	0x7
+ 261 0067 49010000 		.4byte	.LASF8
+ 262 006b 04       		.uleb128 0x4
+ 263 006c 68020000 		.4byte	.LASF33
+ 264 0070 08       		.byte	0x8
+ 265 0071 E401     		.2byte	0x1e4
+ 266 0073 2C000000 		.4byte	0x2c
+ 267 0077 02       		.uleb128 0x2
+ 268 0078 04       		.byte	0x4
+ 269 0079 04       		.byte	0x4
+ 270 007a B1000000 		.4byte	.LASF9
+ 271 007e 02       		.uleb128 0x2
+ 272 007f 08       		.byte	0x8
+ 273 0080 04       		.byte	0x4
+ 274 0081 FF000000 		.4byte	.LASF10
+ 275 0085 02       		.uleb128 0x2
+ 276 0086 01       		.byte	0x1
+ 277 0087 08       		.byte	0x8
+ 278 0088 59020000 		.4byte	.LASF11
+ 279 008c 02       		.uleb128 0x2
+ 280 008d 08       		.byte	0x8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 7
+
+
+ 281 008e 04       		.byte	0x4
+ 282 008f 77020000 		.4byte	.LASF12
+ 283 0093 02       		.uleb128 0x2
+ 284 0094 04       		.byte	0x4
+ 285 0095 07       		.byte	0x7
+ 286 0096 08020000 		.4byte	.LASF13
+ 287 009a 05       		.uleb128 0x5
+ 288 009b 38010000 		.4byte	.LASF34
+ 289 009f 01       		.byte	0x1
+ 290 00a0 0E       		.byte	0xe
+ 291 00a1 5D000000 		.4byte	0x5d
+ 292 00a5 00000000 		.4byte	.LFB32
+ 293 00a9 D4000000 		.4byte	.LFE32-.LFB32
+ 294 00ad 01       		.uleb128 0x1
+ 295 00ae 9C       		.byte	0x9c
+ 296 00af 78020000 		.4byte	0x278
+ 297 00b3 06       		.uleb128 0x6
+ 298 00b4 2E010000 		.4byte	.LASF14
+ 299 00b8 01       		.byte	0x1
+ 300 00b9 16       		.byte	0x16
+ 301 00ba 6B000000 		.4byte	0x6b
+ 302 00be 00000000 		.4byte	.LLST0
+ 303 00c2 06       		.uleb128 0x6
+ 304 00c3 56010000 		.4byte	.LASF15
+ 305 00c7 01       		.byte	0x1
+ 306 00c8 17       		.byte	0x17
+ 307 00c9 6B000000 		.4byte	0x6b
+ 308 00cd 34000000 		.4byte	.LLST1
+ 309 00d1 07       		.uleb128 0x7
+ 310 00d2 08000000 		.4byte	.LVL0
+ 311 00d6 78020000 		.4byte	0x278
+ 312 00da 07       		.uleb128 0x7
+ 313 00db 0C000000 		.4byte	.LVL1
+ 314 00df 83020000 		.4byte	0x283
+ 315 00e3 07       		.uleb128 0x7
+ 316 00e4 10000000 		.4byte	.LVL2
+ 317 00e8 8E020000 		.4byte	0x28e
+ 318 00ec 07       		.uleb128 0x7
+ 319 00ed 14000000 		.4byte	.LVL3
+ 320 00f1 99020000 		.4byte	0x299
+ 321 00f5 07       		.uleb128 0x7
+ 322 00f6 18000000 		.4byte	.LVL4
+ 323 00fa A4020000 		.4byte	0x2a4
+ 324 00fe 07       		.uleb128 0x7
+ 325 00ff 1C000000 		.4byte	.LVL5
+ 326 0103 AF020000 		.4byte	0x2af
+ 327 0107 07       		.uleb128 0x7
+ 328 0108 20000000 		.4byte	.LVL6
+ 329 010c BA020000 		.4byte	0x2ba
+ 330 0110 07       		.uleb128 0x7
+ 331 0111 26000000 		.4byte	.LVL8
+ 332 0115 C5020000 		.4byte	0x2c5
+ 333 0119 07       		.uleb128 0x7
+ 334 011a 30000000 		.4byte	.LVL9
+ 335 011e D0020000 		.4byte	0x2d0
+ 336 0122 07       		.uleb128 0x7
+ 337 0123 44000000 		.4byte	.LVL14
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 8
+
+
+ 338 0127 DB020000 		.4byte	0x2db
+ 339 012b 07       		.uleb128 0x7
+ 340 012c 48000000 		.4byte	.LVL15
+ 341 0130 BA020000 		.4byte	0x2ba
+ 342 0134 08       		.uleb128 0x8
+ 343 0135 56000000 		.4byte	.LVL17
+ 344 0139 E6020000 		.4byte	0x2e6
+ 345 013d 4A010000 		.4byte	0x14a
+ 346 0141 09       		.uleb128 0x9
+ 347 0142 01       		.uleb128 0x1
+ 348 0143 50       		.byte	0x50
+ 349 0144 04       		.uleb128 0x4
+ 350 0145 74       		.byte	0x74
+ 351 0146 00       		.sleb128 0
+ 352 0147 32       		.byte	0x32
+ 353 0148 24       		.byte	0x24
+ 354 0149 00       		.byte	0
+ 355 014a 08       		.uleb128 0x8
+ 356 014b 5C000000 		.4byte	.LVL18
+ 357 014f F1020000 		.4byte	0x2f1
+ 358 0153 5D010000 		.4byte	0x15d
+ 359 0157 09       		.uleb128 0x9
+ 360 0158 01       		.uleb128 0x1
+ 361 0159 50       		.byte	0x50
+ 362 015a 01       		.uleb128 0x1
+ 363 015b 30       		.byte	0x30
+ 364 015c 00       		.byte	0
+ 365 015d 08       		.uleb128 0x8
+ 366 015e 62000000 		.4byte	.LVL19
+ 367 0162 FC020000 		.4byte	0x2fc
+ 368 0166 70010000 		.4byte	0x170
+ 369 016a 09       		.uleb128 0x9
+ 370 016b 01       		.uleb128 0x1
+ 371 016c 50       		.byte	0x50
+ 372 016d 01       		.uleb128 0x1
+ 373 016e 30       		.byte	0x30
+ 374 016f 00       		.byte	0
+ 375 0170 08       		.uleb128 0x8
+ 376 0171 68000000 		.4byte	.LVL20
+ 377 0175 07030000 		.4byte	0x307
+ 378 0179 83010000 		.4byte	0x183
+ 379 017d 09       		.uleb128 0x9
+ 380 017e 01       		.uleb128 0x1
+ 381 017f 50       		.byte	0x50
+ 382 0180 01       		.uleb128 0x1
+ 383 0181 30       		.byte	0x30
+ 384 0182 00       		.byte	0
+ 385 0183 08       		.uleb128 0x8
+ 386 0184 7A000000 		.4byte	.LVL21
+ 387 0188 E6020000 		.4byte	0x2e6
+ 388 018c 97010000 		.4byte	0x197
+ 389 0190 09       		.uleb128 0x9
+ 390 0191 01       		.uleb128 0x1
+ 391 0192 50       		.byte	0x50
+ 392 0193 02       		.uleb128 0x2
+ 393 0194 09       		.byte	0x9
+ 394 0195 FF       		.byte	0xff
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 9
+
+
+ 395 0196 00       		.byte	0
+ 396 0197 08       		.uleb128 0x8
+ 397 0198 82000000 		.4byte	.LVL22
+ 398 019c F1020000 		.4byte	0x2f1
+ 399 01a0 AD010000 		.4byte	0x1ad
+ 400 01a4 09       		.uleb128 0x9
+ 401 01a5 01       		.uleb128 0x1
+ 402 01a6 50       		.byte	0x50
+ 403 01a7 04       		.uleb128 0x4
+ 404 01a8 74       		.byte	0x74
+ 405 01a9 00       		.sleb128 0
+ 406 01aa 31       		.byte	0x31
+ 407 01ab 24       		.byte	0x24
+ 408 01ac 00       		.byte	0
+ 409 01ad 08       		.uleb128 0x8
+ 410 01ae 88000000 		.4byte	.LVL23
+ 411 01b2 FC020000 		.4byte	0x2fc
+ 412 01b6 C0010000 		.4byte	0x1c0
+ 413 01ba 09       		.uleb128 0x9
+ 414 01bb 01       		.uleb128 0x1
+ 415 01bc 50       		.byte	0x50
+ 416 01bd 01       		.uleb128 0x1
+ 417 01be 30       		.byte	0x30
+ 418 01bf 00       		.byte	0
+ 419 01c0 08       		.uleb128 0x8
+ 420 01c1 8E000000 		.4byte	.LVL24
+ 421 01c5 07030000 		.4byte	0x307
+ 422 01c9 D3010000 		.4byte	0x1d3
+ 423 01cd 09       		.uleb128 0x9
+ 424 01ce 01       		.uleb128 0x1
+ 425 01cf 50       		.byte	0x50
+ 426 01d0 01       		.uleb128 0x1
+ 427 01d1 30       		.byte	0x30
+ 428 01d2 00       		.byte	0
+ 429 01d3 08       		.uleb128 0x8
+ 430 01d4 A0000000 		.4byte	.LVL25
+ 431 01d8 E6020000 		.4byte	0x2e6
+ 432 01dc E7010000 		.4byte	0x1e7
+ 433 01e0 09       		.uleb128 0x9
+ 434 01e1 01       		.uleb128 0x1
+ 435 01e2 50       		.byte	0x50
+ 436 01e3 02       		.uleb128 0x2
+ 437 01e4 09       		.byte	0x9
+ 438 01e5 FF       		.byte	0xff
+ 439 01e6 00       		.byte	0
+ 440 01e7 08       		.uleb128 0x8
+ 441 01e8 A6000000 		.4byte	.LVL26
+ 442 01ec F1020000 		.4byte	0x2f1
+ 443 01f0 FB010000 		.4byte	0x1fb
+ 444 01f4 09       		.uleb128 0x9
+ 445 01f5 01       		.uleb128 0x1
+ 446 01f6 50       		.byte	0x50
+ 447 01f7 02       		.uleb128 0x2
+ 448 01f8 09       		.byte	0x9
+ 449 01f9 FF       		.byte	0xff
+ 450 01fa 00       		.byte	0
+ 451 01fb 08       		.uleb128 0x8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 10
+
+
+ 452 01fc B2000000 		.4byte	.LVL27
+ 453 0200 FC020000 		.4byte	0x2fc
+ 454 0204 18020000 		.4byte	0x218
+ 455 0208 09       		.uleb128 0x9
+ 456 0209 01       		.uleb128 0x1
+ 457 020a 50       		.byte	0x50
+ 458 020b 0B       		.uleb128 0xb
+ 459 020c 74       		.byte	0x74
+ 460 020d 00       		.sleb128 0
+ 461 020e 32       		.byte	0x32
+ 462 020f 25       		.byte	0x25
+ 463 0210 74       		.byte	0x74
+ 464 0211 00       		.sleb128 0
+ 465 0212 32       		.byte	0x32
+ 466 0213 25       		.byte	0x25
+ 467 0214 31       		.byte	0x31
+ 468 0215 24       		.byte	0x24
+ 469 0216 22       		.byte	0x22
+ 470 0217 00       		.byte	0
+ 471 0218 08       		.uleb128 0x8
+ 472 0219 B8000000 		.4byte	.LVL28
+ 473 021d 07030000 		.4byte	0x307
+ 474 0221 2B020000 		.4byte	0x22b
+ 475 0225 09       		.uleb128 0x9
+ 476 0226 01       		.uleb128 0x1
+ 477 0227 50       		.byte	0x50
+ 478 0228 01       		.uleb128 0x1
+ 479 0229 30       		.byte	0x30
+ 480 022a 00       		.byte	0
+ 481 022b 08       		.uleb128 0x8
+ 482 022c C0000000 		.4byte	.LVL29
+ 483 0230 E6020000 		.4byte	0x2e6
+ 484 0234 3F020000 		.4byte	0x23f
+ 485 0238 09       		.uleb128 0x9
+ 486 0239 01       		.uleb128 0x1
+ 487 023a 50       		.byte	0x50
+ 488 023b 02       		.uleb128 0x2
+ 489 023c 09       		.byte	0x9
+ 490 023d FF       		.byte	0xff
+ 491 023e 00       		.byte	0
+ 492 023f 08       		.uleb128 0x8
+ 493 0240 C6000000 		.4byte	.LVL30
+ 494 0244 F1020000 		.4byte	0x2f1
+ 495 0248 53020000 		.4byte	0x253
+ 496 024c 09       		.uleb128 0x9
+ 497 024d 01       		.uleb128 0x1
+ 498 024e 50       		.byte	0x50
+ 499 024f 02       		.uleb128 0x2
+ 500 0250 09       		.byte	0x9
+ 501 0251 FF       		.byte	0xff
+ 502 0252 00       		.byte	0
+ 503 0253 08       		.uleb128 0x8
+ 504 0254 CC000000 		.4byte	.LVL31
+ 505 0258 FC020000 		.4byte	0x2fc
+ 506 025c 67020000 		.4byte	0x267
+ 507 0260 09       		.uleb128 0x9
+ 508 0261 01       		.uleb128 0x1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 11
+
+
+ 509 0262 50       		.byte	0x50
+ 510 0263 02       		.uleb128 0x2
+ 511 0264 09       		.byte	0x9
+ 512 0265 FF       		.byte	0xff
+ 513 0266 00       		.byte	0
+ 514 0267 0A       		.uleb128 0xa
+ 515 0268 D2000000 		.4byte	.LVL32
+ 516 026c 07030000 		.4byte	0x307
+ 517 0270 09       		.uleb128 0x9
+ 518 0271 01       		.uleb128 0x1
+ 519 0272 50       		.byte	0x50
+ 520 0273 02       		.uleb128 0x2
+ 521 0274 74       		.byte	0x74
+ 522 0275 00       		.sleb128 0
+ 523 0276 00       		.byte	0
+ 524 0277 00       		.byte	0
+ 525 0278 0B       		.uleb128 0xb
+ 526 0279 B7000000 		.4byte	.LASF16
+ 527 027d B7000000 		.4byte	.LASF16
+ 528 0281 02       		.byte	0x2
+ 529 0282 92       		.byte	0x92
+ 530 0283 0B       		.uleb128 0xb
+ 531 0284 F3000000 		.4byte	.LASF17
+ 532 0288 F3000000 		.4byte	.LASF17
+ 533 028c 03       		.byte	0x3
+ 534 028d 92       		.byte	0x92
+ 535 028e 0B       		.uleb128 0xb
+ 536 028f 22010000 		.4byte	.LASF18
+ 537 0293 22010000 		.4byte	.LASF18
+ 538 0297 04       		.byte	0x4
+ 539 0298 92       		.byte	0x92
+ 540 0299 0B       		.uleb128 0xb
+ 541 029a 3D010000 		.4byte	.LASF19
+ 542 029e 3D010000 		.4byte	.LASF19
+ 543 02a2 05       		.byte	0x5
+ 544 02a3 92       		.byte	0x92
+ 545 02a4 0B       		.uleb128 0xb
+ 546 02a5 C2020000 		.4byte	.LASF20
+ 547 02a9 C2020000 		.4byte	.LASF20
+ 548 02ad 06       		.byte	0x6
+ 549 02ae 99       		.byte	0x99
+ 550 02af 0B       		.uleb128 0xb
+ 551 02b0 A2020000 		.4byte	.LASF21
+ 552 02b4 A2020000 		.4byte	.LASF21
+ 553 02b8 07       		.byte	0x7
+ 554 02b9 AB       		.byte	0xab
+ 555 02ba 0B       		.uleb128 0xb
+ 556 02bb 06010000 		.4byte	.LASF22
+ 557 02bf 06010000 		.4byte	.LASF22
+ 558 02c3 06       		.byte	0x6
+ 559 02c4 A2       		.byte	0xa2
+ 560 02c5 0B       		.uleb128 0xb
+ 561 02c6 D1000000 		.4byte	.LASF23
+ 562 02ca D1000000 		.4byte	.LASF23
+ 563 02ce 06       		.byte	0x6
+ 564 02cf 9F       		.byte	0x9f
+ 565 02d0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 12
+
+
+ 566 02d1 60000000 		.4byte	.LASF24
+ 567 02d5 60000000 		.4byte	.LASF24
+ 568 02d9 07       		.byte	0x7
+ 569 02da E2       		.byte	0xe2
+ 570 02db 0B       		.uleb128 0xb
+ 571 02dc 11020000 		.4byte	.LASF25
+ 572 02e0 11020000 		.4byte	.LASF25
+ 573 02e4 07       		.byte	0x7
+ 574 02e5 AF       		.byte	0xaf
+ 575 02e6 0B       		.uleb128 0xb
+ 576 02e7 78000000 		.4byte	.LASF26
+ 577 02eb 78000000 		.4byte	.LASF26
+ 578 02ef 02       		.byte	0x2
+ 579 02f0 C3       		.byte	0xc3
+ 580 02f1 0B       		.uleb128 0xb
+ 581 02f2 31020000 		.4byte	.LASF27
+ 582 02f6 31020000 		.4byte	.LASF27
+ 583 02fa 03       		.byte	0x3
+ 584 02fb C3       		.byte	0xc3
+ 585 02fc 0B       		.uleb128 0xb
+ 586 02fd 9E000000 		.4byte	.LASF28
+ 587 0301 9E000000 		.4byte	.LASF28
+ 588 0305 04       		.byte	0x4
+ 589 0306 C3       		.byte	0xc3
+ 590 0307 0B       		.uleb128 0xb
+ 591 0308 83020000 		.4byte	.LASF29
+ 592 030c 83020000 		.4byte	.LASF29
+ 593 0310 05       		.byte	0x5
+ 594 0311 C3       		.byte	0xc3
+ 595 0312 00       		.byte	0
+ 596              		.section	.debug_abbrev,"",%progbits
+ 597              	.Ldebug_abbrev0:
+ 598 0000 01       		.uleb128 0x1
+ 599 0001 11       		.uleb128 0x11
+ 600 0002 01       		.byte	0x1
+ 601 0003 25       		.uleb128 0x25
+ 602 0004 0E       		.uleb128 0xe
+ 603 0005 13       		.uleb128 0x13
+ 604 0006 0B       		.uleb128 0xb
+ 605 0007 03       		.uleb128 0x3
+ 606 0008 0E       		.uleb128 0xe
+ 607 0009 1B       		.uleb128 0x1b
+ 608 000a 0E       		.uleb128 0xe
+ 609 000b 55       		.uleb128 0x55
+ 610 000c 17       		.uleb128 0x17
+ 611 000d 11       		.uleb128 0x11
+ 612 000e 01       		.uleb128 0x1
+ 613 000f 10       		.uleb128 0x10
+ 614 0010 17       		.uleb128 0x17
+ 615 0011 00       		.byte	0
+ 616 0012 00       		.byte	0
+ 617 0013 02       		.uleb128 0x2
+ 618 0014 24       		.uleb128 0x24
+ 619 0015 00       		.byte	0
+ 620 0016 0B       		.uleb128 0xb
+ 621 0017 0B       		.uleb128 0xb
+ 622 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 13
+
+
+ 623 0019 0B       		.uleb128 0xb
+ 624 001a 03       		.uleb128 0x3
+ 625 001b 0E       		.uleb128 0xe
+ 626 001c 00       		.byte	0
+ 627 001d 00       		.byte	0
+ 628 001e 03       		.uleb128 0x3
+ 629 001f 24       		.uleb128 0x24
+ 630 0020 00       		.byte	0
+ 631 0021 0B       		.uleb128 0xb
+ 632 0022 0B       		.uleb128 0xb
+ 633 0023 3E       		.uleb128 0x3e
+ 634 0024 0B       		.uleb128 0xb
+ 635 0025 03       		.uleb128 0x3
+ 636 0026 08       		.uleb128 0x8
+ 637 0027 00       		.byte	0
+ 638 0028 00       		.byte	0
+ 639 0029 04       		.uleb128 0x4
+ 640 002a 16       		.uleb128 0x16
+ 641 002b 00       		.byte	0
+ 642 002c 03       		.uleb128 0x3
+ 643 002d 0E       		.uleb128 0xe
+ 644 002e 3A       		.uleb128 0x3a
+ 645 002f 0B       		.uleb128 0xb
+ 646 0030 3B       		.uleb128 0x3b
+ 647 0031 05       		.uleb128 0x5
+ 648 0032 49       		.uleb128 0x49
+ 649 0033 13       		.uleb128 0x13
+ 650 0034 00       		.byte	0
+ 651 0035 00       		.byte	0
+ 652 0036 05       		.uleb128 0x5
+ 653 0037 2E       		.uleb128 0x2e
+ 654 0038 01       		.byte	0x1
+ 655 0039 3F       		.uleb128 0x3f
+ 656 003a 19       		.uleb128 0x19
+ 657 003b 03       		.uleb128 0x3
+ 658 003c 0E       		.uleb128 0xe
+ 659 003d 3A       		.uleb128 0x3a
+ 660 003e 0B       		.uleb128 0xb
+ 661 003f 3B       		.uleb128 0x3b
+ 662 0040 0B       		.uleb128 0xb
+ 663 0041 27       		.uleb128 0x27
+ 664 0042 19       		.uleb128 0x19
+ 665 0043 49       		.uleb128 0x49
+ 666 0044 13       		.uleb128 0x13
+ 667 0045 8701     		.uleb128 0x87
+ 668 0047 19       		.uleb128 0x19
+ 669 0048 11       		.uleb128 0x11
+ 670 0049 01       		.uleb128 0x1
+ 671 004a 12       		.uleb128 0x12
+ 672 004b 06       		.uleb128 0x6
+ 673 004c 40       		.uleb128 0x40
+ 674 004d 18       		.uleb128 0x18
+ 675 004e 9742     		.uleb128 0x2117
+ 676 0050 19       		.uleb128 0x19
+ 677 0051 01       		.uleb128 0x1
+ 678 0052 13       		.uleb128 0x13
+ 679 0053 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 14
+
+
+ 680 0054 00       		.byte	0
+ 681 0055 06       		.uleb128 0x6
+ 682 0056 34       		.uleb128 0x34
+ 683 0057 00       		.byte	0
+ 684 0058 03       		.uleb128 0x3
+ 685 0059 0E       		.uleb128 0xe
+ 686 005a 3A       		.uleb128 0x3a
+ 687 005b 0B       		.uleb128 0xb
+ 688 005c 3B       		.uleb128 0x3b
+ 689 005d 0B       		.uleb128 0xb
+ 690 005e 49       		.uleb128 0x49
+ 691 005f 13       		.uleb128 0x13
+ 692 0060 02       		.uleb128 0x2
+ 693 0061 17       		.uleb128 0x17
+ 694 0062 00       		.byte	0
+ 695 0063 00       		.byte	0
+ 696 0064 07       		.uleb128 0x7
+ 697 0065 898201   		.uleb128 0x4109
+ 698 0068 00       		.byte	0
+ 699 0069 11       		.uleb128 0x11
+ 700 006a 01       		.uleb128 0x1
+ 701 006b 31       		.uleb128 0x31
+ 702 006c 13       		.uleb128 0x13
+ 703 006d 00       		.byte	0
+ 704 006e 00       		.byte	0
+ 705 006f 08       		.uleb128 0x8
+ 706 0070 898201   		.uleb128 0x4109
+ 707 0073 01       		.byte	0x1
+ 708 0074 11       		.uleb128 0x11
+ 709 0075 01       		.uleb128 0x1
+ 710 0076 31       		.uleb128 0x31
+ 711 0077 13       		.uleb128 0x13
+ 712 0078 01       		.uleb128 0x1
+ 713 0079 13       		.uleb128 0x13
+ 714 007a 00       		.byte	0
+ 715 007b 00       		.byte	0
+ 716 007c 09       		.uleb128 0x9
+ 717 007d 8A8201   		.uleb128 0x410a
+ 718 0080 00       		.byte	0
+ 719 0081 02       		.uleb128 0x2
+ 720 0082 18       		.uleb128 0x18
+ 721 0083 9142     		.uleb128 0x2111
+ 722 0085 18       		.uleb128 0x18
+ 723 0086 00       		.byte	0
+ 724 0087 00       		.byte	0
+ 725 0088 0A       		.uleb128 0xa
+ 726 0089 898201   		.uleb128 0x4109
+ 727 008c 01       		.byte	0x1
+ 728 008d 11       		.uleb128 0x11
+ 729 008e 01       		.uleb128 0x1
+ 730 008f 31       		.uleb128 0x31
+ 731 0090 13       		.uleb128 0x13
+ 732 0091 00       		.byte	0
+ 733 0092 00       		.byte	0
+ 734 0093 0B       		.uleb128 0xb
+ 735 0094 2E       		.uleb128 0x2e
+ 736 0095 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 15
+
+
+ 737 0096 3F       		.uleb128 0x3f
+ 738 0097 19       		.uleb128 0x19
+ 739 0098 3C       		.uleb128 0x3c
+ 740 0099 19       		.uleb128 0x19
+ 741 009a 6E       		.uleb128 0x6e
+ 742 009b 0E       		.uleb128 0xe
+ 743 009c 03       		.uleb128 0x3
+ 744 009d 0E       		.uleb128 0xe
+ 745 009e 3A       		.uleb128 0x3a
+ 746 009f 0B       		.uleb128 0xb
+ 747 00a0 3B       		.uleb128 0x3b
+ 748 00a1 0B       		.uleb128 0xb
+ 749 00a2 00       		.byte	0
+ 750 00a3 00       		.byte	0
+ 751 00a4 00       		.byte	0
+ 752              		.section	.debug_loc,"",%progbits
+ 753              	.Ldebug_loc0:
+ 754              	.LLST0:
+ 755 0000 32000000 		.4byte	.LVL10
+ 756 0004 3C000000 		.4byte	.LVL11
+ 757 0008 0100     		.2byte	0x1
+ 758 000a 55       		.byte	0x55
+ 759 000b 3C000000 		.4byte	.LVL11
+ 760 000f 3E000000 		.4byte	.LVL12
+ 761 0013 0100     		.2byte	0x1
+ 762 0015 50       		.byte	0x50
+ 763 0016 3E000000 		.4byte	.LVL12
+ 764 001a 40000000 		.4byte	.LVL13
+ 765 001e 0100     		.2byte	0x1
+ 766 0020 55       		.byte	0x55
+ 767 0021 40000000 		.4byte	.LVL13
+ 768 0025 43000000 		.4byte	.LVL14-1
+ 769 0029 0100     		.2byte	0x1
+ 770 002b 50       		.byte	0x50
+ 771 002c 00000000 		.4byte	0
+ 772 0030 00000000 		.4byte	0
+ 773              	.LLST1:
+ 774 0034 14000000 		.4byte	.LVL3
+ 775 0038 22000000 		.4byte	.LVL7
+ 776 003c 0300     		.2byte	0x3
+ 777 003e 09       		.byte	0x9
+ 778 003f FF       		.byte	0xff
+ 779 0040 9F       		.byte	0x9f
+ 780 0041 22000000 		.4byte	.LVL7
+ 781 0045 40000000 		.4byte	.LVL13
+ 782 0049 0100     		.2byte	0x1
+ 783 004b 54       		.byte	0x54
+ 784 004c 40000000 		.4byte	.LVL13
+ 785 0050 4A000000 		.4byte	.LVL16
+ 786 0054 0100     		.2byte	0x1
+ 787 0056 55       		.byte	0x55
+ 788 0057 4A000000 		.4byte	.LVL16
+ 789 005b D4000000 		.4byte	.LFE32
+ 790 005f 0100     		.2byte	0x1
+ 791 0061 54       		.byte	0x54
+ 792 0062 00000000 		.4byte	0
+ 793 0066 00000000 		.4byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 16
+
+
+ 794              		.section	.debug_aranges,"",%progbits
+ 795 0000 1C000000 		.4byte	0x1c
+ 796 0004 0200     		.2byte	0x2
+ 797 0006 00000000 		.4byte	.Ldebug_info0
+ 798 000a 04       		.byte	0x4
+ 799 000b 00       		.byte	0
+ 800 000c 0000     		.2byte	0
+ 801 000e 0000     		.2byte	0
+ 802 0010 00000000 		.4byte	.LFB32
+ 803 0014 D4000000 		.4byte	.LFE32-.LFB32
+ 804 0018 00000000 		.4byte	0
+ 805 001c 00000000 		.4byte	0
+ 806              		.section	.debug_ranges,"",%progbits
+ 807              	.Ldebug_ranges0:
+ 808 0000 00000000 		.4byte	.LFB32
+ 809 0004 D4000000 		.4byte	.LFE32
+ 810 0008 00000000 		.4byte	0
+ 811 000c 00000000 		.4byte	0
+ 812              		.section	.debug_line,"",%progbits
+ 813              	.Ldebug_line0:
+ 814 0000 CE000000 		.section	.debug_str,"MS",%progbits,1
+ 814      02008E00 
+ 814      00000201 
+ 814      FB0E0D00 
+ 814      01010101 
+ 815              	.LASF32:
+ 816 0000 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 816      73657273 
+ 816      5C6A6167 
+ 816      756D6965 
+ 816      6C5C446F 
+ 817 002e 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\Led_PWM_meter.cyds"
+ 817      50536F43 
+ 817      2D313031 
+ 817      5C547261 
+ 817      696E696E 
+ 818 005e 6E00     		.ascii	"n\000"
+ 819              	.LASF24:
+ 820 0060 43617053 		.ascii	"CapSense_GetCentroidPos\000"
+ 820      656E7365 
+ 820      5F476574 
+ 820      43656E74 
+ 820      726F6964 
+ 821              	.LASF26:
+ 822 0078 50574D5F 		.ascii	"PWM_0_WriteCompare\000"
+ 822      305F5772 
+ 822      69746543 
+ 822      6F6D7061 
+ 822      726500
+ 823              	.LASF3:
+ 824 008b 73686F72 		.ascii	"short unsigned int\000"
+ 824      7420756E 
+ 824      7369676E 
+ 824      65642069 
+ 824      6E7400
+ 825              	.LASF28:
+ 826 009e 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 17
+
+
+ 826      325F5772 
+ 826      69746543 
+ 826      6F6D7061 
+ 826      726500
+ 827              	.LASF9:
+ 828 00b1 666C6F61 		.ascii	"float\000"
+ 828      7400
+ 829              	.LASF16:
+ 830 00b7 50574D5F 		.ascii	"PWM_0_Start\000"
+ 830      305F5374 
+ 830      61727400 
+ 831              	.LASF1:
+ 832 00c3 756E7369 		.ascii	"unsigned char\000"
+ 832      676E6564 
+ 832      20636861 
+ 832      7200
+ 833              	.LASF23:
+ 834 00d1 43617053 		.ascii	"CapSense_IsBusy\000"
+ 834      656E7365 
+ 834      5F497342 
+ 834      75737900 
+ 835              	.LASF5:
+ 836 00e1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 836      20756E73 
+ 836      69676E65 
+ 836      6420696E 
+ 836      7400
+ 837              	.LASF17:
+ 838 00f3 50574D5F 		.ascii	"PWM_1_Start\000"
+ 838      315F5374 
+ 838      61727400 
+ 839              	.LASF10:
+ 840 00ff 646F7562 		.ascii	"double\000"
+ 840      6C6500
+ 841              	.LASF22:
+ 842 0106 43617053 		.ascii	"CapSense_ScanEnabledWidgets\000"
+ 842      656E7365 
+ 842      5F536361 
+ 842      6E456E61 
+ 842      626C6564 
+ 843              	.LASF18:
+ 844 0122 50574D5F 		.ascii	"PWM_2_Start\000"
+ 844      325F5374 
+ 844      61727400 
+ 845              	.LASF14:
+ 846 012e 736C6964 		.ascii	"sliderVal\000"
+ 846      65725661 
+ 846      6C00
+ 847              	.LASF34:
+ 848 0138 6D61696E 		.ascii	"main\000"
+ 848      00
+ 849              	.LASF19:
+ 850 013d 50574D5F 		.ascii	"PWM_3_Start\000"
+ 850      335F5374 
+ 850      61727400 
+ 851              	.LASF8:
+ 852 0149 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 18
+
+
+ 852      676E6564 
+ 852      20696E74 
+ 852      00
+ 853              	.LASF15:
+ 854 0156 6F6C6453 		.ascii	"oldSliderVal\000"
+ 854      6C696465 
+ 854      7256616C 
+ 854      00
+ 855              	.LASF7:
+ 856 0163 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 856      206C6F6E 
+ 856      6720756E 
+ 856      7369676E 
+ 856      65642069 
+ 857              	.LASF30:
+ 858 017a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 858      43313120 
+ 858      352E342E 
+ 858      31203230 
+ 858      31363036 
+ 859 01ad 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 859      20726576 
+ 859      6973696F 
+ 859      6E203233 
+ 859      37373135 
+ 860 01e0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 860      66756E63 
+ 860      74696F6E 
+ 860      2D736563 
+ 860      74696F6E 
+ 861              	.LASF13:
+ 862 0208 73697A65 		.ascii	"sizetype\000"
+ 862      74797065 
+ 862      00
+ 863              	.LASF25:
+ 864 0211 43617053 		.ascii	"CapSense_UpdateEnabledBaselines\000"
+ 864      656E7365 
+ 864      5F557064 
+ 864      61746545 
+ 864      6E61626C 
+ 865              	.LASF27:
+ 866 0231 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 866      315F5772 
+ 866      69746543 
+ 866      6F6D7061 
+ 866      726500
+ 867              	.LASF6:
+ 868 0244 6C6F6E67 		.ascii	"long long int\000"
+ 868      206C6F6E 
+ 868      6720696E 
+ 868      7400
+ 869              	.LASF31:
+ 870 0252 6D61696E 		.ascii	"main.c\000"
+ 870      2E6300
+ 871              	.LASF11:
+ 872 0259 63686172 		.ascii	"char\000"
+ 872      00
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccQwZlnE.s 			page 19
+
+
+ 873              	.LASF2:
+ 874 025e 73686F72 		.ascii	"short int\000"
+ 874      7420696E 
+ 874      7400
+ 875              	.LASF33:
+ 876 0268 75696E74 		.ascii	"uint8\000"
+ 876      3800
+ 877              	.LASF4:
+ 878 026e 6C6F6E67 		.ascii	"long int\000"
+ 878      20696E74 
+ 878      00
+ 879              	.LASF12:
+ 880 0277 6C6F6E67 		.ascii	"long double\000"
+ 880      20646F75 
+ 880      626C6500 
+ 881              	.LASF29:
+ 882 0283 50574D5F 		.ascii	"PWM_3_WriteCompare\000"
+ 882      335F5772 
+ 882      69746543 
+ 882      6F6D7061 
+ 882      726500
+ 883              	.LASF0:
+ 884 0296 7369676E 		.ascii	"signed char\000"
+ 884      65642063 
+ 884      68617200 
+ 885              	.LASF21:
+ 886 02a2 43617053 		.ascii	"CapSense_InitializeAllBaselines\000"
+ 886      656E7365 
+ 886      5F496E69 
+ 886      7469616C 
+ 886      697A6541 
+ 887              	.LASF20:
+ 888 02c2 43617053 		.ascii	"CapSense_Start\000"
+ 888      656E7365 
+ 888      5F537461 
+ 888      727400
+ 889              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
