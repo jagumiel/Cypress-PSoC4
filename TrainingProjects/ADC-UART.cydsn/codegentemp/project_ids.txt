@@ -1,0 +1,7 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|95ce56d3-84a5-4069-99bd-febf027fafda
+D:\Users\jagumiel\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|aff49e54-bd0f-41e6-b787-f231342160f3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7085e659-a495-4753-b0ef-c425d39d11bd
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|0dc0a6f1-cc18-4c52-aab4-620f62d4acda
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|dd4697d8-e3f4-401e-91e7-9c2300175b69
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|d976c6b1-103e-4085-b9da-96876ff82cbe
+D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\TrainingProjects\ADC-UART.cydsn\ADC-UART.cyprj|2e093eb3-ab35-49ea-a507-7a7de6551d08

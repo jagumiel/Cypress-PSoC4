@@ -1,0 +1,1316 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	windowFlag
+  20              		.bss
+  21              		.align	2
+  22              		.type	windowFlag, %object
+  23              		.size	windowFlag, 4
+  24              	windowFlag:
+  25 0000 00000000 		.space	4
+  26              		.global	dataReady
+  27              		.type	dataReady, %object
+  28              		.size	dataReady, 1
+  29              	dataReady:
+  30 0004 00       		.space	1
+  31              		.global	channelFlag
+  32              		.type	channelFlag, %object
+  33              		.size	channelFlag, 1
+  34              	channelFlag:
+  35 0005 00       		.space	1
+  36              		.section	.text.main,"ax",%progbits
+  37              		.align	2
+  38              		.global	main
+  39              		.code	16
+  40              		.thumb_func
+  41              		.type	main, %function
+  42              	main:
+  43              	.LFB32:
+  44              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 2.00
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *  This example project shows how to sample four different channels using
+   8:main.c        **** *  SAR MUX and ADC, and send channel output to HyperTerminal (PC) using UART.
+   9:main.c        **** *
+  10:main.c        **** ********************************************************************************
+  11:main.c        **** * Copyright 2013-2018, Cypress Semiconductor Corporation. All rights reserved.
+  12:main.c        **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  13:main.c        **** * by and subject to worldwide patent and copyright laws and treaties.
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 2
+
+
+  14:main.c        **** * Therefore, you may use this software only as provided in the license agreement
+  15:main.c        **** * accompanying the software package from which you obtained this software.
+  16:main.c        **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  17:main.c        **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  18:main.c        **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  19:main.c        **** *******************************************************************************/
+  20:main.c        **** 
+  21:main.c        **** #include <project.h>
+  22:main.c        **** 
+  23:main.c        **** /* Macro definitions */
+  24:main.c        **** #define LOW                 (0u)
+  25:main.c        **** #define HIGH                (1u)
+  26:main.c        **** #define CHANNEL_1           (0u)
+  27:main.c        **** #define NO_OF_CHANNELS      (1u)
+  28:main.c        **** #define CLEAR_SCREEN        (0x0C)
+  29:main.c        **** #define CONVERT_TO_ASCII    (0x30u)
+  30:main.c        **** 
+  31:main.c        **** /* Resistor Values and Gain */
+  32:main.c        **** #define RG                  (2200u)
+  33:main.c        **** #define R1                  (10000u)
+  34:main.c        **** #define GAIN                (1 + 2 * (float)R1 / RG)
+  35:main.c        **** 
+  36:main.c        **** /* Send the channel number and voltage to UART */
+  37:main.c        **** static void SendChannelVoltage(uint8 channel, int16 mVolts);
+  38:main.c        **** 
+  39:main.c        **** /* Interrupt prototypes */
+  40:main.c        **** CY_ISR_PROTO(ADC_ISR_Handler);
+  41:main.c        **** 
+  42:main.c        **** /* Global variables */
+  43:main.c        **** volatile uint32 windowFlag    = 0u;
+  44:main.c        **** volatile uint8  dataReady     = 0u;
+  45:main.c        **** volatile uint8  channelFlag   = 0u;
+  46:main.c        **** 
+  47:main.c        **** 
+  48:main.c        **** /*******************************************************************************
+  49:main.c        **** * Function Name: main
+  50:main.c        **** ********************************************************************************
+  51:main.c        **** *
+  52:main.c        **** * Summary:
+  53:main.c        **** *  Performs the following tasks:
+  54:main.c        **** *  - Start the components.
+  55:main.c        **** *  - Starts ADC conversion.
+  56:main.c        **** *  - Buffer ADC results.
+  57:main.c        **** *  - Sends the result to HyperTerminal (PC) using UART.
+  58:main.c        **** *  - Turns ON an LED when ADC input is outside the voltage 
+  59:main.c        **** *     window of 1250mV to 3750mV.
+  60:main.c        **** *
+  61:main.c        **** * Parameters:
+  62:main.c        **** *  None.
+  63:main.c        **** *
+  64:main.c        **** * Return:
+  65:main.c        **** *  None.
+  66:main.c        **** *
+  67:main.c        **** *******************************************************************************/
+  68:main.c        **** int main()
+  69:main.c        **** {
+  45              		.loc 1 69 0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 3
+
+
+  46              		.cfi_startproc
+  47              		@ args = 0, pretend = 0, frame = 16
+  48              		@ frame_needed = 1, uses_anonymous_args = 0
+  49 0000 90B5     		push	{r4, r7, lr}
+  50              		.cfi_def_cfa_offset 12
+  51              		.cfi_offset 4, -12
+  52              		.cfi_offset 7, -8
+  53              		.cfi_offset 14, -4
+  54 0002 85B0     		sub	sp, sp, #20
+  55              		.cfi_def_cfa_offset 32
+  56 0004 00AF     		add	r7, sp, #0
+  57              		.cfi_def_cfa_register 7
+  70:main.c        ****     uint8 channel = CHANNEL_1;
+  58              		.loc 1 70 0
+  59 0006 0D23     		movs	r3, #13
+  60 0008 FB18     		adds	r3, r7, r3
+  61 000a 0022     		movs	r2, #0
+  62 000c 1A70     		strb	r2, [r3]
+  71:main.c        ****     int16 adcVal[4u];
+  72:main.c        ****     int16 mVolts;
+  73:main.c        ****     int16 previousValue = 0;
+  63              		.loc 1 73 0
+  64 000e 0E23     		movs	r3, #14
+  65 0010 FB18     		adds	r3, r7, r3
+  66 0012 0022     		movs	r2, #0
+  67 0014 1A80     		strh	r2, [r3]
+  74:main.c        ****     
+  75:main.c        ****     /* Start the Components */
+  76:main.c        ****     UART_Start();
+  68              		.loc 1 76 0
+  69 0016 FFF7FEFF 		bl	UART_Start
+  77:main.c        ****     ADC_Start();
+  70              		.loc 1 77 0
+  71 001a FFF7FEFF 		bl	ADC_Start
+  78:main.c        ****     
+  79:main.c        ****     /* Start ISRs */
+  80:main.c        ****     ADC_IRQ_StartEx(ADC_ISR_Handler);
+  72              		.loc 1 80 0
+  73 001e 2B4B     		ldr	r3, .L8
+  74 0020 1800     		movs	r0, r3
+  75 0022 FFF7FEFF 		bl	ADC_IRQ_StartEx
+  81:main.c        ****     
+  82:main.c        ****     /* Enable global interrupts */
+  83:main.c        ****     CyGlobalIntEnable;
+  76              		.loc 1 83 0
+  77              		.syntax divided
+  78              	@ 83 "main.c" 1
+  79 0026 62B6     		CPSIE   i
+  80              	@ 0 "" 2
+  84:main.c        **** 
+  85:main.c        ****     /* Start ADC conversion */
+  86:main.c        ****     ADC_StartConvert();
+  81              		.loc 1 86 0
+  82              		.thumb
+  83              		.syntax unified
+  84 0028 FFF7FEFF 		bl	ADC_StartConvert
+  85              	.L7:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 4
+
+
+  87:main.c        ****     
+  88:main.c        ****     for(;;)
+  89:main.c        ****     {
+  90:main.c        ****         while(dataReady == 0u)
+  86              		.loc 1 90 0
+  87 002c C046     		nop
+  88              	.L2:
+  89              		.loc 1 90 0 is_stmt 0 discriminator 1
+  90 002e 284B     		ldr	r3, .L8+4
+  91 0030 1B78     		ldrb	r3, [r3]
+  92 0032 DBB2     		uxtb	r3, r3
+  93 0034 002B     		cmp	r3, #0
+  94 0036 FAD0     		beq	.L2
+  91:main.c        ****         {
+  92:main.c        ****             ; /* Wait for ADC conversion */
+  93:main.c        ****         }
+  94:main.c        ****         /* Buffer the results */
+  95:main.c        ****         adcVal[CHANNEL_1] = ADC_GetResult16(CHANNEL_1);
+  95              		.loc 1 95 0 is_stmt 1
+  96 0038 0020     		movs	r0, #0
+  97 003a FFF7FEFF 		bl	ADC_GetResult16
+  98 003e 0300     		movs	r3, r0
+  99 0040 1A00     		movs	r2, r3
+ 100 0042 3B00     		movs	r3, r7
+ 101 0044 1A80     		strh	r2, [r3]
+  96:main.c        ****         
+  97:main.c        ****         /* Check for ADC window limit interrupt */
+  98:main.c        ****         if(windowFlag != 0u)
+ 102              		.loc 1 98 0
+ 103 0046 234B     		ldr	r3, .L8+8
+ 104 0048 1B68     		ldr	r3, [r3]
+ 105 004a 002B     		cmp	r3, #0
+ 106 004c 03D0     		beq	.L3
+  99:main.c        ****         {
+ 100:main.c        ****             /* Turn ON the LED when input is outside the voltage window (1250mV - 3750mV) */
+ 101:main.c        ****             LED_Write(LOW);
+ 107              		.loc 1 101 0
+ 108 004e 0020     		movs	r0, #0
+ 109 0050 FFF7FEFF 		bl	LED_Write
+ 110 0054 02E0     		b	.L4
+ 111              	.L3:
+ 102:main.c        ****             
+ 103:main.c        ****             /* Note: If LED is active HIGH, then replace "LOW" with "HIGH" */
+ 104:main.c        ****         }
+ 105:main.c        ****         else
+ 106:main.c        ****         {
+ 107:main.c        ****             /* Turn OFF the LED when input is within the voltage window (250mV - 750mV) */
+ 108:main.c        ****             LED_Write(HIGH);
+ 112              		.loc 1 108 0
+ 113 0056 0120     		movs	r0, #1
+ 114 0058 FFF7FEFF 		bl	LED_Write
+ 115              	.L4:
+ 109:main.c        ****             
+ 110:main.c        ****             /* Note:If LED is active HIGH, then replace "HIGH" with "LOW" */
+ 111:main.c        ****         }
+ 112:main.c        ****         
+ 113:main.c        **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 5
+
+
+ 114:main.c        ****         /* Convert the ADC counts of active channel to mVolts */
+ 115:main.c        ****         mVolts = ADC_CountsTo_mVolts(channel, adcVal[channel]);
+ 116              		.loc 1 115 0
+ 117 005c 0D23     		movs	r3, #13
+ 118 005e FB18     		adds	r3, r7, r3
+ 119 0060 1878     		ldrb	r0, [r3]
+ 120 0062 0D23     		movs	r3, #13
+ 121 0064 FB18     		adds	r3, r7, r3
+ 122 0066 1A78     		ldrb	r2, [r3]
+ 123 0068 3B00     		movs	r3, r7
+ 124 006a 5200     		lsls	r2, r2, #1
+ 125 006c D35E     		ldrsh	r3, [r2, r3]
+ 126 006e 0A22     		movs	r2, #10
+ 127 0070 BC18     		adds	r4, r7, r2
+ 128 0072 1900     		movs	r1, r3
+ 129 0074 FFF7FEFF 		bl	ADC_CountsTo_mVolts
+ 130 0078 0300     		movs	r3, r0
+ 131 007a 2380     		strh	r3, [r4]
+ 116:main.c        **** 
+ 117:main.c        ****         /* If ADC result or channel has been changed, send the data to UART */
+ 118:main.c        ****         if((previousValue != mVolts) || (channelFlag != 0u))
+ 132              		.loc 1 118 0
+ 133 007c 0E23     		movs	r3, #14
+ 134 007e FA18     		adds	r2, r7, r3
+ 135 0080 0A23     		movs	r3, #10
+ 136 0082 FB18     		adds	r3, r7, r3
+ 137 0084 0021     		movs	r1, #0
+ 138 0086 525E     		ldrsh	r2, [r2, r1]
+ 139 0088 0021     		movs	r1, #0
+ 140 008a 5B5E     		ldrsh	r3, [r3, r1]
+ 141 008c 9A42     		cmp	r2, r3
+ 142 008e 04D1     		bne	.L5
+ 143              		.loc 1 118 0 is_stmt 0 discriminator 1
+ 144 0090 114B     		ldr	r3, .L8+12
+ 145 0092 1B78     		ldrb	r3, [r3]
+ 146 0094 DBB2     		uxtb	r3, r3
+ 147 0096 002B     		cmp	r3, #0
+ 148 0098 13D0     		beq	.L6
+ 149              	.L5:
+ 119:main.c        ****         {    
+ 120:main.c        ****             SendChannelVoltage(channel, mVolts);
+ 150              		.loc 1 120 0 is_stmt 1
+ 151 009a 0A23     		movs	r3, #10
+ 152 009c FB18     		adds	r3, r7, r3
+ 153 009e 0022     		movs	r2, #0
+ 154 00a0 9A5E     		ldrsh	r2, [r3, r2]
+ 155 00a2 0D23     		movs	r3, #13
+ 156 00a4 FB18     		adds	r3, r7, r3
+ 157 00a6 1B78     		ldrb	r3, [r3]
+ 158 00a8 1100     		movs	r1, r2
+ 159 00aa 1800     		movs	r0, r3
+ 160 00ac FFF7FEFF 		bl	SendChannelVoltage
+ 121:main.c        ****             previousValue = mVolts;
+ 161              		.loc 1 121 0
+ 162 00b0 0E23     		movs	r3, #14
+ 163 00b2 FB18     		adds	r3, r7, r3
+ 164 00b4 0A22     		movs	r2, #10
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 6
+
+
+ 165 00b6 BA18     		adds	r2, r7, r2
+ 166 00b8 1288     		ldrh	r2, [r2]
+ 167 00ba 1A80     		strh	r2, [r3]
+ 122:main.c        ****             
+ 123:main.c        ****             /* Clear the flag */
+ 124:main.c        ****             channelFlag = 0u;
+ 168              		.loc 1 124 0
+ 169 00bc 064B     		ldr	r3, .L8+12
+ 170 00be 0022     		movs	r2, #0
+ 171 00c0 1A70     		strb	r2, [r3]
+ 172              	.L6:
+ 125:main.c        ****         }
+ 126:main.c        ****         dataReady = 0u;
+ 173              		.loc 1 126 0
+ 174 00c2 034B     		ldr	r3, .L8+4
+ 175 00c4 0022     		movs	r2, #0
+ 176 00c6 1A70     		strb	r2, [r3]
+ 127:main.c        ****     }
+ 177              		.loc 1 127 0
+ 178 00c8 B0E7     		b	.L7
+ 179              	.L9:
+ 180 00ca C046     		.align	2
+ 181              	.L8:
+ 182 00cc 00000000 		.word	ADC_ISR_Handler
+ 183 00d0 00000000 		.word	dataReady
+ 184 00d4 00000000 		.word	windowFlag
+ 185 00d8 00000000 		.word	channelFlag
+ 186              		.cfi_endproc
+ 187              	.LFE32:
+ 188              		.size	main, .-main
+ 189              		.section	.rodata
+ 190              		.align	2
+ 191              	.LC4:
+ 192 0000 4368616E 		.ascii	"Channel \000"
+ 192      6E656C20 
+ 192      00
+ 193 0009 000000   		.align	2
+ 194              	.LC6:
+ 195 000c 203D2000 		.ascii	" = \000"
+ 196              		.align	2
+ 197              	.LC8:
+ 198 0010 2D00     		.ascii	"-\000"
+ 199              		.global	__aeabi_uidiv
+ 200              		.global	__aeabi_uidivmod
+ 201 0012 0000     		.align	2
+ 202              	.LC10:
+ 203 0014 206D5600 		.ascii	" mV\000"
+ 204              		.section	.text.SendChannelVoltage,"ax",%progbits
+ 205              		.align	2
+ 206              		.code	16
+ 207              		.thumb_func
+ 208              		.type	SendChannelVoltage, %function
+ 209              	SendChannelVoltage:
+ 210              	.LFB33:
+ 128:main.c        **** }
+ 129:main.c        **** 
+ 130:main.c        **** /*******************************************************************************
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 7
+
+
+ 131:main.c        **** * Function Name: SendChannelVoltage
+ 132:main.c        **** ********************************************************************************
+ 133:main.c        **** *
+ 134:main.c        **** * Summary:
+ 135:main.c        **** *  Performs the following tasks:
+ 136:main.c        **** *   - Converts the channel number to ASCII character
+ 137:main.c        **** *   - Clears terminal screen
+ 138:main.c        **** *   - Sends the channel number and voltage to UART
+ 139:main.c        **** *
+ 140:main.c        **** * Parameters:
+ 141:main.c        **** *  uint8 channel : Channel Number
+ 142:main.c        **** *  int16 mVolts  : ADC counts    
+ 143:main.c        **** *
+ 144:main.c        **** * Return:
+ 145:main.c        **** *  None.
+ 146:main.c        **** *
+ 147:main.c        **** ********************************************************************************/
+ 148:main.c        **** static void SendChannelVoltage(uint8 channel, int16 mVolts)
+ 149:main.c        **** {
+ 211              		.loc 1 149 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 8
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215 0000 80B5     		push	{r7, lr}
+ 216              		.cfi_def_cfa_offset 8
+ 217              		.cfi_offset 7, -8
+ 218              		.cfi_offset 14, -4
+ 219 0002 82B0     		sub	sp, sp, #8
+ 220              		.cfi_def_cfa_offset 16
+ 221 0004 00AF     		add	r7, sp, #0
+ 222              		.cfi_def_cfa_register 7
+ 223 0006 0200     		movs	r2, r0
+ 224 0008 FB1D     		adds	r3, r7, #7
+ 225 000a 1A70     		strb	r2, [r3]
+ 226 000c 3B1D     		adds	r3, r7, #4
+ 227 000e 0A1C     		adds	r2, r1, #0
+ 228 0010 1A80     		strh	r2, [r3]
+ 150:main.c        ****     /* Clear screen */ 
+ 151:main.c        ****     UART_UartPutChar(CLEAR_SCREEN);
+ 229              		.loc 1 151 0
+ 230 0012 0C20     		movs	r0, #12
+ 231 0014 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 152:main.c        ****     UART_UartPutString("Channel ");
+ 232              		.loc 1 152 0
+ 233 0018 3F4B     		ldr	r3, .L12
+ 234 001a 1800     		movs	r0, r3
+ 235 001c FFF7FEFF 		bl	UART_UartPutString
+ 153:main.c        ****     
+ 154:main.c        ****     /* Display the channel number starting from 1 */
+ 155:main.c        ****     channel++;
+ 236              		.loc 1 155 0
+ 237 0020 FB1D     		adds	r3, r7, #7
+ 238 0022 1A78     		ldrb	r2, [r3]
+ 239 0024 FB1D     		adds	r3, r7, #7
+ 240 0026 0132     		adds	r2, r2, #1
+ 241 0028 1A70     		strb	r2, [r3]
+ 156:main.c        ****     channel += CONVERT_TO_ASCII;
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 8
+
+
+ 242              		.loc 1 156 0
+ 243 002a FB1D     		adds	r3, r7, #7
+ 244 002c FA1D     		adds	r2, r7, #7
+ 245 002e 1278     		ldrb	r2, [r2]
+ 246 0030 3032     		adds	r2, r2, #48
+ 247 0032 1A70     		strb	r2, [r3]
+ 157:main.c        ****     UART_UartPutChar(channel);
+ 248              		.loc 1 157 0
+ 249 0034 FB1D     		adds	r3, r7, #7
+ 250 0036 1B78     		ldrb	r3, [r3]
+ 251 0038 1800     		movs	r0, r3
+ 252 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 158:main.c        ****     UART_UartPutString(" = ");
+ 253              		.loc 1 158 0
+ 254 003e 374B     		ldr	r3, .L12+4
+ 255 0040 1800     		movs	r0, r3
+ 256 0042 FFF7FEFF 		bl	UART_UartPutString
+ 159:main.c        ****     
+ 160:main.c        ****     /* Find the sign of the result */
+ 161:main.c        ****     if(mVolts < 0)
+ 257              		.loc 1 161 0
+ 258 0046 3B1D     		adds	r3, r7, #4
+ 259 0048 0022     		movs	r2, #0
+ 260 004a 9B5E     		ldrsh	r3, [r3, r2]
+ 261 004c 002B     		cmp	r3, #0
+ 262 004e 09DA     		bge	.L11
+ 162:main.c        ****     {
+ 163:main.c        ****         UART_UartPutString("-");
+ 263              		.loc 1 163 0
+ 264 0050 334B     		ldr	r3, .L12+8
+ 265 0052 1800     		movs	r0, r3
+ 266 0054 FFF7FEFF 		bl	UART_UartPutString
+ 164:main.c        ****         mVolts = -mVolts;
+ 267              		.loc 1 164 0
+ 268 0058 3B1D     		adds	r3, r7, #4
+ 269 005a 1B88     		ldrh	r3, [r3]
+ 270 005c 5B42     		rsbs	r3, r3, #0
+ 271 005e 9AB2     		uxth	r2, r3
+ 272 0060 3B1D     		adds	r3, r7, #4
+ 273 0062 1A80     		strh	r2, [r3]
+ 274              	.L11:
+ 165:main.c        ****     }
+ 166:main.c        ****         
+ 167:main.c        ****     /* Send voltage to UART */
+ 168:main.c        ****     UART_UartPutChar((mVolts/1000u) + CONVERT_TO_ASCII);
+ 275              		.loc 1 168 0
+ 276 0064 3B1D     		adds	r3, r7, #4
+ 277 0066 0022     		movs	r2, #0
+ 278 0068 9A5E     		ldrsh	r2, [r3, r2]
+ 279 006a FA23     		movs	r3, #250
+ 280 006c 9900     		lsls	r1, r3, #2
+ 281 006e 1000     		movs	r0, r2
+ 282 0070 FFF7FEFF 		bl	__aeabi_uidiv
+ 283 0074 0300     		movs	r3, r0
+ 284 0076 3033     		adds	r3, r3, #48
+ 285 0078 1800     		movs	r0, r3
+ 286 007a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 9
+
+
+ 169:main.c        ****     mVolts %= 1000u;
+ 287              		.loc 1 169 0
+ 288 007e 3B1D     		adds	r3, r7, #4
+ 289 0080 0022     		movs	r2, #0
+ 290 0082 9A5E     		ldrsh	r2, [r3, r2]
+ 291 0084 FA23     		movs	r3, #250
+ 292 0086 9900     		lsls	r1, r3, #2
+ 293 0088 1000     		movs	r0, r2
+ 294 008a FFF7FEFF 		bl	__aeabi_uidivmod
+ 295 008e 0B00     		movs	r3, r1
+ 296 0090 1A00     		movs	r2, r3
+ 297 0092 3B1D     		adds	r3, r7, #4
+ 298 0094 1A80     		strh	r2, [r3]
+ 170:main.c        ****     UART_UartPutChar((mVolts/100u) + CONVERT_TO_ASCII);
+ 299              		.loc 1 170 0
+ 300 0096 3B1D     		adds	r3, r7, #4
+ 301 0098 0022     		movs	r2, #0
+ 302 009a 9B5E     		ldrsh	r3, [r3, r2]
+ 303 009c 6421     		movs	r1, #100
+ 304 009e 1800     		movs	r0, r3
+ 305 00a0 FFF7FEFF 		bl	__aeabi_uidiv
+ 306 00a4 0300     		movs	r3, r0
+ 307 00a6 3033     		adds	r3, r3, #48
+ 308 00a8 1800     		movs	r0, r3
+ 309 00aa FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 171:main.c        ****     mVolts %= 100u;
+ 310              		.loc 1 171 0
+ 311 00ae 3B1D     		adds	r3, r7, #4
+ 312 00b0 0022     		movs	r2, #0
+ 313 00b2 9B5E     		ldrsh	r3, [r3, r2]
+ 314 00b4 6421     		movs	r1, #100
+ 315 00b6 1800     		movs	r0, r3
+ 316 00b8 FFF7FEFF 		bl	__aeabi_uidivmod
+ 317 00bc 0B00     		movs	r3, r1
+ 318 00be 1A00     		movs	r2, r3
+ 319 00c0 3B1D     		adds	r3, r7, #4
+ 320 00c2 1A80     		strh	r2, [r3]
+ 172:main.c        ****     UART_UartPutChar((mVolts/10u) + CONVERT_TO_ASCII);
+ 321              		.loc 1 172 0
+ 322 00c4 3B1D     		adds	r3, r7, #4
+ 323 00c6 0022     		movs	r2, #0
+ 324 00c8 9B5E     		ldrsh	r3, [r3, r2]
+ 325 00ca 0A21     		movs	r1, #10
+ 326 00cc 1800     		movs	r0, r3
+ 327 00ce FFF7FEFF 		bl	__aeabi_uidiv
+ 328 00d2 0300     		movs	r3, r0
+ 329 00d4 3033     		adds	r3, r3, #48
+ 330 00d6 1800     		movs	r0, r3
+ 331 00d8 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 173:main.c        ****     mVolts %= 10u;
+ 332              		.loc 1 173 0
+ 333 00dc 3B1D     		adds	r3, r7, #4
+ 334 00de 0022     		movs	r2, #0
+ 335 00e0 9B5E     		ldrsh	r3, [r3, r2]
+ 336 00e2 0A21     		movs	r1, #10
+ 337 00e4 1800     		movs	r0, r3
+ 338 00e6 FFF7FEFF 		bl	__aeabi_uidivmod
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 10
+
+
+ 339 00ea 0B00     		movs	r3, r1
+ 340 00ec 1A00     		movs	r2, r3
+ 341 00ee 3B1D     		adds	r3, r7, #4
+ 342 00f0 1A80     		strh	r2, [r3]
+ 174:main.c        ****     UART_UartPutChar(mVolts + CONVERT_TO_ASCII);
+ 343              		.loc 1 174 0
+ 344 00f2 3B1D     		adds	r3, r7, #4
+ 345 00f4 0022     		movs	r2, #0
+ 346 00f6 9B5E     		ldrsh	r3, [r3, r2]
+ 347 00f8 3033     		adds	r3, r3, #48
+ 348 00fa 1800     		movs	r0, r3
+ 349 00fc FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 175:main.c        ****     UART_UartPutString(" mV");
+ 350              		.loc 1 175 0
+ 351 0100 084B     		ldr	r3, .L12+12
+ 352 0102 1800     		movs	r0, r3
+ 353 0104 FFF7FEFF 		bl	UART_UartPutString
+ 176:main.c        ****     UART_UartPutCRLF(0u);
+ 354              		.loc 1 176 0
+ 355 0108 0020     		movs	r0, #0
+ 356 010a FFF7FEFF 		bl	UART_UartPutCRLF
+ 177:main.c        **** }
+ 357              		.loc 1 177 0
+ 358 010e C046     		nop
+ 359 0110 BD46     		mov	sp, r7
+ 360 0112 02B0     		add	sp, sp, #8
+ 361              		@ sp needed
+ 362 0114 80BD     		pop	{r7, pc}
+ 363              	.L13:
+ 364 0116 C046     		.align	2
+ 365              	.L12:
+ 366 0118 00000000 		.word	.LC4
+ 367 011c 0C000000 		.word	.LC6
+ 368 0120 10000000 		.word	.LC8
+ 369 0124 14000000 		.word	.LC10
+ 370              		.cfi_endproc
+ 371              	.LFE33:
+ 372              		.size	SendChannelVoltage, .-SendChannelVoltage
+ 373              		.section	.text.ADC_ISR_Handler,"ax",%progbits
+ 374              		.align	2
+ 375              		.global	ADC_ISR_Handler
+ 376              		.code	16
+ 377              		.thumb_func
+ 378              		.type	ADC_ISR_Handler, %function
+ 379              	ADC_ISR_Handler:
+ 380              	.LFB34:
+ 178:main.c        **** 
+ 179:main.c        **** 
+ 180:main.c        **** /******************************************************************************
+ 181:main.c        **** * Function Name: ADC_ISR_Handler
+ 182:main.c        **** *******************************************************************************
+ 183:main.c        **** *
+ 184:main.c        **** * Summary:
+ 185:main.c        **** *  Interrupt Service Routine. Check the ADC status and sets window and data
+ 186:main.c        **** *  ready flags.
+ 187:main.c        **** *
+ 188:main.c        **** ******************************************************************************/
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 11
+
+
+ 189:main.c        **** CY_ISR(ADC_ISR_Handler)
+ 190:main.c        **** {
+ 381              		.loc 1 190 0
+ 382              		.cfi_startproc
+ 383              		@ args = 0, pretend = 0, frame = 8
+ 384              		@ frame_needed = 1, uses_anonymous_args = 0
+ 385 0000 80B5     		push	{r7, lr}
+ 386              		.cfi_def_cfa_offset 8
+ 387              		.cfi_offset 7, -8
+ 388              		.cfi_offset 14, -4
+ 389 0002 82B0     		sub	sp, sp, #8
+ 390              		.cfi_def_cfa_offset 16
+ 391 0004 00AF     		add	r7, sp, #0
+ 392              		.cfi_def_cfa_register 7
+ 191:main.c        ****     uint32 intr_status;
+ 192:main.c        **** 
+ 193:main.c        ****     /* Read interrupt status registers */
+ 194:main.c        ****     intr_status = ADC_SAR_INTR_MASKED_REG;
+ 393              		.loc 1 194 0
+ 394 0006 0C4B     		ldr	r3, .L16
+ 395 0008 1B68     		ldr	r3, [r3]
+ 396 000a 7B60     		str	r3, [r7, #4]
+ 195:main.c        ****     /* Check for End of Scan interrupt */
+ 196:main.c        ****     if((intr_status & ADC_EOS_MASK) != 0u)
+ 397              		.loc 1 196 0
+ 398 000c 7B68     		ldr	r3, [r7, #4]
+ 399 000e 0122     		movs	r2, #1
+ 400 0010 1340     		ands	r3, r2
+ 401 0012 0AD0     		beq	.L15
+ 197:main.c        ****     {
+ 198:main.c        ****         /* Read range interrupt status and raise the flag */
+ 199:main.c        ****         windowFlag = ADC_SAR_RANGE_INTR_MASKED_REG;
+ 402              		.loc 1 199 0
+ 403 0014 094B     		ldr	r3, .L16+4
+ 404 0016 1A68     		ldr	r2, [r3]
+ 405 0018 094B     		ldr	r3, .L16+8
+ 406 001a 1A60     		str	r2, [r3]
+ 200:main.c        ****         /* Clear range detect status */
+ 201:main.c        ****         ADC_SAR_RANGE_INTR_REG = windowFlag;
+ 407              		.loc 1 201 0
+ 408 001c 094A     		ldr	r2, .L16+12
+ 409 001e 084B     		ldr	r3, .L16+8
+ 410 0020 1B68     		ldr	r3, [r3]
+ 411 0022 1360     		str	r3, [r2]
+ 202:main.c        ****         dataReady = 1u;
+ 412              		.loc 1 202 0
+ 413 0024 084B     		ldr	r3, .L16+16
+ 414 0026 0122     		movs	r2, #1
+ 415 0028 1A70     		strb	r2, [r3]
+ 416              	.L15:
+ 203:main.c        ****     }
+ 204:main.c        ****     /* Clear handled interrupt */
+ 205:main.c        ****     ADC_SAR_INTR_REG = intr_status;
+ 417              		.loc 1 205 0
+ 418 002a 084B     		ldr	r3, .L16+20
+ 419 002c 7A68     		ldr	r2, [r7, #4]
+ 420 002e 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 12
+
+
+ 206:main.c        **** }
+ 421              		.loc 1 206 0
+ 422 0030 C046     		nop
+ 423 0032 BD46     		mov	sp, r7
+ 424 0034 02B0     		add	sp, sp, #8
+ 425              		@ sp needed
+ 426 0036 80BD     		pop	{r7, pc}
+ 427              	.L17:
+ 428              		.align	2
+ 429              	.L16:
+ 430 0038 1C021A40 		.word	1075446300
+ 431 003c 3C021A40 		.word	1075446332
+ 432 0040 00000000 		.word	windowFlag
+ 433 0044 30021A40 		.word	1075446320
+ 434 0048 00000000 		.word	dataReady
+ 435 004c 10021A40 		.word	1075446288
+ 436              		.cfi_endproc
+ 437              	.LFE34:
+ 438              		.size	ADC_ISR_Handler, .-ADC_ISR_Handler
+ 439              		.text
+ 440              	.Letext0:
+ 441              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 442              		.section	.debug_info,"",%progbits
+ 443              	.Ldebug_info0:
+ 444 0000 B0010000 		.4byte	0x1b0
+ 445 0004 0400     		.2byte	0x4
+ 446 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 447 000a 04       		.byte	0x4
+ 448 000b 01       		.uleb128 0x1
+ 449 000c E8000000 		.4byte	.LASF28
+ 450 0010 0C       		.byte	0xc
+ 451 0011 D9010000 		.4byte	.LASF29
+ 452 0015 43000000 		.4byte	.LASF30
+ 453 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 454 001d 00000000 		.4byte	0
+ 455 0021 00000000 		.4byte	.Ldebug_line0
+ 456 0025 02       		.uleb128 0x2
+ 457 0026 01       		.byte	0x1
+ 458 0027 06       		.byte	0x6
+ 459 0028 21020000 		.4byte	.LASF0
+ 460 002c 02       		.uleb128 0x2
+ 461 002d 01       		.byte	0x1
+ 462 002e 08       		.byte	0x8
+ 463 002f B0000000 		.4byte	.LASF1
+ 464 0033 02       		.uleb128 0x2
+ 465 0034 02       		.byte	0x2
+ 466 0035 05       		.byte	0x5
+ 467 0036 02020000 		.4byte	.LASF2
+ 468 003a 02       		.uleb128 0x2
+ 469 003b 02       		.byte	0x2
+ 470 003c 07       		.byte	0x7
+ 471 003d 20000000 		.4byte	.LASF3
+ 472 0041 02       		.uleb128 0x2
+ 473 0042 04       		.byte	0x4
+ 474 0043 05       		.byte	0x5
+ 475 0044 0C020000 		.4byte	.LASF4
+ 476 0048 02       		.uleb128 0x2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 13
+
+
+ 477 0049 04       		.byte	0x4
+ 478 004a 07       		.byte	0x7
+ 479 004b C4000000 		.4byte	.LASF5
+ 480 004f 02       		.uleb128 0x2
+ 481 0050 08       		.byte	0x8
+ 482 0051 05       		.byte	0x5
+ 483 0052 CB010000 		.4byte	.LASF6
+ 484 0056 02       		.uleb128 0x2
+ 485 0057 08       		.byte	0x8
+ 486 0058 07       		.byte	0x7
+ 487 0059 A4010000 		.4byte	.LASF7
+ 488 005d 03       		.uleb128 0x3
+ 489 005e 04       		.byte	0x4
+ 490 005f 05       		.byte	0x5
+ 491 0060 696E7400 		.ascii	"int\000"
+ 492 0064 02       		.uleb128 0x2
+ 493 0065 04       		.byte	0x4
+ 494 0066 07       		.byte	0x7
+ 495 0067 97010000 		.4byte	.LASF8
+ 496 006b 04       		.uleb128 0x4
+ 497 006c E2000000 		.4byte	.LASF9
+ 498 0070 02       		.byte	0x2
+ 499 0071 E401     		.2byte	0x1e4
+ 500 0073 2C000000 		.4byte	0x2c
+ 501 0077 04       		.uleb128 0x4
+ 502 0078 90010000 		.4byte	.LASF10
+ 503 007c 02       		.byte	0x2
+ 504 007d E601     		.2byte	0x1e6
+ 505 007f 48000000 		.4byte	0x48
+ 506 0083 04       		.uleb128 0x4
+ 507 0084 BE000000 		.4byte	.LASF11
+ 508 0088 02       		.byte	0x2
+ 509 0089 E801     		.2byte	0x1e8
+ 510 008b 33000000 		.4byte	0x33
+ 511 008f 02       		.uleb128 0x2
+ 512 0090 04       		.byte	0x4
+ 513 0091 04       		.byte	0x4
+ 514 0092 9E000000 		.4byte	.LASF12
+ 515 0096 02       		.uleb128 0x2
+ 516 0097 08       		.byte	0x8
+ 517 0098 04       		.byte	0x4
+ 518 0099 84010000 		.4byte	.LASF13
+ 519 009d 02       		.uleb128 0x2
+ 520 009e 01       		.byte	0x1
+ 521 009f 08       		.byte	0x8
+ 522 00a0 E0010000 		.4byte	.LASF14
+ 523 00a4 05       		.uleb128 0x5
+ 524 00a5 6B000000 		.4byte	0x6b
+ 525 00a9 04       		.uleb128 0x4
+ 526 00aa 00000000 		.4byte	.LASF15
+ 527 00ae 02       		.byte	0x2
+ 528 00af 9002     		.2byte	0x290
+ 529 00b1 B5000000 		.4byte	0xb5
+ 530 00b5 05       		.uleb128 0x5
+ 531 00b6 77000000 		.4byte	0x77
+ 532 00ba 02       		.uleb128 0x2
+ 533 00bb 08       		.byte	0x8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 14
+
+
+ 534 00bc 04       		.byte	0x4
+ 535 00bd 15020000 		.4byte	.LASF16
+ 536 00c1 02       		.uleb128 0x2
+ 537 00c2 04       		.byte	0x4
+ 538 00c3 07       		.byte	0x7
+ 539 00c4 C2010000 		.4byte	.LASF17
+ 540 00c8 06       		.uleb128 0x6
+ 541 00c9 8B010000 		.4byte	.LASF22
+ 542 00cd 01       		.byte	0x1
+ 543 00ce 44       		.byte	0x44
+ 544 00cf 5D000000 		.4byte	0x5d
+ 545 00d3 00000000 		.4byte	.LFB32
+ 546 00d7 DC000000 		.4byte	.LFE32-.LFB32
+ 547 00db 01       		.uleb128 0x1
+ 548 00dc 9C       		.byte	0x9c
+ 549 00dd 1A010000 		.4byte	0x11a
+ 550 00e1 07       		.uleb128 0x7
+ 551 00e2 06000000 		.4byte	.LASF18
+ 552 00e6 01       		.byte	0x1
+ 553 00e7 46       		.byte	0x46
+ 554 00e8 6B000000 		.4byte	0x6b
+ 555 00ec 02       		.uleb128 0x2
+ 556 00ed 91       		.byte	0x91
+ 557 00ee 6D       		.sleb128 -19
+ 558 00ef 07       		.uleb128 0x7
+ 559 00f0 19000000 		.4byte	.LASF19
+ 560 00f4 01       		.byte	0x1
+ 561 00f5 47       		.byte	0x47
+ 562 00f6 1A010000 		.4byte	0x11a
+ 563 00fa 02       		.uleb128 0x2
+ 564 00fb 91       		.byte	0x91
+ 565 00fc 60       		.sleb128 -32
+ 566 00fd 07       		.uleb128 0x7
+ 567 00fe BB010000 		.4byte	.LASF20
+ 568 0102 01       		.byte	0x1
+ 569 0103 48       		.byte	0x48
+ 570 0104 83000000 		.4byte	0x83
+ 571 0108 02       		.uleb128 0x2
+ 572 0109 91       		.byte	0x91
+ 573 010a 6A       		.sleb128 -22
+ 574 010b 07       		.uleb128 0x7
+ 575 010c 76010000 		.4byte	.LASF21
+ 576 0110 01       		.byte	0x1
+ 577 0111 49       		.byte	0x49
+ 578 0112 83000000 		.4byte	0x83
+ 579 0116 02       		.uleb128 0x2
+ 580 0117 91       		.byte	0x91
+ 581 0118 6E       		.sleb128 -18
+ 582 0119 00       		.byte	0
+ 583 011a 08       		.uleb128 0x8
+ 584 011b 83000000 		.4byte	0x83
+ 585 011f 2A010000 		.4byte	0x12a
+ 586 0123 09       		.uleb128 0x9
+ 587 0124 C1000000 		.4byte	0xc1
+ 588 0128 03       		.byte	0x3
+ 589 0129 00       		.byte	0
+ 590 012a 0A       		.uleb128 0xa
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 15
+
+
+ 591 012b E5010000 		.4byte	.LASF31
+ 592 012f 01       		.byte	0x1
+ 593 0130 94       		.byte	0x94
+ 594 0131 00000000 		.4byte	.LFB33
+ 595 0135 28010000 		.4byte	.LFE33-.LFB33
+ 596 0139 01       		.uleb128 0x1
+ 597 013a 9C       		.byte	0x9c
+ 598 013b 5C010000 		.4byte	0x15c
+ 599 013f 0B       		.uleb128 0xb
+ 600 0140 06000000 		.4byte	.LASF18
+ 601 0144 01       		.byte	0x1
+ 602 0145 94       		.byte	0x94
+ 603 0146 6B000000 		.4byte	0x6b
+ 604 014a 02       		.uleb128 0x2
+ 605 014b 91       		.byte	0x91
+ 606 014c 77       		.sleb128 -9
+ 607 014d 0B       		.uleb128 0xb
+ 608 014e BB010000 		.4byte	.LASF20
+ 609 0152 01       		.byte	0x1
+ 610 0153 94       		.byte	0x94
+ 611 0154 83000000 		.4byte	0x83
+ 612 0158 02       		.uleb128 0x2
+ 613 0159 91       		.byte	0x91
+ 614 015a 74       		.sleb128 -12
+ 615 015b 00       		.byte	0
+ 616 015c 0C       		.uleb128 0xc
+ 617 015d 33000000 		.4byte	.LASF23
+ 618 0161 01       		.byte	0x1
+ 619 0162 BD       		.byte	0xbd
+ 620 0163 00000000 		.4byte	.LFB34
+ 621 0167 50000000 		.4byte	.LFE34-.LFB34
+ 622 016b 01       		.uleb128 0x1
+ 623 016c 9C       		.byte	0x9c
+ 624 016d 80010000 		.4byte	0x180
+ 625 0171 07       		.uleb128 0x7
+ 626 0172 D6000000 		.4byte	.LASF24
+ 627 0176 01       		.byte	0x1
+ 628 0177 BF       		.byte	0xbf
+ 629 0178 77000000 		.4byte	0x77
+ 630 017c 02       		.uleb128 0x2
+ 631 017d 91       		.byte	0x91
+ 632 017e 74       		.sleb128 -12
+ 633 017f 00       		.byte	0
+ 634 0180 0D       		.uleb128 0xd
+ 635 0181 0E000000 		.4byte	.LASF25
+ 636 0185 01       		.byte	0x1
+ 637 0186 2B       		.byte	0x2b
+ 638 0187 B5000000 		.4byte	0xb5
+ 639 018b 05       		.uleb128 0x5
+ 640 018c 03       		.byte	0x3
+ 641 018d 00000000 		.4byte	windowFlag
+ 642 0191 0D       		.uleb128 0xd
+ 643 0192 F8010000 		.4byte	.LASF26
+ 644 0196 01       		.byte	0x1
+ 645 0197 2C       		.byte	0x2c
+ 646 0198 A4000000 		.4byte	0xa4
+ 647 019c 05       		.uleb128 0x5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 16
+
+
+ 648 019d 03       		.byte	0x3
+ 649 019e 00000000 		.4byte	dataReady
+ 650 01a2 0D       		.uleb128 0xd
+ 651 01a3 A4000000 		.4byte	.LASF27
+ 652 01a7 01       		.byte	0x1
+ 653 01a8 2D       		.byte	0x2d
+ 654 01a9 A4000000 		.4byte	0xa4
+ 655 01ad 05       		.uleb128 0x5
+ 656 01ae 03       		.byte	0x3
+ 657 01af 00000000 		.4byte	channelFlag
+ 658 01b3 00       		.byte	0
+ 659              		.section	.debug_abbrev,"",%progbits
+ 660              	.Ldebug_abbrev0:
+ 661 0000 01       		.uleb128 0x1
+ 662 0001 11       		.uleb128 0x11
+ 663 0002 01       		.byte	0x1
+ 664 0003 25       		.uleb128 0x25
+ 665 0004 0E       		.uleb128 0xe
+ 666 0005 13       		.uleb128 0x13
+ 667 0006 0B       		.uleb128 0xb
+ 668 0007 03       		.uleb128 0x3
+ 669 0008 0E       		.uleb128 0xe
+ 670 0009 1B       		.uleb128 0x1b
+ 671 000a 0E       		.uleb128 0xe
+ 672 000b 55       		.uleb128 0x55
+ 673 000c 17       		.uleb128 0x17
+ 674 000d 11       		.uleb128 0x11
+ 675 000e 01       		.uleb128 0x1
+ 676 000f 10       		.uleb128 0x10
+ 677 0010 17       		.uleb128 0x17
+ 678 0011 00       		.byte	0
+ 679 0012 00       		.byte	0
+ 680 0013 02       		.uleb128 0x2
+ 681 0014 24       		.uleb128 0x24
+ 682 0015 00       		.byte	0
+ 683 0016 0B       		.uleb128 0xb
+ 684 0017 0B       		.uleb128 0xb
+ 685 0018 3E       		.uleb128 0x3e
+ 686 0019 0B       		.uleb128 0xb
+ 687 001a 03       		.uleb128 0x3
+ 688 001b 0E       		.uleb128 0xe
+ 689 001c 00       		.byte	0
+ 690 001d 00       		.byte	0
+ 691 001e 03       		.uleb128 0x3
+ 692 001f 24       		.uleb128 0x24
+ 693 0020 00       		.byte	0
+ 694 0021 0B       		.uleb128 0xb
+ 695 0022 0B       		.uleb128 0xb
+ 696 0023 3E       		.uleb128 0x3e
+ 697 0024 0B       		.uleb128 0xb
+ 698 0025 03       		.uleb128 0x3
+ 699 0026 08       		.uleb128 0x8
+ 700 0027 00       		.byte	0
+ 701 0028 00       		.byte	0
+ 702 0029 04       		.uleb128 0x4
+ 703 002a 16       		.uleb128 0x16
+ 704 002b 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 17
+
+
+ 705 002c 03       		.uleb128 0x3
+ 706 002d 0E       		.uleb128 0xe
+ 707 002e 3A       		.uleb128 0x3a
+ 708 002f 0B       		.uleb128 0xb
+ 709 0030 3B       		.uleb128 0x3b
+ 710 0031 05       		.uleb128 0x5
+ 711 0032 49       		.uleb128 0x49
+ 712 0033 13       		.uleb128 0x13
+ 713 0034 00       		.byte	0
+ 714 0035 00       		.byte	0
+ 715 0036 05       		.uleb128 0x5
+ 716 0037 35       		.uleb128 0x35
+ 717 0038 00       		.byte	0
+ 718 0039 49       		.uleb128 0x49
+ 719 003a 13       		.uleb128 0x13
+ 720 003b 00       		.byte	0
+ 721 003c 00       		.byte	0
+ 722 003d 06       		.uleb128 0x6
+ 723 003e 2E       		.uleb128 0x2e
+ 724 003f 01       		.byte	0x1
+ 725 0040 3F       		.uleb128 0x3f
+ 726 0041 19       		.uleb128 0x19
+ 727 0042 03       		.uleb128 0x3
+ 728 0043 0E       		.uleb128 0xe
+ 729 0044 3A       		.uleb128 0x3a
+ 730 0045 0B       		.uleb128 0xb
+ 731 0046 3B       		.uleb128 0x3b
+ 732 0047 0B       		.uleb128 0xb
+ 733 0048 49       		.uleb128 0x49
+ 734 0049 13       		.uleb128 0x13
+ 735 004a 11       		.uleb128 0x11
+ 736 004b 01       		.uleb128 0x1
+ 737 004c 12       		.uleb128 0x12
+ 738 004d 06       		.uleb128 0x6
+ 739 004e 40       		.uleb128 0x40
+ 740 004f 18       		.uleb128 0x18
+ 741 0050 9642     		.uleb128 0x2116
+ 742 0052 19       		.uleb128 0x19
+ 743 0053 01       		.uleb128 0x1
+ 744 0054 13       		.uleb128 0x13
+ 745 0055 00       		.byte	0
+ 746 0056 00       		.byte	0
+ 747 0057 07       		.uleb128 0x7
+ 748 0058 34       		.uleb128 0x34
+ 749 0059 00       		.byte	0
+ 750 005a 03       		.uleb128 0x3
+ 751 005b 0E       		.uleb128 0xe
+ 752 005c 3A       		.uleb128 0x3a
+ 753 005d 0B       		.uleb128 0xb
+ 754 005e 3B       		.uleb128 0x3b
+ 755 005f 0B       		.uleb128 0xb
+ 756 0060 49       		.uleb128 0x49
+ 757 0061 13       		.uleb128 0x13
+ 758 0062 02       		.uleb128 0x2
+ 759 0063 18       		.uleb128 0x18
+ 760 0064 00       		.byte	0
+ 761 0065 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 18
+
+
+ 762 0066 08       		.uleb128 0x8
+ 763 0067 01       		.uleb128 0x1
+ 764 0068 01       		.byte	0x1
+ 765 0069 49       		.uleb128 0x49
+ 766 006a 13       		.uleb128 0x13
+ 767 006b 01       		.uleb128 0x1
+ 768 006c 13       		.uleb128 0x13
+ 769 006d 00       		.byte	0
+ 770 006e 00       		.byte	0
+ 771 006f 09       		.uleb128 0x9
+ 772 0070 21       		.uleb128 0x21
+ 773 0071 00       		.byte	0
+ 774 0072 49       		.uleb128 0x49
+ 775 0073 13       		.uleb128 0x13
+ 776 0074 2F       		.uleb128 0x2f
+ 777 0075 0B       		.uleb128 0xb
+ 778 0076 00       		.byte	0
+ 779 0077 00       		.byte	0
+ 780 0078 0A       		.uleb128 0xa
+ 781 0079 2E       		.uleb128 0x2e
+ 782 007a 01       		.byte	0x1
+ 783 007b 03       		.uleb128 0x3
+ 784 007c 0E       		.uleb128 0xe
+ 785 007d 3A       		.uleb128 0x3a
+ 786 007e 0B       		.uleb128 0xb
+ 787 007f 3B       		.uleb128 0x3b
+ 788 0080 0B       		.uleb128 0xb
+ 789 0081 27       		.uleb128 0x27
+ 790 0082 19       		.uleb128 0x19
+ 791 0083 11       		.uleb128 0x11
+ 792 0084 01       		.uleb128 0x1
+ 793 0085 12       		.uleb128 0x12
+ 794 0086 06       		.uleb128 0x6
+ 795 0087 40       		.uleb128 0x40
+ 796 0088 18       		.uleb128 0x18
+ 797 0089 9642     		.uleb128 0x2116
+ 798 008b 19       		.uleb128 0x19
+ 799 008c 01       		.uleb128 0x1
+ 800 008d 13       		.uleb128 0x13
+ 801 008e 00       		.byte	0
+ 802 008f 00       		.byte	0
+ 803 0090 0B       		.uleb128 0xb
+ 804 0091 05       		.uleb128 0x5
+ 805 0092 00       		.byte	0
+ 806 0093 03       		.uleb128 0x3
+ 807 0094 0E       		.uleb128 0xe
+ 808 0095 3A       		.uleb128 0x3a
+ 809 0096 0B       		.uleb128 0xb
+ 810 0097 3B       		.uleb128 0x3b
+ 811 0098 0B       		.uleb128 0xb
+ 812 0099 49       		.uleb128 0x49
+ 813 009a 13       		.uleb128 0x13
+ 814 009b 02       		.uleb128 0x2
+ 815 009c 18       		.uleb128 0x18
+ 816 009d 00       		.byte	0
+ 817 009e 00       		.byte	0
+ 818 009f 0C       		.uleb128 0xc
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 19
+
+
+ 819 00a0 2E       		.uleb128 0x2e
+ 820 00a1 01       		.byte	0x1
+ 821 00a2 3F       		.uleb128 0x3f
+ 822 00a3 19       		.uleb128 0x19
+ 823 00a4 03       		.uleb128 0x3
+ 824 00a5 0E       		.uleb128 0xe
+ 825 00a6 3A       		.uleb128 0x3a
+ 826 00a7 0B       		.uleb128 0xb
+ 827 00a8 3B       		.uleb128 0x3b
+ 828 00a9 0B       		.uleb128 0xb
+ 829 00aa 27       		.uleb128 0x27
+ 830 00ab 19       		.uleb128 0x19
+ 831 00ac 11       		.uleb128 0x11
+ 832 00ad 01       		.uleb128 0x1
+ 833 00ae 12       		.uleb128 0x12
+ 834 00af 06       		.uleb128 0x6
+ 835 00b0 40       		.uleb128 0x40
+ 836 00b1 18       		.uleb128 0x18
+ 837 00b2 9742     		.uleb128 0x2117
+ 838 00b4 19       		.uleb128 0x19
+ 839 00b5 01       		.uleb128 0x1
+ 840 00b6 13       		.uleb128 0x13
+ 841 00b7 00       		.byte	0
+ 842 00b8 00       		.byte	0
+ 843 00b9 0D       		.uleb128 0xd
+ 844 00ba 34       		.uleb128 0x34
+ 845 00bb 00       		.byte	0
+ 846 00bc 03       		.uleb128 0x3
+ 847 00bd 0E       		.uleb128 0xe
+ 848 00be 3A       		.uleb128 0x3a
+ 849 00bf 0B       		.uleb128 0xb
+ 850 00c0 3B       		.uleb128 0x3b
+ 851 00c1 0B       		.uleb128 0xb
+ 852 00c2 49       		.uleb128 0x49
+ 853 00c3 13       		.uleb128 0x13
+ 854 00c4 3F       		.uleb128 0x3f
+ 855 00c5 19       		.uleb128 0x19
+ 856 00c6 02       		.uleb128 0x2
+ 857 00c7 18       		.uleb128 0x18
+ 858 00c8 00       		.byte	0
+ 859 00c9 00       		.byte	0
+ 860 00ca 00       		.byte	0
+ 861              		.section	.debug_aranges,"",%progbits
+ 862 0000 2C000000 		.4byte	0x2c
+ 863 0004 0200     		.2byte	0x2
+ 864 0006 00000000 		.4byte	.Ldebug_info0
+ 865 000a 04       		.byte	0x4
+ 866 000b 00       		.byte	0
+ 867 000c 0000     		.2byte	0
+ 868 000e 0000     		.2byte	0
+ 869 0010 00000000 		.4byte	.LFB32
+ 870 0014 DC000000 		.4byte	.LFE32-.LFB32
+ 871 0018 00000000 		.4byte	.LFB33
+ 872 001c 28010000 		.4byte	.LFE33-.LFB33
+ 873 0020 00000000 		.4byte	.LFB34
+ 874 0024 50000000 		.4byte	.LFE34-.LFB34
+ 875 0028 00000000 		.4byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 20
+
+
+ 876 002c 00000000 		.4byte	0
+ 877              		.section	.debug_ranges,"",%progbits
+ 878              	.Ldebug_ranges0:
+ 879 0000 00000000 		.4byte	.LFB32
+ 880 0004 DC000000 		.4byte	.LFE32
+ 881 0008 00000000 		.4byte	.LFB33
+ 882 000c 28010000 		.4byte	.LFE33
+ 883 0010 00000000 		.4byte	.LFB34
+ 884 0014 50000000 		.4byte	.LFE34
+ 885 0018 00000000 		.4byte	0
+ 886 001c 00000000 		.4byte	0
+ 887              		.section	.debug_line,"",%progbits
+ 888              	.Ldebug_line0:
+ 889 0000 B2000000 		.section	.debug_str,"MS",%progbits,1
+ 889      02004100 
+ 889      00000201 
+ 889      FB0E0D00 
+ 889      01010101 
+ 890              	.LASF15:
+ 891 0000 72656733 		.ascii	"reg32\000"
+ 891      3200
+ 892              	.LASF18:
+ 893 0006 6368616E 		.ascii	"channel\000"
+ 893      6E656C00 
+ 894              	.LASF25:
+ 895 000e 77696E64 		.ascii	"windowFlag\000"
+ 895      6F77466C 
+ 895      616700
+ 896              	.LASF19:
+ 897 0019 61646356 		.ascii	"adcVal\000"
+ 897      616C00
+ 898              	.LASF3:
+ 899 0020 73686F72 		.ascii	"short unsigned int\000"
+ 899      7420756E 
+ 899      7369676E 
+ 899      65642069 
+ 899      6E7400
+ 900              	.LASF23:
+ 901 0033 4144435F 		.ascii	"ADC_ISR_Handler\000"
+ 901      4953525F 
+ 901      48616E64 
+ 901      6C657200 
+ 902              	.LASF30:
+ 903 0043 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 903      73657273 
+ 903      5C6A6167 
+ 903      756D6965 
+ 903      6C5C446F 
+ 904 0071 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\ADC-UART.cydsn\000"
+ 904      50536F43 
+ 904      2D313031 
+ 904      5C547261 
+ 904      696E696E 
+ 905              	.LASF12:
+ 906 009e 666C6F61 		.ascii	"float\000"
+ 906      7400
+ 907              	.LASF27:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 21
+
+
+ 908 00a4 6368616E 		.ascii	"channelFlag\000"
+ 908      6E656C46 
+ 908      6C616700 
+ 909              	.LASF1:
+ 910 00b0 756E7369 		.ascii	"unsigned char\000"
+ 910      676E6564 
+ 910      20636861 
+ 910      7200
+ 911              	.LASF11:
+ 912 00be 696E7431 		.ascii	"int16\000"
+ 912      3600
+ 913              	.LASF5:
+ 914 00c4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 914      20756E73 
+ 914      69676E65 
+ 914      6420696E 
+ 914      7400
+ 915              	.LASF24:
+ 916 00d6 696E7472 		.ascii	"intr_status\000"
+ 916      5F737461 
+ 916      74757300 
+ 917              	.LASF9:
+ 918 00e2 75696E74 		.ascii	"uint8\000"
+ 918      3800
+ 919              	.LASF28:
+ 920 00e8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 920      43313120 
+ 920      352E342E 
+ 920      31203230 
+ 920      31363036 
+ 921 011b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 921      20726576 
+ 921      6973696F 
+ 921      6E203233 
+ 921      37373135 
+ 922 014e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 922      66756E63 
+ 922      74696F6E 
+ 922      2D736563 
+ 922      74696F6E 
+ 923              	.LASF21:
+ 924 0176 70726576 		.ascii	"previousValue\000"
+ 924      696F7573 
+ 924      56616C75 
+ 924      6500
+ 925              	.LASF13:
+ 926 0184 646F7562 		.ascii	"double\000"
+ 926      6C6500
+ 927              	.LASF22:
+ 928 018b 6D61696E 		.ascii	"main\000"
+ 928      00
+ 929              	.LASF10:
+ 930 0190 75696E74 		.ascii	"uint32\000"
+ 930      333200
+ 931              	.LASF8:
+ 932 0197 756E7369 		.ascii	"unsigned int\000"
+ 932      676E6564 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cc1cPPqc.s 			page 22
+
+
+ 932      20696E74 
+ 932      00
+ 933              	.LASF7:
+ 934 01a4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 934      206C6F6E 
+ 934      6720756E 
+ 934      7369676E 
+ 934      65642069 
+ 935              	.LASF20:
+ 936 01bb 6D566F6C 		.ascii	"mVolts\000"
+ 936      747300
+ 937              	.LASF17:
+ 938 01c2 73697A65 		.ascii	"sizetype\000"
+ 938      74797065 
+ 938      00
+ 939              	.LASF6:
+ 940 01cb 6C6F6E67 		.ascii	"long long int\000"
+ 940      206C6F6E 
+ 940      6720696E 
+ 940      7400
+ 941              	.LASF29:
+ 942 01d9 6D61696E 		.ascii	"main.c\000"
+ 942      2E6300
+ 943              	.LASF14:
+ 944 01e0 63686172 		.ascii	"char\000"
+ 944      00
+ 945              	.LASF31:
+ 946 01e5 53656E64 		.ascii	"SendChannelVoltage\000"
+ 946      4368616E 
+ 946      6E656C56 
+ 946      6F6C7461 
+ 946      676500
+ 947              	.LASF26:
+ 948 01f8 64617461 		.ascii	"dataReady\000"
+ 948      52656164 
+ 948      7900
+ 949              	.LASF2:
+ 950 0202 73686F72 		.ascii	"short int\000"
+ 950      7420696E 
+ 950      7400
+ 951              	.LASF4:
+ 952 020c 6C6F6E67 		.ascii	"long int\000"
+ 952      20696E74 
+ 952      00
+ 953              	.LASF16:
+ 954 0215 6C6F6E67 		.ascii	"long double\000"
+ 954      20646F75 
+ 954      626C6500 
+ 955              	.LASF0:
+ 956 0221 7369676E 		.ascii	"signed char\000"
+ 956      65642063 
+ 956      68617200 
+ 957              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
