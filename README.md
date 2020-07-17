@@ -41,3 +41,11 @@ This example was made to learn how to read from input pins. In this scenario we 
 ## Lesson 16-b: Sleep (Using a Software Interruption)
 ## Lesson 17: Deep Sleep
 
+## Training Projects
+In this folder you can find some projects that uses and applies what was learnt from the previous lessons.
+### CapSense Led Patterns
+This shows how to choose between different led blinking or fading patterns using capsense as buttons.
+### KITT
+A very easy project to test a few leds. It just turns on and off the leds in sequence, creating an effect similar to KITT lights in Knight Rider TV Show.
+### LED PWM Meter
+In this case Capsense value is represented in an array of 4 LEDs. Depending on the Capsense value, some LEDs might be on and or one of them could be attenuated. This effect is achieved using 4 PWM signals, which allows to choose the brightness of a LED.
