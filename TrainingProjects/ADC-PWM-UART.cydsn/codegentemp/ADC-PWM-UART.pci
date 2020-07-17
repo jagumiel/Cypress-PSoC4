@@ -1,0 +1,12 @@
+# ADC-PWM-UART
+# 2020-07-17 10:22:55Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "LED(0)" iocell 1 6
+set_io "\UART:tx(0)\" iocell 4 1
+set_io "Input_1(0)" iocell 2 3
+set_location "\ADC:cy_psoc4_sar\" p4sarcell -1 -1 0
