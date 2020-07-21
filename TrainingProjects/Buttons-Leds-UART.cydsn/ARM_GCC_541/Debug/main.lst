@@ -1,0 +1,1015 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata
+  20              		.align	2
+  21              	.LC0:
+  22 0000 4C656674 		.ascii	"Left Door Opened.\015\012\000"
+  22      20446F6F 
+  22      72204F70 
+  22      656E6564 
+  22      2E0D0A00 
+  23              		.align	2
+  24              	.LC2:
+  25 0014 4C656674 		.ascii	"Left Door Closed.\015\012\000"
+  25      20446F6F 
+  25      7220436C 
+  25      6F736564 
+  25      2E0D0A00 
+  26              		.section	.text.leftDoorOpened,"ax",%progbits
+  27              		.align	2
+  28              		.global	leftDoorOpened
+  29              		.code	16
+  30              		.thumb_func
+  31              		.type	leftDoorOpened, %function
+  32              	leftDoorOpened:
+  33              	.LFB32:
+  34              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.00
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *  This example tries to emulate the interior car lightning when a door is
+   8:main.c        **** *  opened.
+   9:main.c        **** *
+  10:main.c        **** *******************************************************************************/
+  11:main.c        **** 
+  12:main.c        **** 
+  13:main.c        **** #include <project.h>
+  14:main.c        **** 
+  15:main.c        **** /******************************************************************************
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 2
+
+
+  16:main.c        **** * Function Name: XDoorOpened
+  17:main.c        **** *******************************************************************************
+  18:main.c        **** *
+  19:main.c        **** * Summary:
+  20:main.c        **** *  Does something when the door has been opened. In this case, turns on a led.
+  21:main.c        **** *
+  22:main.c        **** ******************************************************************************/
+  23:main.c        **** void leftDoorOpened(){
+  35              		.loc 1 23 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 8
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39 0000 80B5     		push	{r7, lr}
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 82B0     		sub	sp, sp, #8
+  44              		.cfi_def_cfa_offset 16
+  45 0004 00AF     		add	r7, sp, #0
+  46              		.cfi_def_cfa_register 7
+  24:main.c        ****     if(Button_Left_Read()==1){
+  47              		.loc 1 24 0
+  48 0006 FFF7FEFF 		bl	Button_Left_Read
+  49 000a 0300     		movs	r3, r0
+  50 000c 012B     		cmp	r3, #1
+  51 000e 15D1     		bne	.L2
+  25:main.c        ****         UART_UartPutString("Left Door Opened.\r\n");
+  52              		.loc 1 25 0
+  53 0010 174B     		ldr	r3, .L9
+  54 0012 1800     		movs	r0, r3
+  55 0014 FFF7FEFF 		bl	UART_UartPutString
+  56              	.LBB2:
+  26:main.c        ****         for(int i=255; i>2; i--){
+  57              		.loc 1 26 0
+  58 0018 FF23     		movs	r3, #255
+  59 001a 7B60     		str	r3, [r7, #4]
+  60 001c 0AE0     		b	.L3
+  61              	.L4:
+  27:main.c        ****             PWM_Left_WriteCompare(i);
+  62              		.loc 1 27 0 discriminator 3
+  63 001e 7B68     		ldr	r3, [r7, #4]
+  64 0020 DBB2     		uxtb	r3, r3
+  65 0022 1800     		movs	r0, r3
+  66 0024 FFF7FEFF 		bl	PWM_Left_WriteCompare
+  28:main.c        ****             CyDelay(5);
+  67              		.loc 1 28 0 discriminator 3
+  68 0028 0520     		movs	r0, #5
+  69 002a FFF7FEFF 		bl	CyDelay
+  26:main.c        ****         for(int i=255; i>2; i--){
+  70              		.loc 1 26 0 discriminator 3
+  71 002e 7B68     		ldr	r3, [r7, #4]
+  72 0030 013B     		subs	r3, r3, #1
+  73 0032 7B60     		str	r3, [r7, #4]
+  74              	.L3:
+  26:main.c        ****         for(int i=255; i>2; i--){
+  75              		.loc 1 26 0 is_stmt 0 discriminator 1
+  76 0034 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 3
+
+
+  77 0036 022B     		cmp	r3, #2
+  78 0038 F1DC     		bgt	.L4
+  79              	.LBE2:
+  29:main.c        ****         }
+  30:main.c        ****     }else{
+  31:main.c        ****         UART_UartPutString("Left Door Closed.\r\n");
+  32:main.c        ****         for(int i=1; i<256; i++){
+  33:main.c        ****             PWM_Left_WriteCompare(i);
+  34:main.c        ****             CyDelay(5);
+  35:main.c        ****         }
+  36:main.c        ****     }
+  37:main.c        **** }
+  80              		.loc 1 37 0 is_stmt 1
+  81 003a 14E0     		b	.L8
+  82              	.L2:
+  31:main.c        ****         for(int i=1; i<256; i++){
+  83              		.loc 1 31 0
+  84 003c 0D4B     		ldr	r3, .L9+4
+  85 003e 1800     		movs	r0, r3
+  86 0040 FFF7FEFF 		bl	UART_UartPutString
+  87              	.LBB3:
+  32:main.c        ****             PWM_Left_WriteCompare(i);
+  88              		.loc 1 32 0
+  89 0044 0123     		movs	r3, #1
+  90 0046 3B60     		str	r3, [r7]
+  91 0048 0AE0     		b	.L6
+  92              	.L7:
+  33:main.c        ****             CyDelay(5);
+  93              		.loc 1 33 0 discriminator 3
+  94 004a 3B68     		ldr	r3, [r7]
+  95 004c DBB2     		uxtb	r3, r3
+  96 004e 1800     		movs	r0, r3
+  97 0050 FFF7FEFF 		bl	PWM_Left_WriteCompare
+  34:main.c        ****         }
+  98              		.loc 1 34 0 discriminator 3
+  99 0054 0520     		movs	r0, #5
+ 100 0056 FFF7FEFF 		bl	CyDelay
+  32:main.c        ****             PWM_Left_WriteCompare(i);
+ 101              		.loc 1 32 0 discriminator 3
+ 102 005a 3B68     		ldr	r3, [r7]
+ 103 005c 0133     		adds	r3, r3, #1
+ 104 005e 3B60     		str	r3, [r7]
+ 105              	.L6:
+  32:main.c        ****             PWM_Left_WriteCompare(i);
+ 106              		.loc 1 32 0 is_stmt 0 discriminator 1
+ 107 0060 3B68     		ldr	r3, [r7]
+ 108 0062 FF2B     		cmp	r3, #255
+ 109 0064 F1DD     		ble	.L7
+ 110              	.L8:
+ 111              	.LBE3:
+ 112              		.loc 1 37 0 is_stmt 1
+ 113 0066 C046     		nop
+ 114 0068 BD46     		mov	sp, r7
+ 115 006a 02B0     		add	sp, sp, #8
+ 116              		@ sp needed
+ 117 006c 80BD     		pop	{r7, pc}
+ 118              	.L10:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 4
+
+
+ 119 006e C046     		.align	2
+ 120              	.L9:
+ 121 0070 00000000 		.word	.LC0
+ 122 0074 14000000 		.word	.LC2
+ 123              		.cfi_endproc
+ 124              	.LFE32:
+ 125              		.size	leftDoorOpened, .-leftDoorOpened
+ 126              		.section	.rodata
+ 127              		.align	2
+ 128              	.LC4:
+ 129 0028 52696768 		.ascii	"Right Door Opened.\015\012\000"
+ 129      7420446F 
+ 129      6F72204F 
+ 129      70656E65 
+ 129      642E0D0A 
+ 130 003d 000000   		.align	2
+ 131              	.LC6:
+ 132 0040 52696768 		.ascii	"Right Door Closed.\015\012\000"
+ 132      7420446F 
+ 132      6F722043 
+ 132      6C6F7365 
+ 132      642E0D0A 
+ 133              		.section	.text.rightDoorOpened,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	rightDoorOpened
+ 136              		.code	16
+ 137              		.thumb_func
+ 138              		.type	rightDoorOpened, %function
+ 139              	rightDoorOpened:
+ 140              	.LFB33:
+  38:main.c        **** 
+  39:main.c        **** void rightDoorOpened(){
+ 141              		.loc 1 39 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 8
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 82B0     		sub	sp, sp, #8
+ 150              		.cfi_def_cfa_offset 16
+ 151 0004 00AF     		add	r7, sp, #0
+ 152              		.cfi_def_cfa_register 7
+  40:main.c        ****     if(Button_Right_Read()==1){
+ 153              		.loc 1 40 0
+ 154 0006 FFF7FEFF 		bl	Button_Right_Read
+ 155 000a 0300     		movs	r3, r0
+ 156 000c 012B     		cmp	r3, #1
+ 157 000e 15D1     		bne	.L12
+  41:main.c        ****         UART_UartPutString("Right Door Opened.\r\n");
+ 158              		.loc 1 41 0
+ 159 0010 174B     		ldr	r3, .L19
+ 160 0012 1800     		movs	r0, r3
+ 161 0014 FFF7FEFF 		bl	UART_UartPutString
+ 162              	.LBB4:
+  42:main.c        ****         for(int i=255; i>2; i--){
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 5
+
+
+ 163              		.loc 1 42 0
+ 164 0018 FF23     		movs	r3, #255
+ 165 001a 7B60     		str	r3, [r7, #4]
+ 166 001c 0AE0     		b	.L13
+ 167              	.L14:
+  43:main.c        ****             PWM_Right_WriteCompare(i);
+ 168              		.loc 1 43 0 discriminator 3
+ 169 001e 7B68     		ldr	r3, [r7, #4]
+ 170 0020 DBB2     		uxtb	r3, r3
+ 171 0022 1800     		movs	r0, r3
+ 172 0024 FFF7FEFF 		bl	PWM_Right_WriteCompare
+  44:main.c        ****             CyDelay(5);
+ 173              		.loc 1 44 0 discriminator 3
+ 174 0028 0520     		movs	r0, #5
+ 175 002a FFF7FEFF 		bl	CyDelay
+  42:main.c        ****         for(int i=255; i>2; i--){
+ 176              		.loc 1 42 0 discriminator 3
+ 177 002e 7B68     		ldr	r3, [r7, #4]
+ 178 0030 013B     		subs	r3, r3, #1
+ 179 0032 7B60     		str	r3, [r7, #4]
+ 180              	.L13:
+  42:main.c        ****         for(int i=255; i>2; i--){
+ 181              		.loc 1 42 0 is_stmt 0 discriminator 1
+ 182 0034 7B68     		ldr	r3, [r7, #4]
+ 183 0036 022B     		cmp	r3, #2
+ 184 0038 F1DC     		bgt	.L14
+ 185              	.LBE4:
+  45:main.c        ****         }
+  46:main.c        ****     }else{
+  47:main.c        ****         UART_UartPutString("Right Door Closed.\r\n");
+  48:main.c        ****         for(int i=1; i<256; i++){
+  49:main.c        ****             PWM_Right_WriteCompare(i);
+  50:main.c        ****             CyDelay(5);
+  51:main.c        ****         }
+  52:main.c        ****     }
+  53:main.c        **** }
+ 186              		.loc 1 53 0 is_stmt 1
+ 187 003a 14E0     		b	.L18
+ 188              	.L12:
+  47:main.c        ****         for(int i=1; i<256; i++){
+ 189              		.loc 1 47 0
+ 190 003c 0D4B     		ldr	r3, .L19+4
+ 191 003e 1800     		movs	r0, r3
+ 192 0040 FFF7FEFF 		bl	UART_UartPutString
+ 193              	.LBB5:
+  48:main.c        ****             PWM_Right_WriteCompare(i);
+ 194              		.loc 1 48 0
+ 195 0044 0123     		movs	r3, #1
+ 196 0046 3B60     		str	r3, [r7]
+ 197 0048 0AE0     		b	.L16
+ 198              	.L17:
+  49:main.c        ****             CyDelay(5);
+ 199              		.loc 1 49 0 discriminator 3
+ 200 004a 3B68     		ldr	r3, [r7]
+ 201 004c DBB2     		uxtb	r3, r3
+ 202 004e 1800     		movs	r0, r3
+ 203 0050 FFF7FEFF 		bl	PWM_Right_WriteCompare
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 6
+
+
+  50:main.c        ****         }
+ 204              		.loc 1 50 0 discriminator 3
+ 205 0054 0520     		movs	r0, #5
+ 206 0056 FFF7FEFF 		bl	CyDelay
+  48:main.c        ****             PWM_Right_WriteCompare(i);
+ 207              		.loc 1 48 0 discriminator 3
+ 208 005a 3B68     		ldr	r3, [r7]
+ 209 005c 0133     		adds	r3, r3, #1
+ 210 005e 3B60     		str	r3, [r7]
+ 211              	.L16:
+  48:main.c        ****             PWM_Right_WriteCompare(i);
+ 212              		.loc 1 48 0 is_stmt 0 discriminator 1
+ 213 0060 3B68     		ldr	r3, [r7]
+ 214 0062 FF2B     		cmp	r3, #255
+ 215 0064 F1DD     		ble	.L17
+ 216              	.L18:
+ 217              	.LBE5:
+ 218              		.loc 1 53 0 is_stmt 1
+ 219 0066 C046     		nop
+ 220 0068 BD46     		mov	sp, r7
+ 221 006a 02B0     		add	sp, sp, #8
+ 222              		@ sp needed
+ 223 006c 80BD     		pop	{r7, pc}
+ 224              	.L20:
+ 225 006e C046     		.align	2
+ 226              	.L19:
+ 227 0070 28000000 		.word	.LC4
+ 228 0074 40000000 		.word	.LC6
+ 229              		.cfi_endproc
+ 230              	.LFE33:
+ 231              		.size	rightDoorOpened, .-rightDoorOpened
+ 232              		.section	.text.Button_Left_ISR_Handler,"ax",%progbits
+ 233              		.align	2
+ 234              		.global	Button_Left_ISR_Handler
+ 235              		.code	16
+ 236              		.thumb_func
+ 237              		.type	Button_Left_ISR_Handler, %function
+ 238              	Button_Left_ISR_Handler:
+ 239              	.LFB34:
+  54:main.c        **** 
+  55:main.c        **** 
+  56:main.c        **** /******************************************************************************
+  57:main.c        **** * Function Name: Button_X_ISR_Handler
+  58:main.c        **** *******************************************************************************
+  59:main.c        **** *
+  60:main.c        **** * Summary:
+  61:main.c        **** *  Interrupt Service Routine. Check the Button (L/R) status and sets the flags.
+  62:main.c        **** *
+  63:main.c        **** ******************************************************************************/
+  64:main.c        **** CY_ISR(Button_Left_ISR_Handler){
+ 240              		.loc 1 64 0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 244 0000 80B5     		push	{r7, lr}
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 7, -8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 7
+
+
+ 247              		.cfi_offset 14, -4
+ 248 0002 00AF     		add	r7, sp, #0
+ 249              		.cfi_def_cfa_register 7
+  65:main.c        ****     leftDoorOpened();
+ 250              		.loc 1 65 0
+ 251 0004 FFF7FEFF 		bl	leftDoorOpened
+  66:main.c        ****     Button_Left_ClearInterrupt();
+ 252              		.loc 1 66 0
+ 253 0008 FFF7FEFF 		bl	Button_Left_ClearInterrupt
+  67:main.c        **** }
+ 254              		.loc 1 67 0
+ 255 000c C046     		nop
+ 256 000e BD46     		mov	sp, r7
+ 257              		@ sp needed
+ 258 0010 80BD     		pop	{r7, pc}
+ 259              		.cfi_endproc
+ 260              	.LFE34:
+ 261              		.size	Button_Left_ISR_Handler, .-Button_Left_ISR_Handler
+ 262 0012 C046     		.section	.text.Button_Right_ISR_Handler,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	Button_Right_ISR_Handler
+ 265              		.code	16
+ 266              		.thumb_func
+ 267              		.type	Button_Right_ISR_Handler, %function
+ 268              	Button_Right_ISR_Handler:
+ 269              	.LFB35:
+  68:main.c        **** 
+  69:main.c        **** CY_ISR(Button_Right_ISR_Handler){
+ 270              		.loc 1 69 0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 0
+ 273              		@ frame_needed = 1, uses_anonymous_args = 0
+ 274 0000 80B5     		push	{r7, lr}
+ 275              		.cfi_def_cfa_offset 8
+ 276              		.cfi_offset 7, -8
+ 277              		.cfi_offset 14, -4
+ 278 0002 00AF     		add	r7, sp, #0
+ 279              		.cfi_def_cfa_register 7
+  70:main.c        ****     rightDoorOpened();
+ 280              		.loc 1 70 0
+ 281 0004 FFF7FEFF 		bl	rightDoorOpened
+  71:main.c        ****     Button_Right_ClearInterrupt();
+ 282              		.loc 1 71 0
+ 283 0008 FFF7FEFF 		bl	Button_Right_ClearInterrupt
+  72:main.c        **** }
+ 284              		.loc 1 72 0
+ 285 000c C046     		nop
+ 286 000e BD46     		mov	sp, r7
+ 287              		@ sp needed
+ 288 0010 80BD     		pop	{r7, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE35:
+ 291              		.size	Button_Right_ISR_Handler, .-Button_Right_ISR_Handler
+ 292 0012 C046     		.section	.text.main,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	main
+ 295              		.code	16
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 8
+
+
+ 296              		.thumb_func
+ 297              		.type	main, %function
+ 298              	main:
+ 299              	.LFB36:
+  73:main.c        **** 
+  74:main.c        **** 
+  75:main.c        **** /*******************************************************************************
+  76:main.c        **** * Function Name: main
+  77:main.c        **** ********************************************************************************
+  78:main.c        **** *
+  79:main.c        **** * Summary:
+  80:main.c        **** *  Performs the following tasks:
+  81:main.c        **** *  - Start the components.
+  82:main.c        **** *
+  83:main.c        **** * Parameters:
+  84:main.c        **** *  None.
+  85:main.c        **** *
+  86:main.c        **** * Return:
+  87:main.c        **** *  None.
+  88:main.c        **** *
+  89:main.c        **** *******************************************************************************/
+  90:main.c        **** int main()
+  91:main.c        **** {    
+ 300              		.loc 1 91 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 1, uses_anonymous_args = 0
+ 304 0000 80B5     		push	{r7, lr}
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 7, -8
+ 307              		.cfi_offset 14, -4
+ 308 0002 00AF     		add	r7, sp, #0
+ 309              		.cfi_def_cfa_register 7
+  92:main.c        ****     /* Start the Components */
+  93:main.c        ****     UART_Start();
+ 310              		.loc 1 93 0
+ 311 0004 FFF7FEFF 		bl	UART_Start
+  94:main.c        ****     PWM_Left_Start();
+ 312              		.loc 1 94 0
+ 313 0008 FFF7FEFF 		bl	PWM_Left_Start
+  95:main.c        ****     PWM_Right_Start();
+ 314              		.loc 1 95 0
+ 315 000c FFF7FEFF 		bl	PWM_Right_Start
+  96:main.c        ****     
+  97:main.c        ****     /* Start ISRs */
+  98:main.c        ****     Button_Left_ISR_StartEx(Button_Left_ISR_Handler);
+ 316              		.loc 1 98 0
+ 317 0010 044B     		ldr	r3, .L25
+ 318 0012 1800     		movs	r0, r3
+ 319 0014 FFF7FEFF 		bl	Button_Left_ISR_StartEx
+  99:main.c        ****     Button_Right_ISR_StartEx(Button_Right_ISR_Handler);
+ 320              		.loc 1 99 0
+ 321 0018 034B     		ldr	r3, .L25+4
+ 322 001a 1800     		movs	r0, r3
+ 323 001c FFF7FEFF 		bl	Button_Right_ISR_StartEx
+ 100:main.c        ****     
+ 101:main.c        ****     /* Enable global interrupts */
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 9
+
+
+ 102:main.c        ****     CyGlobalIntEnable;
+ 324              		.loc 1 102 0
+ 325              		.syntax divided
+ 326              	@ 102 "main.c" 1
+ 327 0020 62B6     		CPSIE   i
+ 328              	@ 0 "" 2
+ 329              		.thumb
+ 330              		.syntax unified
+ 331              	.L24:
+ 103:main.c        **** 
+ 104:main.c        ****     
+ 105:main.c        ****     for(;;)
+ 106:main.c        ****     {
+ 107:main.c        ****         /*Prepare and set the PWM DutyCycle*/
+ 108:main.c        ****         //PWM_WriteCompare((mVolts*255)/5000);
+ 109:main.c        ****         //UART_UartPutString("Hello World.\r\n");
+ 110:main.c        ****     }
+ 332              		.loc 1 110 0 discriminator 1
+ 333 0022 FEE7     		b	.L24
+ 334              	.L26:
+ 335              		.align	2
+ 336              	.L25:
+ 337 0024 00000000 		.word	Button_Left_ISR_Handler
+ 338 0028 00000000 		.word	Button_Right_ISR_Handler
+ 339              		.cfi_endproc
+ 340              	.LFE36:
+ 341              		.size	main, .-main
+ 342              		.text
+ 343              	.Letext0:
+ 344              		.section	.debug_info,"",%progbits
+ 345              	.Ldebug_info0:
+ 346 0000 4E010000 		.4byte	0x14e
+ 347 0004 0400     		.2byte	0x4
+ 348 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 349 000a 04       		.byte	0x4
+ 350 000b 01       		.uleb128 0x1
+ 351 000c 62010000 		.4byte	.LASF19
+ 352 0010 0C       		.byte	0xc
+ 353 0011 1B000000 		.4byte	.LASF20
+ 354 0015 27000000 		.4byte	.LASF21
+ 355 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 356 001d 00000000 		.4byte	0
+ 357 0021 00000000 		.4byte	.Ldebug_line0
+ 358 0025 02       		.uleb128 0x2
+ 359 0026 01       		.byte	0x1
+ 360 0027 06       		.byte	0x6
+ 361 0028 18010000 		.4byte	.LASF0
+ 362 002c 02       		.uleb128 0x2
+ 363 002d 01       		.byte	0x1
+ 364 002e 08       		.byte	0x8
+ 365 002f E2000000 		.4byte	.LASF1
+ 366 0033 02       		.uleb128 0x2
+ 367 0034 02       		.byte	0x2
+ 368 0035 05       		.byte	0x5
+ 369 0036 58010000 		.4byte	.LASF2
+ 370 003a 02       		.uleb128 0x2
+ 371 003b 02       		.byte	0x2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 10
+
+
+ 372 003c 07       		.byte	0x7
+ 373 003d 05010000 		.4byte	.LASF3
+ 374 0041 02       		.uleb128 0x2
+ 375 0042 04       		.byte	0x4
+ 376 0043 05       		.byte	0x5
+ 377 0044 F5000000 		.4byte	.LASF4
+ 378 0048 02       		.uleb128 0x2
+ 379 0049 04       		.byte	0x4
+ 380 004a 07       		.byte	0x7
+ 381 004b A4000000 		.4byte	.LASF5
+ 382 004f 02       		.uleb128 0x2
+ 383 0050 08       		.byte	0x8
+ 384 0051 05       		.byte	0x5
+ 385 0052 00000000 		.4byte	.LASF6
+ 386 0056 02       		.uleb128 0x2
+ 387 0057 08       		.byte	0x8
+ 388 0058 07       		.byte	0x7
+ 389 0059 C5000000 		.4byte	.LASF7
+ 390 005d 03       		.uleb128 0x3
+ 391 005e 04       		.byte	0x4
+ 392 005f 05       		.byte	0x5
+ 393 0060 696E7400 		.ascii	"int\000"
+ 394 0064 02       		.uleb128 0x2
+ 395 0065 04       		.byte	0x4
+ 396 0066 07       		.byte	0x7
+ 397 0067 0E000000 		.4byte	.LASF8
+ 398 006b 02       		.uleb128 0x2
+ 399 006c 04       		.byte	0x4
+ 400 006d 04       		.byte	0x4
+ 401 006e DC000000 		.4byte	.LASF9
+ 402 0072 02       		.uleb128 0x2
+ 403 0073 08       		.byte	0x8
+ 404 0074 04       		.byte	0x4
+ 405 0075 FE000000 		.4byte	.LASF10
+ 406 0079 02       		.uleb128 0x2
+ 407 007a 01       		.byte	0x1
+ 408 007b 08       		.byte	0x8
+ 409 007c F0000000 		.4byte	.LASF11
+ 410 0080 02       		.uleb128 0x2
+ 411 0081 08       		.byte	0x8
+ 412 0082 04       		.byte	0x4
+ 413 0083 24010000 		.4byte	.LASF12
+ 414 0087 02       		.uleb128 0x2
+ 415 0088 04       		.byte	0x4
+ 416 0089 07       		.byte	0x7
+ 417 008a F0010000 		.4byte	.LASF13
+ 418 008e 04       		.uleb128 0x4
+ 419 008f B6000000 		.4byte	.LASF14
+ 420 0093 01       		.byte	0x1
+ 421 0094 17       		.byte	0x17
+ 422 0095 00000000 		.4byte	.LFB32
+ 423 0099 78000000 		.4byte	.LFE32-.LFB32
+ 424 009d 01       		.uleb128 0x1
+ 425 009e 9C       		.byte	0x9c
+ 426 009f D4000000 		.4byte	0xd4
+ 427 00a3 05       		.uleb128 0x5
+ 428 00a4 18000000 		.4byte	.LBB2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 11
+
+
+ 429 00a8 22000000 		.4byte	.LBE2-.LBB2
+ 430 00ac BD000000 		.4byte	0xbd
+ 431 00b0 06       		.uleb128 0x6
+ 432 00b1 6900     		.ascii	"i\000"
+ 433 00b3 01       		.byte	0x1
+ 434 00b4 1A       		.byte	0x1a
+ 435 00b5 5D000000 		.4byte	0x5d
+ 436 00b9 02       		.uleb128 0x2
+ 437 00ba 91       		.byte	0x91
+ 438 00bb 74       		.sleb128 -12
+ 439 00bc 00       		.byte	0
+ 440 00bd 07       		.uleb128 0x7
+ 441 00be 44000000 		.4byte	.LBB3
+ 442 00c2 22000000 		.4byte	.LBE3-.LBB3
+ 443 00c6 06       		.uleb128 0x6
+ 444 00c7 6900     		.ascii	"i\000"
+ 445 00c9 01       		.byte	0x1
+ 446 00ca 20       		.byte	0x20
+ 447 00cb 5D000000 		.4byte	0x5d
+ 448 00cf 02       		.uleb128 0x2
+ 449 00d0 91       		.byte	0x91
+ 450 00d1 70       		.sleb128 -16
+ 451 00d2 00       		.byte	0
+ 452 00d3 00       		.byte	0
+ 453 00d4 04       		.uleb128 0x4
+ 454 00d5 48010000 		.4byte	.LASF15
+ 455 00d9 01       		.byte	0x1
+ 456 00da 27       		.byte	0x27
+ 457 00db 00000000 		.4byte	.LFB33
+ 458 00df 78000000 		.4byte	.LFE33-.LFB33
+ 459 00e3 01       		.uleb128 0x1
+ 460 00e4 9C       		.byte	0x9c
+ 461 00e5 1A010000 		.4byte	0x11a
+ 462 00e9 05       		.uleb128 0x5
+ 463 00ea 18000000 		.4byte	.LBB4
+ 464 00ee 22000000 		.4byte	.LBE4-.LBB4
+ 465 00f2 03010000 		.4byte	0x103
+ 466 00f6 06       		.uleb128 0x6
+ 467 00f7 6900     		.ascii	"i\000"
+ 468 00f9 01       		.byte	0x1
+ 469 00fa 2A       		.byte	0x2a
+ 470 00fb 5D000000 		.4byte	0x5d
+ 471 00ff 02       		.uleb128 0x2
+ 472 0100 91       		.byte	0x91
+ 473 0101 74       		.sleb128 -12
+ 474 0102 00       		.byte	0
+ 475 0103 07       		.uleb128 0x7
+ 476 0104 44000000 		.4byte	.LBB5
+ 477 0108 22000000 		.4byte	.LBE5-.LBB5
+ 478 010c 06       		.uleb128 0x6
+ 479 010d 6900     		.ascii	"i\000"
+ 480 010f 01       		.byte	0x1
+ 481 0110 30       		.byte	0x30
+ 482 0111 5D000000 		.4byte	0x5d
+ 483 0115 02       		.uleb128 0x2
+ 484 0116 91       		.byte	0x91
+ 485 0117 70       		.sleb128 -16
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 12
+
+
+ 486 0118 00       		.byte	0
+ 487 0119 00       		.byte	0
+ 488 011a 08       		.uleb128 0x8
+ 489 011b 30010000 		.4byte	.LASF16
+ 490 011f 01       		.byte	0x1
+ 491 0120 40       		.byte	0x40
+ 492 0121 00000000 		.4byte	.LFB34
+ 493 0125 12000000 		.4byte	.LFE34-.LFB34
+ 494 0129 01       		.uleb128 0x1
+ 495 012a 9C       		.byte	0x9c
+ 496 012b 08       		.uleb128 0x8
+ 497 012c 8B000000 		.4byte	.LASF17
+ 498 0130 01       		.byte	0x1
+ 499 0131 45       		.byte	0x45
+ 500 0132 00000000 		.4byte	.LFB35
+ 501 0136 12000000 		.4byte	.LFE35-.LFB35
+ 502 013a 01       		.uleb128 0x1
+ 503 013b 9C       		.byte	0x9c
+ 504 013c 09       		.uleb128 0x9
+ 505 013d 22000000 		.4byte	.LASF18
+ 506 0141 01       		.byte	0x1
+ 507 0142 5A       		.byte	0x5a
+ 508 0143 5D000000 		.4byte	0x5d
+ 509 0147 00000000 		.4byte	.LFB36
+ 510 014b 2C000000 		.4byte	.LFE36-.LFB36
+ 511 014f 01       		.uleb128 0x1
+ 512 0150 9C       		.byte	0x9c
+ 513 0151 00       		.byte	0
+ 514              		.section	.debug_abbrev,"",%progbits
+ 515              	.Ldebug_abbrev0:
+ 516 0000 01       		.uleb128 0x1
+ 517 0001 11       		.uleb128 0x11
+ 518 0002 01       		.byte	0x1
+ 519 0003 25       		.uleb128 0x25
+ 520 0004 0E       		.uleb128 0xe
+ 521 0005 13       		.uleb128 0x13
+ 522 0006 0B       		.uleb128 0xb
+ 523 0007 03       		.uleb128 0x3
+ 524 0008 0E       		.uleb128 0xe
+ 525 0009 1B       		.uleb128 0x1b
+ 526 000a 0E       		.uleb128 0xe
+ 527 000b 55       		.uleb128 0x55
+ 528 000c 17       		.uleb128 0x17
+ 529 000d 11       		.uleb128 0x11
+ 530 000e 01       		.uleb128 0x1
+ 531 000f 10       		.uleb128 0x10
+ 532 0010 17       		.uleb128 0x17
+ 533 0011 00       		.byte	0
+ 534 0012 00       		.byte	0
+ 535 0013 02       		.uleb128 0x2
+ 536 0014 24       		.uleb128 0x24
+ 537 0015 00       		.byte	0
+ 538 0016 0B       		.uleb128 0xb
+ 539 0017 0B       		.uleb128 0xb
+ 540 0018 3E       		.uleb128 0x3e
+ 541 0019 0B       		.uleb128 0xb
+ 542 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 13
+
+
+ 543 001b 0E       		.uleb128 0xe
+ 544 001c 00       		.byte	0
+ 545 001d 00       		.byte	0
+ 546 001e 03       		.uleb128 0x3
+ 547 001f 24       		.uleb128 0x24
+ 548 0020 00       		.byte	0
+ 549 0021 0B       		.uleb128 0xb
+ 550 0022 0B       		.uleb128 0xb
+ 551 0023 3E       		.uleb128 0x3e
+ 552 0024 0B       		.uleb128 0xb
+ 553 0025 03       		.uleb128 0x3
+ 554 0026 08       		.uleb128 0x8
+ 555 0027 00       		.byte	0
+ 556 0028 00       		.byte	0
+ 557 0029 04       		.uleb128 0x4
+ 558 002a 2E       		.uleb128 0x2e
+ 559 002b 01       		.byte	0x1
+ 560 002c 3F       		.uleb128 0x3f
+ 561 002d 19       		.uleb128 0x19
+ 562 002e 03       		.uleb128 0x3
+ 563 002f 0E       		.uleb128 0xe
+ 564 0030 3A       		.uleb128 0x3a
+ 565 0031 0B       		.uleb128 0xb
+ 566 0032 3B       		.uleb128 0x3b
+ 567 0033 0B       		.uleb128 0xb
+ 568 0034 11       		.uleb128 0x11
+ 569 0035 01       		.uleb128 0x1
+ 570 0036 12       		.uleb128 0x12
+ 571 0037 06       		.uleb128 0x6
+ 572 0038 40       		.uleb128 0x40
+ 573 0039 18       		.uleb128 0x18
+ 574 003a 9642     		.uleb128 0x2116
+ 575 003c 19       		.uleb128 0x19
+ 576 003d 01       		.uleb128 0x1
+ 577 003e 13       		.uleb128 0x13
+ 578 003f 00       		.byte	0
+ 579 0040 00       		.byte	0
+ 580 0041 05       		.uleb128 0x5
+ 581 0042 0B       		.uleb128 0xb
+ 582 0043 01       		.byte	0x1
+ 583 0044 11       		.uleb128 0x11
+ 584 0045 01       		.uleb128 0x1
+ 585 0046 12       		.uleb128 0x12
+ 586 0047 06       		.uleb128 0x6
+ 587 0048 01       		.uleb128 0x1
+ 588 0049 13       		.uleb128 0x13
+ 589 004a 00       		.byte	0
+ 590 004b 00       		.byte	0
+ 591 004c 06       		.uleb128 0x6
+ 592 004d 34       		.uleb128 0x34
+ 593 004e 00       		.byte	0
+ 594 004f 03       		.uleb128 0x3
+ 595 0050 08       		.uleb128 0x8
+ 596 0051 3A       		.uleb128 0x3a
+ 597 0052 0B       		.uleb128 0xb
+ 598 0053 3B       		.uleb128 0x3b
+ 599 0054 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 14
+
+
+ 600 0055 49       		.uleb128 0x49
+ 601 0056 13       		.uleb128 0x13
+ 602 0057 02       		.uleb128 0x2
+ 603 0058 18       		.uleb128 0x18
+ 604 0059 00       		.byte	0
+ 605 005a 00       		.byte	0
+ 606 005b 07       		.uleb128 0x7
+ 607 005c 0B       		.uleb128 0xb
+ 608 005d 01       		.byte	0x1
+ 609 005e 11       		.uleb128 0x11
+ 610 005f 01       		.uleb128 0x1
+ 611 0060 12       		.uleb128 0x12
+ 612 0061 06       		.uleb128 0x6
+ 613 0062 00       		.byte	0
+ 614 0063 00       		.byte	0
+ 615 0064 08       		.uleb128 0x8
+ 616 0065 2E       		.uleb128 0x2e
+ 617 0066 00       		.byte	0
+ 618 0067 3F       		.uleb128 0x3f
+ 619 0068 19       		.uleb128 0x19
+ 620 0069 03       		.uleb128 0x3
+ 621 006a 0E       		.uleb128 0xe
+ 622 006b 3A       		.uleb128 0x3a
+ 623 006c 0B       		.uleb128 0xb
+ 624 006d 3B       		.uleb128 0x3b
+ 625 006e 0B       		.uleb128 0xb
+ 626 006f 27       		.uleb128 0x27
+ 627 0070 19       		.uleb128 0x19
+ 628 0071 11       		.uleb128 0x11
+ 629 0072 01       		.uleb128 0x1
+ 630 0073 12       		.uleb128 0x12
+ 631 0074 06       		.uleb128 0x6
+ 632 0075 40       		.uleb128 0x40
+ 633 0076 18       		.uleb128 0x18
+ 634 0077 9642     		.uleb128 0x2116
+ 635 0079 19       		.uleb128 0x19
+ 636 007a 00       		.byte	0
+ 637 007b 00       		.byte	0
+ 638 007c 09       		.uleb128 0x9
+ 639 007d 2E       		.uleb128 0x2e
+ 640 007e 00       		.byte	0
+ 641 007f 3F       		.uleb128 0x3f
+ 642 0080 19       		.uleb128 0x19
+ 643 0081 03       		.uleb128 0x3
+ 644 0082 0E       		.uleb128 0xe
+ 645 0083 3A       		.uleb128 0x3a
+ 646 0084 0B       		.uleb128 0xb
+ 647 0085 3B       		.uleb128 0x3b
+ 648 0086 0B       		.uleb128 0xb
+ 649 0087 49       		.uleb128 0x49
+ 650 0088 13       		.uleb128 0x13
+ 651 0089 11       		.uleb128 0x11
+ 652 008a 01       		.uleb128 0x1
+ 653 008b 12       		.uleb128 0x12
+ 654 008c 06       		.uleb128 0x6
+ 655 008d 40       		.uleb128 0x40
+ 656 008e 18       		.uleb128 0x18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 15
+
+
+ 657 008f 9642     		.uleb128 0x2116
+ 658 0091 19       		.uleb128 0x19
+ 659 0092 00       		.byte	0
+ 660 0093 00       		.byte	0
+ 661 0094 00       		.byte	0
+ 662              		.section	.debug_aranges,"",%progbits
+ 663 0000 3C000000 		.4byte	0x3c
+ 664 0004 0200     		.2byte	0x2
+ 665 0006 00000000 		.4byte	.Ldebug_info0
+ 666 000a 04       		.byte	0x4
+ 667 000b 00       		.byte	0
+ 668 000c 0000     		.2byte	0
+ 669 000e 0000     		.2byte	0
+ 670 0010 00000000 		.4byte	.LFB32
+ 671 0014 78000000 		.4byte	.LFE32-.LFB32
+ 672 0018 00000000 		.4byte	.LFB33
+ 673 001c 78000000 		.4byte	.LFE33-.LFB33
+ 674 0020 00000000 		.4byte	.LFB34
+ 675 0024 12000000 		.4byte	.LFE34-.LFB34
+ 676 0028 00000000 		.4byte	.LFB35
+ 677 002c 12000000 		.4byte	.LFE35-.LFB35
+ 678 0030 00000000 		.4byte	.LFB36
+ 679 0034 2C000000 		.4byte	.LFE36-.LFB36
+ 680 0038 00000000 		.4byte	0
+ 681 003c 00000000 		.4byte	0
+ 682              		.section	.debug_ranges,"",%progbits
+ 683              	.Ldebug_ranges0:
+ 684 0000 00000000 		.4byte	.LFB32
+ 685 0004 78000000 		.4byte	.LFE32
+ 686 0008 00000000 		.4byte	.LFB33
+ 687 000c 78000000 		.4byte	.LFE33
+ 688 0010 00000000 		.4byte	.LFB34
+ 689 0014 12000000 		.4byte	.LFE34
+ 690 0018 00000000 		.4byte	.LFB35
+ 691 001c 12000000 		.4byte	.LFE35
+ 692 0020 00000000 		.4byte	.LFB36
+ 693 0024 2C000000 		.4byte	.LFE36
+ 694 0028 00000000 		.4byte	0
+ 695 002c 00000000 		.4byte	0
+ 696              		.section	.debug_line,"",%progbits
+ 697              	.Ldebug_line0:
+ 698 0000 EF000000 		.section	.debug_str,"MS",%progbits,1
+ 698      02001D00 
+ 698      00000201 
+ 698      FB0E0D00 
+ 698      01010101 
+ 699              	.LASF6:
+ 700 0000 6C6F6E67 		.ascii	"long long int\000"
+ 700      206C6F6E 
+ 700      6720696E 
+ 700      7400
+ 701              	.LASF8:
+ 702 000e 756E7369 		.ascii	"unsigned int\000"
+ 702      676E6564 
+ 702      20696E74 
+ 702      00
+ 703              	.LASF20:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 16
+
+
+ 704 001b 6D61696E 		.ascii	"main.c\000"
+ 704      2E6300
+ 705              	.LASF18:
+ 706 0022 6D61696E 		.ascii	"main\000"
+ 706      00
+ 707              	.LASF21:
+ 708 0027 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 708      73657273 
+ 708      5C6A6167 
+ 708      756D6965 
+ 708      6C5C446F 
+ 709 0055 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\Buttons-Leds-UART."
+ 709      50536F43 
+ 709      2D313031 
+ 709      5C547261 
+ 709      696E696E 
+ 710 0085 63796473 		.ascii	"cydsn\000"
+ 710      6E00
+ 711              	.LASF17:
+ 712 008b 42757474 		.ascii	"Button_Right_ISR_Handler\000"
+ 712      6F6E5F52 
+ 712      69676874 
+ 712      5F495352 
+ 712      5F48616E 
+ 713              	.LASF5:
+ 714 00a4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 714      20756E73 
+ 714      69676E65 
+ 714      6420696E 
+ 714      7400
+ 715              	.LASF14:
+ 716 00b6 6C656674 		.ascii	"leftDoorOpened\000"
+ 716      446F6F72 
+ 716      4F70656E 
+ 716      656400
+ 717              	.LASF7:
+ 718 00c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 718      206C6F6E 
+ 718      6720756E 
+ 718      7369676E 
+ 718      65642069 
+ 719              	.LASF9:
+ 720 00dc 666C6F61 		.ascii	"float\000"
+ 720      7400
+ 721              	.LASF1:
+ 722 00e2 756E7369 		.ascii	"unsigned char\000"
+ 722      676E6564 
+ 722      20636861 
+ 722      7200
+ 723              	.LASF11:
+ 724 00f0 63686172 		.ascii	"char\000"
+ 724      00
+ 725              	.LASF4:
+ 726 00f5 6C6F6E67 		.ascii	"long int\000"
+ 726      20696E74 
+ 726      00
+ 727              	.LASF10:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccrMsASq.s 			page 17
+
+
+ 728 00fe 646F7562 		.ascii	"double\000"
+ 728      6C6500
+ 729              	.LASF3:
+ 730 0105 73686F72 		.ascii	"short unsigned int\000"
+ 730      7420756E 
+ 730      7369676E 
+ 730      65642069 
+ 730      6E7400
+ 731              	.LASF0:
+ 732 0118 7369676E 		.ascii	"signed char\000"
+ 732      65642063 
+ 732      68617200 
+ 733              	.LASF12:
+ 734 0124 6C6F6E67 		.ascii	"long double\000"
+ 734      20646F75 
+ 734      626C6500 
+ 735              	.LASF16:
+ 736 0130 42757474 		.ascii	"Button_Left_ISR_Handler\000"
+ 736      6F6E5F4C 
+ 736      6566745F 
+ 736      4953525F 
+ 736      48616E64 
+ 737              	.LASF15:
+ 738 0148 72696768 		.ascii	"rightDoorOpened\000"
+ 738      74446F6F 
+ 738      724F7065 
+ 738      6E656400 
+ 739              	.LASF2:
+ 740 0158 73686F72 		.ascii	"short int\000"
+ 740      7420696E 
+ 740      7400
+ 741              	.LASF19:
+ 742 0162 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 742      43313120 
+ 742      352E342E 
+ 742      31203230 
+ 742      31363036 
+ 743 0195 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 743      20726576 
+ 743      6973696F 
+ 743      6E203233 
+ 743      37373135 
+ 744 01c8 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 744      66756E63 
+ 744      74696F6E 
+ 744      2D736563 
+ 744      74696F6E 
+ 745              	.LASF13:
+ 746 01f0 73697A65 		.ascii	"sizetype\000"
+ 746      74797065 
+ 746      00
+ 747              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

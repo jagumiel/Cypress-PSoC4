@@ -1,0 +1,1952 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Button_Right_ISR.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Button_Right_ISR_Start,"ax",%progbits
+  20              		.align	2
+  21              		.global	Button_Right_ISR_Start
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Button_Right_ISR_Start, %function
+  25              	Button_Right_ISR_Start:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\Button_Right_ISR.c"
+   1:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Button_Right_ISR.c **** * File Name: Button_Right_ISR.c  
+   3:Generated_Source\PSoC4/Button_Right_ISR.c **** * Version 1.70
+   4:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+   5:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Description:
+   6:Generated_Source\PSoC4/Button_Right_ISR.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+   8:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+   9:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Note:
+  10:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  11:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/Button_Right_ISR.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/Button_Right_ISR.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/Button_Right_ISR.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/Button_Right_ISR.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  18:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  19:Generated_Source\PSoC4/Button_Right_ISR.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/Button_Right_ISR.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/Button_Right_ISR.c **** #include <Button_Right_ISR.h>
+  22:Generated_Source\PSoC4/Button_Right_ISR.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  24:Generated_Source\PSoC4/Button_Right_ISR.c **** #if !defined(Button_Right_ISR__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  26:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/Button_Right_ISR.c **** /* `#START Button_Right_ISR_intc` */
+  30:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 2
+
+
+  31:Generated_Source\PSoC4/Button_Right_ISR.c **** /* `#END` */
+  32:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  33:Generated_Source\PSoC4/Button_Right_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  34:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  35:Generated_Source\PSoC4/Button_Right_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
+  36:Generated_Source\PSoC4/Button_Right_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
+  37:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  38:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  39:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+  40:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_Start
+  41:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+  42:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  43:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+  44:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  45:Generated_Source\PSoC4/Button_Right_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  46:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  47:Generated_Source\PSoC4/Button_Right_ISR.c **** *  interrupt controller.
+  48:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  49:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:  
+  50:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+  51:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  52:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+  53:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+  54:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  55:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+  56:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_Start(void)
+  57:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+  28              		.loc 1 57 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  58:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* For all we know the interrupt is active. */
+  59:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_Disable();
+  38              		.loc 1 59 0
+  39 0004 FFF7FEFF 		bl	Button_Right_ISR_Disable
+  60:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  61:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Set the ISR to point to the Button_Right_ISR Interrupt. */
+  62:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_SetVector(&Button_Right_ISR_Interrupt);
+  40              		.loc 1 62 0
+  41 0008 054B     		ldr	r3, .L2
+  42 000a 1800     		movs	r0, r3
+  43 000c FFF7FEFF 		bl	Button_Right_ISR_SetVector
+  63:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  64:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Set the priority. */
+  65:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_SetPriority((uint8)Button_Right_ISR_INTC_PRIOR_NUMBER);
+  44              		.loc 1 65 0
+  45 0010 0320     		movs	r0, #3
+  46 0012 FFF7FEFF 		bl	Button_Right_ISR_SetPriority
+  66:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  67:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Enable it. */
+  68:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_Enable();
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 3
+
+
+  47              		.loc 1 68 0
+  48 0016 FFF7FEFF 		bl	Button_Right_ISR_Enable
+  69:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+  49              		.loc 1 69 0
+  50 001a C046     		nop
+  51 001c BD46     		mov	sp, r7
+  52              		@ sp needed
+  53 001e 80BD     		pop	{r7, pc}
+  54              	.L3:
+  55              		.align	2
+  56              	.L2:
+  57 0020 00000000 		.word	Button_Right_ISR_Interrupt
+  58              		.cfi_endproc
+  59              	.LFE0:
+  60              		.size	Button_Right_ISR_Start, .-Button_Right_ISR_Start
+  61              		.section	.text.Button_Right_ISR_StartEx,"ax",%progbits
+  62              		.align	2
+  63              		.global	Button_Right_ISR_StartEx
+  64              		.code	16
+  65              		.thumb_func
+  66              		.type	Button_Right_ISR_StartEx, %function
+  67              	Button_Right_ISR_StartEx:
+  68              	.LFB1:
+  70:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  71:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+  72:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+  73:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_StartEx
+  74:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+  75:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  76:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+  77:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  78:Generated_Source\PSoC4/Button_Right_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  79:Generated_Source\PSoC4/Button_Right_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  80:Generated_Source\PSoC4/Button_Right_ISR.c **** *  the interrupt to the interrupt controller.
+  81:Generated_Source\PSoC4/Button_Right_ISR.c **** *  
+  82:Generated_Source\PSoC4/Button_Right_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  83:Generated_Source\PSoC4/Button_Right_ISR.c **** *  used to provide consistent definition across compilers:
+  84:Generated_Source\PSoC4/Button_Right_ISR.c **** *  
+  85:Generated_Source\PSoC4/Button_Right_ISR.c **** *  Function definition example:
+  86:Generated_Source\PSoC4/Button_Right_ISR.c **** *   CY_ISR(MyISR)
+  87:Generated_Source\PSoC4/Button_Right_ISR.c **** *   {
+  88:Generated_Source\PSoC4/Button_Right_ISR.c **** *   }
+  89:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Function prototype example:
+  90:Generated_Source\PSoC4/Button_Right_ISR.c **** *   CY_ISR_PROTO(MyISR);
+  91:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  92:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:  
+  93:Generated_Source\PSoC4/Button_Right_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  94:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  95:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+  96:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+  97:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+  98:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+  99:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_StartEx(cyisraddress address)
+ 100:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+  69              		.loc 1 100 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 4
+
+
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73 0000 80B5     		push	{r7, lr}
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 7, -8
+  76              		.cfi_offset 14, -4
+  77 0002 82B0     		sub	sp, sp, #8
+  78              		.cfi_def_cfa_offset 16
+  79 0004 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  81 0006 7860     		str	r0, [r7, #4]
+ 101:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* For all we know the interrupt is active. */
+ 102:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_Disable();
+  82              		.loc 1 102 0
+  83 0008 FFF7FEFF 		bl	Button_Right_ISR_Disable
+ 103:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 104:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Set the ISR to point to the Button_Right_ISR Interrupt. */
+ 105:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_SetVector(address);
+  84              		.loc 1 105 0
+  85 000c 7B68     		ldr	r3, [r7, #4]
+  86 000e 1800     		movs	r0, r3
+  87 0010 FFF7FEFF 		bl	Button_Right_ISR_SetVector
+ 106:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 107:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Set the priority. */
+ 108:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_SetPriority((uint8)Button_Right_ISR_INTC_PRIOR_NUMBER);
+  88              		.loc 1 108 0
+  89 0014 0320     		movs	r0, #3
+  90 0016 FFF7FEFF 		bl	Button_Right_ISR_SetPriority
+ 109:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 110:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Enable it. */
+ 111:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_Enable();
+  91              		.loc 1 111 0
+  92 001a FFF7FEFF 		bl	Button_Right_ISR_Enable
+ 112:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+  93              		.loc 1 112 0
+  94 001e C046     		nop
+  95 0020 BD46     		mov	sp, r7
+  96 0022 02B0     		add	sp, sp, #8
+  97              		@ sp needed
+  98 0024 80BD     		pop	{r7, pc}
+  99              		.cfi_endproc
+ 100              	.LFE1:
+ 101              		.size	Button_Right_ISR_StartEx, .-Button_Right_ISR_StartEx
+ 102 0026 C046     		.section	.text.Button_Right_ISR_Stop,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	Button_Right_ISR_Stop
+ 105              		.code	16
+ 106              		.thumb_func
+ 107              		.type	Button_Right_ISR_Stop, %function
+ 108              	Button_Right_ISR_Stop:
+ 109              	.LFB2:
+ 113:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 114:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 115:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 116:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_Stop
+ 117:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 118:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 119:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 5
+
+
+ 120:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Disables and removes the interrupt.
+ 121:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 122:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:  
+ 123:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 124:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 125:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 126:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 127:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 128:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 129:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_Stop(void)
+ 130:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 110              		.loc 1 130 0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 1, uses_anonymous_args = 0
+ 114 0000 80B5     		push	{r7, lr}
+ 115              		.cfi_def_cfa_offset 8
+ 116              		.cfi_offset 7, -8
+ 117              		.cfi_offset 14, -4
+ 118 0002 00AF     		add	r7, sp, #0
+ 119              		.cfi_def_cfa_register 7
+ 131:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Disable this interrupt. */
+ 132:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_Disable();
+ 120              		.loc 1 132 0
+ 121 0004 FFF7FEFF 		bl	Button_Right_ISR_Disable
+ 133:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 134:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Set the ISR to point to the passive one. */
+ 135:Generated_Source\PSoC4/Button_Right_ISR.c ****     Button_Right_ISR_SetVector(&IntDefaultHandler);
+ 122              		.loc 1 135 0
+ 123 0008 034B     		ldr	r3, .L6
+ 124 000a 1800     		movs	r0, r3
+ 125 000c FFF7FEFF 		bl	Button_Right_ISR_SetVector
+ 136:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 126              		.loc 1 136 0
+ 127 0010 C046     		nop
+ 128 0012 BD46     		mov	sp, r7
+ 129              		@ sp needed
+ 130 0014 80BD     		pop	{r7, pc}
+ 131              	.L7:
+ 132 0016 C046     		.align	2
+ 133              	.L6:
+ 134 0018 00000000 		.word	IntDefaultHandler
+ 135              		.cfi_endproc
+ 136              	.LFE2:
+ 137              		.size	Button_Right_ISR_Stop, .-Button_Right_ISR_Stop
+ 138              		.section	.text.Button_Right_ISR_Interrupt,"ax",%progbits
+ 139              		.align	2
+ 140              		.global	Button_Right_ISR_Interrupt
+ 141              		.code	16
+ 142              		.thumb_func
+ 143              		.type	Button_Right_ISR_Interrupt, %function
+ 144              	Button_Right_ISR_Interrupt:
+ 145              	.LFB3:
+ 137:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 138:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 139:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 140:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_Interrupt
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 6
+
+
+ 141:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 142:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 143:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 144:Generated_Source\PSoC4/Button_Right_ISR.c **** *   The default Interrupt Service Routine for Button_Right_ISR.
+ 145:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 146:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Add custom code between the START and END comments to keep the next version
+ 147:Generated_Source\PSoC4/Button_Right_ISR.c **** *   of this file from over-writing your code.
+ 148:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 149:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 150:Generated_Source\PSoC4/Button_Right_ISR.c **** *   your own separate ISR through ISR_StartEx().
+ 151:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 152:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:  
+ 153:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 154:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 155:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 156:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 157:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 158:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/Button_Right_ISR.c **** CY_ISR(Button_Right_ISR_Interrupt)
+ 160:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 146              		.loc 1 160 0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 1, uses_anonymous_args = 0
+ 150 0000 80B5     		push	{r7, lr}
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 00AF     		add	r7, sp, #0
+ 155              		.cfi_def_cfa_register 7
+ 161:Generated_Source\PSoC4/Button_Right_ISR.c ****     #ifdef Button_Right_ISR_INTERRUPT_INTERRUPT_CALLBACK
+ 162:Generated_Source\PSoC4/Button_Right_ISR.c ****         Button_Right_ISR_Interrupt_InterruptCallback();
+ 163:Generated_Source\PSoC4/Button_Right_ISR.c ****     #endif /* Button_Right_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 164:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 165:Generated_Source\PSoC4/Button_Right_ISR.c ****     /*  Place your Interrupt code here. */
+ 166:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* `#START Button_Right_ISR_Interrupt` */
+ 167:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 168:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* `#END` */
+ 169:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 156              		.loc 1 169 0
+ 157 0004 C046     		nop
+ 158 0006 BD46     		mov	sp, r7
+ 159              		@ sp needed
+ 160 0008 80BD     		pop	{r7, pc}
+ 161              		.cfi_endproc
+ 162              	.LFE3:
+ 163              		.size	Button_Right_ISR_Interrupt, .-Button_Right_ISR_Interrupt
+ 164              		.section	.text.Button_Right_ISR_SetVector,"ax",%progbits
+ 165              		.align	2
+ 166              		.global	Button_Right_ISR_SetVector
+ 167              		.code	16
+ 168              		.thumb_func
+ 169              		.type	Button_Right_ISR_SetVector, %function
+ 170              	Button_Right_ISR_SetVector:
+ 171              	.LFB4:
+ 170:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 171:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 7
+
+
+ 172:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 173:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_SetVector
+ 174:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 175:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 176:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 177:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling Button_Right_ISR_Start
+ 178:Generated_Source\PSoC4/Button_Right_ISR.c **** *   will override any effect this method would have had. To set the vector 
+ 179:Generated_Source\PSoC4/Button_Right_ISR.c **** *   before the component has been started use Button_Right_ISR_StartEx instead.
+ 180:Generated_Source\PSoC4/Button_Right_ISR.c **** * 
+ 181:Generated_Source\PSoC4/Button_Right_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 182:Generated_Source\PSoC4/Button_Right_ISR.c **** *   used to provide consistent definition across compilers:
+ 183:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 184:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Function definition example:
+ 185:Generated_Source\PSoC4/Button_Right_ISR.c **** *   CY_ISR(MyISR)
+ 186:Generated_Source\PSoC4/Button_Right_ISR.c **** *   {
+ 187:Generated_Source\PSoC4/Button_Right_ISR.c **** *   }
+ 188:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 189:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Function prototype example:
+ 190:Generated_Source\PSoC4/Button_Right_ISR.c **** *     CY_ISR_PROTO(MyISR);
+ 191:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 192:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 193:Generated_Source\PSoC4/Button_Right_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 194:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 195:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 196:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 197:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 198:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_SetVector(cyisraddress address)
+ 200:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 172              		.loc 1 200 0
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 8
+ 175              		@ frame_needed = 1, uses_anonymous_args = 0
+ 176 0000 80B5     		push	{r7, lr}
+ 177              		.cfi_def_cfa_offset 8
+ 178              		.cfi_offset 7, -8
+ 179              		.cfi_offset 14, -4
+ 180 0002 82B0     		sub	sp, sp, #8
+ 181              		.cfi_def_cfa_offset 16
+ 182 0004 00AF     		add	r7, sp, #0
+ 183              		.cfi_def_cfa_register 7
+ 184 0006 7860     		str	r0, [r7, #4]
+ 201:Generated_Source\PSoC4/Button_Right_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + Button_Right_ISR__INTC_NUMBER] = address;
+ 185              		.loc 1 201 0
+ 186 0008 034B     		ldr	r3, .L10
+ 187 000a 7A68     		ldr	r2, [r7, #4]
+ 188 000c 1A64     		str	r2, [r3, #64]
+ 202:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 189              		.loc 1 202 0
+ 190 000e C046     		nop
+ 191 0010 BD46     		mov	sp, r7
+ 192 0012 02B0     		add	sp, sp, #8
+ 193              		@ sp needed
+ 194 0014 80BD     		pop	{r7, pc}
+ 195              	.L11:
+ 196 0016 C046     		.align	2
+ 197              	.L10:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 8
+
+
+ 198 0018 00000000 		.word	CyRamVectors
+ 199              		.cfi_endproc
+ 200              	.LFE4:
+ 201              		.size	Button_Right_ISR_SetVector, .-Button_Right_ISR_SetVector
+ 202              		.section	.text.Button_Right_ISR_GetVector,"ax",%progbits
+ 203              		.align	2
+ 204              		.global	Button_Right_ISR_GetVector
+ 205              		.code	16
+ 206              		.thumb_func
+ 207              		.type	Button_Right_ISR_GetVector, %function
+ 208              	Button_Right_ISR_GetVector:
+ 209              	.LFB5:
+ 203:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 204:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 205:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 206:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_GetVector
+ 207:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 208:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 209:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 210:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 212:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 213:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 214:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 215:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 216:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 217:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 218:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 219:Generated_Source\PSoC4/Button_Right_ISR.c **** cyisraddress Button_Right_ISR_GetVector(void)
+ 220:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 210              		.loc 1 220 0
+ 211              		.cfi_startproc
+ 212              		@ args = 0, pretend = 0, frame = 0
+ 213              		@ frame_needed = 1, uses_anonymous_args = 0
+ 214 0000 80B5     		push	{r7, lr}
+ 215              		.cfi_def_cfa_offset 8
+ 216              		.cfi_offset 7, -8
+ 217              		.cfi_offset 14, -4
+ 218 0002 00AF     		add	r7, sp, #0
+ 219              		.cfi_def_cfa_register 7
+ 221:Generated_Source\PSoC4/Button_Right_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + Button_Right_ISR__INTC_NUMBER];
+ 220              		.loc 1 221 0
+ 221 0004 024B     		ldr	r3, .L14
+ 222 0006 1B6C     		ldr	r3, [r3, #64]
+ 222:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 223              		.loc 1 222 0
+ 224 0008 1800     		movs	r0, r3
+ 225 000a BD46     		mov	sp, r7
+ 226              		@ sp needed
+ 227 000c 80BD     		pop	{r7, pc}
+ 228              	.L15:
+ 229 000e C046     		.align	2
+ 230              	.L14:
+ 231 0010 00000000 		.word	CyRamVectors
+ 232              		.cfi_endproc
+ 233              	.LFE5:
+ 234              		.size	Button_Right_ISR_GetVector, .-Button_Right_ISR_GetVector
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 9
+
+
+ 235              		.section	.text.Button_Right_ISR_SetPriority,"ax",%progbits
+ 236              		.align	2
+ 237              		.global	Button_Right_ISR_SetPriority
+ 238              		.code	16
+ 239              		.thumb_func
+ 240              		.type	Button_Right_ISR_SetPriority, %function
+ 241              	Button_Right_ISR_SetPriority:
+ 242              	.LFB6:
+ 223:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 224:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 225:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 226:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_SetPriority
+ 227:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 228:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 229:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 230:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 231:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 232:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Note calling Button_Right_ISR_Start or Button_Right_ISR_StartEx will 
+ 233:Generated_Source\PSoC4/Button_Right_ISR.c **** *   override any effect this API would have had. This API should only be called
+ 234:Generated_Source\PSoC4/Button_Right_ISR.c **** *   after Button_Right_ISR_Start or Button_Right_ISR_StartEx has been called. 
+ 235:Generated_Source\PSoC4/Button_Right_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 236:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Interrupt Editor.
+ 237:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 238:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 239:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 240:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 241:Generated_Source\PSoC4/Button_Right_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 242:Generated_Source\PSoC4/Button_Right_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 243:Generated_Source\PSoC4/Button_Right_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
+ 244:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 245:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 246:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 247:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 248:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 249:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_SetPriority(uint8 priority)
+ 250:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 243              		.loc 1 250 0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 16
+ 246              		@ frame_needed = 1, uses_anonymous_args = 0
+ 247 0000 90B5     		push	{r4, r7, lr}
+ 248              		.cfi_def_cfa_offset 12
+ 249              		.cfi_offset 4, -12
+ 250              		.cfi_offset 7, -8
+ 251              		.cfi_offset 14, -4
+ 252 0002 85B0     		sub	sp, sp, #20
+ 253              		.cfi_def_cfa_offset 32
+ 254 0004 00AF     		add	r7, sp, #0
+ 255              		.cfi_def_cfa_register 7
+ 256 0006 0200     		movs	r2, r0
+ 257 0008 FB1D     		adds	r3, r7, #7
+ 258 000a 1A70     		strb	r2, [r3]
+ 251:Generated_Source\PSoC4/Button_Right_ISR.c **** 	uint8 interruptState;
+ 252:Generated_Source\PSoC4/Button_Right_ISR.c ****     uint32 priorityOffset = ((Button_Right_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 259              		.loc 1 252 0
+ 260 000c 0623     		movs	r3, #6
+ 261 000e FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 10
+
+
+ 253:Generated_Source\PSoC4/Button_Right_ISR.c ****     
+ 254:Generated_Source\PSoC4/Button_Right_ISR.c **** 	interruptState = CyEnterCriticalSection();
+ 262              		.loc 1 254 0
+ 263 0010 0B23     		movs	r3, #11
+ 264 0012 FC18     		adds	r4, r7, r3
+ 265 0014 FFF7FEFF 		bl	CyEnterCriticalSection
+ 266 0018 0300     		movs	r3, r0
+ 267 001a 2370     		strb	r3, [r4]
+ 255:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_PRIOR = (*Button_Right_ISR_INTC_PRIOR & (uint32)(~Button_Right_ISR__INTC
+ 268              		.loc 1 255 0
+ 269 001c 0B4B     		ldr	r3, .L17
+ 270 001e 0B4A     		ldr	r2, .L17
+ 271 0020 1268     		ldr	r2, [r2]
+ 272 0022 C021     		movs	r1, #192
+ 273 0024 8A43     		bics	r2, r1
+ 274 0026 1100     		movs	r1, r2
+ 256:Generated_Source\PSoC4/Button_Right_ISR.c ****                                     ((uint32)priority << priorityOffset);
+ 275              		.loc 1 256 0
+ 276 0028 FA1D     		adds	r2, r7, #7
+ 277 002a 1078     		ldrb	r0, [r2]
+ 278 002c FA68     		ldr	r2, [r7, #12]
+ 279 002e 9040     		lsls	r0, r0, r2
+ 280 0030 0200     		movs	r2, r0
+ 255:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_PRIOR = (*Button_Right_ISR_INTC_PRIOR & (uint32)(~Button_Right_ISR__INTC
+ 281              		.loc 1 255 0
+ 282 0032 0A43     		orrs	r2, r1
+ 283 0034 1A60     		str	r2, [r3]
+ 257:Generated_Source\PSoC4/Button_Right_ISR.c **** 	CyExitCriticalSection(interruptState);
+ 284              		.loc 1 257 0
+ 285 0036 0B23     		movs	r3, #11
+ 286 0038 FB18     		adds	r3, r7, r3
+ 287 003a 1B78     		ldrb	r3, [r3]
+ 288 003c 1800     		movs	r0, r3
+ 289 003e FFF7FEFF 		bl	CyExitCriticalSection
+ 258:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 290              		.loc 1 258 0
+ 291 0042 C046     		nop
+ 292 0044 BD46     		mov	sp, r7
+ 293 0046 05B0     		add	sp, sp, #20
+ 294              		@ sp needed
+ 295 0048 90BD     		pop	{r4, r7, pc}
+ 296              	.L18:
+ 297 004a C046     		.align	2
+ 298              	.L17:
+ 299 004c 00E400E0 		.word	-536812544
+ 300              		.cfi_endproc
+ 301              	.LFE6:
+ 302              		.size	Button_Right_ISR_SetPriority, .-Button_Right_ISR_SetPriority
+ 303              		.section	.text.Button_Right_ISR_GetPriority,"ax",%progbits
+ 304              		.align	2
+ 305              		.global	Button_Right_ISR_GetPriority
+ 306              		.code	16
+ 307              		.thumb_func
+ 308              		.type	Button_Right_ISR_GetPriority, %function
+ 309              	Button_Right_ISR_GetPriority:
+ 310              	.LFB7:
+ 259:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 11
+
+
+ 260:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 261:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 262:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_GetPriority
+ 263:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 264:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 265:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 266:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Gets the Priority of the Interrupt.
+ 267:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 268:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 269:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 270:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 271:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 272:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
+ 273:Generated_Source\PSoC4/Button_Right_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 274:Generated_Source\PSoC4/Button_Right_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 275:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 276:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 277:Generated_Source\PSoC4/Button_Right_ISR.c **** uint8 Button_Right_ISR_GetPriority(void)
+ 278:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 311              		.loc 1 278 0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 8
+ 314              		@ frame_needed = 1, uses_anonymous_args = 0
+ 315 0000 80B5     		push	{r7, lr}
+ 316              		.cfi_def_cfa_offset 8
+ 317              		.cfi_offset 7, -8
+ 318              		.cfi_offset 14, -4
+ 319 0002 82B0     		sub	sp, sp, #8
+ 320              		.cfi_def_cfa_offset 16
+ 321 0004 00AF     		add	r7, sp, #0
+ 322              		.cfi_def_cfa_register 7
+ 279:Generated_Source\PSoC4/Button_Right_ISR.c ****     uint32 priority;
+ 280:Generated_Source\PSoC4/Button_Right_ISR.c **** 	uint32 priorityOffset = ((Button_Right_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 323              		.loc 1 280 0
+ 324 0006 0623     		movs	r3, #6
+ 325 0008 7B60     		str	r3, [r7, #4]
+ 281:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 282:Generated_Source\PSoC4/Button_Right_ISR.c ****     priority = (*Button_Right_ISR_INTC_PRIOR & Button_Right_ISR__INTC_PRIOR_MASK) >> priorityOffset
+ 326              		.loc 1 282 0
+ 327 000a 074B     		ldr	r3, .L21
+ 328 000c 1B68     		ldr	r3, [r3]
+ 329 000e C022     		movs	r2, #192
+ 330 0010 1A40     		ands	r2, r3
+ 331 0012 7B68     		ldr	r3, [r7, #4]
+ 332 0014 DA40     		lsrs	r2, r2, r3
+ 333 0016 1300     		movs	r3, r2
+ 334 0018 3B60     		str	r3, [r7]
+ 283:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 284:Generated_Source\PSoC4/Button_Right_ISR.c ****     return (uint8)priority;
+ 335              		.loc 1 284 0
+ 336 001a 3B68     		ldr	r3, [r7]
+ 337 001c DBB2     		uxtb	r3, r3
+ 285:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 338              		.loc 1 285 0
+ 339 001e 1800     		movs	r0, r3
+ 340 0020 BD46     		mov	sp, r7
+ 341 0022 02B0     		add	sp, sp, #8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 12
+
+
+ 342              		@ sp needed
+ 343 0024 80BD     		pop	{r7, pc}
+ 344              	.L22:
+ 345 0026 C046     		.align	2
+ 346              	.L21:
+ 347 0028 00E400E0 		.word	-536812544
+ 348              		.cfi_endproc
+ 349              	.LFE7:
+ 350              		.size	Button_Right_ISR_GetPriority, .-Button_Right_ISR_GetPriority
+ 351              		.section	.text.Button_Right_ISR_Enable,"ax",%progbits
+ 352              		.align	2
+ 353              		.global	Button_Right_ISR_Enable
+ 354              		.code	16
+ 355              		.thumb_func
+ 356              		.type	Button_Right_ISR_Enable, %function
+ 357              	Button_Right_ISR_Enable:
+ 358              	.LFB8:
+ 286:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 287:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 288:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 289:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_Enable
+ 290:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 291:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 292:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 293:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 294:Generated_Source\PSoC4/Button_Right_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 295:Generated_Source\PSoC4/Button_Right_ISR.c **** *   function, which sets the vector and the priority, has been called.
+ 296:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 297:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 298:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 299:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 300:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 301:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 302:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 303:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_Enable(void)
+ 305:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 359              		.loc 1 305 0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 1, uses_anonymous_args = 0
+ 363 0000 80B5     		push	{r7, lr}
+ 364              		.cfi_def_cfa_offset 8
+ 365              		.cfi_offset 7, -8
+ 366              		.cfi_offset 14, -4
+ 367 0002 00AF     		add	r7, sp, #0
+ 368              		.cfi_def_cfa_register 7
+ 306:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Enable the general interrupt. */
+ 307:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_SET_EN = Button_Right_ISR__INTC_MASK;
+ 369              		.loc 1 307 0
+ 370 0004 024B     		ldr	r3, .L24
+ 371 0006 0122     		movs	r2, #1
+ 372 0008 1A60     		str	r2, [r3]
+ 308:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 373              		.loc 1 308 0
+ 374 000a C046     		nop
+ 375 000c BD46     		mov	sp, r7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 13
+
+
+ 376              		@ sp needed
+ 377 000e 80BD     		pop	{r7, pc}
+ 378              	.L25:
+ 379              		.align	2
+ 380              	.L24:
+ 381 0010 00E100E0 		.word	-536813312
+ 382              		.cfi_endproc
+ 383              	.LFE8:
+ 384              		.size	Button_Right_ISR_Enable, .-Button_Right_ISR_Enable
+ 385              		.section	.text.Button_Right_ISR_GetState,"ax",%progbits
+ 386              		.align	2
+ 387              		.global	Button_Right_ISR_GetState
+ 388              		.code	16
+ 389              		.thumb_func
+ 390              		.type	Button_Right_ISR_GetState, %function
+ 391              	Button_Right_ISR_GetState:
+ 392              	.LFB9:
+ 309:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 310:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 311:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 312:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_GetState
+ 313:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 314:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 315:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 316:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 317:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 318:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 319:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 320:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 321:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 322:Generated_Source\PSoC4/Button_Right_ISR.c **** *   1 if enabled, 0 if disabled.
+ 323:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 324:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 325:Generated_Source\PSoC4/Button_Right_ISR.c **** uint8 Button_Right_ISR_GetState(void)
+ 326:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 393              		.loc 1 326 0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 0
+ 396              		@ frame_needed = 1, uses_anonymous_args = 0
+ 397 0000 80B5     		push	{r7, lr}
+ 398              		.cfi_def_cfa_offset 8
+ 399              		.cfi_offset 7, -8
+ 400              		.cfi_offset 14, -4
+ 401 0002 00AF     		add	r7, sp, #0
+ 402              		.cfi_def_cfa_register 7
+ 327:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Get the state of the general interrupt. */
+ 328:Generated_Source\PSoC4/Button_Right_ISR.c ****     return ((*Button_Right_ISR_INTC_SET_EN & (uint32)Button_Right_ISR__INTC_MASK) != 0u) ? 1u:0u;
+ 403              		.loc 1 328 0
+ 404 0004 044B     		ldr	r3, .L28
+ 405 0006 1B68     		ldr	r3, [r3]
+ 406 0008 DBB2     		uxtb	r3, r3
+ 407 000a 0122     		movs	r2, #1
+ 408 000c 1340     		ands	r3, r2
+ 409 000e DBB2     		uxtb	r3, r3
+ 329:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 410              		.loc 1 329 0
+ 411 0010 1800     		movs	r0, r3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 14
+
+
+ 412 0012 BD46     		mov	sp, r7
+ 413              		@ sp needed
+ 414 0014 80BD     		pop	{r7, pc}
+ 415              	.L29:
+ 416 0016 C046     		.align	2
+ 417              	.L28:
+ 418 0018 00E100E0 		.word	-536813312
+ 419              		.cfi_endproc
+ 420              	.LFE9:
+ 421              		.size	Button_Right_ISR_GetState, .-Button_Right_ISR_GetState
+ 422              		.section	.text.Button_Right_ISR_Disable,"ax",%progbits
+ 423              		.align	2
+ 424              		.global	Button_Right_ISR_Disable
+ 425              		.code	16
+ 426              		.thumb_func
+ 427              		.type	Button_Right_ISR_Disable, %function
+ 428              	Button_Right_ISR_Disable:
+ 429              	.LFB10:
+ 330:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 331:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 332:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 333:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_Disable
+ 334:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 335:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 336:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 337:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Disables the Interrupt in the interrupt controller.
+ 338:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 339:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 340:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 341:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 342:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 343:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 344:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 345:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 346:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_Disable(void)
+ 347:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 430              		.loc 1 347 0
+ 431              		.cfi_startproc
+ 432              		@ args = 0, pretend = 0, frame = 0
+ 433              		@ frame_needed = 1, uses_anonymous_args = 0
+ 434 0000 80B5     		push	{r7, lr}
+ 435              		.cfi_def_cfa_offset 8
+ 436              		.cfi_offset 7, -8
+ 437              		.cfi_offset 14, -4
+ 438 0002 00AF     		add	r7, sp, #0
+ 439              		.cfi_def_cfa_register 7
+ 348:Generated_Source\PSoC4/Button_Right_ISR.c ****     /* Disable the general interrupt. */
+ 349:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_CLR_EN = Button_Right_ISR__INTC_MASK;
+ 440              		.loc 1 349 0
+ 441 0004 024B     		ldr	r3, .L31
+ 442 0006 0122     		movs	r2, #1
+ 443 0008 1A60     		str	r2, [r3]
+ 350:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 444              		.loc 1 350 0
+ 445 000a C046     		nop
+ 446 000c BD46     		mov	sp, r7
+ 447              		@ sp needed
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 15
+
+
+ 448 000e 80BD     		pop	{r7, pc}
+ 449              	.L32:
+ 450              		.align	2
+ 451              	.L31:
+ 452 0010 80E100E0 		.word	-536813184
+ 453              		.cfi_endproc
+ 454              	.LFE10:
+ 455              		.size	Button_Right_ISR_Disable, .-Button_Right_ISR_Disable
+ 456              		.section	.text.Button_Right_ISR_SetPending,"ax",%progbits
+ 457              		.align	2
+ 458              		.global	Button_Right_ISR_SetPending
+ 459              		.code	16
+ 460              		.thumb_func
+ 461              		.type	Button_Right_ISR_SetPending, %function
+ 462              	Button_Right_ISR_SetPending:
+ 463              	.LFB11:
+ 351:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 352:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 353:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 354:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_SetPending
+ 355:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 356:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 357:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 358:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 359:Generated_Source\PSoC4/Button_Right_ISR.c **** *   generating the interrupt.
+ 360:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 361:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 362:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 363:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 364:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 365:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 366:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 367:Generated_Source\PSoC4/Button_Right_ISR.c **** * Side Effects:
+ 368:Generated_Source\PSoC4/Button_Right_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 369:Generated_Source\PSoC4/Button_Right_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 370:Generated_Source\PSoC4/Button_Right_ISR.c **** *   interrupts).
+ 371:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 372:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 373:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_SetPending(void)
+ 374:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 464              		.loc 1 374 0
+ 465              		.cfi_startproc
+ 466              		@ args = 0, pretend = 0, frame = 0
+ 467              		@ frame_needed = 1, uses_anonymous_args = 0
+ 468 0000 80B5     		push	{r7, lr}
+ 469              		.cfi_def_cfa_offset 8
+ 470              		.cfi_offset 7, -8
+ 471              		.cfi_offset 14, -4
+ 472 0002 00AF     		add	r7, sp, #0
+ 473              		.cfi_def_cfa_register 7
+ 375:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_SET_PD = Button_Right_ISR__INTC_MASK;
+ 474              		.loc 1 375 0
+ 475 0004 024B     		ldr	r3, .L34
+ 476 0006 0122     		movs	r2, #1
+ 477 0008 1A60     		str	r2, [r3]
+ 376:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 478              		.loc 1 376 0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 16
+
+
+ 479 000a C046     		nop
+ 480 000c BD46     		mov	sp, r7
+ 481              		@ sp needed
+ 482 000e 80BD     		pop	{r7, pc}
+ 483              	.L35:
+ 484              		.align	2
+ 485              	.L34:
+ 486 0010 00E200E0 		.word	-536813056
+ 487              		.cfi_endproc
+ 488              	.LFE11:
+ 489              		.size	Button_Right_ISR_SetPending, .-Button_Right_ISR_SetPending
+ 490              		.section	.text.Button_Right_ISR_ClearPending,"ax",%progbits
+ 491              		.align	2
+ 492              		.global	Button_Right_ISR_ClearPending
+ 493              		.code	16
+ 494              		.thumb_func
+ 495              		.type	Button_Right_ISR_ClearPending, %function
+ 496              	Button_Right_ISR_ClearPending:
+ 497              	.LFB12:
+ 377:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 378:Generated_Source\PSoC4/Button_Right_ISR.c **** 
+ 379:Generated_Source\PSoC4/Button_Right_ISR.c **** /*******************************************************************************
+ 380:Generated_Source\PSoC4/Button_Right_ISR.c **** * Function Name: Button_Right_ISR_ClearPending
+ 381:Generated_Source\PSoC4/Button_Right_ISR.c **** ********************************************************************************
+ 382:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 383:Generated_Source\PSoC4/Button_Right_ISR.c **** * Summary:
+ 384:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
+ 385:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 386:Generated_Source\PSoC4/Button_Right_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 387:Generated_Source\PSoC4/Button_Right_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 388:Generated_Source\PSoC4/Button_Right_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 389:Generated_Source\PSoC4/Button_Right_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 390:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 391:Generated_Source\PSoC4/Button_Right_ISR.c **** * Parameters:
+ 392:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 393:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 394:Generated_Source\PSoC4/Button_Right_ISR.c **** * Return:
+ 395:Generated_Source\PSoC4/Button_Right_ISR.c **** *   None
+ 396:Generated_Source\PSoC4/Button_Right_ISR.c **** *
+ 397:Generated_Source\PSoC4/Button_Right_ISR.c **** *******************************************************************************/
+ 398:Generated_Source\PSoC4/Button_Right_ISR.c **** void Button_Right_ISR_ClearPending(void)
+ 399:Generated_Source\PSoC4/Button_Right_ISR.c **** {
+ 498              		.loc 1 399 0
+ 499              		.cfi_startproc
+ 500              		@ args = 0, pretend = 0, frame = 0
+ 501              		@ frame_needed = 1, uses_anonymous_args = 0
+ 502 0000 80B5     		push	{r7, lr}
+ 503              		.cfi_def_cfa_offset 8
+ 504              		.cfi_offset 7, -8
+ 505              		.cfi_offset 14, -4
+ 506 0002 00AF     		add	r7, sp, #0
+ 507              		.cfi_def_cfa_register 7
+ 400:Generated_Source\PSoC4/Button_Right_ISR.c ****     *Button_Right_ISR_INTC_CLR_PD = Button_Right_ISR__INTC_MASK;
+ 508              		.loc 1 400 0
+ 509 0004 024B     		ldr	r3, .L37
+ 510 0006 0122     		movs	r2, #1
+ 511 0008 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 17
+
+
+ 401:Generated_Source\PSoC4/Button_Right_ISR.c **** }
+ 512              		.loc 1 401 0
+ 513 000a C046     		nop
+ 514 000c BD46     		mov	sp, r7
+ 515              		@ sp needed
+ 516 000e 80BD     		pop	{r7, pc}
+ 517              	.L38:
+ 518              		.align	2
+ 519              	.L37:
+ 520 0010 80E200E0 		.word	-536812928
+ 521              		.cfi_endproc
+ 522              	.LFE12:
+ 523              		.size	Button_Right_ISR_ClearPending, .-Button_Right_ISR_ClearPending
+ 524              		.text
+ 525              	.Letext0:
+ 526              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 527              		.section	.debug_info,"",%progbits
+ 528              	.Ldebug_info0:
+ 529 0000 49020000 		.4byte	0x249
+ 530 0004 0400     		.2byte	0x4
+ 531 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 532 000a 04       		.byte	0x4
+ 533 000b 01       		.uleb128 0x1
+ 534 000c C7000000 		.4byte	.LASF34
+ 535 0010 0C       		.byte	0xc
+ 536 0011 5A020000 		.4byte	.LASF35
+ 537 0015 83010000 		.4byte	.LASF36
+ 538 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 539 001d 00000000 		.4byte	0
+ 540 0021 00000000 		.4byte	.Ldebug_line0
+ 541 0025 02       		.uleb128 0x2
+ 542 0026 01       		.byte	0x1
+ 543 0027 06       		.byte	0x6
+ 544 0028 35030000 		.4byte	.LASF0
+ 545 002c 02       		.uleb128 0x2
+ 546 002d 01       		.byte	0x1
+ 547 002e 08       		.byte	0x8
+ 548 002f 92000000 		.4byte	.LASF1
+ 549 0033 02       		.uleb128 0x2
+ 550 0034 02       		.byte	0x2
+ 551 0035 05       		.byte	0x5
+ 552 0036 EC020000 		.4byte	.LASF2
+ 553 003a 02       		.uleb128 0x2
+ 554 003b 02       		.byte	0x2
+ 555 003c 07       		.byte	0x7
+ 556 003d 2C000000 		.4byte	.LASF3
+ 557 0041 02       		.uleb128 0x2
+ 558 0042 04       		.byte	0x4
+ 559 0043 05       		.byte	0x5
+ 560 0044 20030000 		.4byte	.LASF4
+ 561 0048 02       		.uleb128 0x2
+ 562 0049 04       		.byte	0x4
+ 563 004a 07       		.byte	0x7
+ 564 004b AF000000 		.4byte	.LASF5
+ 565 004f 02       		.uleb128 0x2
+ 566 0050 08       		.byte	0x8
+ 567 0051 05       		.byte	0x5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 18
+
+
+ 568 0052 8D020000 		.4byte	.LASF6
+ 569 0056 02       		.uleb128 0x2
+ 570 0057 08       		.byte	0x8
+ 571 0058 07       		.byte	0x7
+ 572 0059 1E020000 		.4byte	.LASF7
+ 573 005d 03       		.uleb128 0x3
+ 574 005e 04       		.byte	0x4
+ 575 005f 05       		.byte	0x5
+ 576 0060 696E7400 		.ascii	"int\000"
+ 577 0064 02       		.uleb128 0x2
+ 578 0065 04       		.byte	0x4
+ 579 0066 07       		.byte	0x7
+ 580 0067 09020000 		.4byte	.LASF8
+ 581 006b 04       		.uleb128 0x4
+ 582 006c C1000000 		.4byte	.LASF9
+ 583 0070 02       		.byte	0x2
+ 584 0071 E401     		.2byte	0x1e4
+ 585 0073 2C000000 		.4byte	0x2c
+ 586 0077 04       		.uleb128 0x4
+ 587 0078 E7010000 		.4byte	.LASF10
+ 588 007c 02       		.byte	0x2
+ 589 007d E601     		.2byte	0x1e6
+ 590 007f 48000000 		.4byte	0x48
+ 591 0083 02       		.uleb128 0x2
+ 592 0084 04       		.byte	0x4
+ 593 0085 04       		.byte	0x4
+ 594 0086 73000000 		.4byte	.LASF11
+ 595 008a 02       		.uleb128 0x2
+ 596 008b 08       		.byte	0x8
+ 597 008c 04       		.byte	0x4
+ 598 008d 5E010000 		.4byte	.LASF12
+ 599 0091 02       		.uleb128 0x2
+ 600 0092 01       		.byte	0x1
+ 601 0093 08       		.byte	0x8
+ 602 0094 B1020000 		.4byte	.LASF13
+ 603 0098 04       		.uleb128 0x4
+ 604 0099 00000000 		.4byte	.LASF14
+ 605 009d 02       		.byte	0x2
+ 606 009e 9002     		.2byte	0x290
+ 607 00a0 A4000000 		.4byte	0xa4
+ 608 00a4 05       		.uleb128 0x5
+ 609 00a5 77000000 		.4byte	0x77
+ 610 00a9 04       		.uleb128 0x4
+ 611 00aa 35020000 		.4byte	.LASF15
+ 612 00ae 02       		.byte	0x2
+ 613 00af A002     		.2byte	0x2a0
+ 614 00b1 B5000000 		.4byte	0xb5
+ 615 00b5 06       		.uleb128 0x6
+ 616 00b6 04       		.byte	0x4
+ 617 00b7 BB000000 		.4byte	0xbb
+ 618 00bb 07       		.uleb128 0x7
+ 619 00bc 02       		.uleb128 0x2
+ 620 00bd 08       		.byte	0x8
+ 621 00be 04       		.byte	0x4
+ 622 00bf 29030000 		.4byte	.LASF16
+ 623 00c3 02       		.uleb128 0x2
+ 624 00c4 04       		.byte	0x4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 19
+
+
+ 625 00c5 07       		.byte	0x7
+ 626 00c6 84020000 		.4byte	.LASF17
+ 627 00ca 08       		.uleb128 0x8
+ 628 00cb 5C000000 		.4byte	.LASF18
+ 629 00cf 01       		.byte	0x1
+ 630 00d0 38       		.byte	0x38
+ 631 00d1 00000000 		.4byte	.LFB0
+ 632 00d5 24000000 		.4byte	.LFE0-.LFB0
+ 633 00d9 01       		.uleb128 0x1
+ 634 00da 9C       		.byte	0x9c
+ 635 00db 09       		.uleb128 0x9
+ 636 00dc 13000000 		.4byte	.LASF21
+ 637 00e0 01       		.byte	0x1
+ 638 00e1 63       		.byte	0x63
+ 639 00e2 00000000 		.4byte	.LFB1
+ 640 00e6 26000000 		.4byte	.LFE1-.LFB1
+ 641 00ea 01       		.uleb128 0x1
+ 642 00eb 9C       		.byte	0x9c
+ 643 00ec FF000000 		.4byte	0xff
+ 644 00f0 0A       		.uleb128 0xa
+ 645 00f1 16020000 		.4byte	.LASF23
+ 646 00f5 01       		.byte	0x1
+ 647 00f6 63       		.byte	0x63
+ 648 00f7 A9000000 		.4byte	0xa9
+ 649 00fb 02       		.uleb128 0x2
+ 650 00fc 91       		.byte	0x91
+ 651 00fd 74       		.sleb128 -12
+ 652 00fe 00       		.byte	0
+ 653 00ff 08       		.uleb128 0x8
+ 654 0100 9B020000 		.4byte	.LASF19
+ 655 0104 01       		.byte	0x1
+ 656 0105 81       		.byte	0x81
+ 657 0106 00000000 		.4byte	.LFB2
+ 658 010a 1C000000 		.4byte	.LFE2-.LFB2
+ 659 010e 01       		.uleb128 0x1
+ 660 010f 9C       		.byte	0x9c
+ 661 0110 0B       		.uleb128 0xb
+ 662 0111 41030000 		.4byte	.LASF20
+ 663 0115 01       		.byte	0x1
+ 664 0116 9F       		.byte	0x9f
+ 665 0117 00000000 		.4byte	.LFB3
+ 666 011b 0A000000 		.4byte	.LFE3-.LFB3
+ 667 011f 01       		.uleb128 0x1
+ 668 0120 9C       		.byte	0x9c
+ 669 0121 0C       		.uleb128 0xc
+ 670 0122 EE010000 		.4byte	.LASF22
+ 671 0126 01       		.byte	0x1
+ 672 0127 C7       		.byte	0xc7
+ 673 0128 00000000 		.4byte	.LFB4
+ 674 012c 1C000000 		.4byte	.LFE4-.LFB4
+ 675 0130 01       		.uleb128 0x1
+ 676 0131 9C       		.byte	0x9c
+ 677 0132 45010000 		.4byte	0x145
+ 678 0136 0A       		.uleb128 0xa
+ 679 0137 16020000 		.4byte	.LASF23
+ 680 013b 01       		.byte	0x1
+ 681 013c C7       		.byte	0xc7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 20
+
+
+ 682 013d A9000000 		.4byte	0xa9
+ 683 0141 02       		.uleb128 0x2
+ 684 0142 91       		.byte	0x91
+ 685 0143 74       		.sleb128 -12
+ 686 0144 00       		.byte	0
+ 687 0145 0D       		.uleb128 0xd
+ 688 0146 F6020000 		.4byte	.LASF29
+ 689 014a 01       		.byte	0x1
+ 690 014b DB       		.byte	0xdb
+ 691 014c A9000000 		.4byte	0xa9
+ 692 0150 00000000 		.4byte	.LFB5
+ 693 0154 14000000 		.4byte	.LFE5-.LFB5
+ 694 0158 01       		.uleb128 0x1
+ 695 0159 9C       		.byte	0x9c
+ 696 015a 09       		.uleb128 0x9
+ 697 015b 3F000000 		.4byte	.LASF24
+ 698 015f 01       		.byte	0x1
+ 699 0160 F9       		.byte	0xf9
+ 700 0161 00000000 		.4byte	.LFB6
+ 701 0165 50000000 		.4byte	.LFE6-.LFB6
+ 702 0169 01       		.uleb128 0x1
+ 703 016a 9C       		.byte	0x9c
+ 704 016b 9A010000 		.4byte	0x19a
+ 705 016f 0A       		.uleb128 0xa
+ 706 0170 55010000 		.4byte	.LASF25
+ 707 0174 01       		.byte	0x1
+ 708 0175 F9       		.byte	0xf9
+ 709 0176 6B000000 		.4byte	0x6b
+ 710 017a 02       		.uleb128 0x2
+ 711 017b 91       		.byte	0x91
+ 712 017c 67       		.sleb128 -25
+ 713 017d 0E       		.uleb128 0xe
+ 714 017e A0000000 		.4byte	.LASF26
+ 715 0182 01       		.byte	0x1
+ 716 0183 FB       		.byte	0xfb
+ 717 0184 6B000000 		.4byte	0x6b
+ 718 0188 02       		.uleb128 0x2
+ 719 0189 91       		.byte	0x91
+ 720 018a 6B       		.sleb128 -21
+ 721 018b 0E       		.uleb128 0xe
+ 722 018c 11030000 		.4byte	.LASF27
+ 723 0190 01       		.byte	0x1
+ 724 0191 FC       		.byte	0xfc
+ 725 0192 77000000 		.4byte	0x77
+ 726 0196 02       		.uleb128 0x2
+ 727 0197 91       		.byte	0x91
+ 728 0198 6C       		.sleb128 -20
+ 729 0199 00       		.byte	0
+ 730 019a 0F       		.uleb128 0xf
+ 731 019b 5C030000 		.4byte	.LASF37
+ 732 019f 01       		.byte	0x1
+ 733 01a0 1501     		.2byte	0x115
+ 734 01a2 6B000000 		.4byte	0x6b
+ 735 01a6 00000000 		.4byte	.LFB7
+ 736 01aa 2C000000 		.4byte	.LFE7-.LFB7
+ 737 01ae 01       		.uleb128 0x1
+ 738 01af 9C       		.byte	0x9c
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 21
+
+
+ 739 01b0 D3010000 		.4byte	0x1d3
+ 740 01b4 10       		.uleb128 0x10
+ 741 01b5 55010000 		.4byte	.LASF25
+ 742 01b9 01       		.byte	0x1
+ 743 01ba 1701     		.2byte	0x117
+ 744 01bc 77000000 		.4byte	0x77
+ 745 01c0 02       		.uleb128 0x2
+ 746 01c1 91       		.byte	0x91
+ 747 01c2 70       		.sleb128 -16
+ 748 01c3 10       		.uleb128 0x10
+ 749 01c4 11030000 		.4byte	.LASF27
+ 750 01c8 01       		.byte	0x1
+ 751 01c9 1801     		.2byte	0x118
+ 752 01cb 77000000 		.4byte	0x77
+ 753 01cf 02       		.uleb128 0x2
+ 754 01d0 91       		.byte	0x91
+ 755 01d1 74       		.sleb128 -12
+ 756 01d2 00       		.byte	0
+ 757 01d3 11       		.uleb128 0x11
+ 758 01d4 42020000 		.4byte	.LASF28
+ 759 01d8 01       		.byte	0x1
+ 760 01d9 3001     		.2byte	0x130
+ 761 01db 00000000 		.4byte	.LFB8
+ 762 01df 14000000 		.4byte	.LFE8-.LFB8
+ 763 01e3 01       		.uleb128 0x1
+ 764 01e4 9C       		.byte	0x9c
+ 765 01e5 12       		.uleb128 0x12
+ 766 01e6 B6020000 		.4byte	.LASF30
+ 767 01ea 01       		.byte	0x1
+ 768 01eb 4501     		.2byte	0x145
+ 769 01ed 6B000000 		.4byte	0x6b
+ 770 01f1 00000000 		.4byte	.LFB9
+ 771 01f5 1C000000 		.4byte	.LFE9-.LFB9
+ 772 01f9 01       		.uleb128 0x1
+ 773 01fa 9C       		.byte	0x9c
+ 774 01fb 11       		.uleb128 0x11
+ 775 01fc 79000000 		.4byte	.LASF31
+ 776 0200 01       		.byte	0x1
+ 777 0201 5A01     		.2byte	0x15a
+ 778 0203 00000000 		.4byte	.LFB10
+ 779 0207 14000000 		.4byte	.LFE10-.LFB10
+ 780 020b 01       		.uleb128 0x1
+ 781 020c 9C       		.byte	0x9c
+ 782 020d 11       		.uleb128 0x11
+ 783 020e D0020000 		.4byte	.LASF32
+ 784 0212 01       		.byte	0x1
+ 785 0213 7501     		.2byte	0x175
+ 786 0215 00000000 		.4byte	.LFB11
+ 787 0219 14000000 		.4byte	.LFE11-.LFB11
+ 788 021d 01       		.uleb128 0x1
+ 789 021e 9C       		.byte	0x9c
+ 790 021f 11       		.uleb128 0x11
+ 791 0220 65010000 		.4byte	.LASF33
+ 792 0224 01       		.byte	0x1
+ 793 0225 8E01     		.2byte	0x18e
+ 794 0227 00000000 		.4byte	.LFB12
+ 795 022b 14000000 		.4byte	.LFE12-.LFB12
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 22
+
+
+ 796 022f 01       		.uleb128 0x1
+ 797 0230 9C       		.byte	0x9c
+ 798 0231 13       		.uleb128 0x13
+ 799 0232 A9000000 		.4byte	0xa9
+ 800 0236 41020000 		.4byte	0x241
+ 801 023a 14       		.uleb128 0x14
+ 802 023b C3000000 		.4byte	0xc3
+ 803 023f 2F       		.byte	0x2f
+ 804 0240 00       		.byte	0
+ 805 0241 15       		.uleb128 0x15
+ 806 0242 06000000 		.4byte	.LASF38
+ 807 0246 01       		.byte	0x1
+ 808 0247 21       		.byte	0x21
+ 809 0248 31020000 		.4byte	0x231
+ 810 024c 00       		.byte	0
+ 811              		.section	.debug_abbrev,"",%progbits
+ 812              	.Ldebug_abbrev0:
+ 813 0000 01       		.uleb128 0x1
+ 814 0001 11       		.uleb128 0x11
+ 815 0002 01       		.byte	0x1
+ 816 0003 25       		.uleb128 0x25
+ 817 0004 0E       		.uleb128 0xe
+ 818 0005 13       		.uleb128 0x13
+ 819 0006 0B       		.uleb128 0xb
+ 820 0007 03       		.uleb128 0x3
+ 821 0008 0E       		.uleb128 0xe
+ 822 0009 1B       		.uleb128 0x1b
+ 823 000a 0E       		.uleb128 0xe
+ 824 000b 55       		.uleb128 0x55
+ 825 000c 17       		.uleb128 0x17
+ 826 000d 11       		.uleb128 0x11
+ 827 000e 01       		.uleb128 0x1
+ 828 000f 10       		.uleb128 0x10
+ 829 0010 17       		.uleb128 0x17
+ 830 0011 00       		.byte	0
+ 831 0012 00       		.byte	0
+ 832 0013 02       		.uleb128 0x2
+ 833 0014 24       		.uleb128 0x24
+ 834 0015 00       		.byte	0
+ 835 0016 0B       		.uleb128 0xb
+ 836 0017 0B       		.uleb128 0xb
+ 837 0018 3E       		.uleb128 0x3e
+ 838 0019 0B       		.uleb128 0xb
+ 839 001a 03       		.uleb128 0x3
+ 840 001b 0E       		.uleb128 0xe
+ 841 001c 00       		.byte	0
+ 842 001d 00       		.byte	0
+ 843 001e 03       		.uleb128 0x3
+ 844 001f 24       		.uleb128 0x24
+ 845 0020 00       		.byte	0
+ 846 0021 0B       		.uleb128 0xb
+ 847 0022 0B       		.uleb128 0xb
+ 848 0023 3E       		.uleb128 0x3e
+ 849 0024 0B       		.uleb128 0xb
+ 850 0025 03       		.uleb128 0x3
+ 851 0026 08       		.uleb128 0x8
+ 852 0027 00       		.byte	0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 23
+
+
+ 853 0028 00       		.byte	0
+ 854 0029 04       		.uleb128 0x4
+ 855 002a 16       		.uleb128 0x16
+ 856 002b 00       		.byte	0
+ 857 002c 03       		.uleb128 0x3
+ 858 002d 0E       		.uleb128 0xe
+ 859 002e 3A       		.uleb128 0x3a
+ 860 002f 0B       		.uleb128 0xb
+ 861 0030 3B       		.uleb128 0x3b
+ 862 0031 05       		.uleb128 0x5
+ 863 0032 49       		.uleb128 0x49
+ 864 0033 13       		.uleb128 0x13
+ 865 0034 00       		.byte	0
+ 866 0035 00       		.byte	0
+ 867 0036 05       		.uleb128 0x5
+ 868 0037 35       		.uleb128 0x35
+ 869 0038 00       		.byte	0
+ 870 0039 49       		.uleb128 0x49
+ 871 003a 13       		.uleb128 0x13
+ 872 003b 00       		.byte	0
+ 873 003c 00       		.byte	0
+ 874 003d 06       		.uleb128 0x6
+ 875 003e 0F       		.uleb128 0xf
+ 876 003f 00       		.byte	0
+ 877 0040 0B       		.uleb128 0xb
+ 878 0041 0B       		.uleb128 0xb
+ 879 0042 49       		.uleb128 0x49
+ 880 0043 13       		.uleb128 0x13
+ 881 0044 00       		.byte	0
+ 882 0045 00       		.byte	0
+ 883 0046 07       		.uleb128 0x7
+ 884 0047 15       		.uleb128 0x15
+ 885 0048 00       		.byte	0
+ 886 0049 27       		.uleb128 0x27
+ 887 004a 19       		.uleb128 0x19
+ 888 004b 00       		.byte	0
+ 889 004c 00       		.byte	0
+ 890 004d 08       		.uleb128 0x8
+ 891 004e 2E       		.uleb128 0x2e
+ 892 004f 00       		.byte	0
+ 893 0050 3F       		.uleb128 0x3f
+ 894 0051 19       		.uleb128 0x19
+ 895 0052 03       		.uleb128 0x3
+ 896 0053 0E       		.uleb128 0xe
+ 897 0054 3A       		.uleb128 0x3a
+ 898 0055 0B       		.uleb128 0xb
+ 899 0056 3B       		.uleb128 0x3b
+ 900 0057 0B       		.uleb128 0xb
+ 901 0058 27       		.uleb128 0x27
+ 902 0059 19       		.uleb128 0x19
+ 903 005a 11       		.uleb128 0x11
+ 904 005b 01       		.uleb128 0x1
+ 905 005c 12       		.uleb128 0x12
+ 906 005d 06       		.uleb128 0x6
+ 907 005e 40       		.uleb128 0x40
+ 908 005f 18       		.uleb128 0x18
+ 909 0060 9642     		.uleb128 0x2116
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 24
+
+
+ 910 0062 19       		.uleb128 0x19
+ 911 0063 00       		.byte	0
+ 912 0064 00       		.byte	0
+ 913 0065 09       		.uleb128 0x9
+ 914 0066 2E       		.uleb128 0x2e
+ 915 0067 01       		.byte	0x1
+ 916 0068 3F       		.uleb128 0x3f
+ 917 0069 19       		.uleb128 0x19
+ 918 006a 03       		.uleb128 0x3
+ 919 006b 0E       		.uleb128 0xe
+ 920 006c 3A       		.uleb128 0x3a
+ 921 006d 0B       		.uleb128 0xb
+ 922 006e 3B       		.uleb128 0x3b
+ 923 006f 0B       		.uleb128 0xb
+ 924 0070 27       		.uleb128 0x27
+ 925 0071 19       		.uleb128 0x19
+ 926 0072 11       		.uleb128 0x11
+ 927 0073 01       		.uleb128 0x1
+ 928 0074 12       		.uleb128 0x12
+ 929 0075 06       		.uleb128 0x6
+ 930 0076 40       		.uleb128 0x40
+ 931 0077 18       		.uleb128 0x18
+ 932 0078 9642     		.uleb128 0x2116
+ 933 007a 19       		.uleb128 0x19
+ 934 007b 01       		.uleb128 0x1
+ 935 007c 13       		.uleb128 0x13
+ 936 007d 00       		.byte	0
+ 937 007e 00       		.byte	0
+ 938 007f 0A       		.uleb128 0xa
+ 939 0080 05       		.uleb128 0x5
+ 940 0081 00       		.byte	0
+ 941 0082 03       		.uleb128 0x3
+ 942 0083 0E       		.uleb128 0xe
+ 943 0084 3A       		.uleb128 0x3a
+ 944 0085 0B       		.uleb128 0xb
+ 945 0086 3B       		.uleb128 0x3b
+ 946 0087 0B       		.uleb128 0xb
+ 947 0088 49       		.uleb128 0x49
+ 948 0089 13       		.uleb128 0x13
+ 949 008a 02       		.uleb128 0x2
+ 950 008b 18       		.uleb128 0x18
+ 951 008c 00       		.byte	0
+ 952 008d 00       		.byte	0
+ 953 008e 0B       		.uleb128 0xb
+ 954 008f 2E       		.uleb128 0x2e
+ 955 0090 00       		.byte	0
+ 956 0091 3F       		.uleb128 0x3f
+ 957 0092 19       		.uleb128 0x19
+ 958 0093 03       		.uleb128 0x3
+ 959 0094 0E       		.uleb128 0xe
+ 960 0095 3A       		.uleb128 0x3a
+ 961 0096 0B       		.uleb128 0xb
+ 962 0097 3B       		.uleb128 0x3b
+ 963 0098 0B       		.uleb128 0xb
+ 964 0099 27       		.uleb128 0x27
+ 965 009a 19       		.uleb128 0x19
+ 966 009b 11       		.uleb128 0x11
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 25
+
+
+ 967 009c 01       		.uleb128 0x1
+ 968 009d 12       		.uleb128 0x12
+ 969 009e 06       		.uleb128 0x6
+ 970 009f 40       		.uleb128 0x40
+ 971 00a0 18       		.uleb128 0x18
+ 972 00a1 9742     		.uleb128 0x2117
+ 973 00a3 19       		.uleb128 0x19
+ 974 00a4 00       		.byte	0
+ 975 00a5 00       		.byte	0
+ 976 00a6 0C       		.uleb128 0xc
+ 977 00a7 2E       		.uleb128 0x2e
+ 978 00a8 01       		.byte	0x1
+ 979 00a9 3F       		.uleb128 0x3f
+ 980 00aa 19       		.uleb128 0x19
+ 981 00ab 03       		.uleb128 0x3
+ 982 00ac 0E       		.uleb128 0xe
+ 983 00ad 3A       		.uleb128 0x3a
+ 984 00ae 0B       		.uleb128 0xb
+ 985 00af 3B       		.uleb128 0x3b
+ 986 00b0 0B       		.uleb128 0xb
+ 987 00b1 27       		.uleb128 0x27
+ 988 00b2 19       		.uleb128 0x19
+ 989 00b3 11       		.uleb128 0x11
+ 990 00b4 01       		.uleb128 0x1
+ 991 00b5 12       		.uleb128 0x12
+ 992 00b6 06       		.uleb128 0x6
+ 993 00b7 40       		.uleb128 0x40
+ 994 00b8 18       		.uleb128 0x18
+ 995 00b9 9742     		.uleb128 0x2117
+ 996 00bb 19       		.uleb128 0x19
+ 997 00bc 01       		.uleb128 0x1
+ 998 00bd 13       		.uleb128 0x13
+ 999 00be 00       		.byte	0
+ 1000 00bf 00       		.byte	0
+ 1001 00c0 0D       		.uleb128 0xd
+ 1002 00c1 2E       		.uleb128 0x2e
+ 1003 00c2 00       		.byte	0
+ 1004 00c3 3F       		.uleb128 0x3f
+ 1005 00c4 19       		.uleb128 0x19
+ 1006 00c5 03       		.uleb128 0x3
+ 1007 00c6 0E       		.uleb128 0xe
+ 1008 00c7 3A       		.uleb128 0x3a
+ 1009 00c8 0B       		.uleb128 0xb
+ 1010 00c9 3B       		.uleb128 0x3b
+ 1011 00ca 0B       		.uleb128 0xb
+ 1012 00cb 27       		.uleb128 0x27
+ 1013 00cc 19       		.uleb128 0x19
+ 1014 00cd 49       		.uleb128 0x49
+ 1015 00ce 13       		.uleb128 0x13
+ 1016 00cf 11       		.uleb128 0x11
+ 1017 00d0 01       		.uleb128 0x1
+ 1018 00d1 12       		.uleb128 0x12
+ 1019 00d2 06       		.uleb128 0x6
+ 1020 00d3 40       		.uleb128 0x40
+ 1021 00d4 18       		.uleb128 0x18
+ 1022 00d5 9742     		.uleb128 0x2117
+ 1023 00d7 19       		.uleb128 0x19
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 26
+
+
+ 1024 00d8 00       		.byte	0
+ 1025 00d9 00       		.byte	0
+ 1026 00da 0E       		.uleb128 0xe
+ 1027 00db 34       		.uleb128 0x34
+ 1028 00dc 00       		.byte	0
+ 1029 00dd 03       		.uleb128 0x3
+ 1030 00de 0E       		.uleb128 0xe
+ 1031 00df 3A       		.uleb128 0x3a
+ 1032 00e0 0B       		.uleb128 0xb
+ 1033 00e1 3B       		.uleb128 0x3b
+ 1034 00e2 0B       		.uleb128 0xb
+ 1035 00e3 49       		.uleb128 0x49
+ 1036 00e4 13       		.uleb128 0x13
+ 1037 00e5 02       		.uleb128 0x2
+ 1038 00e6 18       		.uleb128 0x18
+ 1039 00e7 00       		.byte	0
+ 1040 00e8 00       		.byte	0
+ 1041 00e9 0F       		.uleb128 0xf
+ 1042 00ea 2E       		.uleb128 0x2e
+ 1043 00eb 01       		.byte	0x1
+ 1044 00ec 3F       		.uleb128 0x3f
+ 1045 00ed 19       		.uleb128 0x19
+ 1046 00ee 03       		.uleb128 0x3
+ 1047 00ef 0E       		.uleb128 0xe
+ 1048 00f0 3A       		.uleb128 0x3a
+ 1049 00f1 0B       		.uleb128 0xb
+ 1050 00f2 3B       		.uleb128 0x3b
+ 1051 00f3 05       		.uleb128 0x5
+ 1052 00f4 27       		.uleb128 0x27
+ 1053 00f5 19       		.uleb128 0x19
+ 1054 00f6 49       		.uleb128 0x49
+ 1055 00f7 13       		.uleb128 0x13
+ 1056 00f8 11       		.uleb128 0x11
+ 1057 00f9 01       		.uleb128 0x1
+ 1058 00fa 12       		.uleb128 0x12
+ 1059 00fb 06       		.uleb128 0x6
+ 1060 00fc 40       		.uleb128 0x40
+ 1061 00fd 18       		.uleb128 0x18
+ 1062 00fe 9742     		.uleb128 0x2117
+ 1063 0100 19       		.uleb128 0x19
+ 1064 0101 01       		.uleb128 0x1
+ 1065 0102 13       		.uleb128 0x13
+ 1066 0103 00       		.byte	0
+ 1067 0104 00       		.byte	0
+ 1068 0105 10       		.uleb128 0x10
+ 1069 0106 34       		.uleb128 0x34
+ 1070 0107 00       		.byte	0
+ 1071 0108 03       		.uleb128 0x3
+ 1072 0109 0E       		.uleb128 0xe
+ 1073 010a 3A       		.uleb128 0x3a
+ 1074 010b 0B       		.uleb128 0xb
+ 1075 010c 3B       		.uleb128 0x3b
+ 1076 010d 05       		.uleb128 0x5
+ 1077 010e 49       		.uleb128 0x49
+ 1078 010f 13       		.uleb128 0x13
+ 1079 0110 02       		.uleb128 0x2
+ 1080 0111 18       		.uleb128 0x18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 27
+
+
+ 1081 0112 00       		.byte	0
+ 1082 0113 00       		.byte	0
+ 1083 0114 11       		.uleb128 0x11
+ 1084 0115 2E       		.uleb128 0x2e
+ 1085 0116 00       		.byte	0
+ 1086 0117 3F       		.uleb128 0x3f
+ 1087 0118 19       		.uleb128 0x19
+ 1088 0119 03       		.uleb128 0x3
+ 1089 011a 0E       		.uleb128 0xe
+ 1090 011b 3A       		.uleb128 0x3a
+ 1091 011c 0B       		.uleb128 0xb
+ 1092 011d 3B       		.uleb128 0x3b
+ 1093 011e 05       		.uleb128 0x5
+ 1094 011f 27       		.uleb128 0x27
+ 1095 0120 19       		.uleb128 0x19
+ 1096 0121 11       		.uleb128 0x11
+ 1097 0122 01       		.uleb128 0x1
+ 1098 0123 12       		.uleb128 0x12
+ 1099 0124 06       		.uleb128 0x6
+ 1100 0125 40       		.uleb128 0x40
+ 1101 0126 18       		.uleb128 0x18
+ 1102 0127 9742     		.uleb128 0x2117
+ 1103 0129 19       		.uleb128 0x19
+ 1104 012a 00       		.byte	0
+ 1105 012b 00       		.byte	0
+ 1106 012c 12       		.uleb128 0x12
+ 1107 012d 2E       		.uleb128 0x2e
+ 1108 012e 00       		.byte	0
+ 1109 012f 3F       		.uleb128 0x3f
+ 1110 0130 19       		.uleb128 0x19
+ 1111 0131 03       		.uleb128 0x3
+ 1112 0132 0E       		.uleb128 0xe
+ 1113 0133 3A       		.uleb128 0x3a
+ 1114 0134 0B       		.uleb128 0xb
+ 1115 0135 3B       		.uleb128 0x3b
+ 1116 0136 05       		.uleb128 0x5
+ 1117 0137 27       		.uleb128 0x27
+ 1118 0138 19       		.uleb128 0x19
+ 1119 0139 49       		.uleb128 0x49
+ 1120 013a 13       		.uleb128 0x13
+ 1121 013b 11       		.uleb128 0x11
+ 1122 013c 01       		.uleb128 0x1
+ 1123 013d 12       		.uleb128 0x12
+ 1124 013e 06       		.uleb128 0x6
+ 1125 013f 40       		.uleb128 0x40
+ 1126 0140 18       		.uleb128 0x18
+ 1127 0141 9742     		.uleb128 0x2117
+ 1128 0143 19       		.uleb128 0x19
+ 1129 0144 00       		.byte	0
+ 1130 0145 00       		.byte	0
+ 1131 0146 13       		.uleb128 0x13
+ 1132 0147 01       		.uleb128 0x1
+ 1133 0148 01       		.byte	0x1
+ 1134 0149 49       		.uleb128 0x49
+ 1135 014a 13       		.uleb128 0x13
+ 1136 014b 01       		.uleb128 0x1
+ 1137 014c 13       		.uleb128 0x13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 28
+
+
+ 1138 014d 00       		.byte	0
+ 1139 014e 00       		.byte	0
+ 1140 014f 14       		.uleb128 0x14
+ 1141 0150 21       		.uleb128 0x21
+ 1142 0151 00       		.byte	0
+ 1143 0152 49       		.uleb128 0x49
+ 1144 0153 13       		.uleb128 0x13
+ 1145 0154 2F       		.uleb128 0x2f
+ 1146 0155 0B       		.uleb128 0xb
+ 1147 0156 00       		.byte	0
+ 1148 0157 00       		.byte	0
+ 1149 0158 15       		.uleb128 0x15
+ 1150 0159 34       		.uleb128 0x34
+ 1151 015a 00       		.byte	0
+ 1152 015b 03       		.uleb128 0x3
+ 1153 015c 0E       		.uleb128 0xe
+ 1154 015d 3A       		.uleb128 0x3a
+ 1155 015e 0B       		.uleb128 0xb
+ 1156 015f 3B       		.uleb128 0x3b
+ 1157 0160 0B       		.uleb128 0xb
+ 1158 0161 49       		.uleb128 0x49
+ 1159 0162 13       		.uleb128 0x13
+ 1160 0163 3F       		.uleb128 0x3f
+ 1161 0164 19       		.uleb128 0x19
+ 1162 0165 3C       		.uleb128 0x3c
+ 1163 0166 19       		.uleb128 0x19
+ 1164 0167 00       		.byte	0
+ 1165 0168 00       		.byte	0
+ 1166 0169 00       		.byte	0
+ 1167              		.section	.debug_aranges,"",%progbits
+ 1168 0000 7C000000 		.4byte	0x7c
+ 1169 0004 0200     		.2byte	0x2
+ 1170 0006 00000000 		.4byte	.Ldebug_info0
+ 1171 000a 04       		.byte	0x4
+ 1172 000b 00       		.byte	0
+ 1173 000c 0000     		.2byte	0
+ 1174 000e 0000     		.2byte	0
+ 1175 0010 00000000 		.4byte	.LFB0
+ 1176 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1177 0018 00000000 		.4byte	.LFB1
+ 1178 001c 26000000 		.4byte	.LFE1-.LFB1
+ 1179 0020 00000000 		.4byte	.LFB2
+ 1180 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 1181 0028 00000000 		.4byte	.LFB3
+ 1182 002c 0A000000 		.4byte	.LFE3-.LFB3
+ 1183 0030 00000000 		.4byte	.LFB4
+ 1184 0034 1C000000 		.4byte	.LFE4-.LFB4
+ 1185 0038 00000000 		.4byte	.LFB5
+ 1186 003c 14000000 		.4byte	.LFE5-.LFB5
+ 1187 0040 00000000 		.4byte	.LFB6
+ 1188 0044 50000000 		.4byte	.LFE6-.LFB6
+ 1189 0048 00000000 		.4byte	.LFB7
+ 1190 004c 2C000000 		.4byte	.LFE7-.LFB7
+ 1191 0050 00000000 		.4byte	.LFB8
+ 1192 0054 14000000 		.4byte	.LFE8-.LFB8
+ 1193 0058 00000000 		.4byte	.LFB9
+ 1194 005c 1C000000 		.4byte	.LFE9-.LFB9
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 29
+
+
+ 1195 0060 00000000 		.4byte	.LFB10
+ 1196 0064 14000000 		.4byte	.LFE10-.LFB10
+ 1197 0068 00000000 		.4byte	.LFB11
+ 1198 006c 14000000 		.4byte	.LFE11-.LFB11
+ 1199 0070 00000000 		.4byte	.LFB12
+ 1200 0074 14000000 		.4byte	.LFE12-.LFB12
+ 1201 0078 00000000 		.4byte	0
+ 1202 007c 00000000 		.4byte	0
+ 1203              		.section	.debug_ranges,"",%progbits
+ 1204              	.Ldebug_ranges0:
+ 1205 0000 00000000 		.4byte	.LFB0
+ 1206 0004 24000000 		.4byte	.LFE0
+ 1207 0008 00000000 		.4byte	.LFB1
+ 1208 000c 26000000 		.4byte	.LFE1
+ 1209 0010 00000000 		.4byte	.LFB2
+ 1210 0014 1C000000 		.4byte	.LFE2
+ 1211 0018 00000000 		.4byte	.LFB3
+ 1212 001c 0A000000 		.4byte	.LFE3
+ 1213 0020 00000000 		.4byte	.LFB4
+ 1214 0024 1C000000 		.4byte	.LFE4
+ 1215 0028 00000000 		.4byte	.LFB5
+ 1216 002c 14000000 		.4byte	.LFE5
+ 1217 0030 00000000 		.4byte	.LFB6
+ 1218 0034 50000000 		.4byte	.LFE6
+ 1219 0038 00000000 		.4byte	.LFB7
+ 1220 003c 2C000000 		.4byte	.LFE7
+ 1221 0040 00000000 		.4byte	.LFB8
+ 1222 0044 14000000 		.4byte	.LFE8
+ 1223 0048 00000000 		.4byte	.LFB9
+ 1224 004c 1C000000 		.4byte	.LFE9
+ 1225 0050 00000000 		.4byte	.LFB10
+ 1226 0054 14000000 		.4byte	.LFE10
+ 1227 0058 00000000 		.4byte	.LFB11
+ 1228 005c 14000000 		.4byte	.LFE11
+ 1229 0060 00000000 		.4byte	.LFB12
+ 1230 0064 14000000 		.4byte	.LFE12
+ 1231 0068 00000000 		.4byte	0
+ 1232 006c 00000000 		.4byte	0
+ 1233              		.section	.debug_line,"",%progbits
+ 1234              	.Ldebug_line0:
+ 1235 0000 4B010000 		.section	.debug_str,"MS",%progbits,1
+ 1235      02004D00 
+ 1235      00000201 
+ 1235      FB0E0D00 
+ 1235      01010101 
+ 1236              	.LASF14:
+ 1237 0000 72656733 		.ascii	"reg32\000"
+ 1237      3200
+ 1238              	.LASF38:
+ 1239 0006 43795261 		.ascii	"CyRamVectors\000"
+ 1239      6D566563 
+ 1239      746F7273 
+ 1239      00
+ 1240              	.LASF21:
+ 1241 0013 42757474 		.ascii	"Button_Right_ISR_StartEx\000"
+ 1241      6F6E5F52 
+ 1241      69676874 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 30
+
+
+ 1241      5F495352 
+ 1241      5F537461 
+ 1242              	.LASF3:
+ 1243 002c 73686F72 		.ascii	"short unsigned int\000"
+ 1243      7420756E 
+ 1243      7369676E 
+ 1243      65642069 
+ 1243      6E7400
+ 1244              	.LASF24:
+ 1245 003f 42757474 		.ascii	"Button_Right_ISR_SetPriority\000"
+ 1245      6F6E5F52 
+ 1245      69676874 
+ 1245      5F495352 
+ 1245      5F536574 
+ 1246              	.LASF18:
+ 1247 005c 42757474 		.ascii	"Button_Right_ISR_Start\000"
+ 1247      6F6E5F52 
+ 1247      69676874 
+ 1247      5F495352 
+ 1247      5F537461 
+ 1248              	.LASF11:
+ 1249 0073 666C6F61 		.ascii	"float\000"
+ 1249      7400
+ 1250              	.LASF31:
+ 1251 0079 42757474 		.ascii	"Button_Right_ISR_Disable\000"
+ 1251      6F6E5F52 
+ 1251      69676874 
+ 1251      5F495352 
+ 1251      5F446973 
+ 1252              	.LASF1:
+ 1253 0092 756E7369 		.ascii	"unsigned char\000"
+ 1253      676E6564 
+ 1253      20636861 
+ 1253      7200
+ 1254              	.LASF26:
+ 1255 00a0 696E7465 		.ascii	"interruptState\000"
+ 1255      72727570 
+ 1255      74537461 
+ 1255      746500
+ 1256              	.LASF5:
+ 1257 00af 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1257      20756E73 
+ 1257      69676E65 
+ 1257      6420696E 
+ 1257      7400
+ 1258              	.LASF9:
+ 1259 00c1 75696E74 		.ascii	"uint8\000"
+ 1259      3800
+ 1260              	.LASF34:
+ 1261 00c7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1261      43313120 
+ 1261      352E342E 
+ 1261      31203230 
+ 1261      31363036 
+ 1262 00fa 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1262      20726576 
+ 1262      6973696F 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 31
+
+
+ 1262      6E203233 
+ 1262      37373135 
+ 1263 012d 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1263      66756E63 
+ 1263      74696F6E 
+ 1263      2D736563 
+ 1263      74696F6E 
+ 1264              	.LASF25:
+ 1265 0155 7072696F 		.ascii	"priority\000"
+ 1265      72697479 
+ 1265      00
+ 1266              	.LASF12:
+ 1267 015e 646F7562 		.ascii	"double\000"
+ 1267      6C6500
+ 1268              	.LASF33:
+ 1269 0165 42757474 		.ascii	"Button_Right_ISR_ClearPending\000"
+ 1269      6F6E5F52 
+ 1269      69676874 
+ 1269      5F495352 
+ 1269      5F436C65 
+ 1270              	.LASF36:
+ 1271 0183 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 1271      73657273 
+ 1271      5C6A6167 
+ 1271      756D6965 
+ 1271      6C5C446F 
+ 1272 01b1 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\Buttons-Leds-UART."
+ 1272      50536F43 
+ 1272      2D313031 
+ 1272      5C547261 
+ 1272      696E696E 
+ 1273 01e1 63796473 		.ascii	"cydsn\000"
+ 1273      6E00
+ 1274              	.LASF10:
+ 1275 01e7 75696E74 		.ascii	"uint32\000"
+ 1275      333200
+ 1276              	.LASF22:
+ 1277 01ee 42757474 		.ascii	"Button_Right_ISR_SetVector\000"
+ 1277      6F6E5F52 
+ 1277      69676874 
+ 1277      5F495352 
+ 1277      5F536574 
+ 1278              	.LASF8:
+ 1279 0209 756E7369 		.ascii	"unsigned int\000"
+ 1279      676E6564 
+ 1279      20696E74 
+ 1279      00
+ 1280              	.LASF23:
+ 1281 0216 61646472 		.ascii	"address\000"
+ 1281      65737300 
+ 1282              	.LASF7:
+ 1283 021e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1283      206C6F6E 
+ 1283      6720756E 
+ 1283      7369676E 
+ 1283      65642069 
+ 1284              	.LASF15:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 32
+
+
+ 1285 0235 63796973 		.ascii	"cyisraddress\000"
+ 1285      72616464 
+ 1285      72657373 
+ 1285      00
+ 1286              	.LASF28:
+ 1287 0242 42757474 		.ascii	"Button_Right_ISR_Enable\000"
+ 1287      6F6E5F52 
+ 1287      69676874 
+ 1287      5F495352 
+ 1287      5F456E61 
+ 1288              	.LASF35:
+ 1289 025a 47656E65 		.ascii	"Generated_Source\\PSoC4\\Button_Right_ISR.c\000"
+ 1289      72617465 
+ 1289      645F536F 
+ 1289      75726365 
+ 1289      5C50536F 
+ 1290              	.LASF17:
+ 1291 0284 73697A65 		.ascii	"sizetype\000"
+ 1291      74797065 
+ 1291      00
+ 1292              	.LASF6:
+ 1293 028d 6C6F6E67 		.ascii	"long long int\000"
+ 1293      206C6F6E 
+ 1293      6720696E 
+ 1293      7400
+ 1294              	.LASF19:
+ 1295 029b 42757474 		.ascii	"Button_Right_ISR_Stop\000"
+ 1295      6F6E5F52 
+ 1295      69676874 
+ 1295      5F495352 
+ 1295      5F53746F 
+ 1296              	.LASF13:
+ 1297 02b1 63686172 		.ascii	"char\000"
+ 1297      00
+ 1298              	.LASF30:
+ 1299 02b6 42757474 		.ascii	"Button_Right_ISR_GetState\000"
+ 1299      6F6E5F52 
+ 1299      69676874 
+ 1299      5F495352 
+ 1299      5F476574 
+ 1300              	.LASF32:
+ 1301 02d0 42757474 		.ascii	"Button_Right_ISR_SetPending\000"
+ 1301      6F6E5F52 
+ 1301      69676874 
+ 1301      5F495352 
+ 1301      5F536574 
+ 1302              	.LASF2:
+ 1303 02ec 73686F72 		.ascii	"short int\000"
+ 1303      7420696E 
+ 1303      7400
+ 1304              	.LASF29:
+ 1305 02f6 42757474 		.ascii	"Button_Right_ISR_GetVector\000"
+ 1305      6F6E5F52 
+ 1305      69676874 
+ 1305      5F495352 
+ 1305      5F476574 
+ 1306              	.LASF27:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccL8R2ew.s 			page 33
+
+
+ 1307 0311 7072696F 		.ascii	"priorityOffset\000"
+ 1307      72697479 
+ 1307      4F666673 
+ 1307      657400
+ 1308              	.LASF4:
+ 1309 0320 6C6F6E67 		.ascii	"long int\000"
+ 1309      20696E74 
+ 1309      00
+ 1310              	.LASF16:
+ 1311 0329 6C6F6E67 		.ascii	"long double\000"
+ 1311      20646F75 
+ 1311      626C6500 
+ 1312              	.LASF0:
+ 1313 0335 7369676E 		.ascii	"signed char\000"
+ 1313      65642063 
+ 1313      68617200 
+ 1314              	.LASF20:
+ 1315 0341 42757474 		.ascii	"Button_Right_ISR_Interrupt\000"
+ 1315      6F6E5F52 
+ 1315      69676874 
+ 1315      5F495352 
+ 1315      5F496E74 
+ 1316              	.LASF37:
+ 1317 035c 42757474 		.ascii	"Button_Right_ISR_GetPriority\000"
+ 1317      6F6E5F52 
+ 1317      69676874 
+ 1317      5F495352 
+ 1317      5F476574 
+ 1318              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,7 @@
+D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\TrainingProjects\Buttons-Leds-UART.cydsn\Buttons-Leds-UART.cyprj|0ee18c54-f886-4903-ac87-647b60f36e3a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|3eb3096f-cd28-4c0a-8994-6e271253f586
+D:\Users\jagumiel\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|b58f8c20-2751-4635-904f-dc54e24c83e8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|9383e751-aa8f-4d2c-afd6-069f40c359a3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|962f75c8-fa66-47d0-8323-064b38068642
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|02373a90-b7e9-44bc-98f3-2bca653a1e2f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|48a40ff3-71d1-4e10-889a-f2c714541108
