@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
   28:Generated_Source\PSoC4/PWM_3_PM.c **** *  Saves the current user configuration of the component.
   29:Generated_Source\PSoC4/PWM_3_PM.c **** *
   30:Generated_Source\PSoC4/PWM_3_PM.c **** * Parameters:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 2
 
 
   31:Generated_Source\PSoC4/PWM_3_PM.c **** *  None
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
   64:Generated_Source\PSoC4/PWM_3_PM.c ****             PWM_3_backup.PWMControlRegister = PWM_3_ReadControlRegister();
   49              		.loc 1 64 0
   50 0016 FFF7FEFF 		bl	PWM_3_ReadControlRegister
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 3
 
 
   51              	.LVL2:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
   90:Generated_Source\PSoC4/PWM_3_PM.c ****         #if(!PWM_3_UsingFixedFunction)
   91:Generated_Source\PSoC4/PWM_3_PM.c ****             #if(!PWM_3_PWMModeIsCenterAligned)
   92:Generated_Source\PSoC4/PWM_3_PM.c ****                 PWM_3_WritePeriod(PWM_3_backup.PWMPeriod);
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 4
 
 
   80              		.loc 1 92 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  112              		.thumb_func
  113              		.type	PWM_3_Sleep, %function
  114              	PWM_3_Sleep:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 5
 
 
  115              	.LFB2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  136              		.loc 1 147 0
  137 0014 0022     		movs	r2, #0
  138 0016 044B     		ldr	r3, .L10+4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 6
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 6
 
 
  139 0018 1A70     		strb	r2, [r3]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  175:Generated_Source\PSoC4/PWM_3_PM.c **** *  block on wakeup from sleep mode.
  176:Generated_Source\PSoC4/PWM_3_PM.c **** *
  177:Generated_Source\PSoC4/PWM_3_PM.c **** *******************************************************************************/
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 7
 
 
  178:Generated_Source\PSoC4/PWM_3_PM.c **** void PWM_3_Wakeup(void) 
@@ -418,52 +418,52 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  207              		.section	.debug_info,"",%progbits
  208              	.Ldebug_info0:
  209 0000 13020000 		.4byte	0x213
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 8
 
 
  210 0004 0400     		.2byte	0x4
  211 0006 00000000 		.4byte	.Ldebug_abbrev0
  212 000a 04       		.byte	0x4
  213 000b 01       		.uleb128 0x1
- 214 000c D1010000 		.4byte	.LASF34
+ 214 000c CC010000 		.4byte	.LASF34
  215 0010 0C       		.byte	0xc
  216 0011 2F000000 		.4byte	.LASF35
- 217 0015 64000000 		.4byte	.LASF36
+ 217 0015 76000000 		.4byte	.LASF36
  218 0019 00000000 		.4byte	.Ldebug_ranges0+0
  219 001d 00000000 		.4byte	0
  220 0021 00000000 		.4byte	.Ldebug_line0
  221 0025 02       		.uleb128 0x2
  222 0026 01       		.byte	0x1
  223 0027 06       		.byte	0x6
- 224 0028 CD020000 		.4byte	.LASF0
+ 224 0028 C8020000 		.4byte	.LASF0
  225 002c 02       		.uleb128 0x2
  226 002d 01       		.byte	0x1
  227 002e 08       		.byte	0x8
- 228 002f 15010000 		.4byte	.LASF1
+ 228 002f 10010000 		.4byte	.LASF1
  229 0033 02       		.uleb128 0x2
  230 0034 02       		.byte	0x2
  231 0035 05       		.byte	0x5
- 232 0036 AE020000 		.4byte	.LASF2
+ 232 0036 A9020000 		.4byte	.LASF2
  233 003a 02       		.uleb128 0x2
  234 003b 02       		.byte	0x2
  235 003c 07       		.byte	0x7
- 236 003d DE000000 		.4byte	.LASF3
+ 236 003d D9000000 		.4byte	.LASF3
  237 0041 02       		.uleb128 0x2
  238 0042 04       		.byte	0x4
  239 0043 05       		.byte	0x5
- 240 0044 B8020000 		.4byte	.LASF4
+ 240 0044 B3020000 		.4byte	.LASF4
  241 0048 02       		.uleb128 0x2
  242 0049 04       		.byte	0x4
  243 004a 07       		.byte	0x7
- 244 004b 83010000 		.4byte	.LASF5
+ 244 004b 7E010000 		.4byte	.LASF5
  245 004f 02       		.uleb128 0x2
  246 0050 08       		.byte	0x8
  247 0051 05       		.byte	0x5
- 248 0052 6D020000 		.4byte	.LASF6
+ 248 0052 68020000 		.4byte	.LASF6
  249 0056 02       		.uleb128 0x2
  250 0057 08       		.byte	0x8
  251 0058 07       		.byte	0x7
- 252 0059 AD010000 		.4byte	.LASF7
+ 252 0059 A8010000 		.4byte	.LASF7
  253 005d 03       		.uleb128 0x3
  254 005e 04       		.byte	0x4
  255 005f 05       		.byte	0x5
@@ -471,29 +471,29 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  257 0064 02       		.uleb128 0x2
  258 0065 04       		.byte	0x4
  259 0066 07       		.byte	0x7
- 260 0067 95010000 		.4byte	.LASF8
+ 260 0067 90010000 		.4byte	.LASF8
  261 006b 04       		.uleb128 0x4
- 262 006c 50010000 		.4byte	.LASF12
+ 262 006c 4B010000 		.4byte	.LASF12
  263 0070 02       		.byte	0x2
  264 0071 E401     		.2byte	0x1e4
  265 0073 2C000000 		.4byte	0x2c
  266 0077 02       		.uleb128 0x2
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 9
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 9
 
 
  267 0078 04       		.byte	0x4
  268 0079 04       		.byte	0x4
- 269 007a FE000000 		.4byte	.LASF9
+ 269 007a F9000000 		.4byte	.LASF9
  270 007e 02       		.uleb128 0x2
  271 007f 08       		.byte	0x8
  272 0080 04       		.byte	0x4
- 273 0081 69010000 		.4byte	.LASF10
+ 273 0081 64010000 		.4byte	.LASF10
  274 0085 02       		.uleb128 0x2
  275 0086 01       		.byte	0x1
  276 0087 08       		.byte	0x8
- 277 0088 8F020000 		.4byte	.LASF11
+ 277 0088 8A020000 		.4byte	.LASF11
  278 008c 04       		.uleb128 0x4
- 279 008d 5F020000 		.4byte	.LASF13
+ 279 008d 5A020000 		.4byte	.LASF13
  280 0091 02       		.byte	0x2
  281 0092 8E02     		.2byte	0x28e
  282 0094 98000000 		.4byte	0x98
@@ -502,18 +502,18 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  285 009d 02       		.uleb128 0x2
  286 009e 08       		.byte	0x8
  287 009f 04       		.byte	0x4
- 288 00a0 C1020000 		.4byte	.LASF14
+ 288 00a0 BC020000 		.4byte	.LASF14
  289 00a4 02       		.uleb128 0x2
  290 00a5 04       		.byte	0x4
  291 00a6 07       		.byte	0x7
- 292 00a7 64020000 		.4byte	.LASF15
+ 292 00a7 5F020000 		.4byte	.LASF15
  293 00ab 06       		.uleb128 0x6
  294 00ac 05       		.byte	0x5
  295 00ad 03       		.byte	0x3
  296 00ae 6B       		.byte	0x6b
  297 00af F0000000 		.4byte	0xf0
  298 00b3 07       		.uleb128 0x7
- 299 00b4 35010000 		.4byte	.LASF16
+ 299 00b4 30010000 		.4byte	.LASF16
  300 00b8 03       		.byte	0x3
  301 00b9 6E       		.byte	0x6e
  302 00ba 6B000000 		.4byte	0x6b
@@ -531,14 +531,14 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  314 00d2 6B000000 		.4byte	0x6b
  315 00d6 02       		.byte	0x2
  316 00d7 07       		.uleb128 0x7
- 317 00d8 D9020000 		.4byte	.LASF19
+ 317 00d8 D4020000 		.4byte	.LASF19
  318 00dc 03       		.byte	0x3
  319 00dd 76       		.byte	0x76
  320 00de 6B000000 		.4byte	0x6b
  321 00e2 03       		.byte	0x3
  322 00e3 07       		.uleb128 0x7
- 323 00e4 56010000 		.4byte	.LASF20
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 10
+ 323 00e4 51010000 		.4byte	.LASF20
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 10
 
 
  324 00e8 03       		.byte	0x3
@@ -547,7 +547,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  327 00ee 04       		.byte	0x4
  328 00ef 00       		.byte	0
  329 00f0 08       		.uleb128 0x8
- 330 00f1 70010000 		.4byte	.LASF21
+ 330 00f1 6B010000 		.4byte	.LASF21
  331 00f5 03       		.byte	0x3
  332 00f6 8B       		.byte	0x8b
  333 00f7 AB000000 		.4byte	0xab
@@ -571,7 +571,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  351 0127 D4010000 		.4byte	0x1d4
  352 012b 00       		.byte	0
  353 012c 09       		.uleb128 0x9
- 354 012d 7B020000 		.4byte	.LASF23
+ 354 012d 76020000 		.4byte	.LASF23
  355 0131 01       		.byte	0x1
  356 0132 58       		.byte	0x58
  357 0133 00000000 		.4byte	.LFB1
@@ -590,7 +590,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  370 0158 F5010000 		.4byte	0x1f5
  371 015c 00       		.byte	0
  372 015d 09       		.uleb128 0x9
- 373 015e 44010000 		.4byte	.LASF24
+ 373 015e 3F010000 		.4byte	.LASF24
  374 0162 01       		.byte	0x1
  375 0163 88       		.byte	0x88
  376 0164 00000000 		.4byte	.LFB2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  378 016c 01       		.uleb128 0x1
  379 016d 9C       		.byte	0x9c
  380 016e 85010000 		.4byte	0x185
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 11
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 11
 
 
  381 0172 0A       		.uleb128 0xa
@@ -609,7 +609,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  386 0180 FB000000 		.4byte	0xfb
  387 0184 00       		.byte	0
  388 0185 09       		.uleb128 0x9
- 389 0186 F1000000 		.4byte	.LASF25
+ 389 0186 EC000000 		.4byte	.LASF25
  390 018a 01       		.byte	0x1
  391 018b B2       		.byte	0xb2
  392 018c 00000000 		.4byte	.LFB3
@@ -633,23 +633,23 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  410 01b9 03       		.byte	0x3
  411 01ba 00000000 		.4byte	PWM_3_backup
  412 01be 0C       		.uleb128 0xc
- 413 01bf 04010000 		.4byte	.LASF26
- 414 01c3 04010000 		.4byte	.LASF26
+ 413 01bf FF000000 		.4byte	.LASF26
+ 414 01c3 FF000000 		.4byte	.LASF26
  415 01c7 03       		.byte	0x3
  416 01c8 C0       		.byte	0xc0
  417 01c9 0C       		.uleb128 0xc
- 418 01ca CC000000 		.4byte	.LASF27
- 419 01ce CC000000 		.4byte	.LASF27
+ 418 01ca 64000000 		.4byte	.LASF27
+ 419 01ce 64000000 		.4byte	.LASF27
  420 01d2 03       		.byte	0x3
  421 01d3 B3       		.byte	0xb3
  422 01d4 0C       		.uleb128 0xc
- 423 01d5 94020000 		.4byte	.LASF28
- 424 01d9 94020000 		.4byte	.LASF28
+ 423 01d5 8F020000 		.4byte	.LASF28
+ 424 01d9 8F020000 		.4byte	.LASF28
  425 01dd 03       		.byte	0x3
  426 01de 9D       		.byte	0x9d
  427 01df 0C       		.uleb128 0xc
- 428 01e0 23010000 		.4byte	.LASF29
- 429 01e4 23010000 		.4byte	.LASF29
+ 428 01e0 1E010000 		.4byte	.LASF29
+ 429 01e4 1E010000 		.4byte	.LASF29
  430 01e8 03       		.byte	0x3
  431 01e9 BE       		.byte	0xbe
  432 01ea 0C       		.uleb128 0xc
@@ -658,21 +658,21 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  435 01f3 03       		.byte	0x3
  436 01f4 BA       		.byte	0xba
  437 01f5 0C       		.uleb128 0xc
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 12
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 12
 
 
- 438 01f6 EC020000 		.4byte	.LASF31
- 439 01fa EC020000 		.4byte	.LASF31
+ 438 01f6 E7020000 		.4byte	.LASF31
+ 439 01fa E7020000 		.4byte	.LASF31
  440 01fe 03       		.byte	0x3
  441 01ff 9E       		.byte	0x9e
  442 0200 0C       		.uleb128 0xc
- 443 0201 A2010000 		.4byte	.LASF32
- 444 0205 A2010000 		.4byte	.LASF32
+ 443 0201 9D010000 		.4byte	.LASF32
+ 444 0205 9D010000 		.4byte	.LASF32
  445 0209 03       		.byte	0x3
  446 020a 93       		.byte	0x93
  447 020b 0C       		.uleb128 0xc
- 448 020c C4010000 		.4byte	.LASF33
- 449 0210 C4010000 		.4byte	.LASF33
+ 448 020c BF010000 		.4byte	.LASF33
+ 449 0210 BF010000 		.4byte	.LASF33
  450 0214 03       		.byte	0x3
  451 0215 DB       		.byte	0xdb
  452 0216 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  492 0025 03       		.uleb128 0x3
  493 0026 08       		.uleb128 0x8
  494 0027 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 13
 
 
  495 0028 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  549 005e 3A       		.uleb128 0x3a
  550 005f 0B       		.uleb128 0xb
  551 0060 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 14
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 14
 
 
  552 0061 0B       		.uleb128 0xb
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  606 009a 0C       		.uleb128 0xc
  607 009b 2E       		.uleb128 0x2e
  608 009c 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 15
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 15
 
 
  609 009d 3F       		.uleb128 0x3f
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  658      335F6261 
  658      636B7570 
  658      00
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 16
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 16
 
 
  659              	.LASF17:
@@ -926,186 +926,185 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 1
  668      69746543 
  668      6F756E74 
  668      657200
- 669              	.LASF36:
- 670 0064 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
- 670      73657273 
- 670      5C6A6167 
- 670      756D6965 
- 670      6C5C446F 
- 671 0092 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\UART-RGB-UART_Cont"
- 671      50536F43 
- 671      2D313031 
- 671      5C547261 
- 671      696E696E 
- 672 00c2 726F6C2E 		.ascii	"rol.cydsn\000"
- 672      63796473 
- 672      6E00
- 673              	.LASF27:
- 674 00cc 50574D5F 		.ascii	"PWM_3_ReadCounter\000"
- 674      335F5265 
- 674      6164436F 
- 674      756E7465 
- 674      7200
+ 669              	.LASF27:
+ 670 0064 50574D5F 		.ascii	"PWM_3_ReadCounter\000"
+ 670      335F5265 
+ 670      6164436F 
+ 670      756E7465 
+ 670      7200
+ 671              	.LASF36:
+ 672 0076 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 672      73657273 
+ 672      5C6A6167 
+ 672      756D6965 
+ 672      6C5C446F 
+ 673 00a4 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\RGB-UART_Control.c"
+ 673      50536F43 
+ 673      2D313031 
+ 673      5C547261 
+ 673      696E696E 
+ 674 00d4 7964736E 		.ascii	"ydsn\000"
+ 674      00
  675              	.LASF3:
- 676 00de 73686F72 		.ascii	"short unsigned int\000"
+ 676 00d9 73686F72 		.ascii	"short unsigned int\000"
  676      7420756E 
  676      7369676E 
  676      65642069 
  676      6E7400
  677              	.LASF25:
- 678 00f1 50574D5F 		.ascii	"PWM_3_Wakeup\000"
+ 678 00ec 50574D5F 		.ascii	"PWM_3_Wakeup\000"
  678      335F5761 
  678      6B657570 
  678      00
  679              	.LASF9:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 17
+ 680 00f9 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 17
 
 
- 680 00fe 666C6F61 		.ascii	"float\000"
  680      7400
  681              	.LASF26:
- 682 0104 50574D5F 		.ascii	"PWM_3_ReadPeriod\000"
+ 682 00ff 50574D5F 		.ascii	"PWM_3_ReadPeriod\000"
  682      335F5265 
  682      61645065 
  682      72696F64 
  682      00
  683              	.LASF1:
- 684 0115 756E7369 		.ascii	"unsigned char\000"
+ 684 0110 756E7369 		.ascii	"unsigned char\000"
  684      676E6564 
  684      20636861 
  684      7200
  685              	.LASF29:
- 686 0123 50574D5F 		.ascii	"PWM_3_WritePeriod\000"
+ 686 011e 50574D5F 		.ascii	"PWM_3_WritePeriod\000"
  686      335F5772 
  686      69746550 
  686      6572696F 
  686      6400
  687              	.LASF16:
- 688 0135 50574D45 		.ascii	"PWMEnableState\000"
+ 688 0130 50574D45 		.ascii	"PWMEnableState\000"
  688      6E61626C 
  688      65537461 
  688      746500
  689              	.LASF24:
- 690 0144 50574D5F 		.ascii	"PWM_3_Sleep\000"
+ 690 013f 50574D5F 		.ascii	"PWM_3_Sleep\000"
  690      335F536C 
  690      65657000 
  691              	.LASF12:
- 692 0150 75696E74 		.ascii	"uint8\000"
+ 692 014b 75696E74 		.ascii	"uint8\000"
  692      3800
  693              	.LASF20:
- 694 0156 50574D43 		.ascii	"PWMControlRegister\000"
+ 694 0151 50574D43 		.ascii	"PWMControlRegister\000"
  694      6F6E7472 
  694      6F6C5265 
  694      67697374 
  694      657200
  695              	.LASF10:
- 696 0169 646F7562 		.ascii	"double\000"
+ 696 0164 646F7562 		.ascii	"double\000"
  696      6C6500
  697              	.LASF21:
- 698 0170 50574D5F 		.ascii	"PWM_3_backupStruct\000"
+ 698 016b 50574D5F 		.ascii	"PWM_3_backupStruct\000"
  698      335F6261 
  698      636B7570 
  698      53747275 
  698      637400
  699              	.LASF5:
- 700 0183 6C6F6E67 		.ascii	"long unsigned int\000"
+ 700 017e 6C6F6E67 		.ascii	"long unsigned int\000"
  700      20756E73 
  700      69676E65 
  700      6420696E 
  700      7400
  701              	.LASF8:
- 702 0195 756E7369 		.ascii	"unsigned int\000"
+ 702 0190 756E7369 		.ascii	"unsigned int\000"
  702      676E6564 
  702      20696E74 
  702      00
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 18
-
-
  703              	.LASF32:
- 704 01a2 50574D5F 		.ascii	"PWM_3_Stop\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 18
+
+
+ 704 019d 50574D5F 		.ascii	"PWM_3_Stop\000"
  704      335F5374 
  704      6F7000
  705              	.LASF7:
- 706 01ad 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 706 01a8 6C6F6E67 		.ascii	"long long unsigned int\000"
  706      206C6F6E 
  706      6720756E 
  706      7369676E 
  706      65642069 
  707              	.LASF33:
- 708 01c4 50574D5F 		.ascii	"PWM_3_Enable\000"
+ 708 01bf 50574D5F 		.ascii	"PWM_3_Enable\000"
  708      335F456E 
  708      61626C65 
  708      00
  709              	.LASF34:
- 710 01d1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 710 01cc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  710      43313120 
  710      352E342E 
  710      31203230 
  710      31363036 
- 711 0204 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 711 01ff 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  711      20726576 
  711      6973696F 
  711      6E203233 
  711      37373135 
- 712 0237 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 712 0232 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  712      66756E63 
  712      74696F6E 
  712      2D736563 
  712      74696F6E 
  713              	.LASF13:
- 714 025f 72656738 		.ascii	"reg8\000"
+ 714 025a 72656738 		.ascii	"reg8\000"
  714      00
  715              	.LASF15:
- 716 0264 73697A65 		.ascii	"sizetype\000"
+ 716 025f 73697A65 		.ascii	"sizetype\000"
  716      74797065 
  716      00
  717              	.LASF6:
- 718 026d 6C6F6E67 		.ascii	"long long int\000"
+ 718 0268 6C6F6E67 		.ascii	"long long int\000"
  718      206C6F6E 
  718      6720696E 
  718      7400
  719              	.LASF23:
- 720 027b 50574D5F 		.ascii	"PWM_3_RestoreConfig\000"
+ 720 0276 50574D5F 		.ascii	"PWM_3_RestoreConfig\000"
  720      335F5265 
  720      73746F72 
  720      65436F6E 
  720      66696700 
  721              	.LASF11:
- 722 028f 63686172 		.ascii	"char\000"
+ 722 028a 63686172 		.ascii	"char\000"
  722      00
  723              	.LASF28:
- 724 0294 50574D5F 		.ascii	"PWM_3_ReadControlRegister\000"
+ 724 028f 50574D5F 		.ascii	"PWM_3_ReadControlRegister\000"
  724      335F5265 
  724      6164436F 
  724      6E74726F 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccA5CmIV.s 			page 19
-
-
  724      6C526567 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccXQNKrR.s 			page 19
+
+
  725              	.LASF2:
- 726 02ae 73686F72 		.ascii	"short int\000"
+ 726 02a9 73686F72 		.ascii	"short int\000"
  726      7420696E 
  726      7400
  727              	.LASF4:
- 728 02b8 6C6F6E67 		.ascii	"long int\000"
+ 728 02b3 6C6F6E67 		.ascii	"long int\000"
  728      20696E74 
  728      00
  729              	.LASF14:
- 730 02c1 6C6F6E67 		.ascii	"long double\000"
+ 730 02bc 6C6F6E67 		.ascii	"long double\000"
  730      20646F75 
  730      626C6500 
  731              	.LASF0:
- 732 02cd 7369676E 		.ascii	"signed char\000"
+ 732 02c8 7369676E 		.ascii	"signed char\000"
  732      65642063 
  732      68617200 
  733              	.LASF19:
- 734 02d9 496E7465 		.ascii	"InterruptMaskValue\000"
+ 734 02d4 496E7465 		.ascii	"InterruptMaskValue\000"
  734      72727570 
  734      744D6173 
  734      6B56616C 
  734      756500
  735              	.LASF31:
- 736 02ec 50574D5F 		.ascii	"PWM_3_WriteControlRegister\000"
+ 736 02e7 50574D5F 		.ascii	"PWM_3_WriteControlRegister\000"
  736      335F5772 
  736      69746543 
  736      6F6E7472 

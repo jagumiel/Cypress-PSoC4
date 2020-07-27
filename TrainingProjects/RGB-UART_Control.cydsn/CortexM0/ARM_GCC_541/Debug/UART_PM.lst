@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
   28:Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_EZI2C_INC) */
   29:Generated_Source\PSoC4/UART_PM.c **** 
   30:Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_SPI_INC || UART_SCB_MODE_UART_INC)
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 2
 
 
   31:Generated_Source\PSoC4/UART_PM.c ****     #include "UART_SPI_UART_PVT.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
   77:Generated_Source\PSoC4/UART_PM.c ****     if(UART_SCB_WAKE_ENABLE_CHECK)
   78:Generated_Source\PSoC4/UART_PM.c ****     {
   79:Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 3
 
 
   80:Generated_Source\PSoC4/UART_PM.c ****         {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
   41 000a 1370     		strb	r3, [r2]
  129:Generated_Source\PSoC4/UART_PM.c **** 
  130:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 4
 
 
   42              		.loc 1 130 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  160:Generated_Source\PSoC4/UART_PM.c **** {
   67              		.loc 1 160 0
   68              		.cfi_startproc
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 5
 
 
   69              		@ args = 0, pretend = 0, frame = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  209:Generated_Source\PSoC4/UART_PM.c **** 
  210:Generated_Source\PSoC4/UART_PM.c ****     #else
  211:Generated_Source\PSoC4/UART_PM.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 6
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 6
 
 
  212:Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
@@ -348,20 +348,20 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  110 0006 00000000 		.4byte	.Ldebug_abbrev0
  111 000a 04       		.byte	0x4
  112 000b 01       		.uleb128 0x1
- 113 000c 40010000 		.4byte	.LASF22
+ 113 000c E2000000 		.4byte	.LASF22
  114 0010 0C       		.byte	0xc
- 115 0011 0C020000 		.4byte	.LASF23
- 116 0015 A3000000 		.4byte	.LASF24
+ 115 0011 07020000 		.4byte	.LASF23
+ 116 0015 9B010000 		.4byte	.LASF24
  117 0019 00000000 		.4byte	.Ldebug_ranges0+0
  118 001d 00000000 		.4byte	0
  119 0021 00000000 		.4byte	.Ldebug_line0
  120 0025 02       		.uleb128 0x2
  121 0026 01       		.byte	0x1
  122 0027 06       		.byte	0x6
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 7
 
 
- 123 0028 E1010000 		.4byte	.LASF0
+ 123 0028 83010000 		.4byte	.LASF0
  124 002c 02       		.uleb128 0x2
  125 002d 01       		.byte	0x1
  126 002e 08       		.byte	0x8
@@ -369,15 +369,15 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  128 0033 02       		.uleb128 0x2
  129 0034 02       		.byte	0x2
  130 0035 05       		.byte	0x5
- 131 0036 F9010000 		.4byte	.LASF2
+ 131 0036 B6000000 		.4byte	.LASF2
  132 003a 02       		.uleb128 0x2
  133 003b 02       		.byte	0x2
  134 003c 07       		.byte	0x7
- 135 003d CE010000 		.4byte	.LASF3
+ 135 003d 70010000 		.4byte	.LASF3
  136 0041 02       		.uleb128 0x2
  137 0042 04       		.byte	0x4
  138 0043 05       		.byte	0x5
- 139 0044 31010000 		.4byte	.LASF4
+ 139 0044 D3000000 		.4byte	.LASF4
  140 0048 02       		.uleb128 0x2
  141 0049 04       		.byte	0x4
  142 004a 07       		.byte	0x7
@@ -415,16 +415,16 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  174 008a 02       		.uleb128 0x2
  175 008b 08       		.byte	0x8
  176 008c 04       		.byte	0x4
- 177 008d 2A010000 		.4byte	.LASF12
+ 177 008d CC000000 		.4byte	.LASF12
  178 0091 02       		.uleb128 0x2
  179 0092 01       		.byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 8
 
 
  180 0093 08       		.byte	0x8
  181 0094 9E000000 		.4byte	.LASF13
  182 0098 04       		.uleb128 0x4
- 183 0099 3A010000 		.4byte	.LASF14
+ 183 0099 DC000000 		.4byte	.LASF14
  184 009d 02       		.byte	0x2
  185 009e 9002     		.2byte	0x290
  186 00a0 A4000000 		.4byte	0xa4
@@ -433,25 +433,25 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  189 00a9 02       		.uleb128 0x2
  190 00aa 08       		.byte	0x8
  191 00ab 04       		.byte	0x4
- 192 00ac ED010000 		.4byte	.LASF15
+ 192 00ac 8F010000 		.4byte	.LASF15
  193 00b0 02       		.uleb128 0x2
  194 00b1 04       		.byte	0x4
  195 00b2 07       		.byte	0x7
- 196 00b3 03020000 		.4byte	.LASF16
+ 196 00b3 FE010000 		.4byte	.LASF16
  197 00b7 06       		.uleb128 0x6
  198 00b8 01       		.byte	0x1
  199 00b9 03       		.byte	0x3
  200 00ba 60       		.byte	0x60
  201 00bb CC000000 		.4byte	0xcc
  202 00bf 07       		.uleb128 0x7
- 203 00c0 1E010000 		.4byte	.LASF25
+ 203 00c0 C0000000 		.4byte	.LASF25
  204 00c4 03       		.byte	0x3
  205 00c5 62       		.byte	0x62
  206 00c6 6B000000 		.4byte	0x6b
  207 00ca 00       		.byte	0
  208 00cb 00       		.byte	0
  209 00cc 08       		.uleb128 0x8
- 210 00cd 0B010000 		.4byte	.LASF17
+ 210 00cd A3000000 		.4byte	.LASF17
  211 00d1 03       		.byte	0x3
  212 00d2 63       		.byte	0x63
  213 00d3 B7000000 		.4byte	0xb7
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  234 0106 9C       		.byte	0x9c
  235 0107 15010000 		.4byte	0x115
  236 010b 0A       		.uleb128 0xa
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 9
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 9
 
 
  237 010c 0E000000 		.4byte	.LVL1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  291 001e 03       		.uleb128 0x3
  292 001f 24       		.uleb128 0x24
  293 0020 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 10
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 10
 
 
  294 0021 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  348 0057 00       		.byte	0
  349 0058 00       		.byte	0
  350 0059 08       		.uleb128 0x8
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 11
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 11
 
 
  351 005a 16       		.uleb128 0x16
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  405 0093 0B       		.uleb128 0xb
  406 0094 49       		.uleb128 0x49
  407 0095 13       		.uleb128 0x13
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 12
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 12
 
 
  408 0096 3F       		.uleb128 0x3f
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  458 0000 6C6F6E67 		.ascii	"long long int\000"
  458      206C6F6E 
  458      6720696E 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 13
 
 
  458      7400
@@ -776,86 +776,85 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 1
  483              	.LASF13:
  484 009e 63686172 		.ascii	"char\000"
  484      00
- 485              	.LASF24:
- 486 00a3 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 14
+ 485              	.LASF17:
+ 486 00a3 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 14
 
 
- 486      73657273 
- 486      5C6A6167 
- 486      756D6965 
- 486      6C5C446F 
- 487 00d1 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\UART-RGB-UART_Cont"
- 487      50536F43 
- 487      2D313031 
- 487      5C547261 
- 487      696E696E 
- 488 0101 726F6C2E 		.ascii	"rol.cydsn\000"
- 488      63796473 
- 488      6E00
- 489              	.LASF17:
- 490 010b 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
- 490      5F424143 
- 490      4B55505F 
- 490      53545255 
- 490      435400
- 491              	.LASF25:
- 492 011e 656E6162 		.ascii	"enableState\000"
- 492      6C655374 
- 492      61746500 
- 493              	.LASF12:
- 494 012a 646F7562 		.ascii	"double\000"
- 494      6C6500
- 495              	.LASF4:
- 496 0131 6C6F6E67 		.ascii	"long int\000"
- 496      20696E74 
- 496      00
- 497              	.LASF14:
- 498 013a 72656733 		.ascii	"reg32\000"
- 498      3200
- 499              	.LASF22:
- 500 0140 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 500      43313120 
- 500      352E342E 
- 500      31203230 
- 500      31363036 
- 501 0173 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 501      20726576 
- 501      6973696F 
- 501      6E203233 
- 501      37373135 
- 502 01a6 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 502      66756E63 
- 502      74696F6E 
- 502      2D736563 
- 502      74696F6E 
- 503              	.LASF3:
- 504 01ce 73686F72 		.ascii	"short unsigned int\000"
- 504      7420756E 
- 504      7369676E 
- 504      65642069 
- 504      6E7400
- 505              	.LASF0:
- 506 01e1 7369676E 		.ascii	"signed char\000"
- 506      65642063 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccHGvQqh.s 			page 15
+ 486      5F424143 
+ 486      4B55505F 
+ 486      53545255 
+ 486      435400
+ 487              	.LASF2:
+ 488 00b6 73686F72 		.ascii	"short int\000"
+ 488      7420696E 
+ 488      7400
+ 489              	.LASF25:
+ 490 00c0 656E6162 		.ascii	"enableState\000"
+ 490      6C655374 
+ 490      61746500 
+ 491              	.LASF12:
+ 492 00cc 646F7562 		.ascii	"double\000"
+ 492      6C6500
+ 493              	.LASF4:
+ 494 00d3 6C6F6E67 		.ascii	"long int\000"
+ 494      20696E74 
+ 494      00
+ 495              	.LASF14:
+ 496 00dc 72656733 		.ascii	"reg32\000"
+ 496      3200
+ 497              	.LASF22:
+ 498 00e2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 498      43313120 
+ 498      352E342E 
+ 498      31203230 
+ 498      31363036 
+ 499 0115 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 499      20726576 
+ 499      6973696F 
+ 499      6E203233 
+ 499      37373135 
+ 500 0148 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 500      66756E63 
+ 500      74696F6E 
+ 500      2D736563 
+ 500      74696F6E 
+ 501              	.LASF3:
+ 502 0170 73686F72 		.ascii	"short unsigned int\000"
+ 502      7420756E 
+ 502      7369676E 
+ 502      65642069 
+ 502      6E7400
+ 503              	.LASF0:
+ 504 0183 7369676E 		.ascii	"signed char\000"
+ 504      65642063 
+ 504      68617200 
+ 505              	.LASF15:
+ 506 018f 6C6F6E67 		.ascii	"long double\000"
+ 506      20646F75 
+ 506      626C6500 
+ 507              	.LASF24:
+ 508 019b 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 508      73657273 
+ 508      5C6A6167 
+ 508      756D6965 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccgkTG3e.s 			page 15
 
 
- 506      68617200 
- 507              	.LASF15:
- 508 01ed 6C6F6E67 		.ascii	"long double\000"
- 508      20646F75 
- 508      626C6500 
- 509              	.LASF2:
- 510 01f9 73686F72 		.ascii	"short int\000"
- 510      7420696E 
- 510      7400
+ 508      6C5C446F 
+ 509 01c9 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\RGB-UART_Control.c"
+ 509      50536F43 
+ 509      2D313031 
+ 509      5C547261 
+ 509      696E696E 
+ 510 01f9 7964736E 		.ascii	"ydsn\000"
+ 510      00
  511              	.LASF16:
- 512 0203 73697A65 		.ascii	"sizetype\000"
+ 512 01fe 73697A65 		.ascii	"sizetype\000"
  512      74797065 
  512      00
  513              	.LASF23:
- 514 020c 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_PM.c\000"
+ 514 0207 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_PM.c\000"
  514      72617465 
  514      645F536F 
  514      75726365 

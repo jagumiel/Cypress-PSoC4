@@ -2,17 +2,28 @@
 #include <stdlib.h>
 
 uint8_t red, green, blue = 0;
-char redChar [3];char greenChar [3];char blueChar [3];
 
 void getResults(char ledValue[]){
-    redChar[0]  = ledValue[0]; redChar[1]   = ledValue[1]; redChar[2]   = ledValue[2];
-    greenChar[0]= ledValue[3]; greenChar[1] = ledValue[4]; greenChar[2] = ledValue[5];
-    blueChar[0] = ledValue[6]; blueChar[1]  = ledValue[7]; blueChar[2]  = ledValue[8];
+    /* Gets the scratch buffer data (string of chars) and places it into color variables (as integers). */
+    char singleValAux[3];
+    int i=0;
+    for(int j=0; j<3; j++){
+        singleValAux[j]=ledValue[i];
+        i++;
+    }
+    red = atoi(singleValAux);
+    for(int j=0; j<3; j++){
+        singleValAux[j]=ledValue[i];
+        i++;
+    }
+    green = atoi(singleValAux);
+    for(int j=0; j<3; j++){
+        singleValAux[j]=ledValue[i];
+        i++;
+    }
+    blue = atoi(singleValAux);
     
-    red     = atoi(redChar);
-    green   = atoi(greenChar);
-    blue    = atoi(blueChar);
-    
+    /*Numbers must be comprehended between 0-255. If they are greater than 255 are setted to the max value.*/
     if (red > 255)   red    = 255;
     if (green > 255) green  = 255;
     if (blue > 255)  blue   = 255;
@@ -37,6 +48,7 @@ int main(){
     char buffer[9];
     int8 tic;
     
+    /*Initialization*/
     UART_Start();
     
     PWM_1_Start();
@@ -44,6 +56,9 @@ int main(){
     PWM_3_Start();
     
     turnOffLeds();
+    /****************/
+    
+    UART_UartPutString("Introduce the values for the RGB colors using this pattern: Wrrrgggbbb.\n\r Example: W255090030\n\r");
 
     for (;;){
         ch = UART_UartGetChar();    // this command Gets then clears to 0u
@@ -53,11 +68,15 @@ int main(){
 			cop = 'Y';
             while (cop != 'X'){
 				ch1 = UART_UartGetChar();
-				if ((ch1 != 0u) && (ch1 != 'B')){
-					buffer[tic] = ch1;
-					tic++;
+				if ((ch1 != 0u)){
+                    /* Only digits will be processed. Any other char will be omitted. */
+                    if( ch1 >= '0' && ch1 <= '9' ){
+    					buffer[tic] = ch1;
+    					tic++;
+                    }
 				}
-				if (ch1 == 'B'){
+                /* If the array is completed, then the introduced value us printed on screen and the leds are setted. */
+                if (tic==9){
                     UART_UartPutString(buffer);
                     UART_UartPutChar('\r');
                     UART_UartPutChar('\n');

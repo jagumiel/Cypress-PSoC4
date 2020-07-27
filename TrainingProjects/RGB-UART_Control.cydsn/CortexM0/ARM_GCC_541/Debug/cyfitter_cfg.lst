@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
   29:Generated_Source\PSoC4/cyfitter_cfg.c **** #if defined(__GNUC__) || defined(__ARMCC_VERSION)
   30:Generated_Source\PSoC4/cyfitter_cfg.c ****     #define CYPACKED 
   31:Generated_Source\PSoC4/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 2
 
 
   32:Generated_Source\PSoC4/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
   86:Generated_Source\PSoC4/cyfitter_cfg.c **** }
   87:Generated_Source\PSoC4/cyfitter_cfg.c **** CY_CFG_UNUSED
   88:Generated_Source\PSoC4/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 3
 
 
   89:Generated_Source\PSoC4/cyfitter_cfg.c **** CY_CFG_UNUSED
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  143:Generated_Source\PSoC4/cyfitter_cfg.c ****     /* `#END` */
  144:Generated_Source\PSoC4/cyfitter_cfg.c **** 
  145:Generated_Source\PSoC4/cyfitter_cfg.c ****     while(1) {}
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 4
 
 
  146:Generated_Source\PSoC4/cyfitter_cfg.c **** #endif /* CY_CFG_CLOCK_STARTUP_ERROR_CALLBACK */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  179:Generated_Source\PSoC4/cyfitter_cfg.c **** 	{
  180:Generated_Source\PSoC4/cyfitter_cfg.c **** 		uint32 baseAddr = addr_table[i];
   48              		.loc 1 180 0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 5
 
 
   49 0008 BB00     		lsls	r3, r7, #2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
   90              		@ sp needed
   91              	.LVL10:
   92              	.LVL11:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 6
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 6
 
 
   93 0030 F0BD     		pop	{r4, r5, r6, r7, pc}
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  203:Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
  204:Generated_Source\PSoC4/cyfitter_cfg.c **** *
  205:Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 7
 
 
  206:Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  165 0026 1A60     		str	r2, [r3]
  227:Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)(CYREG_CLK_SELECT12), 0x00000010u);
  166              		.loc 1 227 0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 8
 
 
  167 0028 103A     		subs	r2, r2, #16
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  204 005c 00010B40 		.word	1074462976
  205 0060 FFFFFBFF 		.word	-262145
  206 0064 06000080 		.word	-2147483642
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 9
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 9
 
 
  207 0068 04010B40 		.word	1074462980
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  279:Generated_Source\PSoC4/cyfitter_cfg.c **** *  settings.  This includes settings from the Design Wide Resources (DWR) such
  280:Generated_Source\PSoC4/cyfitter_cfg.c **** *  as Clocks and Pins as well as any component configuration that is necessary.
  281:Generated_Source\PSoC4/cyfitter_cfg.c **** *
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 10
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 10
 
 
  282:Generated_Source\PSoC4/cyfitter_cfg.c **** * Parameters:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  319:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x33u, 0x01u},
  320:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x34u, 0x08u},
  321:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x36u, 0x02u},
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 11
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 11
 
 
  322:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x3Fu, 0x04u},
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  376:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x18u, 0x07u},
  377:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x1Eu, 0x04u},
  378:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x23u, 0x01u},
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 12
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 12
 
 
  379:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0x2Eu, 0x08u},
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  433:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xCDu, 0xA0u},
  434:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xCFu, 0x04u},
  435:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xD0u, 0x18u},
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 13
 
 
  436:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xD2u, 0x80u},
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  490:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xCAu, 0x80u},
  491:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xCCu, 0x02u},
  492:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xCEu, 0x12u},
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 14
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 14
 
 
  493:Generated_Source\PSoC4/cyfitter_cfg.c **** 			{0xD0u, 0x14u},
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  259 00a8 C318     		adds	r3, r0, r3
  260 00aa 5888     		ldrh	r0, [r3, #2]
  261 00ac 0004     		lsls	r0, r0, #16
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 15
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 15
 
 
  262 00ae 1043     		orrs	r0, r2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  302 00e6 8905     		lsls	r1, r1, #22
  303 00e8 1D4A     		ldr	r2, .L13+28
  304 00ea 1160     		str	r1, [r2]
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 16
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 16
 
 
  544:Generated_Source\PSoC4/cyfitter_cfg.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  342 0126 1A60     		str	r2, [r3]
  561:Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)(CYREG_PRT3_PC), 0x00186D80u);
  343              		.loc 1 561 0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 17
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 17
 
 
  344 0128 154A     		ldr	r2, .L13+60
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  384 0184 08030440 		.word	1074004744
  385 0188 00040440 		.word	1074004992
  386 018c 08040440 		.word	1074005000
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 18
 
 
  387 0190 18040440 		.word	1074005016
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  441 0030 47       		.byte	71
  442 0031 20       		.byte	32
  443 0032 48       		.byte	72
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 19
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 19
 
 
  444 0033 23       		.byte	35
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  498 0069 24       		.byte	36
  499 006a 1A       		.byte	26
  500 006b 41       		.byte	65
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 20
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 20
 
 
  501 006c 22       		.byte	34
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  555 00a2 35       		.byte	53
  556 00a3 01       		.byte	1
  557 00a4 36       		.byte	54
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 21
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 21
 
 
  558 00a5 08       		.byte	8
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  612 00db C0       		.byte	-64
  613 00dc 6E       		.byte	110
  614 00dd C0       		.byte	-64
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 22
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 22
 
 
  615 00de 86       		.byte	-122
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  669 0114 DA       		.byte	-38
  670 0115 04       		.byte	4
  671 0116 DB       		.byte	-37
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 23
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 23
 
 
  672 0117 04       		.byte	4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  726 014d 08       		.byte	8
  727 014e 38       		.byte	56
  728 014f 04       		.byte	4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 24
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 24
 
 
  729 0150 3F       		.byte	63
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  783 0186 E4       		.byte	-28
  784 0187 04       		.byte	4
  785 0188 E8       		.byte	-24
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 25
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 25
 
 
  786 0189 04       		.byte	4
@@ -1487,10 +1487,10 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  829 0006 00000000 		.4byte	.Ldebug_abbrev0
  830 000a 04       		.byte	0x4
  831 000b 01       		.uleb128 0x1
- 832 000c 98010000 		.4byte	.LASF39
+ 832 000c 93010000 		.4byte	.LASF39
  833 0010 0C       		.byte	0xc
- 834 0011 C5020000 		.4byte	.LASF40
- 835 0015 57000000 		.4byte	.LASF41
+ 834 0011 C0020000 		.4byte	.LASF40
+ 835 0015 0D000000 		.4byte	.LASF41
  836 0019 00000000 		.4byte	.Ldebug_ranges0+0
  837 001d 00000000 		.4byte	0
  838 0021 00000000 		.4byte	.Ldebug_line0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  840 0026 04       		.byte	0x4
  841 0027 05       		.byte	0x5
  842 0028 696E7400 		.ascii	"int\000"
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 26
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 26
 
 
  843 002c 03       		.uleb128 0x3
@@ -1509,81 +1509,81 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  848 0037 04       		.uleb128 0x4
  849 0038 04       		.byte	0x4
  850 0039 07       		.byte	0x7
- 851 003a 5F010000 		.4byte	.LASF0
+ 851 003a 5A010000 		.4byte	.LASF0
  852 003e 04       		.uleb128 0x4
  853 003f 08       		.byte	0x8
  854 0040 05       		.byte	0x5
- 855 0041 58020000 		.4byte	.LASF1
+ 855 0041 53020000 		.4byte	.LASF1
  856 0045 04       		.uleb128 0x4
  857 0046 08       		.byte	0x8
  858 0047 04       		.byte	0x4
- 859 0048 AD020000 		.4byte	.LASF2
+ 859 0048 A8020000 		.4byte	.LASF2
  860 004c 04       		.uleb128 0x4
  861 004d 01       		.byte	0x1
  862 004e 06       		.byte	0x6
- 863 004f B9020000 		.4byte	.LASF3
+ 863 004f B4020000 		.4byte	.LASF3
  864 0053 04       		.uleb128 0x4
  865 0054 01       		.byte	0x1
  866 0055 08       		.byte	0x8
- 867 0056 01010000 		.4byte	.LASF4
+ 867 0056 FC000000 		.4byte	.LASF4
  868 005a 04       		.uleb128 0x4
  869 005b 02       		.byte	0x2
  870 005c 05       		.byte	0x5
- 871 005d 85020000 		.4byte	.LASF5
+ 871 005d 80020000 		.4byte	.LASF5
  872 0061 04       		.uleb128 0x4
  873 0062 02       		.byte	0x2
  874 0063 07       		.byte	0x7
- 875 0064 45020000 		.4byte	.LASF6
+ 875 0064 40020000 		.4byte	.LASF6
  876 0068 04       		.uleb128 0x4
  877 0069 04       		.byte	0x4
  878 006a 05       		.byte	0x5
- 879 006b A4020000 		.4byte	.LASF7
+ 879 006b 9F020000 		.4byte	.LASF7
  880 006f 04       		.uleb128 0x4
  881 0070 04       		.byte	0x4
  882 0071 07       		.byte	0x7
- 883 0072 DF000000 		.4byte	.LASF8
+ 883 0072 DA000000 		.4byte	.LASF8
  884 0076 04       		.uleb128 0x4
  885 0077 08       		.byte	0x8
  886 0078 07       		.byte	0x7
- 887 0079 81010000 		.4byte	.LASF9
+ 887 0079 7C010000 		.4byte	.LASF9
  888 007d 04       		.uleb128 0x4
  889 007e 04       		.byte	0x4
  890 007f 07       		.byte	0x7
- 891 0080 3C020000 		.4byte	.LASF10
+ 891 0080 37020000 		.4byte	.LASF10
  892 0084 05       		.uleb128 0x5
  893 0085 04       		.byte	0x4
  894 0086 04       		.uleb128 0x4
  895 0087 01       		.byte	0x1
  896 0088 08       		.byte	0x8
- 897 0089 66020000 		.4byte	.LASF11
+ 897 0089 61020000 		.4byte	.LASF11
  898 008d 06       		.uleb128 0x6
- 899 008e F1000000 		.4byte	.LASF13
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 27
+ 899 008e EC000000 		.4byte	.LASF13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 27
 
 
  900 0092 03       		.byte	0x3
  901 0093 E401     		.2byte	0x1e4
  902 0095 53000000 		.4byte	0x53
  903 0099 06       		.uleb128 0x6
- 904 009a 46010000 		.4byte	.LASF14
+ 904 009a 41010000 		.4byte	.LASF14
  905 009e 03       		.byte	0x3
  906 009f E501     		.2byte	0x1e5
  907 00a1 61000000 		.4byte	0x61
  908 00a5 06       		.uleb128 0x6
- 909 00a6 58010000 		.4byte	.LASF15
+ 909 00a6 53010000 		.4byte	.LASF15
  910 00aa 03       		.byte	0x3
  911 00ab E601     		.2byte	0x1e6
  912 00ad 6F000000 		.4byte	0x6f
  913 00b1 04       		.uleb128 0x4
  914 00b2 04       		.byte	0x4
  915 00b3 04       		.byte	0x4
- 916 00b4 BF000000 		.4byte	.LASF16
+ 916 00b4 BA000000 		.4byte	.LASF16
  917 00b8 04       		.uleb128 0x4
  918 00b9 08       		.byte	0x8
  919 00ba 04       		.byte	0x4
- 920 00bb 16010000 		.4byte	.LASF17
+ 920 00bb 11010000 		.4byte	.LASF17
  921 00bf 06       		.uleb128 0x6
- 922 00c0 DA000000 		.4byte	.LASF18
+ 922 00c0 D5000000 		.4byte	.LASF18
  923 00c4 03       		.byte	0x3
  924 00c5 8E02     		.2byte	0x28e
  925 00c7 CB000000 		.4byte	0xcb
@@ -1602,28 +1602,28 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  938 00e4 97       		.byte	0x97
  939 00e5 02010000 		.4byte	0x102
  940 00e9 09       		.uleb128 0x9
- 941 00ea 7E020000 		.4byte	.LASF20
+ 941 00ea 79020000 		.4byte	.LASF20
  942 00ee 01       		.byte	0x1
  943 00ef 99       		.byte	0x99
  944 00f0 8D000000 		.4byte	0x8d
  945 00f4 00       		.byte	0
  946 00f5 09       		.uleb128 0x9
- 947 00f6 1C000000 		.4byte	.LASF21
+ 947 00f6 7F000000 		.4byte	.LASF21
  948 00fa 01       		.byte	0x1
  949 00fb 9A       		.byte	0x9a
  950 00fc 8D000000 		.4byte	0x8d
  951 0100 01       		.byte	0x1
  952 0101 00       		.byte	0
  953 0102 03       		.uleb128 0x3
- 954 0103 6B020000 		.4byte	.LASF22
+ 954 0103 66020000 		.4byte	.LASF22
  955 0107 01       		.byte	0x1
  956 0108 9B       		.byte	0x9b
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 28
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 28
 
 
  957 0109 E1000000 		.4byte	0xe1
  958 010d 0A       		.uleb128 0xa
- 959 010e 1D010000 		.4byte	.LASF27
+ 959 010e 18010000 		.4byte	.LASF27
  960 0112 01       		.byte	0x1
  961 0113 AE       		.byte	0xae
  962 0114 00000000 		.4byte	.LFB3
@@ -1632,14 +1632,14 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  965 011d 9C       		.byte	0x9c
  966 011e 7F010000 		.4byte	0x17f
  967 0122 0B       		.uleb128 0xb
- 968 0123 3B010000 		.4byte	.LASF23
+ 968 0123 36010000 		.4byte	.LASF23
  969 0127 01       		.byte	0x1
  970 0128 AE       		.byte	0xae
  971 0129 7F010000 		.4byte	0x17f
  972 012d 01       		.uleb128 0x1
  973 012e 50       		.byte	0x50
  974 012f 0B       		.uleb128 0xb
- 975 0130 4D010000 		.4byte	.LASF24
+ 975 0130 48010000 		.4byte	.LASF24
  976 0134 01       		.byte	0x1
  977 0135 AE       		.byte	0xae
  978 0136 8A010000 		.4byte	0x18a
@@ -1661,13 +1661,13 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  994 0157 08000000 		.4byte	.LBB2
  995 015b 22000000 		.4byte	.LBE2-.LBB2
  996 015f 0E       		.uleb128 0xe
- 997 0160 33020000 		.4byte	.LASF25
+ 997 0160 2E020000 		.4byte	.LASF25
  998 0164 01       		.byte	0x1
  999 0165 B4       		.byte	0xb4
  1000 0166 A5000000 		.4byte	0xa5
  1001 016a 3E000000 		.4byte	.LLST2
  1002 016e 0E       		.uleb128 0xe
- 1003 016f 22000000 		.4byte	.LASF26
+ 1003 016f 85000000 		.4byte	.LASF26
  1004 0173 01       		.byte	0x1
  1005 0174 B5       		.byte	0xb5
  1006 0175 8D000000 		.4byte	0x8d
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1011 0180 04       		.byte	0x4
  1012 0181 85010000 		.4byte	0x185
  1013 0185 10       		.uleb128 0x10
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 29
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 29
 
 
  1014 0186 A5000000 		.4byte	0xa5
@@ -1688,7 +1688,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1018 0190 10       		.uleb128 0x10
  1019 0191 02010000 		.4byte	0x102
  1020 0195 0A       		.uleb128 0xa
- 1021 0196 F7000000 		.4byte	.LASF28
+ 1021 0196 F2000000 		.4byte	.LASF28
  1022 019a 01       		.byte	0x1
  1023 019b 4C       		.byte	0x4c
  1024 019c 00000000 		.4byte	.LFB0
@@ -1733,12 +1733,12 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1063 01e0 00       		.byte	0
  1064 01e1 00       		.byte	0
  1065 01e2 0A       		.uleb128 0xa
- 1066 01e3 28000000 		.4byte	.LASF29
+ 1066 01e3 8B000000 		.4byte	.LASF29
  1067 01e7 01       		.byte	0x1
  1068 01e8 D3       		.byte	0xd3
  1069 01e9 00000000 		.4byte	.LFB4
  1070 01ed 90000000 		.4byte	.LFE4-.LFB4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 30
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 30
 
 
  1071 01f1 01       		.uleb128 0x1
@@ -1775,7 +1775,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1102 022b 00       		.byte	0
  1103 022c 00       		.byte	0
  1104 022d 15       		.uleb128 0x15
- 1105 022e 6C010000 		.4byte	.LASF42
+ 1105 022e 67010000 		.4byte	.LASF42
  1106 0232 01       		.byte	0x1
  1107 0233 2201     		.2byte	0x122
  1108 0235 90000000 		.4byte	.LFB6
@@ -1788,7 +1788,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1115 0248 80000000 		.4byte	.LBE3-.LBB3
  1116 024c 41030000 		.4byte	0x341
  1117 0250 17       		.uleb128 0x17
- 1118 0251 33000000 		.4byte	.LASF30
+ 1118 0251 96000000 		.4byte	.LASF30
  1119 0255 01       		.byte	0x1
  1120 0256 2801     		.2byte	0x128
  1121 0258 5B030000 		.4byte	0x35b
@@ -1796,9 +1796,9 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1123 025d 03       		.byte	0x3
  1124 025e A0010000 		.4byte	cy_cfg_addr_table.4864
  1125 0262 17       		.uleb128 0x17
- 1126 0263 45000000 		.4byte	.LASF31
+ 1126 0263 A8000000 		.4byte	.LASF31
  1127 0267 01       		.byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 31
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 31
 
 
  1128 0268 3301     		.2byte	0x133
@@ -1812,20 +1812,20 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1136 0277 0202     		.2byte	0x202
  1137 0279 98020000 		.4byte	0x298
  1138 027d 19       		.uleb128 0x19
- 1139 027e 79010000 		.4byte	.LASF32
+ 1139 027e 74010000 		.4byte	.LASF32
  1140 0282 01       		.byte	0x1
  1141 0283 0302     		.2byte	0x203
  1142 0285 84000000 		.4byte	0x84
  1143 0289 00       		.byte	0
  1144 028a 19       		.uleb128 0x19
- 1145 028b D5000000 		.4byte	.LASF33
+ 1145 028b D0000000 		.4byte	.LASF33
  1146 028f 01       		.byte	0x1
  1147 0290 0402     		.2byte	0x204
  1148 0292 99000000 		.4byte	0x99
  1149 0296 04       		.byte	0x4
  1150 0297 00       		.byte	0
  1151 0298 06       		.uleb128 0x6
- 1152 0299 26020000 		.4byte	.LASF34
+ 1152 0299 21020000 		.4byte	.LASF34
  1153 029d 01       		.byte	0x1
  1154 029e 0502     		.2byte	0x205
  1155 02a0 74020000 		.4byte	0x274
@@ -1839,7 +1839,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1163 02b4 10       		.uleb128 0x10
  1164 02b5 98020000 		.4byte	0x298
  1165 02b9 17       		.uleb128 0x17
- 1166 02ba C5000000 		.4byte	.LASF35
+ 1166 02ba C0000000 		.4byte	.LASF35
  1167 02be 01       		.byte	0x1
  1168 02bf 0702     		.2byte	0x207
  1169 02c1 CB020000 		.4byte	0x2cb
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1182 02df 98000000 		.4byte	.LBB4
  1183 02e3 1C000000 		.4byte	.LBE4-.LBB4
  1184 02e7 24030000 		.4byte	0x324
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 32
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 32
 
 
  1185 02eb 1C       		.uleb128 0x1c
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1239 0346 E2010000 		.4byte	0x1e2
  1240 034a 00       		.byte	0
  1241 034b 1A       		.uleb128 0x1a
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 33
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 33
 
 
  1242 034c 85010000 		.4byte	0x185
@@ -1939,21 +1939,21 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1257 0370 10       		.uleb128 0x10
  1258 0371 60030000 		.4byte	0x360
  1259 0375 1E       		.uleb128 0x1e
- 1260 0376 0F010000 		.4byte	.LASF43
- 1261 037a 0F010000 		.4byte	.LASF43
+ 1260 0376 0A010000 		.4byte	.LASF43
+ 1261 037a 0A010000 		.4byte	.LASF43
  1262 037e 1F       		.uleb128 0x1f
- 1263 037f 8F020000 		.4byte	.LASF36
- 1264 0383 8F020000 		.4byte	.LASF36
+ 1263 037f 8A020000 		.4byte	.LASF36
+ 1264 0383 8A020000 		.4byte	.LASF36
  1265 0387 04       		.byte	0x4
  1266 0388 6C       		.byte	0x6c
  1267 0389 1F       		.uleb128 0x1f
- 1268 038a 0D000000 		.4byte	.LASF37
- 1269 038e 0D000000 		.4byte	.LASF37
+ 1268 038a 70000000 		.4byte	.LASF37
+ 1269 038e 70000000 		.4byte	.LASF37
  1270 0392 04       		.byte	0x4
  1271 0393 BD       		.byte	0xbd
  1272 0394 1F       		.uleb128 0x1f
- 1273 0395 2F010000 		.4byte	.LASF38
- 1274 0399 2F010000 		.4byte	.LASF38
+ 1273 0395 2A010000 		.4byte	.LASF38
+ 1274 0399 2A010000 		.4byte	.LASF38
  1275 039d 04       		.byte	0x4
  1276 039e C3       		.byte	0xc3
  1277 039f 00       		.byte	0
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1296 0010 17       		.uleb128 0x17
  1297 0011 00       		.byte	0
  1298 0012 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 34
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 34
 
 
  1299 0013 02       		.uleb128 0x2
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1353 0049 00       		.byte	0
  1354 004a 07       		.uleb128 0x7
  1355 004b 35       		.uleb128 0x35
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 35
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 35
 
 
  1356 004c 00       		.byte	0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1410 0083 00       		.byte	0
  1411 0084 00       		.byte	0
  1412 0085 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 36
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 36
 
 
  1413 0086 05       		.uleb128 0x5
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1467 00bc 0F       		.uleb128 0xf
  1468 00bd 00       		.byte	0
  1469 00be 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 37
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 37
 
 
  1470 00bf 0B       		.uleb128 0xb
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1524 00fc 00       		.byte	0
  1525 00fd 00       		.byte	0
  1526 00fe 15       		.uleb128 0x15
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 38
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 38
 
 
  1527 00ff 2E       		.uleb128 0x2e
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1581 0136 0B       		.uleb128 0xb
  1582 0137 3A       		.uleb128 0x3a
  1583 0138 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 39
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 39
 
 
  1584 0139 3B       		.uleb128 0x3b
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1638 016f 1D       		.uleb128 0x1d
  1639 0170 898201   		.uleb128 0x4109
  1640 0173 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 40
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 40
 
 
  1641 0174 11       		.uleb128 0x11
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1695 0027 0200     		.2byte	0x2
  1696 0029 30       		.byte	0x30
  1697 002a 9F       		.byte	0x9f
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 41
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 41
 
 
  1698 002b 08000000 		.4byte	.LVL2
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1752 00b4 00000000 		.4byte	0
  1753 00b8 00000000 		.4byte	0
  1754              	.LLST6:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 42
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 42
 
 
  1755 00bc 94000000 		.4byte	.LVL18
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1809 0028 90000000 		.4byte	.LFB6
  1810 002c 04010000 		.4byte	.LFE6-.LFB6
  1811 0030 00000000 		.4byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 43
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 43
 
 
  1812 0034 00000000 		.4byte	0
@@ -2547,218 +2547,217 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 1
  1830              	.LASF12:
  1831 0006 73697A65 		.ascii	"size_t\000"
  1831      5F7400
- 1832              	.LASF37:
- 1833 000d 4379496E 		.ascii	"CyIntSetVector\000"
- 1833      74536574 
- 1833      56656374 
- 1833      6F7200
- 1834              	.LASF21:
- 1835 001c 76616C75 		.ascii	"value\000"
- 1835      6500
- 1836              	.LASF26:
- 1837 0022 636F756E 		.ascii	"count\000"
- 1837      7400
- 1838              	.LASF29:
- 1839 0028 436C6F63 		.ascii	"ClockSetup\000"
- 1839      6B536574 
- 1839      757000
- 1840              	.LASF30:
- 1841 0033 63795F63 		.ascii	"cy_cfg_addr_table\000"
- 1841      66675F61 
- 1841      6464725F 
- 1841      7461626C 
- 1841      6500
- 1842              	.LASF31:
- 1843 0045 63795F63 		.ascii	"cy_cfg_data_table\000"
- 1843      66675F64 
- 1843      6174615F 
- 1843      7461626C 
- 1843      6500
- 1844              	.LASF41:
- 1845 0057 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
- 1845      73657273 
- 1845      5C6A6167 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 44
+ 1832              	.LASF41:
+ 1833 000d 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\PSoC-"
+ 1833      73657273 
+ 1833      5C6A6167 
+ 1833      756D6965 
+ 1833      6C5C446F 
+ 1834 003b 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\RGB-UART_Control.c"
+ 1834      50536F43 
+ 1834      2D313031 
+ 1834      5C547261 
+ 1834      696E696E 
+ 1835 006b 7964736E 		.ascii	"ydsn\000"
+ 1835      00
+ 1836              	.LASF37:
+ 1837 0070 4379496E 		.ascii	"CyIntSetVector\000"
+ 1837      74536574 
+ 1837      56656374 
+ 1837      6F7200
+ 1838              	.LASF21:
+ 1839 007f 76616C75 		.ascii	"value\000"
+ 1839      6500
+ 1840              	.LASF26:
+ 1841 0085 636F756E 		.ascii	"count\000"
+ 1841      7400
+ 1842              	.LASF29:
+ 1843 008b 436C6F63 		.ascii	"ClockSetup\000"
+ 1843      6B536574 
+ 1843      757000
+ 1844              	.LASF30:
+ 1845 0096 63795F63 		.ascii	"cy_cfg_addr_table\000"
+ 1845      66675F61 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 44
 
 
- 1845      756D6965 
- 1845      6C5C446F 
- 1846 0085 3130315C 		.ascii	"101\\PSoC-101\\TrainingProjects\\UART-RGB-UART_Cont"
- 1846      50536F43 
- 1846      2D313031 
- 1846      5C547261 
- 1846      696E696E 
- 1847 00b5 726F6C2E 		.ascii	"rol.cydsn\000"
- 1847      63796473 
- 1847      6E00
+ 1845      6464725F 
+ 1845      7461626C 
+ 1845      6500
+ 1846              	.LASF31:
+ 1847 00a8 63795F63 		.ascii	"cy_cfg_data_table\000"
+ 1847      66675F64 
+ 1847      6174615F 
+ 1847      7461626C 
+ 1847      6500
  1848              	.LASF16:
- 1849 00bf 666C6F61 		.ascii	"float\000"
+ 1849 00ba 666C6F61 		.ascii	"float\000"
  1849      7400
  1850              	.LASF35:
- 1851 00c5 6366675F 		.ascii	"cfg_memset_list\000"
+ 1851 00c0 6366675F 		.ascii	"cfg_memset_list\000"
  1851      6D656D73 
  1851      65745F6C 
  1851      69737400 
  1852              	.LASF33:
- 1853 00d5 73697A65 		.ascii	"size\000"
+ 1853 00d0 73697A65 		.ascii	"size\000"
  1853      00
  1854              	.LASF18:
- 1855 00da 72656738 		.ascii	"reg8\000"
+ 1855 00d5 72656738 		.ascii	"reg8\000"
  1855      00
  1856              	.LASF8:
- 1857 00df 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1857 00da 6C6F6E67 		.ascii	"long unsigned int\000"
  1857      20756E73 
  1857      69676E65 
  1857      6420696E 
  1857      7400
  1858              	.LASF13:
- 1859 00f1 75696E74 		.ascii	"uint8\000"
+ 1859 00ec 75696E74 		.ascii	"uint8\000"
  1859      3800
  1860              	.LASF28:
- 1861 00f7 43594D45 		.ascii	"CYMEMZERO\000"
+ 1861 00f2 43594D45 		.ascii	"CYMEMZERO\000"
  1861      4D5A4552 
  1861      4F00
  1862              	.LASF4:
- 1863 0101 756E7369 		.ascii	"unsigned char\000"
+ 1863 00fc 756E7369 		.ascii	"unsigned char\000"
  1863      676E6564 
  1863      20636861 
  1863      7200
  1864              	.LASF43:
- 1865 010f 6D656D73 		.ascii	"memset\000"
+ 1865 010a 6D656D73 		.ascii	"memset\000"
  1865      657400
  1866              	.LASF17:
- 1867 0116 646F7562 		.ascii	"double\000"
+ 1867 0111 646F7562 		.ascii	"double\000"
  1867      6C6500
  1868              	.LASF27:
- 1869 011d 6366675F 		.ascii	"cfg_write_bytes32\000"
+ 1869 0118 6366675F 		.ascii	"cfg_write_bytes32\000"
  1869      77726974 
  1869      655F6279 
  1869      74657333 
  1869      3200
  1870              	.LASF38:
- 1871 012f 4379496E 		.ascii	"CyIntEnable\000"
+ 1871 012a 4379496E 		.ascii	"CyIntEnable\000"
  1871      74456E61 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 45
-
-
  1871      626C6500 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 45
+
+
  1872              	.LASF23:
- 1873 013b 61646472 		.ascii	"addr_table\000"
+ 1873 0136 61646472 		.ascii	"addr_table\000"
  1873      5F746162 
  1873      6C6500
  1874              	.LASF14:
- 1875 0146 75696E74 		.ascii	"uint16\000"
+ 1875 0141 75696E74 		.ascii	"uint16\000"
  1875      313600
  1876              	.LASF24:
- 1877 014d 64617461 		.ascii	"data_table\000"
+ 1877 0148 64617461 		.ascii	"data_table\000"
  1877      5F746162 
  1877      6C6500
  1878              	.LASF15:
- 1879 0158 75696E74 		.ascii	"uint32\000"
+ 1879 0153 75696E74 		.ascii	"uint32\000"
  1879      333200
  1880              	.LASF0:
- 1881 015f 756E7369 		.ascii	"unsigned int\000"
+ 1881 015a 756E7369 		.ascii	"unsigned int\000"
  1881      676E6564 
  1881      20696E74 
  1881      00
  1882              	.LASF42:
- 1883 016c 63796669 		.ascii	"cyfitter_cfg\000"
+ 1883 0167 63796669 		.ascii	"cyfitter_cfg\000"
  1883      74746572 
  1883      5F636667 
  1883      00
  1884              	.LASF32:
- 1885 0179 61646472 		.ascii	"address\000"
+ 1885 0174 61646472 		.ascii	"address\000"
  1885      65737300 
  1886              	.LASF9:
- 1887 0181 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1887 017c 6C6F6E67 		.ascii	"long long unsigned int\000"
  1887      206C6F6E 
  1887      6720756E 
  1887      7369676E 
  1887      65642069 
  1888              	.LASF39:
- 1889 0198 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1889 0193 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1889      43313120 
  1889      352E342E 
  1889      31203230 
  1889      31363036 
- 1890 01cb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1890 01c6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  1890      20726576 
  1890      6973696F 
  1890      6E203233 
  1890      37373135 
- 1891 01fe 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1891 01f9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  1891      66756E63 
  1891      74696F6E 
  1891      2D736563 
  1891      74696F6E 
  1892              	.LASF34:
- 1893 0226 6366675F 		.ascii	"cfg_memset_t\000"
+ 1893 0221 6366675F 		.ascii	"cfg_memset_t\000"
  1893      6D656D73 
  1893      65745F74 
  1893      00
  1894              	.LASF25:
- 1895 0233 62617365 		.ascii	"baseAddr\000"
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 46
-
-
+ 1895 022e 62617365 		.ascii	"baseAddr\000"
  1895      41646472 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 46
+
+
  1895      00
  1896              	.LASF10:
- 1897 023c 73697A65 		.ascii	"sizetype\000"
+ 1897 0237 73697A65 		.ascii	"sizetype\000"
  1897      74797065 
  1897      00
  1898              	.LASF6:
- 1899 0245 73686F72 		.ascii	"short unsigned int\000"
+ 1899 0240 73686F72 		.ascii	"short unsigned int\000"
  1899      7420756E 
  1899      7369676E 
  1899      65642069 
  1899      6E7400
  1900              	.LASF1:
- 1901 0258 6C6F6E67 		.ascii	"long long int\000"
+ 1901 0253 6C6F6E67 		.ascii	"long long int\000"
  1901      206C6F6E 
  1901      6720696E 
  1901      7400
  1902              	.LASF11:
- 1903 0266 63686172 		.ascii	"char\000"
+ 1903 0261 63686172 		.ascii	"char\000"
  1903      00
  1904              	.LASF22:
- 1905 026b 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
+ 1905 0266 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
  1905      66675F61 
  1905      64647276 
  1905      616C7565 
  1905      5F7400
  1906              	.LASF20:
- 1907 027e 6F666673 		.ascii	"offset\000"
+ 1907 0279 6F666673 		.ascii	"offset\000"
  1907      657400
  1908              	.LASF5:
- 1909 0285 73686F72 		.ascii	"short int\000"
+ 1909 0280 73686F72 		.ascii	"short int\000"
  1909      7420696E 
  1909      7400
  1910              	.LASF36:
- 1911 028f 43795379 		.ascii	"CySysClkWriteImoFreq\000"
+ 1911 028a 43795379 		.ascii	"CySysClkWriteImoFreq\000"
  1911      73436C6B 
  1911      57726974 
  1911      65496D6F 
  1911      46726571 
  1912              	.LASF7:
- 1913 02a4 6C6F6E67 		.ascii	"long int\000"
+ 1913 029f 6C6F6E67 		.ascii	"long int\000"
  1913      20696E74 
  1913      00
  1914              	.LASF2:
- 1915 02ad 6C6F6E67 		.ascii	"long double\000"
+ 1915 02a8 6C6F6E67 		.ascii	"long double\000"
  1915      20646F75 
  1915      626C6500 
  1916              	.LASF3:
- 1917 02b9 7369676E 		.ascii	"signed char\000"
+ 1917 02b4 7369676E 		.ascii	"signed char\000"
  1917      65642063 
  1917      68617200 
  1918              	.LASF40:
- 1919 02c5 47656E65 		.ascii	"Generated_Source\\PSoC4\\cyfitter_cfg.c\000"
+ 1919 02c0 47656E65 		.ascii	"Generated_Source\\PSoC4\\cyfitter_cfg.c\000"
  1919      72617465 
  1919      645F536F 
  1919      75726365 
  1919      5C50536F 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\cchqEUCJ.s 			page 47
-
-
  1920              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccdaHeu0.s 			page 47
+
+
