@@ -49,3 +49,11 @@ This shows how to choose between different led blinking or fading patterns using
 A very easy project to test a few leds. It just turns on and off the leds in sequence, creating an effect similar to KITT lights in Knight Rider TV Show.
 ### LED PWM Meter
 In this case Capsense value is represented in an array of 4 LEDs. Depending on the Capsense value, some LEDs might be on and or one of them could be attenuated. This effect is achieved using 4 PWM signals, which allows to choose the brightness of a LED.
+### ADC-UART
+It just obtains the value of an analog voltage and digitalizes it, printing it's value through an UART communication. I have tested it using a linear variable resistor.
+### ADC-PWM-UART
+It does the same than the previous one, but the ADC value is used to modify the duty-cycle of a PWM.
+### Buttons-LEDs-UART
+There are 2 buttons atached to a IRS. This program detects which button has been pressed or release, and prints it on screen through UART communication. I have tried to represent it in the way car doors work, in case that the door is opened, the interior light turns on and a warning message appears to the driver.
+### RGB UART Control
+In this project an RGB LED is controlled through commands using UART communication. User can send a command to set the value of all the colours or change the brightness of an specific LED.
