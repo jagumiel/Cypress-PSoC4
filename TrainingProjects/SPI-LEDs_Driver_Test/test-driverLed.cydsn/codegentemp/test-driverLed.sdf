@@ -1,0 +1,28 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2020-09-16T14:45:37Z")
+ (DESIGN "test-driverLed")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.2")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "test-driverLed")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT \\SPI_1\:SCB\\.mosi_m mosi\(0\).pin_input (0.000:0.000:0.000))
+    (INTERCONNECT \\SPI_1\:SCB\\.sclk_m sclk\(0\).pin_input (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.ff_div_1 \\SPI_1\:SCB\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT mosi\(0\).pad_out mosi\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT sclk\(0\).pad_out sclk\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT mosi\(0\).pad_out mosi\(0\)_PAD (0.000:0.000:0.000))
+    (INTERCONNECT mosi\(0\)_PAD mosi\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT sclk\(0\).pad_out sclk\(0\)_PAD (0.000:0.000:0.000))
+    (INTERCONNECT sclk\(0\)_PAD sclk\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT LE\(0\)_PAD LE\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)

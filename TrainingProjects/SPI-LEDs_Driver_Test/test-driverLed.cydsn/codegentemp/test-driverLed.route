@@ -1,0 +1,12 @@
+net Net_11
+	term   ":m0s8scbcell_0.mosi_m"
+	switch ":m0s8scbcell_0.mosi_m==>:ioport1:hsiom_out4.fixed_DPSLP_3"
+	switch ":ioport1:hsiom_out4.hsiom4_out==>:ioport1:pin4.pin_input"
+	term   ":ioport1:pin4.pin_input"
+end Net_11
+net Net_12
+	term   ":m0s8scbcell_0.sclk_m"
+	switch ":m0s8scbcell_0.sclk_m==>:ioport1:hsiom_out7.fixed_DPSLP_3"
+	switch ":ioport1:hsiom_out7.hsiom7_out==>:ioport1:pin7.pin_input"
+	term   ":ioport1:pin7.pin_input"
+end Net_12
