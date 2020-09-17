@@ -1,5 +1,5 @@
 # test-driverLed
-# 2020-09-16 14:45:35Z
+# 2020-09-17 08:20:12Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -14,4 +14,14 @@ set_location "ClockBlock" m0s8clockblockcell -1 -1 0
 set_io "mosi(0)" iocell 1 4
 set_io "sclk(0)" iocell 1 7
 set_io "LE(0)" iocell 1 5
+set_io "PWM(0)" iocell 0 0
+set_location "\PWM_1:PWMUDB:status_2\" 0 0 0 1
 set_location "\SPI_1:SCB\" m0s8scbcell -1 -1 0
+set_location "\PWM_1:PWMUDB:genblk1:ctrlreg\" 0 0 6
+set_location "\PWM_1:PWMUDB:genblk8:stsreg\" 0 0 4
+set_location "\PWM_1:PWMUDB:sP16:pwmdp:u0\" 1 0 2
+set_location "\PWM_1:PWMUDB:sP16:pwmdp:u1\" 0 0 2
+set_location "\PWM_1:PWMUDB:runmode_enable\" 0 0 0 0
+set_location "\PWM_1:PWMUDB:prevCompare1\" 0 0 0 3
+set_location "\PWM_1:PWMUDB:status_0\" 0 0 1 0
+set_location "Net_246" 0 0 0 2

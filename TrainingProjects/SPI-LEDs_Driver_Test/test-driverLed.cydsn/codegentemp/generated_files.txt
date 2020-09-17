@@ -39,6 +39,13 @@
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\LE_PM.c" value="SOURCE_C;CortexM0;;;;LE" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Clock_1.c" value="SOURCE_C;CortexM0;;;;Clock_1" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Clock_1.h" value="HEADER;;;;;Clock_1" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1.c" value="SOURCE_C;CortexM0;;;;PWM_1" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1.h" value="HEADER;;;;;PWM_1" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1_PM.c" value="SOURCE_C;CortexM0;;;;PWM_1" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM.c" value="SOURCE_C;CortexM0;;;;PWM" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM.h" value="HEADER;;;;;PWM" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_aliases.h" value="HEADER;;;;;PWM" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_PM.c" value="SOURCE_C;CortexM0;;;;PWM" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;CortexM0;;;;Em_EEPROM_Dynamic" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cm0gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />

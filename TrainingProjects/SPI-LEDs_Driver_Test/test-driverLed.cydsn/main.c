@@ -25,12 +25,40 @@ int main(void){
     /* Component initialization/startup */
     Clock_1_Start();
     SPI_1_Start();
+    PWM_1_Start();
     
+    int time=200;
+    int counter=0;
+    int countCharChange=0;
+    int i=0;
+    uint16_t character=0x0000;
+    uint16_t blank= 0x0000;
 
     for(;;){
-        for(int i=0; i<10; i++){
-            CyDelay(500);
-            writeChar(ALPHANUMR_CHAR_TABLE[i]);
+        counter=0;
+        PWM_1_WriteCompare(time);
+        while(counter<500){ //12000 = 1 second
+            if(PWM_Read()==1){
+                writeChar(character);
+                counter++;
+            }else{
+                writeChar(blank);
+            }
+            countCharChange++;
+            if(countCharChange==24000){
+                character=ALPHANUMR_CHAR_TABLE[i];
+                countCharChange=0;
+                if(i<50){
+                    i++;
+                }else{
+                    i=0;
+                }
+            }
+        }
+        if(time<12000){
+            time=time+200;
+        }else{
+            time=200;
         }
     }
 }
