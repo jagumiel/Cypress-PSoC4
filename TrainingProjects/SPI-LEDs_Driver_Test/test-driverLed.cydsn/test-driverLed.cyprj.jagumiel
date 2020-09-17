@@ -43,6 +43,7 @@
 <dep name=".\Generated_Source\PSoC4\project.h" />
 <dep name=".\Generated_Source\PSoC4\sclk.h" />
 <dep name=".\Generated_Source\PSoC4\sclk_aliases.h" />
+<dep name=".\alphabet.h" />
 <dep name=".\main.c" />
 </file>
 <file name=".\Generated_Source\PSoC4\Clock_1.h" />
@@ -76,6 +77,7 @@
 <file name=".\Generated_Source\PSoC4\project.h" />
 <file name=".\Generated_Source\PSoC4\sclk.h" />
 <file name=".\Generated_Source\PSoC4\sclk_aliases.h" />
+<file name=".\alphabet.h" />
 <file name=".\main.c" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\SPI_1.o">
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
@@ -697,7 +699,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="132447412646391420" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="132447985425652798" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
