@@ -46,6 +46,35 @@
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM.h" value="HEADER;;;;;PWM" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_aliases.h" value="HEADER;;;;;PWM" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_PM.c" value="SOURCE_C;CortexM0;;;;PWM" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_PM.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_CSHL.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_CSHL.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_INT.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_TunerHelper.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_TunerHelper.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SMS.c" value="SOURCE_C;CortexM0;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SMS.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_PVT.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_IP.h" value="HEADER;;;;;CapSense" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STR.c" value="SOURCE_C;CortexM0;;;;STR" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STR.h" value="HEADER;;;;;STR" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STR_aliases.h" value="HEADER;;;;;STR" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STR_PM.c" value="SOURCE_C;CortexM0;;;;STR" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STG.c" value="SOURCE_C;CortexM0;;;;STG" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STG.h" value="HEADER;;;;;STG" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STG_aliases.h" value="HEADER;;;;;STG" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STG_PM.c" value="SOURCE_C;CortexM0;;;;STG" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STB.c" value="SOURCE_C;CortexM0;;;;STB" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STB.h" value="HEADER;;;;;STB" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STB_aliases.h" value="HEADER;;;;;STB" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\STB_PM.c" value="SOURCE_C;CortexM0;;;;STB" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SampleClk.c" value="SOURCE_C;CortexM0;;;;CapSense_SampleClk" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SampleClk.h" value="HEADER;;;;;CapSense_SampleClk" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_Sns_aliases.h" value="HEADER;;;;;CapSense_Sns" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SenseClk.c" value="SOURCE_C;CortexM0;;;;CapSense_SenseClk" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SenseClk.h" value="HEADER;;;;;CapSense_SenseClk" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;CortexM0;;;;Em_EEPROM_Dynamic" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\cm0gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />

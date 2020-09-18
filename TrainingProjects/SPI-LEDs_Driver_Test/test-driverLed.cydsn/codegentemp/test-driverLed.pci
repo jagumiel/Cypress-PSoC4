@@ -1,5 +1,5 @@
 # test-driverLed
-# 2020-09-17 08:20:11Z
+# 2020-09-18 10:33:37Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -11,4 +11,14 @@ dont_use_io iocell 6 0
 dont_use_io iocell 6 1
 set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
 set_io "mosi(0)" iocell 1 4
+set_io "sclk(0)" iocell 1 7
 set_io "LE(0)" iocell 1 5
+set_io "\CapSense:Cmod(0)\" iocell 4 0
+set_io "\CapSense:Sns(0)\" iocell 2 1
+set_io "\CapSense:Sns(1)\" iocell 2 5
+set_io "STR(0)" iocell 2 6
+set_io "STG(0)" iocell 3 6
+set_io "STB(0)" iocell 3 7
+set_location "\CapSense:CSD_FFB\" p4csdcell -1 -1 0
+set_location "\CapSense:IDAC2:cy_psoc4_idac\" p4csidac7cell -1 -1 0
+set_location "\CapSense:IDAC1:cy_psoc4_idac\" p4csidac8cell -1 -1 0

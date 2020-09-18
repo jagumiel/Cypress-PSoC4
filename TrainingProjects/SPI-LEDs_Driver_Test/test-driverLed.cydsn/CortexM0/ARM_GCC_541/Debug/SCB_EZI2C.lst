@@ -1,0 +1,2047 @@
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"SCB_EZI2C.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SCB_EzI2CInit,"ax",%progbits
+  20              		.align	2
+  21              		.global	SCB_EzI2CInit
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	SCB_EzI2CInit, %function
+  25              	SCB_EzI2CInit:
+  26              	.LFB2:
+  27              		.file 1 "Generated_Source\\PSoC4\\SCB_EZI2C.c"
+   1:Generated_Source\PSoC4/SCB_EZI2C.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/SCB_EZI2C.c **** * \file SCB_EZI2C.c
+   3:Generated_Source\PSoC4/SCB_EZI2C.c **** * \version 4.0
+   4:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+   5:Generated_Source\PSoC4/SCB_EZI2C.c **** * \brief
+   6:Generated_Source\PSoC4/SCB_EZI2C.c **** *  This file provides the source code to the API for the SCB Component in
+   7:Generated_Source\PSoC4/SCB_EZI2C.c **** *  EZI2C mode.
+   8:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+   9:Generated_Source\PSoC4/SCB_EZI2C.c **** * Note:
+  10:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+  11:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************
+  12:Generated_Source\PSoC4/SCB_EZI2C.c **** * \copyright
+  13:Generated_Source\PSoC4/SCB_EZI2C.c **** * Copyright 2013-2017, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/SCB_EZI2C.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/SCB_EZI2C.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/SCB_EZI2C.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  19:Generated_Source\PSoC4/SCB_EZI2C.c **** #include "SCB_PVT.h"
+  20:Generated_Source\PSoC4/SCB_EZI2C.c **** #include "SCB_EZI2C_PVT.h"
+  21:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  22:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  23:Generated_Source\PSoC4/SCB_EZI2C.c **** /***************************************
+  24:Generated_Source\PSoC4/SCB_EZI2C.c **** *      EZI2C Private Vars
+  25:Generated_Source\PSoC4/SCB_EZI2C.c **** ***************************************/
+  26:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  27:Generated_Source\PSoC4/SCB_EZI2C.c **** volatile uint8 SCB_curStatus; /* Status byte */
+  28:Generated_Source\PSoC4/SCB_EZI2C.c **** uint8 SCB_fsmState;           /* FSM state   */
+  29:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  30:Generated_Source\PSoC4/SCB_EZI2C.c **** /* Variables intended to be used with Buffer 1: Primary slave address */
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 2
+
+
+  31:Generated_Source\PSoC4/SCB_EZI2C.c **** volatile uint8 * SCB_dataBuffer1; /* Pointer to data buffer 1 */
+  32:Generated_Source\PSoC4/SCB_EZI2C.c **** uint16 SCB_bufSizeBuf1;           /* Size of buffer 1 in bytes      */
+  33:Generated_Source\PSoC4/SCB_EZI2C.c **** uint16 SCB_protectBuf1;           /* Start index of write protected area buffer 1 */
+  34:Generated_Source\PSoC4/SCB_EZI2C.c **** uint16 SCB_offsetBuf1; /* Current offset within buffer 1 */
+  35:Generated_Source\PSoC4/SCB_EZI2C.c **** uint16 SCB_indexBuf1;             /* Current index within buffer 1  */
+  36:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  37:Generated_Source\PSoC4/SCB_EZI2C.c **** #if(SCB_SECONDARY_ADDRESS_ENABLE_CONST)
+  38:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint8 SCB_addrBuf1; /* Primary slave address. Used for software comparison   */
+  39:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint8 SCB_addrBuf2; /* Secondary slave address. Used for software comparison */
+  40:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  41:Generated_Source\PSoC4/SCB_EZI2C.c ****     /* Variables intended to be used with Buffer 2: Primary slave address */
+  42:Generated_Source\PSoC4/SCB_EZI2C.c ****     volatile uint8 * SCB_dataBuffer2; /* Pointer to data buffer 2 */
+  43:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint16 SCB_bufSizeBuf2;           /* Size of buffer 2 in bytes */
+  44:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint16 SCB_protectBuf2;           /* Start index of write protected area buffer 2 */
+  45:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint16 SCB_offsetBuf2; /* Current offset within buffer 2 */
+  46:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint16 SCB_indexBuf2;             /* Current index within buffer 2 */
+  47:Generated_Source\PSoC4/SCB_EZI2C.c **** #endif /* (SCB_SECONDARY_ADDRESS_ENABLE_CONST) */
+  48:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  49:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  50:Generated_Source\PSoC4/SCB_EZI2C.c **** /***************************************
+  51:Generated_Source\PSoC4/SCB_EZI2C.c **** *      EZI2C Private Functions
+  52:Generated_Source\PSoC4/SCB_EZI2C.c **** ***************************************/
+  53:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  54:Generated_Source\PSoC4/SCB_EZI2C.c **** #if(SCB_SECONDARY_ADDRESS_ENABLE_CONST)
+  55:Generated_Source\PSoC4/SCB_EZI2C.c ****     static uint32 SCB_EzI2CUpdateRxMatchReg(uint32 addr1, uint32 addr2);
+  56:Generated_Source\PSoC4/SCB_EZI2C.c **** #endif /* (SCB_SECONDARY_ADDRESS_ENABLE_CONST) */
+  57:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  58:Generated_Source\PSoC4/SCB_EZI2C.c **** #if(SCB_SCB_MODE_UNCONFIG_CONST_CFG)
+  59:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  60:Generated_Source\PSoC4/SCB_EZI2C.c ****     /***************************************
+  61:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  Configuration Structure Initialization
+  62:Generated_Source\PSoC4/SCB_EZI2C.c ****     ***************************************/
+  63:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  64:Generated_Source\PSoC4/SCB_EZI2C.c ****     /* Constant configuration of EZI2C */
+  65:Generated_Source\PSoC4/SCB_EZI2C.c ****     const SCB_EZI2C_INIT_STRUCT SCB_configEzI2C =
+  66:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+  67:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_CLOCK_STRETCHING,
+  68:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_MEDIAN_FILTER_ENABLE,
+  69:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_NUMBER_OF_ADDRESSES,
+  70:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_PRIMARY_SLAVE_ADDRESS,
+  71:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_SECONDARY_SLAVE_ADDRESS,
+  72:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_SUB_ADDRESS_SIZE,
+  73:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_WAKE_ENABLE,
+  74:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EZI2C_BYTE_MODE_ENABLE
+  75:Generated_Source\PSoC4/SCB_EZI2C.c ****     };
+  76:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+  77:Generated_Source\PSoC4/SCB_EZI2C.c ****     /*******************************************************************************
+  78:Generated_Source\PSoC4/SCB_EZI2C.c ****     * Function Name: SCB_EzI2CInit
+  79:Generated_Source\PSoC4/SCB_EZI2C.c ****     ****************************************************************************//**
+  80:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+  81:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  Configures the SCB for EZI2C operation.
+  82:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+  83:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  This function is intended specifically to be used when the SCB 
+  84:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  configuration is set to “Unconfigured SCB” in the customizer. 
+  85:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  After initializing the SCB in EZI2C mode using this function, 
+  86:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  the component can be enabled using the SCB_Start() or 
+  87:Generated_Source\PSoC4/SCB_EZI2C.c ****     * SCB_Enable() function.
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 3
+
+
+  88:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  This function uses a pointer to a structure that provides the configuration 
+  89:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  settings. This structure contains the same information that would otherwise 
+  90:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  be provided by the customizer settings.
+  91:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+  92:Generated_Source\PSoC4/SCB_EZI2C.c ****     * \param config: pointer to a structure that contains the following list of 
+  93:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  fields. These fields match the selections available in the customizer. 
+  94:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  Refer to the customizer for further description of the settings.
+  95:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+  96:Generated_Source\PSoC4/SCB_EZI2C.c ****     *******************************************************************************/
+  97:Generated_Source\PSoC4/SCB_EZI2C.c ****     void SCB_EzI2CInit(const SCB_EZI2C_INIT_STRUCT *config)
+  98:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+  99:Generated_Source\PSoC4/SCB_EZI2C.c ****         if(NULL == config)
+ 100:Generated_Source\PSoC4/SCB_EZI2C.c ****         {
+ 101:Generated_Source\PSoC4/SCB_EZI2C.c ****             CYASSERT(0u != 0u); /* Halt execution due to bad function parameter */
+ 102:Generated_Source\PSoC4/SCB_EZI2C.c ****         }
+ 103:Generated_Source\PSoC4/SCB_EZI2C.c ****         else
+ 104:Generated_Source\PSoC4/SCB_EZI2C.c ****         {
+ 105:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure pins */
+ 106:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_SetPins(SCB_SCB_MODE_EZI2C, SCB_DUMMY_PARAM,
+ 107:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                                       SCB_DUMMY_PARAM);
+ 108:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 109:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Store internal configuration */
+ 110:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_scbMode       = (uint8) SCB_SCB_MODE_EZI2C;
+ 111:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_scbEnableWake = (uint8) config->enableWake;
+ 112:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_scbEnableIntr = (uint8) SCB_SCB_IRQ_INTERNAL;
+ 113:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 114:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_numberOfAddr  = (uint8) config->numberOfAddresses;
+ 115:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_subAddrSize   = (uint8) config->subAddrSize;
+ 116:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 117:Generated_Source\PSoC4/SCB_EZI2C.c ****         #if (SCB_CY_SCBIP_V0)
+ 118:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Adjust SDA filter settings. Ticket ID#150521 */
+ 119:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_SET_I2C_CFG_SDA_FILT_TRIM(SCB_EC_AM_I2C_CFG_SDA_FILT_TRIM);
+ 120:Generated_Source\PSoC4/SCB_EZI2C.c ****         #endif /* (SCB_CY_SCBIP_V0) */
+ 121:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 122:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Adjust AF and DF filter settings, AF = 1, DF = 0. Ticket ID#176179 */
+ 123:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_I2C_CFG_ANALOG_FITER_ENABLE;
+ 124:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 125:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure I2C interface */
+ 126:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_CTRL_REG     = SCB_GET_CTRL_BYTE_MODE  (config->enableByteMode)    |
+ 127:Generated_Source\PSoC4/SCB_EZI2C.c ****                                             SCB_GET_CTRL_ADDR_ACCEPT(config->numberOfAddresses) |
+ 128:Generated_Source\PSoC4/SCB_EZI2C.c ****                                             SCB_GET_CTRL_EC_AM_MODE (config->enableWake);
+ 129:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 130:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_I2C_CTRL_REG = SCB_EZI2C_CTRL;
+ 131:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 132:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure RX direction */
+ 133:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_RX_CTRL_REG = SCB_EZI2C_RX_CTRL |
+ 134:Generated_Source\PSoC4/SCB_EZI2C.c ****                                         SCB_GET_RX_CTRL_MEDIAN(SCB_DIGITAL_FILTER_DISABLE);
+ 135:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                 ;
+ 136:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_RX_FIFO_CTRL_REG = SCB_CLEAR_REG;
+ 137:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 138:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Set default address and mask */
+ 139:Generated_Source\PSoC4/SCB_EZI2C.c ****             if(SCB_EZI2C_PRIMARY_ADDRESS == config->numberOfAddresses)
+ 140:Generated_Source\PSoC4/SCB_EZI2C.c ****             {
+ 141:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_RX_MATCH_REG = SCB_EzI2CUpdateRxMatchReg(config->primarySlaveAddr,
+ 142:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                                                        config->prim
+ 143:Generated_Source\PSoC4/SCB_EZI2C.c ****             }
+ 144:Generated_Source\PSoC4/SCB_EZI2C.c ****             else
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/SCB_EZI2C.c ****             {
+ 146:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_RX_MATCH_REG = SCB_EzI2CUpdateRxMatchReg(config->primarySlaveAddr,
+ 147:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                                                        config->seco
+ 148:Generated_Source\PSoC4/SCB_EZI2C.c ****             }
+ 149:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 150:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure TX direction */
+ 151:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_TX_CTRL_REG      = SCB_EZI2C_TX_CTRL;
+ 152:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_TX_FIFO_CTRL_REG = ((0u != (config->enableClockStretch)) ?
+ 153:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                  SCB_CLEAR_REG : SCB_EZI2C_TX_FIFO_CTRL);
+ 154:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 155:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure interrupt sources */
+ 156:Generated_Source\PSoC4/SCB_EZI2C.c ****         #if (!SCB_CY_SCBIP_V1)
+ 157:Generated_Source\PSoC4/SCB_EZI2C.c ****            SCB_INTR_SPI_EC_MASK_REG = SCB_NO_INTR_SOURCES;
+ 158:Generated_Source\PSoC4/SCB_EZI2C.c ****         #endif /* (!SCB_CY_SCBIP_V1) */
+ 159:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 160:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_INTR_I2C_EC_MASK_REG = SCB_NO_INTR_SOURCES;
+ 161:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_INTR_MASTER_MASK_REG = SCB_NO_INTR_SOURCES;
+ 162:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_INTR_SLAVE_MASK_REG  = SCB_EZI2C_INTR_SLAVE_MASK;
+ 163:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_INTR_TX_MASK_REG     = SCB_NO_INTR_SOURCES;
+ 164:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 165:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure interrupt with EZI2C handler but do not enable it */
+ 166:Generated_Source\PSoC4/SCB_EZI2C.c ****             CyIntDisable    (SCB_ISR_NUMBER);
+ 167:Generated_Source\PSoC4/SCB_EZI2C.c ****             CyIntSetPriority(SCB_ISR_NUMBER, SCB_ISR_PRIORITY);
+ 168:Generated_Source\PSoC4/SCB_EZI2C.c ****             (void) CyIntSetVector(SCB_ISR_NUMBER, (0u != (config->enableClockStretch)) ?
+ 169:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                                       (&SCB_EZI2C_STRETCH_ISR) :
+ 170:Generated_Source\PSoC4/SCB_EZI2C.c ****                                                                       (&SCB_EZI2C_NO_STRETCH_ISR));
+ 171:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 172:Generated_Source\PSoC4/SCB_EZI2C.c ****             if(0u != (config->enableClockStretch))
+ 173:Generated_Source\PSoC4/SCB_EZI2C.c ****             {
+ 174:Generated_Source\PSoC4/SCB_EZI2C.c ****                 /* Configure interrupt sources */
+ 175:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_INTR_SLAVE_MASK_REG |= SCB_INTR_SLAVE_I2C_ADDR_MATCH;
+ 176:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_INTR_RX_MASK_REG     = SCB_NO_INTR_SOURCES;
+ 177:Generated_Source\PSoC4/SCB_EZI2C.c ****             }
+ 178:Generated_Source\PSoC4/SCB_EZI2C.c ****             else
+ 179:Generated_Source\PSoC4/SCB_EZI2C.c ****             {
+ 180:Generated_Source\PSoC4/SCB_EZI2C.c ****                 /* Enable Auto ACK/NACK features */
+ 181:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_I2C_CTRL_REG |= SCB_EZI2C_CTRL_AUTO;
+ 182:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 183:Generated_Source\PSoC4/SCB_EZI2C.c ****                 /* Configure RX interrupt source */
+ 184:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_INTR_SLAVE_MASK_REG |= SCB_INTR_SLAVE_I2C_START;
+ 185:Generated_Source\PSoC4/SCB_EZI2C.c ****                 SCB_INTR_RX_MASK_REG     = SCB_INTR_RX_NOT_EMPTY;
+ 186:Generated_Source\PSoC4/SCB_EZI2C.c ****             }
+ 187:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 188:Generated_Source\PSoC4/SCB_EZI2C.c ****             /* Configure global variables */
+ 189:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_fsmState = SCB_EZI2C_FSM_IDLE;
+ 190:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 191:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_curStatus  = 0u;
+ 192:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_indexBuf1  = 0u;
+ 193:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_offsetBuf1 = 0u;
+ 194:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_indexBuf2  = 0u;
+ 195:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_offsetBuf2 = 0u;
+ 196:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 197:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_addrBuf1 = (uint8) config->primarySlaveAddr;
+ 198:Generated_Source\PSoC4/SCB_EZI2C.c ****             SCB_addrBuf2 = (uint8) config->secondarySlaveAddr;
+ 199:Generated_Source\PSoC4/SCB_EZI2C.c ****         }
+ 200:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 201:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 5
+
+
+ 202:Generated_Source\PSoC4/SCB_EZI2C.c **** #else
+ 203:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 204:Generated_Source\PSoC4/SCB_EZI2C.c ****     /*******************************************************************************
+ 205:Generated_Source\PSoC4/SCB_EZI2C.c ****     * Function Name: SCB_EzI2CInit
+ 206:Generated_Source\PSoC4/SCB_EZI2C.c ****     ****************************************************************************//**
+ 207:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+ 208:Generated_Source\PSoC4/SCB_EZI2C.c ****     *  Configures the SCB for the EZI2C operation.
+ 209:Generated_Source\PSoC4/SCB_EZI2C.c ****     *
+ 210:Generated_Source\PSoC4/SCB_EZI2C.c ****     *******************************************************************************/
+ 211:Generated_Source\PSoC4/SCB_EZI2C.c ****     void SCB_EzI2CInit(void)
+ 212:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+  28              		.loc 1 212 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 213:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure I2C interface */
+ 214:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_CTRL_REG     = SCB_EZI2C_DEFAULT_CTRL;
+  36              		.loc 1 214 0
+  37 0002 0024     		movs	r4, #0
+  38 0004 1A4B     		ldr	r3, .L2
+  39 0006 1C60     		str	r4, [r3]
+ 215:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_I2C_CTRL_REG = SCB_EZI2C_DEFAULT_I2C_CTRL;
+  40              		.loc 1 215 0
+  41 0008 1A4A     		ldr	r2, .L2+4
+  42 000a 1B4B     		ldr	r3, .L2+8
+  43 000c 1A60     		str	r2, [r3]
+ 216:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 217:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if (SCB_CY_SCBIP_V0)
+ 218:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Adjust SDA filter settings. Ticket ID#150521 */
+ 219:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_SET_I2C_CFG_SDA_FILT_TRIM(SCB_EC_AM_I2C_CFG_SDA_FILT_TRIM);
+ 220:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif /* (SCB_CY_SCBIP_V0) */
+ 221:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 222:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure RX direction */
+ 223:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_RX_CTRL_REG      = SCB_EZI2C_DEFAULT_RX_CTRL;
+  44              		.loc 1 223 0
+  45 000e 1B4B     		ldr	r3, .L2+12
+  46 0010 1B4A     		ldr	r2, .L2+16
+  47 0012 1360     		str	r3, [r2]
+ 224:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_RX_FIFO_CTRL_REG = SCB_EZI2C_DEFAULT_RX_FIFO_CTRL;
+  48              		.loc 1 224 0
+  49 0014 1B4A     		ldr	r2, .L2+20
+  50 0016 1460     		str	r4, [r2]
+ 225:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 226:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Set default address and mask */
+ 227:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_RX_MATCH_REG     = SCB_EZI2C_DEFAULT_RX_MATCH;
+  51              		.loc 1 227 0
+  52 0018 1B49     		ldr	r1, .L2+24
+  53 001a 1C4A     		ldr	r2, .L2+28
+  54 001c 1160     		str	r1, [r2]
+ 228:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 229:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure TX direction */
+ 230:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_TX_CTRL_REG      = SCB_EZI2C_DEFAULT_TX_CTRL;
+  55              		.loc 1 230 0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 6
+
+
+  56 001e 1C4A     		ldr	r2, .L2+32
+  57 0020 1360     		str	r3, [r2]
+ 231:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_TX_FIFO_CTRL_REG = SCB_EZI2C_DEFAULT_TX_FIFO_CTRL;
+  58              		.loc 1 231 0
+  59 0022 1C4B     		ldr	r3, .L2+36
+  60 0024 1C60     		str	r4, [r3]
+ 232:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 233:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure interrupt with EZI2C handler but do not enable it */
+ 234:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if !defined (CY_EXTERNAL_INTERRUPT_CONFIG)
+ 235:Generated_Source\PSoC4/SCB_EZI2C.c ****         CyIntDisable    (SCB_ISR_NUMBER);
+  61              		.loc 1 235 0
+  62 0026 0A20     		movs	r0, #10
+  63 0028 FFF7FEFF 		bl	CyIntDisable
+  64              	.LVL0:
+ 236:Generated_Source\PSoC4/SCB_EZI2C.c ****         CyIntSetPriority(SCB_ISR_NUMBER, SCB_ISR_PRIORITY);
+  65              		.loc 1 236 0
+  66 002c 0321     		movs	r1, #3
+  67 002e 0A20     		movs	r0, #10
+  68 0030 FFF7FEFF 		bl	CyIntSetPriority
+  69              	.LVL1:
+ 237:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 238:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if (SCB_EZI2C_SCL_STRETCH_ENABLE_CONST)
+ 239:Generated_Source\PSoC4/SCB_EZI2C.c ****         (void) CyIntSetVector(SCB_ISR_NUMBER, &SCB_EZI2C_STRETCH_ISR);
+  70              		.loc 1 239 0
+  71 0034 1849     		ldr	r1, .L2+40
+  72 0036 0A20     		movs	r0, #10
+  73 0038 FFF7FEFF 		bl	CyIntSetVector
+  74              	.LVL2:
+ 240:Generated_Source\PSoC4/SCB_EZI2C.c ****     #else
+ 241:Generated_Source\PSoC4/SCB_EZI2C.c ****         (void) CyIntSetVector(SCB_ISR_NUMBER, &SCB_EZI2C_NO_STRETCH_ISR);
+ 242:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif /* (SCB_EZI2C_SCL_STRETCH_ENABLE_CONST) */
+ 243:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 244:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif /* !defined (CY_EXTERNAL_INTERRUPT_CONFIG) */
+ 245:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 246:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure interrupt sources */
+ 247:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if (!SCB_CY_SCBIP_V1)
+ 248:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_SPI_EC_MASK_REG = SCB_EZI2C_DEFAULT_INTR_SPI_EC_MASK;
+  75              		.loc 1 248 0
+  76 003c 174B     		ldr	r3, .L2+44
+  77 003e 1C60     		str	r4, [r3]
+ 249:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif /* (!SCB_CY_SCBIP_V1) */
+ 250:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 251:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_I2C_EC_MASK_REG = SCB_EZI2C_DEFAULT_INTR_I2C_EC_MASK;
+  78              		.loc 1 251 0
+  79 0040 174B     		ldr	r3, .L2+48
+  80 0042 1C60     		str	r4, [r3]
+ 252:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_SLAVE_MASK_REG  = SCB_EZI2C_DEFAULT_INTR_SLAVE_MASK;
+  81              		.loc 1 252 0
+  82 0044 5222     		movs	r2, #82
+  83 0046 FF32     		adds	r2, r2, #255
+  84 0048 164B     		ldr	r3, .L2+52
+  85 004a 1A60     		str	r2, [r3]
+ 253:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_MASTER_MASK_REG = SCB_EZI2C_DEFAULT_INTR_MASTER_MASK;
+  86              		.loc 1 253 0
+  87 004c 164B     		ldr	r3, .L2+56
+  88 004e 1C60     		str	r4, [r3]
+ 254:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_RX_MASK_REG     = SCB_EZI2C_DEFAULT_INTR_RX_MASK;
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 7
+
+
+  89              		.loc 1 254 0
+  90 0050 164B     		ldr	r3, .L2+60
+  91 0052 1C60     		str	r4, [r3]
+ 255:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_INTR_TX_MASK_REG     = SCB_EZI2C_DEFAULT_INTR_TX_MASK;
+  92              		.loc 1 255 0
+  93 0054 164B     		ldr	r3, .L2+64
+  94 0056 1C60     		str	r4, [r3]
+ 256:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 257:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Configure global variables */
+ 258:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_fsmState = SCB_EZI2C_FSM_IDLE;
+  95              		.loc 1 258 0
+  96 0058 503A     		subs	r2, r2, #80
+  97 005a FF3A     		subs	r2, r2, #255
+  98 005c 154B     		ldr	r3, .L2+68
+  99 005e 1A70     		strb	r2, [r3]
+ 259:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 260:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_curStatus  = 0u;
+ 100              		.loc 1 260 0
+ 101 0060 154B     		ldr	r3, .L2+72
+ 102 0062 1C70     		strb	r4, [r3]
+ 261:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_indexBuf1  = 0u;
+ 103              		.loc 1 261 0
+ 104 0064 154B     		ldr	r3, .L2+76
+ 105 0066 1C80     		strh	r4, [r3]
+ 262:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_offsetBuf1 = 0u;
+ 106              		.loc 1 262 0
+ 107 0068 154B     		ldr	r3, .L2+80
+ 108 006a 1C80     		strh	r4, [r3]
+ 263:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 264:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if(SCB_SECONDARY_ADDRESS_ENABLE_CONST)
+ 265:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_indexBuf2  = 0u;
+ 266:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_offsetBuf2 = 0u;
+ 267:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 268:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_addrBuf1 = SCB_EZI2C_PRIMARY_SLAVE_ADDRESS;
+ 269:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_addrBuf2 = SCB_EZI2C_SECONDARY_SLAVE_ADDRESS;
+ 270:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif /* (SCB_SECONDARY_ADDRESS_ENABLE_CONST) */
+ 271:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 109              		.loc 1 271 0
+ 110              		@ sp needed
+ 111 006c 10BD     		pop	{r4, pc}
+ 112              	.L3:
+ 113 006e C046     		.align	2
+ 114              	.L2:
+ 115 0070 00002540 		.word	1076166656
+ 116 0074 00080040 		.word	1073743872
+ 117 0078 60002540 		.word	1076166752
+ 118 007c 07010080 		.word	-2147483385
+ 119 0080 00032540 		.word	1076167424
+ 120 0084 04032540 		.word	1076167428
+ 121 0088 1000FE00 		.word	16646160
+ 122 008c 10032540 		.word	1076167440
+ 123 0090 00022540 		.word	1076167168
+ 124 0094 04022540 		.word	1076167172
+ 125 0098 00000000 		.word	SCB_EZI2C_STRETCH_ISR
+ 126 009c C80E2540 		.word	1076170440
+ 127 00a0 880E2540 		.word	1076170376
+ 128 00a4 480F2540 		.word	1076170568
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 8
+
+
+ 129 00a8 080F2540 		.word	1076170504
+ 130 00ac C80F2540 		.word	1076170696
+ 131 00b0 880F2540 		.word	1076170632
+ 132 00b4 00000000 		.word	SCB_fsmState
+ 133 00b8 00000000 		.word	SCB_curStatus
+ 134 00bc 00000000 		.word	SCB_indexBuf1
+ 135 00c0 00000000 		.word	SCB_offsetBuf1
+ 136              		.cfi_endproc
+ 137              	.LFE2:
+ 138              		.size	SCB_EzI2CInit, .-SCB_EzI2CInit
+ 139              		.section	.text.SCB_EzI2CStop,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	SCB_EzI2CStop
+ 142              		.code	16
+ 143              		.thumb_func
+ 144              		.type	SCB_EzI2CStop, %function
+ 145              	SCB_EzI2CStop:
+ 146              	.LFB3:
+ 272:Generated_Source\PSoC4/SCB_EZI2C.c **** #endif /* (SCB_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 273:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 274:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 275:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 276:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CStop
+ 277:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 278:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 279:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Resets the EZI2C FSM into the default state.
+ 280:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 281:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ 282:Generated_Source\PSoC4/SCB_EZI2C.c **** void SCB_EzI2CStop(void)
+ 283:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 147              		.loc 1 283 0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 284:Generated_Source\PSoC4/SCB_EZI2C.c ****     SCB_fsmState = SCB_EZI2C_FSM_IDLE;
+ 152              		.loc 1 284 0
+ 153 0000 0222     		movs	r2, #2
+ 154 0002 014B     		ldr	r3, .L5
+ 155 0004 1A70     		strb	r2, [r3]
+ 285:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 156              		.loc 1 285 0
+ 157              		@ sp needed
+ 158 0006 7047     		bx	lr
+ 159              	.L6:
+ 160              		.align	2
+ 161              	.L5:
+ 162 0008 00000000 		.word	SCB_fsmState
+ 163              		.cfi_endproc
+ 164              	.LFE3:
+ 165              		.size	SCB_EzI2CStop, .-SCB_EzI2CStop
+ 166              		.section	.text.SCB_EzI2CGetActivity,"ax",%progbits
+ 167              		.align	2
+ 168              		.global	SCB_EzI2CGetActivity
+ 169              		.code	16
+ 170              		.thumb_func
+ 171              		.type	SCB_EzI2CGetActivity, %function
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 9
+
+
+ 172              	SCB_EzI2CGetActivity:
+ 173              	.LFB4:
+ 286:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 287:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 288:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 289:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CGetActivity
+ 290:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 291:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 292:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Returns the EZI2C slave status.
+ 293:Generated_Source\PSoC4/SCB_EZI2C.c **** *  The read, write and error status flags reset to zero after this function
+ 294:Generated_Source\PSoC4/SCB_EZI2C.c **** *  call. The busy status flag is cleared when the transaction intended for
+ 295:Generated_Source\PSoC4/SCB_EZI2C.c **** *  the EZI2C slave completes.
+ 296:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 297:Generated_Source\PSoC4/SCB_EZI2C.c **** * \return
+ 298:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Returns the status of the EZI2C Slave activity.
+ 299:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_READ1 - Read transfer complete. The transfer 
+ 300:Generated_Source\PSoC4/SCB_EZI2C.c **** *    used the primary slave address. The error condition status bit must be 
+ 301:Generated_Source\PSoC4/SCB_EZI2C.c **** *    checked to ensure that read transfer was completed successfully.
+ 302:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_WRITE1 - Write transfer complete. The buffer 
+ 303:Generated_Source\PSoC4/SCB_EZI2C.c **** *    content was modified. The transfer used the primary slave address. 
+ 304:Generated_Source\PSoC4/SCB_EZI2C.c **** *    The error condition status bit must be checked to ensure that write 
+ 305:Generated_Source\PSoC4/SCB_EZI2C.c **** *    transfer was completed successfully.
+ 306:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_READ2 - Read transfer complete. The transfer
+ 307:Generated_Source\PSoC4/SCB_EZI2C.c **** *    used the secondary slave address. The error condition status bit must be 
+ 308:Generated_Source\PSoC4/SCB_EZI2C.c **** *    checked to ensure that read transfer was completed successfully.
+ 309:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_WRITE2 - Write transfer complete. The buffer
+ 310:Generated_Source\PSoC4/SCB_EZI2C.c **** *    content was modified. The transfer used the secondary slave address. 
+ 311:Generated_Source\PSoC4/SCB_EZI2C.c **** *    The error condition status bit must be checked to ensure that write 
+ 312:Generated_Source\PSoC4/SCB_EZI2C.c **** *    transfer was completed successfully.
+ 313:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_BUSY - A transfer intended for the primary 
+ 314:Generated_Source\PSoC4/SCB_EZI2C.c **** *    or secondary address is in progress. The status bit is set after an 
+ 315:Generated_Source\PSoC4/SCB_EZI2C.c **** *    address match and cleared on a Stop or ReStart condition.
+ 316:Generated_Source\PSoC4/SCB_EZI2C.c **** *  - SCB_EZI2C_STATUS_ERR - An error occurred during a transfer 
+ 317:Generated_Source\PSoC4/SCB_EZI2C.c **** *    intended for the primary or secondary slave address. The sources of error
+ 318:Generated_Source\PSoC4/SCB_EZI2C.c **** *    are: misplaced Start or Stop condition or lost arbitration while slave 
+ 319:Generated_Source\PSoC4/SCB_EZI2C.c **** *    drives SDA.
+ 320:Generated_Source\PSoC4/SCB_EZI2C.c **** *    The write buffer may contain invalid byte or part of the transaction when 
+ 321:Generated_Source\PSoC4/SCB_EZI2C.c **** *    SCB_EZI2C_STATUS_ERR and SCB_EZI2C_STATUS_WRITE1/2 
+ 322:Generated_Source\PSoC4/SCB_EZI2C.c **** *    is set. It is recommended to discard buffer content in this case.
+ 323:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 324:Generated_Source\PSoC4/SCB_EZI2C.c **** * \globalvars
+ 325:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_curStatus - used to store the current status of the EZI2C 
+ 326:Generated_Source\PSoC4/SCB_EZI2C.c **** *  slave.
+ 327:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 328:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ 329:Generated_Source\PSoC4/SCB_EZI2C.c **** uint32 SCB_EzI2CGetActivity(void)
+ 330:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 174              		.loc 1 330 0
+ 175              		.cfi_startproc
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178 0000 10B5     		push	{r4, lr}
+ 179              		.cfi_def_cfa_offset 8
+ 180              		.cfi_offset 4, -8
+ 181              		.cfi_offset 14, -4
+ 331:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint32 status;
+ 332:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 10
+
+
+ 333:Generated_Source\PSoC4/SCB_EZI2C.c ****     SCB_DisableInt();  /* Lock from interruption */
+ 182              		.loc 1 333 0
+ 183 0002 0A20     		movs	r0, #10
+ 184 0004 FFF7FEFF 		bl	CyIntDisable
+ 185              	.LVL3:
+ 334:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 335:Generated_Source\PSoC4/SCB_EZI2C.c ****     status = SCB_curStatus;
+ 186              		.loc 1 335 0
+ 187 0008 054B     		ldr	r3, .L8
+ 188 000a 1C78     		ldrb	r4, [r3]
+ 189 000c E4B2     		uxtb	r4, r4
+ 190              	.LVL4:
+ 336:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 337:Generated_Source\PSoC4/SCB_EZI2C.c ****     /* Relay on address match event from HW as bus busy status */
+ 338:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if(SCB_EZI2C_SCL_STRETCH_DISABLE)
+ 339:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 340:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* For SCB_CY_SCBIP_V0 the wake is prohibited by customizer */
+ 341:Generated_Source\PSoC4/SCB_EZI2C.c ****         #if(SCB_EZI2C_EC_AM_ENABLE)
+ 342:Generated_Source\PSoC4/SCB_EZI2C.c ****         {
+ 343:Generated_Source\PSoC4/SCB_EZI2C.c ****             status |= SCB_CHECK_INTR_I2C_EC(SCB_INTR_I2C_EC_WAKE_UP) ?
+ 344:Generated_Source\PSoC4/SCB_EZI2C.c ****                         SCB_EZI2C_STATUS_BUSY : 0u;
+ 345:Generated_Source\PSoC4/SCB_EZI2C.c ****         }
+ 346:Generated_Source\PSoC4/SCB_EZI2C.c ****         #else
+ 347:Generated_Source\PSoC4/SCB_EZI2C.c ****         {
+ 348:Generated_Source\PSoC4/SCB_EZI2C.c ****             status |= SCB_CHECK_INTR_SLAVE(SCB_INTR_SLAVE_I2C_ADDR_MATCH) ?
+ 349:Generated_Source\PSoC4/SCB_EZI2C.c ****                         SCB_EZI2C_STATUS_BUSY : 0u;
+ 350:Generated_Source\PSoC4/SCB_EZI2C.c ****         }
+ 351:Generated_Source\PSoC4/SCB_EZI2C.c ****         #endif
+ 352:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 353:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif
+ 354:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 355:Generated_Source\PSoC4/SCB_EZI2C.c ****     SCB_curStatus &= ((uint8) ~SCB_EZI2C_CLEAR_STATUS);
+ 191              		.loc 1 355 0
+ 192 000e 1A78     		ldrb	r2, [r3]
+ 193 0010 1F21     		movs	r1, #31
+ 194 0012 8A43     		bics	r2, r1
+ 195 0014 1A70     		strb	r2, [r3]
+ 356:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 357:Generated_Source\PSoC4/SCB_EZI2C.c ****     SCB_EnableInt();   /* Release lock */
+ 196              		.loc 1 357 0
+ 197 0016 0A20     		movs	r0, #10
+ 198 0018 FFF7FEFF 		bl	CyIntEnable
+ 199              	.LVL5:
+ 358:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 359:Generated_Source\PSoC4/SCB_EZI2C.c ****     return(status);
+ 360:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 200              		.loc 1 360 0
+ 201 001c 2000     		movs	r0, r4
+ 202              		@ sp needed
+ 203              	.LVL6:
+ 204 001e 10BD     		pop	{r4, pc}
+ 205              	.L9:
+ 206              		.align	2
+ 207              	.L8:
+ 208 0020 00000000 		.word	SCB_curStatus
+ 209              		.cfi_endproc
+ 210              	.LFE4:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 11
+
+
+ 211              		.size	SCB_EzI2CGetActivity, .-SCB_EzI2CGetActivity
+ 212              		.section	.text.SCB_EzI2CSetAddress1,"ax",%progbits
+ 213              		.align	2
+ 214              		.global	SCB_EzI2CSetAddress1
+ 215              		.code	16
+ 216              		.thumb_func
+ 217              		.type	SCB_EzI2CSetAddress1, %function
+ 218              	SCB_EzI2CSetAddress1:
+ 219              	.LFB5:
+ 361:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 362:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 363:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 364:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CSetAddress1
+ 365:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 366:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 367:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Sets the primary EZI2C slave address.
+ 368:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 369:Generated_Source\PSoC4/SCB_EZI2C.c **** * \param address: I2C slave address for the secondary device.
+ 370:Generated_Source\PSoC4/SCB_EZI2C.c **** *  This address is the 7-bit right-justified slave address and does not 
+ 371:Generated_Source\PSoC4/SCB_EZI2C.c **** *   include the R/W bit.
+ 372:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 373:Generated_Source\PSoC4/SCB_EZI2C.c **** *  The address value is not checked to see if it violates the I2C spec. 
+ 374:Generated_Source\PSoC4/SCB_EZI2C.c **** *  The preferred addresses are in the range between 8 and 120 (0x08 to 0x78).
+ 375:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 376:Generated_Source\PSoC4/SCB_EZI2C.c **** * \globalvars
+ 377:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_addrBuf1 - used to store the primary 7-bit slave address 
+ 378:Generated_Source\PSoC4/SCB_EZI2C.c **** *  value.
+ 379:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 380:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ 381:Generated_Source\PSoC4/SCB_EZI2C.c **** void SCB_EzI2CSetAddress1(uint32 address)
+ 382:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 220              		.loc 1 382 0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225              	.LVL7:
+ 226 0000 0300     		movs	r3, r0
+ 227              	.LBB2:
+ 383:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if(SCB_SECONDARY_ADDRESS_ENABLE)
+ 384:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 385:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_addrBuf1 = (uint8) address;
+ 386:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 387:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_RX_MATCH_REG = 
+ 388:Generated_Source\PSoC4/SCB_EZI2C.c ****                         SCB_EzI2CUpdateRxMatchReg(address, (uint32) SCB_addrBuf2);
+ 389:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 390:Generated_Source\PSoC4/SCB_EZI2C.c ****     #else
+ 391:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 392:Generated_Source\PSoC4/SCB_EZI2C.c ****         uint32 matchReg;
+ 393:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 394:Generated_Source\PSoC4/SCB_EZI2C.c ****         matchReg = SCB_RX_MATCH_REG;
+ 228              		.loc 1 394 0
+ 229 0002 0449     		ldr	r1, .L11
+ 230 0004 0A68     		ldr	r2, [r1]
+ 231              	.LVL8:
+ 395:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 396:Generated_Source\PSoC4/SCB_EZI2C.c ****         /* Set address. */
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 12
+
+
+ 397:Generated_Source\PSoC4/SCB_EZI2C.c ****         matchReg &= (uint32) ~SCB_RX_MATCH_ADDR_MASK;
+ 232              		.loc 1 397 0
+ 233 0006 FF20     		movs	r0, #255
+ 234              	.LVL9:
+ 235 0008 8243     		bics	r2, r0
+ 236              	.LVL10:
+ 398:Generated_Source\PSoC4/SCB_EZI2C.c ****         matchReg |= (uint32)  SCB_GET_I2C_8BIT_ADDRESS(address);
+ 237              		.loc 1 398 0
+ 238 000a 5B00     		lsls	r3, r3, #1
+ 239              	.LVL11:
+ 240 000c 1840     		ands	r0, r3
+ 241 000e 1043     		orrs	r0, r2
+ 242              	.LVL12:
+ 399:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 400:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_RX_MATCH_REG = matchReg;
+ 243              		.loc 1 400 0
+ 244 0010 0860     		str	r0, [r1]
+ 245              	.LBE2:
+ 401:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 402:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif
+ 403:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 246              		.loc 1 403 0
+ 247              		@ sp needed
+ 248 0012 7047     		bx	lr
+ 249              	.L12:
+ 250              		.align	2
+ 251              	.L11:
+ 252 0014 10032540 		.word	1076167440
+ 253              		.cfi_endproc
+ 254              	.LFE5:
+ 255              		.size	SCB_EzI2CSetAddress1, .-SCB_EzI2CSetAddress1
+ 256              		.section	.text.SCB_EzI2CGetAddress1,"ax",%progbits
+ 257              		.align	2
+ 258              		.global	SCB_EzI2CGetAddress1
+ 259              		.code	16
+ 260              		.thumb_func
+ 261              		.type	SCB_EzI2CGetAddress1, %function
+ 262              	SCB_EzI2CGetAddress1:
+ 263              	.LFB6:
+ 404:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 405:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 406:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 407:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CGetAddress1
+ 408:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 409:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 410:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Returns primary the EZ I2C slave address.
+ 411:Generated_Source\PSoC4/SCB_EZI2C.c **** *  This address is the 7-bit right-justified slave address and does not include 
+ 412:Generated_Source\PSoC4/SCB_EZI2C.c **** *  the R/W bit.
+ 413:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 414:Generated_Source\PSoC4/SCB_EZI2C.c **** * \return
+ 415:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Primary EZI2C slave address.
+ 416:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 417:Generated_Source\PSoC4/SCB_EZI2C.c **** * \globalvars
+ 418:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_addrBuf1 - used to store the primary 7-bit slave address 
+ 419:Generated_Source\PSoC4/SCB_EZI2C.c **** *  value.
+ 420:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 421:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 13
+
+
+ 422:Generated_Source\PSoC4/SCB_EZI2C.c **** uint32 SCB_EzI2CGetAddress1(void)
+ 423:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 264              		.loc 1 423 0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 424:Generated_Source\PSoC4/SCB_EZI2C.c ****     uint32 address;
+ 425:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 426:Generated_Source\PSoC4/SCB_EZI2C.c ****     #if(SCB_SECONDARY_ADDRESS_ENABLE)
+ 427:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 428:Generated_Source\PSoC4/SCB_EZI2C.c ****         address = (uint32) SCB_addrBuf1;
+ 429:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 430:Generated_Source\PSoC4/SCB_EZI2C.c ****     #else
+ 431:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 432:Generated_Source\PSoC4/SCB_EZI2C.c ****         address = (SCB_GET_RX_MATCH_ADDR(SCB_RX_MATCH_REG) >>
+ 269              		.loc 1 432 0
+ 270 0000 024B     		ldr	r3, .L14
+ 271 0002 1868     		ldr	r0, [r3]
+ 272 0004 4008     		lsrs	r0, r0, #1
+ 273 0006 7F23     		movs	r3, #127
+ 274 0008 1840     		ands	r0, r3
+ 275              	.LVL13:
+ 433:Generated_Source\PSoC4/SCB_EZI2C.c ****                    SCB_I2C_SLAVE_ADDR_POS);
+ 434:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 435:Generated_Source\PSoC4/SCB_EZI2C.c ****     #endif
+ 436:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 437:Generated_Source\PSoC4/SCB_EZI2C.c ****     return(address);
+ 438:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 276              		.loc 1 438 0
+ 277              		@ sp needed
+ 278 000a 7047     		bx	lr
+ 279              	.L15:
+ 280              		.align	2
+ 281              	.L14:
+ 282 000c 10032540 		.word	1076167440
+ 283              		.cfi_endproc
+ 284              	.LFE6:
+ 285              		.size	SCB_EzI2CGetAddress1, .-SCB_EzI2CGetAddress1
+ 286              		.section	.text.SCB_EzI2CSetBuffer1,"ax",%progbits
+ 287              		.align	2
+ 288              		.global	SCB_EzI2CSetBuffer1
+ 289              		.code	16
+ 290              		.thumb_func
+ 291              		.type	SCB_EzI2CSetBuffer1, %function
+ 292              	SCB_EzI2CSetBuffer1:
+ 293              	.LFB7:
+ 439:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 440:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 441:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 442:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CSetBuffer1
+ 443:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 444:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 445:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Sets up the data buffer to be exposed to the I2C master on a primary slave
+ 446:Generated_Source\PSoC4/SCB_EZI2C.c **** *  address request.
+ 447:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 448:Generated_Source\PSoC4/SCB_EZI2C.c **** * \param bufSize: Size of the buffer in bytes.
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 14
+
+
+ 449:Generated_Source\PSoC4/SCB_EZI2C.c **** * \param rwBoundary: Number of data bytes starting from the beginning of the 
+ 450:Generated_Source\PSoC4/SCB_EZI2C.c **** *  buffer with read and write access. Data bytes located at offset rwBoundary 
+ 451:Generated_Source\PSoC4/SCB_EZI2C.c **** *  or greater are read only.
+ 452:Generated_Source\PSoC4/SCB_EZI2C.c **** *  This value must be less than or equal to the buffer size.
+ 453:Generated_Source\PSoC4/SCB_EZI2C.c **** * \param buffer: Pointer to the data buffer.
+ 454:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 455:Generated_Source\PSoC4/SCB_EZI2C.c **** * \sideeffect
+ 456:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Calling this function in the middle of a transaction intended for the 
+ 457:Generated_Source\PSoC4/SCB_EZI2C.c **** *  primary slave address leads to unexpected behavior.
+ 458:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 459:Generated_Source\PSoC4/SCB_EZI2C.c **** * \globalvars
+ 460:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_dataBuffer1 – the pointer to the buffer to be exposed to the
+ 461:Generated_Source\PSoC4/SCB_EZI2C.c **** *  master on a primary address.
+ 462:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_bufSizeBuf1 - the size of the buffer to be exposed to the 
+ 463:Generated_Source\PSoC4/SCB_EZI2C.c **** *  master on a primary address.
+ 464:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_protectBuf1 - the start index of the read-only region in the
+ 465:Generated_Source\PSoC4/SCB_EZI2C.c **** *  buffer to be exposed to the master on a primary address. The read-only region
+ 466:Generated_Source\PSoC4/SCB_EZI2C.c **** *  continues up to the end the buffer.
+ 467:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 468:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ 469:Generated_Source\PSoC4/SCB_EZI2C.c **** void SCB_EzI2CSetBuffer1(uint32 bufSize, uint32 rwBoundary, volatile uint8 * buffer)
+ 470:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 294              		.loc 1 470 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              	.LVL14:
+ 299 0000 70B5     		push	{r4, r5, r6, lr}
+ 300              		.cfi_def_cfa_offset 16
+ 301              		.cfi_offset 4, -16
+ 302              		.cfi_offset 5, -12
+ 303              		.cfi_offset 6, -8
+ 304              		.cfi_offset 14, -4
+ 305 0002 0600     		movs	r6, r0
+ 306 0004 0D00     		movs	r5, r1
+ 307 0006 141E     		subs	r4, r2, #0
+ 471:Generated_Source\PSoC4/SCB_EZI2C.c ****     if (NULL != buffer)
+ 308              		.loc 1 471 0
+ 309 0008 0BD0     		beq	.L16
+ 472:Generated_Source\PSoC4/SCB_EZI2C.c ****     {
+ 473:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_DisableInt();  /* Lock from interruption */
+ 310              		.loc 1 473 0
+ 311 000a 0A20     		movs	r0, #10
+ 312              	.LVL15:
+ 313 000c FFF7FEFF 		bl	CyIntDisable
+ 314              	.LVL16:
+ 474:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 475:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_dataBuffer1 =  buffer;
+ 315              		.loc 1 475 0
+ 316 0010 044B     		ldr	r3, .L18
+ 317 0012 1C60     		str	r4, [r3]
+ 476:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_bufSizeBuf1 = (uint16) bufSize;
+ 318              		.loc 1 476 0
+ 319 0014 044B     		ldr	r3, .L18+4
+ 320 0016 1E80     		strh	r6, [r3]
+ 477:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_protectBuf1 = (uint16) rwBoundary;
+ 321              		.loc 1 477 0
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 15
+
+
+ 322 0018 044B     		ldr	r3, .L18+8
+ 323 001a 1D80     		strh	r5, [r3]
+ 478:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 479:Generated_Source\PSoC4/SCB_EZI2C.c ****         SCB_EnableInt();   /* Release lock */
+ 324              		.loc 1 479 0
+ 325 001c 0A20     		movs	r0, #10
+ 326 001e FFF7FEFF 		bl	CyIntEnable
+ 327              	.LVL17:
+ 328              	.L16:
+ 480:Generated_Source\PSoC4/SCB_EZI2C.c ****     }
+ 481:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 329              		.loc 1 481 0
+ 330              		@ sp needed
+ 331              	.LVL18:
+ 332              	.LVL19:
+ 333              	.LVL20:
+ 334 0022 70BD     		pop	{r4, r5, r6, pc}
+ 335              	.L19:
+ 336              		.align	2
+ 337              	.L18:
+ 338 0024 00000000 		.word	SCB_dataBuffer1
+ 339 0028 00000000 		.word	SCB_bufSizeBuf1
+ 340 002c 00000000 		.word	SCB_protectBuf1
+ 341              		.cfi_endproc
+ 342              	.LFE7:
+ 343              		.size	SCB_EzI2CSetBuffer1, .-SCB_EzI2CSetBuffer1
+ 344              		.section	.text.SCB_EzI2CSetReadBoundaryBuffer1,"ax",%progbits
+ 345              		.align	2
+ 346              		.global	SCB_EzI2CSetReadBoundaryBuffer1
+ 347              		.code	16
+ 348              		.thumb_func
+ 349              		.type	SCB_EzI2CSetReadBoundaryBuffer1, %function
+ 350              	SCB_EzI2CSetReadBoundaryBuffer1:
+ 351              	.LFB8:
+ 482:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 483:Generated_Source\PSoC4/SCB_EZI2C.c **** 
+ 484:Generated_Source\PSoC4/SCB_EZI2C.c **** /*******************************************************************************
+ 485:Generated_Source\PSoC4/SCB_EZI2C.c **** * Function Name: SCB_EzI2CSetReadBoundaryBuffer1
+ 486:Generated_Source\PSoC4/SCB_EZI2C.c **** ****************************************************************************//**
+ 487:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 488:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Sets the read only boundary in the data buffer to be exposed to the I2C
+ 489:Generated_Source\PSoC4/SCB_EZI2C.c **** *  master on a primary slave address request.
+ 490:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 491:Generated_Source\PSoC4/SCB_EZI2C.c **** * \param rwBoundry: Number of data bytes starting from the beginning of the 
+ 492:Generated_Source\PSoC4/SCB_EZI2C.c **** *  buffer with read and write access. Data bytes located at offset rwBoundary 
+ 493:Generated_Source\PSoC4/SCB_EZI2C.c **** *  or greater are read only.
+ 494:Generated_Source\PSoC4/SCB_EZI2C.c **** *  This value must be less than or equal to the buffer size.
+ 495:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 496:Generated_Source\PSoC4/SCB_EZI2C.c **** * \sideeffect
+ 497:Generated_Source\PSoC4/SCB_EZI2C.c **** *  Calling this function in the middle of a transaction intended for the 
+ 498:Generated_Source\PSoC4/SCB_EZI2C.c **** *  primary slave address leads to unexpected behavior.
+ 499:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ 500:Generated_Source\PSoC4/SCB_EZI2C.c **** * \globalvars
+ 501:Generated_Source\PSoC4/SCB_EZI2C.c **** *  SCB_protectBuf1 - the start index of the read-only region in the
+ 502:Generated_Source\PSoC4/SCB_EZI2C.c **** *  buffer to be exposed to the master on a primary address. The read-only region
+ 503:Generated_Source\PSoC4/SCB_EZI2C.c **** *  continues up to the end the buffer.
+ 504:Generated_Source\PSoC4/SCB_EZI2C.c **** *
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 16
+
+
+ 505:Generated_Source\PSoC4/SCB_EZI2C.c **** *******************************************************************************/
+ 506:Generated_Source\PSoC4/SCB_EZI2C.c **** void SCB_EzI2CSetReadBoundaryBuffer1(uint32 rwBoundary)
+ 507:Generated_Source\PSoC4/SCB_EZI2C.c **** {
+ 352              		.loc 1 507 0
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356              		@ link register save eliminated.
+ 357              	.LVL21:
+ 508:Generated_Source\PSoC4/SCB_EZI2C.c ****     SCB_protectBuf1 = (uint16) rwBoundary;
+ 358              		.loc 1 508 0
+ 359 0000 014B     		ldr	r3, .L21
+ 360 0002 1880     		strh	r0, [r3]
+ 509:Generated_Source\PSoC4/SCB_EZI2C.c **** }
+ 361              		.loc 1 509 0
+ 362              		@ sp needed
+ 363 0004 7047     		bx	lr
+ 364              	.L22:
+ 365 0006 C046     		.align	2
+ 366              	.L21:
+ 367 0008 00000000 		.word	SCB_protectBuf1
+ 368              		.cfi_endproc
+ 369              	.LFE8:
+ 370              		.size	SCB_EzI2CSetReadBoundaryBuffer1, .-SCB_EzI2CSetReadBoundaryBuffer1
+ 371              		.comm	SCB_indexBuf1,2,2
+ 372              		.comm	SCB_offsetBuf1,2,2
+ 373              		.comm	SCB_protectBuf1,2,2
+ 374              		.comm	SCB_bufSizeBuf1,2,2
+ 375              		.comm	SCB_dataBuffer1,4,4
+ 376              		.comm	SCB_fsmState,1,1
+ 377              		.comm	SCB_curStatus,1,1
+ 378              		.text
+ 379              	.Letext0:
+ 380              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 381              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 382              		.section	.debug_info,"",%progbits
+ 383              	.Ldebug_info0:
+ 384 0000 15030000 		.4byte	0x315
+ 385 0004 0400     		.2byte	0x4
+ 386 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 387 000a 04       		.byte	0x4
+ 388 000b 01       		.uleb128 0x1
+ 389 000c 88010000 		.4byte	.LASF41
+ 390 0010 0C       		.byte	0xc
+ 391 0011 65010000 		.4byte	.LASF42
+ 392 0015 AE020000 		.4byte	.LASF43
+ 393 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 394 001d 00000000 		.4byte	0
+ 395 0021 00000000 		.4byte	.Ldebug_line0
+ 396 0025 02       		.uleb128 0x2
+ 397 0026 01       		.byte	0x1
+ 398 0027 06       		.byte	0x6
+ 399 0028 45030000 		.4byte	.LASF0
+ 400 002c 02       		.uleb128 0x2
+ 401 002d 01       		.byte	0x1
+ 402 002e 08       		.byte	0x8
+ 403 002f AB000000 		.4byte	.LASF1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 17
+
+
+ 404 0033 02       		.uleb128 0x2
+ 405 0034 02       		.byte	0x2
+ 406 0035 05       		.byte	0x5
+ 407 0036 94020000 		.4byte	.LASF2
+ 408 003a 02       		.uleb128 0x2
+ 409 003b 02       		.byte	0x2
+ 410 003c 07       		.byte	0x7
+ 411 003d 41000000 		.4byte	.LASF3
+ 412 0041 02       		.uleb128 0x2
+ 413 0042 04       		.byte	0x4
+ 414 0043 05       		.byte	0x5
+ 415 0044 27030000 		.4byte	.LASF4
+ 416 0048 02       		.uleb128 0x2
+ 417 0049 04       		.byte	0x4
+ 418 004a 07       		.byte	0x7
+ 419 004b B9000000 		.4byte	.LASF5
+ 420 004f 02       		.uleb128 0x2
+ 421 0050 08       		.byte	0x8
+ 422 0051 05       		.byte	0x5
+ 423 0052 41020000 		.4byte	.LASF6
+ 424 0056 02       		.uleb128 0x2
+ 425 0057 08       		.byte	0x8
+ 426 0058 07       		.byte	0x7
+ 427 0059 2F010000 		.4byte	.LASF7
+ 428 005d 03       		.uleb128 0x3
+ 429 005e 04       		.byte	0x4
+ 430 005f 05       		.byte	0x5
+ 431 0060 696E7400 		.ascii	"int\000"
+ 432 0064 02       		.uleb128 0x2
+ 433 0065 04       		.byte	0x4
+ 434 0066 07       		.byte	0x7
+ 435 0067 1A010000 		.4byte	.LASF8
+ 436 006b 04       		.uleb128 0x4
+ 437 006c CB000000 		.4byte	.LASF9
+ 438 0070 02       		.byte	0x2
+ 439 0071 E401     		.2byte	0x1e4
+ 440 0073 2C000000 		.4byte	0x2c
+ 441 0077 04       		.uleb128 0x4
+ 442 0078 04010000 		.4byte	.LASF10
+ 443 007c 02       		.byte	0x2
+ 444 007d E501     		.2byte	0x1e5
+ 445 007f 3A000000 		.4byte	0x3a
+ 446 0083 04       		.uleb128 0x4
+ 447 0084 0B010000 		.4byte	.LASF11
+ 448 0088 02       		.byte	0x2
+ 449 0089 E601     		.2byte	0x1e6
+ 450 008b 48000000 		.4byte	0x48
+ 451 008f 02       		.uleb128 0x2
+ 452 0090 04       		.byte	0x4
+ 453 0091 04       		.byte	0x4
+ 454 0092 97000000 		.4byte	.LASF12
+ 455 0096 02       		.uleb128 0x2
+ 456 0097 08       		.byte	0x8
+ 457 0098 04       		.byte	0x4
+ 458 0099 F1000000 		.4byte	.LASF13
+ 459 009d 02       		.uleb128 0x2
+ 460 009e 01       		.byte	0x1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 18
+
+
+ 461 009f 08       		.byte	0x8
+ 462 00a0 63020000 		.4byte	.LASF14
+ 463 00a4 05       		.uleb128 0x5
+ 464 00a5 6B000000 		.4byte	0x6b
+ 465 00a9 04       		.uleb128 0x4
+ 466 00aa 15000000 		.4byte	.LASF15
+ 467 00ae 02       		.byte	0x2
+ 468 00af 9002     		.2byte	0x290
+ 469 00b1 B5000000 		.4byte	0xb5
+ 470 00b5 05       		.uleb128 0x5
+ 471 00b6 83000000 		.4byte	0x83
+ 472 00ba 02       		.uleb128 0x2
+ 473 00bb 08       		.byte	0x8
+ 474 00bc 04       		.byte	0x4
+ 475 00bd 39030000 		.4byte	.LASF16
+ 476 00c1 02       		.uleb128 0x2
+ 477 00c2 04       		.byte	0x4
+ 478 00c3 07       		.byte	0x7
+ 479 00c4 16020000 		.4byte	.LASF17
+ 480 00c8 06       		.uleb128 0x6
+ 481 00c9 9D000000 		.4byte	.LASF18
+ 482 00cd 01       		.byte	0x1
+ 483 00ce D3       		.byte	0xd3
+ 484 00cf 00000000 		.4byte	.LFB2
+ 485 00d3 C4000000 		.4byte	.LFE2-.LFB2
+ 486 00d7 01       		.uleb128 0x1
+ 487 00d8 9C       		.byte	0x9c
+ 488 00d9 18010000 		.4byte	0x118
+ 489 00dd 07       		.uleb128 0x7
+ 490 00de 2C000000 		.4byte	.LVL0
+ 491 00e2 EC020000 		.4byte	0x2ec
+ 492 00e6 F0000000 		.4byte	0xf0
+ 493 00ea 08       		.uleb128 0x8
+ 494 00eb 01       		.uleb128 0x1
+ 495 00ec 50       		.byte	0x50
+ 496 00ed 01       		.uleb128 0x1
+ 497 00ee 3A       		.byte	0x3a
+ 498 00ef 00       		.byte	0
+ 499 00f0 07       		.uleb128 0x7
+ 500 00f1 34000000 		.4byte	.LVL1
+ 501 00f5 F7020000 		.4byte	0x2f7
+ 502 00f9 08010000 		.4byte	0x108
+ 503 00fd 08       		.uleb128 0x8
+ 504 00fe 01       		.uleb128 0x1
+ 505 00ff 50       		.byte	0x50
+ 506 0100 01       		.uleb128 0x1
+ 507 0101 3A       		.byte	0x3a
+ 508 0102 08       		.uleb128 0x8
+ 509 0103 01       		.uleb128 0x1
+ 510 0104 51       		.byte	0x51
+ 511 0105 01       		.uleb128 0x1
+ 512 0106 33       		.byte	0x33
+ 513 0107 00       		.byte	0
+ 514 0108 09       		.uleb128 0x9
+ 515 0109 3C000000 		.4byte	.LVL2
+ 516 010d 02030000 		.4byte	0x302
+ 517 0111 08       		.uleb128 0x8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 19
+
+
+ 518 0112 01       		.uleb128 0x1
+ 519 0113 50       		.byte	0x50
+ 520 0114 01       		.uleb128 0x1
+ 521 0115 3A       		.byte	0x3a
+ 522 0116 00       		.byte	0
+ 523 0117 00       		.byte	0
+ 524 0118 0A       		.uleb128 0xa
+ 525 0119 5F000000 		.4byte	.LASF44
+ 526 011d 01       		.byte	0x1
+ 527 011e 1A01     		.2byte	0x11a
+ 528 0120 00000000 		.4byte	.LFB3
+ 529 0124 0C000000 		.4byte	.LFE3-.LFB3
+ 530 0128 01       		.uleb128 0x1
+ 531 0129 9C       		.byte	0x9c
+ 532 012a 0B       		.uleb128 0xb
+ 533 012b 2C020000 		.4byte	.LASF22
+ 534 012f 01       		.byte	0x1
+ 535 0130 4901     		.2byte	0x149
+ 536 0132 83000000 		.4byte	0x83
+ 537 0136 00000000 		.4byte	.LFB4
+ 538 013a 24000000 		.4byte	.LFE4-.LFB4
+ 539 013e 01       		.uleb128 0x1
+ 540 013f 9C       		.byte	0x9c
+ 541 0140 77010000 		.4byte	0x177
+ 542 0144 0C       		.uleb128 0xc
+ 543 0145 6D000000 		.4byte	.LASF20
+ 544 0149 01       		.byte	0x1
+ 545 014a 4B01     		.2byte	0x14b
+ 546 014c 83000000 		.4byte	0x83
+ 547 0150 00000000 		.4byte	.LLST0
+ 548 0154 07       		.uleb128 0x7
+ 549 0155 08000000 		.4byte	.LVL3
+ 550 0159 EC020000 		.4byte	0x2ec
+ 551 015d 67010000 		.4byte	0x167
+ 552 0161 08       		.uleb128 0x8
+ 553 0162 01       		.uleb128 0x1
+ 554 0163 50       		.byte	0x50
+ 555 0164 01       		.uleb128 0x1
+ 556 0165 3A       		.byte	0x3a
+ 557 0166 00       		.byte	0
+ 558 0167 09       		.uleb128 0x9
+ 559 0168 1C000000 		.4byte	.LVL5
+ 560 016c 0D030000 		.4byte	0x30d
+ 561 0170 08       		.uleb128 0x8
+ 562 0171 01       		.uleb128 0x1
+ 563 0172 50       		.byte	0x50
+ 564 0173 01       		.uleb128 0x1
+ 565 0174 3A       		.byte	0x3a
+ 566 0175 00       		.byte	0
+ 567 0176 00       		.byte	0
+ 568 0177 0D       		.uleb128 0xd
+ 569 0178 00000000 		.4byte	.LASF19
+ 570 017c 01       		.byte	0x1
+ 571 017d 7D01     		.2byte	0x17d
+ 572 017f 00000000 		.4byte	.LFB5
+ 573 0183 18000000 		.4byte	.LFE5-.LFB5
+ 574 0187 01       		.uleb128 0x1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 20
+
+
+ 575 0188 9C       		.byte	0x9c
+ 576 0189 B8010000 		.4byte	0x1b8
+ 577 018d 0E       		.uleb128 0xe
+ 578 018e 27010000 		.4byte	.LASF24
+ 579 0192 01       		.byte	0x1
+ 580 0193 7D01     		.2byte	0x17d
+ 581 0195 83000000 		.4byte	0x83
+ 582 0199 1E000000 		.4byte	.LLST1
+ 583 019d 0F       		.uleb128 0xf
+ 584 019e 02000000 		.4byte	.LBB2
+ 585 01a2 10000000 		.4byte	.LBE2-.LBB2
+ 586 01a6 0C       		.uleb128 0xc
+ 587 01a7 30030000 		.4byte	.LASF21
+ 588 01ab 01       		.byte	0x1
+ 589 01ac 8801     		.2byte	0x188
+ 590 01ae 83000000 		.4byte	0x83
+ 591 01b2 4A000000 		.4byte	.LLST2
+ 592 01b6 00       		.byte	0
+ 593 01b7 00       		.byte	0
+ 594 01b8 0B       		.uleb128 0xb
+ 595 01b9 82000000 		.4byte	.LASF23
+ 596 01bd 01       		.byte	0x1
+ 597 01be A601     		.2byte	0x1a6
+ 598 01c0 83000000 		.4byte	0x83
+ 599 01c4 00000000 		.4byte	.LFB6
+ 600 01c8 10000000 		.4byte	.LFE6-.LFB6
+ 601 01cc 01       		.uleb128 0x1
+ 602 01cd 9C       		.byte	0x9c
+ 603 01ce E1010000 		.4byte	0x1e1
+ 604 01d2 10       		.uleb128 0x10
+ 605 01d3 27010000 		.4byte	.LASF24
+ 606 01d7 01       		.byte	0x1
+ 607 01d8 A801     		.2byte	0x1a8
+ 608 01da 83000000 		.4byte	0x83
+ 609 01de 01       		.uleb128 0x1
+ 610 01df 50       		.byte	0x50
+ 611 01e0 00       		.byte	0
+ 612 01e1 0D       		.uleb128 0xd
+ 613 01e2 4F020000 		.4byte	.LASF25
+ 614 01e6 01       		.byte	0x1
+ 615 01e7 D501     		.2byte	0x1d5
+ 616 01e9 00000000 		.4byte	.LFB7
+ 617 01ed 30000000 		.4byte	.LFE7-.LFB7
+ 618 01f1 01       		.uleb128 0x1
+ 619 01f2 9C       		.byte	0x9c
+ 620 01f3 4A020000 		.4byte	0x24a
+ 621 01f7 0E       		.uleb128 0xe
+ 622 01f8 12010000 		.4byte	.LASF26
+ 623 01fc 01       		.byte	0x1
+ 624 01fd D501     		.2byte	0x1d5
+ 625 01ff 83000000 		.4byte	0x83
+ 626 0203 68000000 		.4byte	.LLST3
+ 627 0207 0E       		.uleb128 0xe
+ 628 0208 54000000 		.4byte	.LASF27
+ 629 020c 01       		.byte	0x1
+ 630 020d D501     		.2byte	0x1d5
+ 631 020f 83000000 		.4byte	0x83
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 21
+
+
+ 632 0213 94000000 		.4byte	.LLST4
+ 633 0217 0E       		.uleb128 0xe
+ 634 0218 2A000000 		.4byte	.LASF28
+ 635 021c 01       		.byte	0x1
+ 636 021d D501     		.2byte	0x1d5
+ 637 021f 4A020000 		.4byte	0x24a
+ 638 0223 C0000000 		.4byte	.LLST5
+ 639 0227 07       		.uleb128 0x7
+ 640 0228 10000000 		.4byte	.LVL16
+ 641 022c EC020000 		.4byte	0x2ec
+ 642 0230 3A020000 		.4byte	0x23a
+ 643 0234 08       		.uleb128 0x8
+ 644 0235 01       		.uleb128 0x1
+ 645 0236 50       		.byte	0x50
+ 646 0237 01       		.uleb128 0x1
+ 647 0238 3A       		.byte	0x3a
+ 648 0239 00       		.byte	0
+ 649 023a 09       		.uleb128 0x9
+ 650 023b 22000000 		.4byte	.LVL17
+ 651 023f 0D030000 		.4byte	0x30d
+ 652 0243 08       		.uleb128 0x8
+ 653 0244 01       		.uleb128 0x1
+ 654 0245 50       		.byte	0x50
+ 655 0246 01       		.uleb128 0x1
+ 656 0247 3A       		.byte	0x3a
+ 657 0248 00       		.byte	0
+ 658 0249 00       		.byte	0
+ 659 024a 11       		.uleb128 0x11
+ 660 024b 04       		.byte	0x4
+ 661 024c A4000000 		.4byte	0xa4
+ 662 0250 0D       		.uleb128 0xd
+ 663 0251 D1000000 		.4byte	.LASF29
+ 664 0255 01       		.byte	0x1
+ 665 0256 FA01     		.2byte	0x1fa
+ 666 0258 00000000 		.4byte	.LFB8
+ 667 025c 0C000000 		.4byte	.LFE8-.LFB8
+ 668 0260 01       		.uleb128 0x1
+ 669 0261 9C       		.byte	0x9c
+ 670 0262 75020000 		.4byte	0x275
+ 671 0266 12       		.uleb128 0x12
+ 672 0267 54000000 		.4byte	.LASF27
+ 673 026b 01       		.byte	0x1
+ 674 026c FA01     		.2byte	0x1fa
+ 675 026e 83000000 		.4byte	0x83
+ 676 0272 01       		.uleb128 0x1
+ 677 0273 50       		.byte	0x50
+ 678 0274 00       		.byte	0
+ 679 0275 13       		.uleb128 0x13
+ 680 0276 74000000 		.4byte	.LASF30
+ 681 027a 01       		.byte	0x1
+ 682 027b 1B       		.byte	0x1b
+ 683 027c A4000000 		.4byte	0xa4
+ 684 0280 05       		.uleb128 0x5
+ 685 0281 03       		.byte	0x3
+ 686 0282 00000000 		.4byte	SCB_curStatus
+ 687 0286 13       		.uleb128 0x13
+ 688 0287 1F020000 		.4byte	.LASF31
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 22
+
+
+ 689 028b 01       		.byte	0x1
+ 690 028c 1C       		.byte	0x1c
+ 691 028d 6B000000 		.4byte	0x6b
+ 692 0291 05       		.uleb128 0x5
+ 693 0292 03       		.byte	0x3
+ 694 0293 00000000 		.4byte	SCB_fsmState
+ 695 0297 13       		.uleb128 0x13
+ 696 0298 77020000 		.4byte	.LASF32
+ 697 029c 01       		.byte	0x1
+ 698 029d 1F       		.byte	0x1f
+ 699 029e 4A020000 		.4byte	0x24a
+ 700 02a2 05       		.uleb128 0x5
+ 701 02a3 03       		.byte	0x3
+ 702 02a4 00000000 		.4byte	SCB_dataBuffer1
+ 703 02a8 13       		.uleb128 0x13
+ 704 02a9 31000000 		.4byte	.LASF33
+ 705 02ad 01       		.byte	0x1
+ 706 02ae 20       		.byte	0x20
+ 707 02af 77000000 		.4byte	0x77
+ 708 02b3 05       		.uleb128 0x5
+ 709 02b4 03       		.byte	0x3
+ 710 02b5 00000000 		.4byte	SCB_bufSizeBuf1
+ 711 02b9 13       		.uleb128 0x13
+ 712 02ba 9E020000 		.4byte	.LASF34
+ 713 02be 01       		.byte	0x1
+ 714 02bf 21       		.byte	0x21
+ 715 02c0 77000000 		.4byte	0x77
+ 716 02c4 05       		.uleb128 0x5
+ 717 02c5 03       		.byte	0x3
+ 718 02c6 00000000 		.4byte	SCB_protectBuf1
+ 719 02ca 13       		.uleb128 0x13
+ 720 02cb 68020000 		.4byte	.LASF35
+ 721 02cf 01       		.byte	0x1
+ 722 02d0 22       		.byte	0x22
+ 723 02d1 77000000 		.4byte	0x77
+ 724 02d5 05       		.uleb128 0x5
+ 725 02d6 03       		.byte	0x3
+ 726 02d7 00000000 		.4byte	SCB_offsetBuf1
+ 727 02db 13       		.uleb128 0x13
+ 728 02dc 57010000 		.4byte	.LASF36
+ 729 02e0 01       		.byte	0x1
+ 730 02e1 23       		.byte	0x23
+ 731 02e2 77000000 		.4byte	0x77
+ 732 02e6 05       		.uleb128 0x5
+ 733 02e7 03       		.byte	0x3
+ 734 02e8 00000000 		.4byte	SCB_indexBuf1
+ 735 02ec 14       		.uleb128 0x14
+ 736 02ed 87020000 		.4byte	.LASF37
+ 737 02f1 87020000 		.4byte	.LASF37
+ 738 02f5 03       		.byte	0x3
+ 739 02f6 C5       		.byte	0xc5
+ 740 02f7 14       		.uleb128 0x14
+ 741 02f8 46010000 		.4byte	.LASF38
+ 742 02fc 46010000 		.4byte	.LASF38
+ 743 0300 03       		.byte	0x3
+ 744 0301 C0       		.byte	0xc0
+ 745 0302 14       		.uleb128 0x14
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 23
+
+
+ 746 0303 1B000000 		.4byte	.LASF39
+ 747 0307 1B000000 		.4byte	.LASF39
+ 748 030b 03       		.byte	0x3
+ 749 030c BD       		.byte	0xbd
+ 750 030d 14       		.uleb128 0x14
+ 751 030e F8000000 		.4byte	.LASF40
+ 752 0312 F8000000 		.4byte	.LASF40
+ 753 0316 03       		.byte	0x3
+ 754 0317 C3       		.byte	0xc3
+ 755 0318 00       		.byte	0
+ 756              		.section	.debug_abbrev,"",%progbits
+ 757              	.Ldebug_abbrev0:
+ 758 0000 01       		.uleb128 0x1
+ 759 0001 11       		.uleb128 0x11
+ 760 0002 01       		.byte	0x1
+ 761 0003 25       		.uleb128 0x25
+ 762 0004 0E       		.uleb128 0xe
+ 763 0005 13       		.uleb128 0x13
+ 764 0006 0B       		.uleb128 0xb
+ 765 0007 03       		.uleb128 0x3
+ 766 0008 0E       		.uleb128 0xe
+ 767 0009 1B       		.uleb128 0x1b
+ 768 000a 0E       		.uleb128 0xe
+ 769 000b 55       		.uleb128 0x55
+ 770 000c 17       		.uleb128 0x17
+ 771 000d 11       		.uleb128 0x11
+ 772 000e 01       		.uleb128 0x1
+ 773 000f 10       		.uleb128 0x10
+ 774 0010 17       		.uleb128 0x17
+ 775 0011 00       		.byte	0
+ 776 0012 00       		.byte	0
+ 777 0013 02       		.uleb128 0x2
+ 778 0014 24       		.uleb128 0x24
+ 779 0015 00       		.byte	0
+ 780 0016 0B       		.uleb128 0xb
+ 781 0017 0B       		.uleb128 0xb
+ 782 0018 3E       		.uleb128 0x3e
+ 783 0019 0B       		.uleb128 0xb
+ 784 001a 03       		.uleb128 0x3
+ 785 001b 0E       		.uleb128 0xe
+ 786 001c 00       		.byte	0
+ 787 001d 00       		.byte	0
+ 788 001e 03       		.uleb128 0x3
+ 789 001f 24       		.uleb128 0x24
+ 790 0020 00       		.byte	0
+ 791 0021 0B       		.uleb128 0xb
+ 792 0022 0B       		.uleb128 0xb
+ 793 0023 3E       		.uleb128 0x3e
+ 794 0024 0B       		.uleb128 0xb
+ 795 0025 03       		.uleb128 0x3
+ 796 0026 08       		.uleb128 0x8
+ 797 0027 00       		.byte	0
+ 798 0028 00       		.byte	0
+ 799 0029 04       		.uleb128 0x4
+ 800 002a 16       		.uleb128 0x16
+ 801 002b 00       		.byte	0
+ 802 002c 03       		.uleb128 0x3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 24
+
+
+ 803 002d 0E       		.uleb128 0xe
+ 804 002e 3A       		.uleb128 0x3a
+ 805 002f 0B       		.uleb128 0xb
+ 806 0030 3B       		.uleb128 0x3b
+ 807 0031 05       		.uleb128 0x5
+ 808 0032 49       		.uleb128 0x49
+ 809 0033 13       		.uleb128 0x13
+ 810 0034 00       		.byte	0
+ 811 0035 00       		.byte	0
+ 812 0036 05       		.uleb128 0x5
+ 813 0037 35       		.uleb128 0x35
+ 814 0038 00       		.byte	0
+ 815 0039 49       		.uleb128 0x49
+ 816 003a 13       		.uleb128 0x13
+ 817 003b 00       		.byte	0
+ 818 003c 00       		.byte	0
+ 819 003d 06       		.uleb128 0x6
+ 820 003e 2E       		.uleb128 0x2e
+ 821 003f 01       		.byte	0x1
+ 822 0040 3F       		.uleb128 0x3f
+ 823 0041 19       		.uleb128 0x19
+ 824 0042 03       		.uleb128 0x3
+ 825 0043 0E       		.uleb128 0xe
+ 826 0044 3A       		.uleb128 0x3a
+ 827 0045 0B       		.uleb128 0xb
+ 828 0046 3B       		.uleb128 0x3b
+ 829 0047 0B       		.uleb128 0xb
+ 830 0048 27       		.uleb128 0x27
+ 831 0049 19       		.uleb128 0x19
+ 832 004a 11       		.uleb128 0x11
+ 833 004b 01       		.uleb128 0x1
+ 834 004c 12       		.uleb128 0x12
+ 835 004d 06       		.uleb128 0x6
+ 836 004e 40       		.uleb128 0x40
+ 837 004f 18       		.uleb128 0x18
+ 838 0050 9742     		.uleb128 0x2117
+ 839 0052 19       		.uleb128 0x19
+ 840 0053 01       		.uleb128 0x1
+ 841 0054 13       		.uleb128 0x13
+ 842 0055 00       		.byte	0
+ 843 0056 00       		.byte	0
+ 844 0057 07       		.uleb128 0x7
+ 845 0058 898201   		.uleb128 0x4109
+ 846 005b 01       		.byte	0x1
+ 847 005c 11       		.uleb128 0x11
+ 848 005d 01       		.uleb128 0x1
+ 849 005e 31       		.uleb128 0x31
+ 850 005f 13       		.uleb128 0x13
+ 851 0060 01       		.uleb128 0x1
+ 852 0061 13       		.uleb128 0x13
+ 853 0062 00       		.byte	0
+ 854 0063 00       		.byte	0
+ 855 0064 08       		.uleb128 0x8
+ 856 0065 8A8201   		.uleb128 0x410a
+ 857 0068 00       		.byte	0
+ 858 0069 02       		.uleb128 0x2
+ 859 006a 18       		.uleb128 0x18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 25
+
+
+ 860 006b 9142     		.uleb128 0x2111
+ 861 006d 18       		.uleb128 0x18
+ 862 006e 00       		.byte	0
+ 863 006f 00       		.byte	0
+ 864 0070 09       		.uleb128 0x9
+ 865 0071 898201   		.uleb128 0x4109
+ 866 0074 01       		.byte	0x1
+ 867 0075 11       		.uleb128 0x11
+ 868 0076 01       		.uleb128 0x1
+ 869 0077 31       		.uleb128 0x31
+ 870 0078 13       		.uleb128 0x13
+ 871 0079 00       		.byte	0
+ 872 007a 00       		.byte	0
+ 873 007b 0A       		.uleb128 0xa
+ 874 007c 2E       		.uleb128 0x2e
+ 875 007d 00       		.byte	0
+ 876 007e 3F       		.uleb128 0x3f
+ 877 007f 19       		.uleb128 0x19
+ 878 0080 03       		.uleb128 0x3
+ 879 0081 0E       		.uleb128 0xe
+ 880 0082 3A       		.uleb128 0x3a
+ 881 0083 0B       		.uleb128 0xb
+ 882 0084 3B       		.uleb128 0x3b
+ 883 0085 05       		.uleb128 0x5
+ 884 0086 27       		.uleb128 0x27
+ 885 0087 19       		.uleb128 0x19
+ 886 0088 11       		.uleb128 0x11
+ 887 0089 01       		.uleb128 0x1
+ 888 008a 12       		.uleb128 0x12
+ 889 008b 06       		.uleb128 0x6
+ 890 008c 40       		.uleb128 0x40
+ 891 008d 18       		.uleb128 0x18
+ 892 008e 9742     		.uleb128 0x2117
+ 893 0090 19       		.uleb128 0x19
+ 894 0091 00       		.byte	0
+ 895 0092 00       		.byte	0
+ 896 0093 0B       		.uleb128 0xb
+ 897 0094 2E       		.uleb128 0x2e
+ 898 0095 01       		.byte	0x1
+ 899 0096 3F       		.uleb128 0x3f
+ 900 0097 19       		.uleb128 0x19
+ 901 0098 03       		.uleb128 0x3
+ 902 0099 0E       		.uleb128 0xe
+ 903 009a 3A       		.uleb128 0x3a
+ 904 009b 0B       		.uleb128 0xb
+ 905 009c 3B       		.uleb128 0x3b
+ 906 009d 05       		.uleb128 0x5
+ 907 009e 27       		.uleb128 0x27
+ 908 009f 19       		.uleb128 0x19
+ 909 00a0 49       		.uleb128 0x49
+ 910 00a1 13       		.uleb128 0x13
+ 911 00a2 11       		.uleb128 0x11
+ 912 00a3 01       		.uleb128 0x1
+ 913 00a4 12       		.uleb128 0x12
+ 914 00a5 06       		.uleb128 0x6
+ 915 00a6 40       		.uleb128 0x40
+ 916 00a7 18       		.uleb128 0x18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 26
+
+
+ 917 00a8 9742     		.uleb128 0x2117
+ 918 00aa 19       		.uleb128 0x19
+ 919 00ab 01       		.uleb128 0x1
+ 920 00ac 13       		.uleb128 0x13
+ 921 00ad 00       		.byte	0
+ 922 00ae 00       		.byte	0
+ 923 00af 0C       		.uleb128 0xc
+ 924 00b0 34       		.uleb128 0x34
+ 925 00b1 00       		.byte	0
+ 926 00b2 03       		.uleb128 0x3
+ 927 00b3 0E       		.uleb128 0xe
+ 928 00b4 3A       		.uleb128 0x3a
+ 929 00b5 0B       		.uleb128 0xb
+ 930 00b6 3B       		.uleb128 0x3b
+ 931 00b7 05       		.uleb128 0x5
+ 932 00b8 49       		.uleb128 0x49
+ 933 00b9 13       		.uleb128 0x13
+ 934 00ba 02       		.uleb128 0x2
+ 935 00bb 17       		.uleb128 0x17
+ 936 00bc 00       		.byte	0
+ 937 00bd 00       		.byte	0
+ 938 00be 0D       		.uleb128 0xd
+ 939 00bf 2E       		.uleb128 0x2e
+ 940 00c0 01       		.byte	0x1
+ 941 00c1 3F       		.uleb128 0x3f
+ 942 00c2 19       		.uleb128 0x19
+ 943 00c3 03       		.uleb128 0x3
+ 944 00c4 0E       		.uleb128 0xe
+ 945 00c5 3A       		.uleb128 0x3a
+ 946 00c6 0B       		.uleb128 0xb
+ 947 00c7 3B       		.uleb128 0x3b
+ 948 00c8 05       		.uleb128 0x5
+ 949 00c9 27       		.uleb128 0x27
+ 950 00ca 19       		.uleb128 0x19
+ 951 00cb 11       		.uleb128 0x11
+ 952 00cc 01       		.uleb128 0x1
+ 953 00cd 12       		.uleb128 0x12
+ 954 00ce 06       		.uleb128 0x6
+ 955 00cf 40       		.uleb128 0x40
+ 956 00d0 18       		.uleb128 0x18
+ 957 00d1 9742     		.uleb128 0x2117
+ 958 00d3 19       		.uleb128 0x19
+ 959 00d4 01       		.uleb128 0x1
+ 960 00d5 13       		.uleb128 0x13
+ 961 00d6 00       		.byte	0
+ 962 00d7 00       		.byte	0
+ 963 00d8 0E       		.uleb128 0xe
+ 964 00d9 05       		.uleb128 0x5
+ 965 00da 00       		.byte	0
+ 966 00db 03       		.uleb128 0x3
+ 967 00dc 0E       		.uleb128 0xe
+ 968 00dd 3A       		.uleb128 0x3a
+ 969 00de 0B       		.uleb128 0xb
+ 970 00df 3B       		.uleb128 0x3b
+ 971 00e0 05       		.uleb128 0x5
+ 972 00e1 49       		.uleb128 0x49
+ 973 00e2 13       		.uleb128 0x13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 27
+
+
+ 974 00e3 02       		.uleb128 0x2
+ 975 00e4 17       		.uleb128 0x17
+ 976 00e5 00       		.byte	0
+ 977 00e6 00       		.byte	0
+ 978 00e7 0F       		.uleb128 0xf
+ 979 00e8 0B       		.uleb128 0xb
+ 980 00e9 01       		.byte	0x1
+ 981 00ea 11       		.uleb128 0x11
+ 982 00eb 01       		.uleb128 0x1
+ 983 00ec 12       		.uleb128 0x12
+ 984 00ed 06       		.uleb128 0x6
+ 985 00ee 00       		.byte	0
+ 986 00ef 00       		.byte	0
+ 987 00f0 10       		.uleb128 0x10
+ 988 00f1 34       		.uleb128 0x34
+ 989 00f2 00       		.byte	0
+ 990 00f3 03       		.uleb128 0x3
+ 991 00f4 0E       		.uleb128 0xe
+ 992 00f5 3A       		.uleb128 0x3a
+ 993 00f6 0B       		.uleb128 0xb
+ 994 00f7 3B       		.uleb128 0x3b
+ 995 00f8 05       		.uleb128 0x5
+ 996 00f9 49       		.uleb128 0x49
+ 997 00fa 13       		.uleb128 0x13
+ 998 00fb 02       		.uleb128 0x2
+ 999 00fc 18       		.uleb128 0x18
+ 1000 00fd 00       		.byte	0
+ 1001 00fe 00       		.byte	0
+ 1002 00ff 11       		.uleb128 0x11
+ 1003 0100 0F       		.uleb128 0xf
+ 1004 0101 00       		.byte	0
+ 1005 0102 0B       		.uleb128 0xb
+ 1006 0103 0B       		.uleb128 0xb
+ 1007 0104 49       		.uleb128 0x49
+ 1008 0105 13       		.uleb128 0x13
+ 1009 0106 00       		.byte	0
+ 1010 0107 00       		.byte	0
+ 1011 0108 12       		.uleb128 0x12
+ 1012 0109 05       		.uleb128 0x5
+ 1013 010a 00       		.byte	0
+ 1014 010b 03       		.uleb128 0x3
+ 1015 010c 0E       		.uleb128 0xe
+ 1016 010d 3A       		.uleb128 0x3a
+ 1017 010e 0B       		.uleb128 0xb
+ 1018 010f 3B       		.uleb128 0x3b
+ 1019 0110 05       		.uleb128 0x5
+ 1020 0111 49       		.uleb128 0x49
+ 1021 0112 13       		.uleb128 0x13
+ 1022 0113 02       		.uleb128 0x2
+ 1023 0114 18       		.uleb128 0x18
+ 1024 0115 00       		.byte	0
+ 1025 0116 00       		.byte	0
+ 1026 0117 13       		.uleb128 0x13
+ 1027 0118 34       		.uleb128 0x34
+ 1028 0119 00       		.byte	0
+ 1029 011a 03       		.uleb128 0x3
+ 1030 011b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 28
+
+
+ 1031 011c 3A       		.uleb128 0x3a
+ 1032 011d 0B       		.uleb128 0xb
+ 1033 011e 3B       		.uleb128 0x3b
+ 1034 011f 0B       		.uleb128 0xb
+ 1035 0120 49       		.uleb128 0x49
+ 1036 0121 13       		.uleb128 0x13
+ 1037 0122 3F       		.uleb128 0x3f
+ 1038 0123 19       		.uleb128 0x19
+ 1039 0124 02       		.uleb128 0x2
+ 1040 0125 18       		.uleb128 0x18
+ 1041 0126 00       		.byte	0
+ 1042 0127 00       		.byte	0
+ 1043 0128 14       		.uleb128 0x14
+ 1044 0129 2E       		.uleb128 0x2e
+ 1045 012a 00       		.byte	0
+ 1046 012b 3F       		.uleb128 0x3f
+ 1047 012c 19       		.uleb128 0x19
+ 1048 012d 3C       		.uleb128 0x3c
+ 1049 012e 19       		.uleb128 0x19
+ 1050 012f 6E       		.uleb128 0x6e
+ 1051 0130 0E       		.uleb128 0xe
+ 1052 0131 03       		.uleb128 0x3
+ 1053 0132 0E       		.uleb128 0xe
+ 1054 0133 3A       		.uleb128 0x3a
+ 1055 0134 0B       		.uleb128 0xb
+ 1056 0135 3B       		.uleb128 0x3b
+ 1057 0136 0B       		.uleb128 0xb
+ 1058 0137 00       		.byte	0
+ 1059 0138 00       		.byte	0
+ 1060 0139 00       		.byte	0
+ 1061              		.section	.debug_loc,"",%progbits
+ 1062              	.Ldebug_loc0:
+ 1063              	.LLST0:
+ 1064 0000 0E000000 		.4byte	.LVL4
+ 1065 0004 1E000000 		.4byte	.LVL6
+ 1066 0008 0100     		.2byte	0x1
+ 1067 000a 54       		.byte	0x54
+ 1068 000b 1E000000 		.4byte	.LVL6
+ 1069 000f 24000000 		.4byte	.LFE4
+ 1070 0013 0100     		.2byte	0x1
+ 1071 0015 50       		.byte	0x50
+ 1072 0016 00000000 		.4byte	0
+ 1073 001a 00000000 		.4byte	0
+ 1074              	.LLST1:
+ 1075 001e 00000000 		.4byte	.LVL7
+ 1076 0022 08000000 		.4byte	.LVL9
+ 1077 0026 0100     		.2byte	0x1
+ 1078 0028 50       		.byte	0x50
+ 1079 0029 08000000 		.4byte	.LVL9
+ 1080 002d 0C000000 		.4byte	.LVL11
+ 1081 0031 0100     		.2byte	0x1
+ 1082 0033 53       		.byte	0x53
+ 1083 0034 0C000000 		.4byte	.LVL11
+ 1084 0038 18000000 		.4byte	.LFE5
+ 1085 003c 0400     		.2byte	0x4
+ 1086 003e F3       		.byte	0xf3
+ 1087 003f 01       		.uleb128 0x1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 29
+
+
+ 1088 0040 50       		.byte	0x50
+ 1089 0041 9F       		.byte	0x9f
+ 1090 0042 00000000 		.4byte	0
+ 1091 0046 00000000 		.4byte	0
+ 1092              	.LLST2:
+ 1093 004a 06000000 		.4byte	.LVL8
+ 1094 004e 10000000 		.4byte	.LVL12
+ 1095 0052 0100     		.2byte	0x1
+ 1096 0054 52       		.byte	0x52
+ 1097 0055 10000000 		.4byte	.LVL12
+ 1098 0059 18000000 		.4byte	.LFE5
+ 1099 005d 0100     		.2byte	0x1
+ 1100 005f 50       		.byte	0x50
+ 1101 0060 00000000 		.4byte	0
+ 1102 0064 00000000 		.4byte	0
+ 1103              	.LLST3:
+ 1104 0068 00000000 		.4byte	.LVL14
+ 1105 006c 0C000000 		.4byte	.LVL15
+ 1106 0070 0100     		.2byte	0x1
+ 1107 0072 50       		.byte	0x50
+ 1108 0073 0C000000 		.4byte	.LVL15
+ 1109 0077 22000000 		.4byte	.LVL20
+ 1110 007b 0100     		.2byte	0x1
+ 1111 007d 56       		.byte	0x56
+ 1112 007e 22000000 		.4byte	.LVL20
+ 1113 0082 30000000 		.4byte	.LFE7
+ 1114 0086 0400     		.2byte	0x4
+ 1115 0088 F3       		.byte	0xf3
+ 1116 0089 01       		.uleb128 0x1
+ 1117 008a 50       		.byte	0x50
+ 1118 008b 9F       		.byte	0x9f
+ 1119 008c 00000000 		.4byte	0
+ 1120 0090 00000000 		.4byte	0
+ 1121              	.LLST4:
+ 1122 0094 00000000 		.4byte	.LVL14
+ 1123 0098 0F000000 		.4byte	.LVL16-1
+ 1124 009c 0100     		.2byte	0x1
+ 1125 009e 51       		.byte	0x51
+ 1126 009f 0F000000 		.4byte	.LVL16-1
+ 1127 00a3 22000000 		.4byte	.LVL19
+ 1128 00a7 0100     		.2byte	0x1
+ 1129 00a9 55       		.byte	0x55
+ 1130 00aa 22000000 		.4byte	.LVL19
+ 1131 00ae 30000000 		.4byte	.LFE7
+ 1132 00b2 0400     		.2byte	0x4
+ 1133 00b4 F3       		.byte	0xf3
+ 1134 00b5 01       		.uleb128 0x1
+ 1135 00b6 51       		.byte	0x51
+ 1136 00b7 9F       		.byte	0x9f
+ 1137 00b8 00000000 		.4byte	0
+ 1138 00bc 00000000 		.4byte	0
+ 1139              	.LLST5:
+ 1140 00c0 00000000 		.4byte	.LVL14
+ 1141 00c4 0F000000 		.4byte	.LVL16-1
+ 1142 00c8 0100     		.2byte	0x1
+ 1143 00ca 52       		.byte	0x52
+ 1144 00cb 0F000000 		.4byte	.LVL16-1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 30
+
+
+ 1145 00cf 22000000 		.4byte	.LVL18
+ 1146 00d3 0100     		.2byte	0x1
+ 1147 00d5 54       		.byte	0x54
+ 1148 00d6 22000000 		.4byte	.LVL18
+ 1149 00da 30000000 		.4byte	.LFE7
+ 1150 00de 0400     		.2byte	0x4
+ 1151 00e0 F3       		.byte	0xf3
+ 1152 00e1 01       		.uleb128 0x1
+ 1153 00e2 52       		.byte	0x52
+ 1154 00e3 9F       		.byte	0x9f
+ 1155 00e4 00000000 		.4byte	0
+ 1156 00e8 00000000 		.4byte	0
+ 1157              		.section	.debug_aranges,"",%progbits
+ 1158 0000 4C000000 		.4byte	0x4c
+ 1159 0004 0200     		.2byte	0x2
+ 1160 0006 00000000 		.4byte	.Ldebug_info0
+ 1161 000a 04       		.byte	0x4
+ 1162 000b 00       		.byte	0
+ 1163 000c 0000     		.2byte	0
+ 1164 000e 0000     		.2byte	0
+ 1165 0010 00000000 		.4byte	.LFB2
+ 1166 0014 C4000000 		.4byte	.LFE2-.LFB2
+ 1167 0018 00000000 		.4byte	.LFB3
+ 1168 001c 0C000000 		.4byte	.LFE3-.LFB3
+ 1169 0020 00000000 		.4byte	.LFB4
+ 1170 0024 24000000 		.4byte	.LFE4-.LFB4
+ 1171 0028 00000000 		.4byte	.LFB5
+ 1172 002c 18000000 		.4byte	.LFE5-.LFB5
+ 1173 0030 00000000 		.4byte	.LFB6
+ 1174 0034 10000000 		.4byte	.LFE6-.LFB6
+ 1175 0038 00000000 		.4byte	.LFB7
+ 1176 003c 30000000 		.4byte	.LFE7-.LFB7
+ 1177 0040 00000000 		.4byte	.LFB8
+ 1178 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1179 0048 00000000 		.4byte	0
+ 1180 004c 00000000 		.4byte	0
+ 1181              		.section	.debug_ranges,"",%progbits
+ 1182              	.Ldebug_ranges0:
+ 1183 0000 00000000 		.4byte	.LFB2
+ 1184 0004 C4000000 		.4byte	.LFE2
+ 1185 0008 00000000 		.4byte	.LFB3
+ 1186 000c 0C000000 		.4byte	.LFE3
+ 1187 0010 00000000 		.4byte	.LFB4
+ 1188 0014 24000000 		.4byte	.LFE4
+ 1189 0018 00000000 		.4byte	.LFB5
+ 1190 001c 18000000 		.4byte	.LFE5
+ 1191 0020 00000000 		.4byte	.LFB6
+ 1192 0024 10000000 		.4byte	.LFE6
+ 1193 0028 00000000 		.4byte	.LFB7
+ 1194 002c 30000000 		.4byte	.LFE7
+ 1195 0030 00000000 		.4byte	.LFB8
+ 1196 0034 0C000000 		.4byte	.LFE8
+ 1197 0038 00000000 		.4byte	0
+ 1198 003c 00000000 		.4byte	0
+ 1199              		.section	.debug_line,"",%progbits
+ 1200              	.Ldebug_line0:
+ 1201 0000 FD000000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 31
+
+
+ 1201      02005100 
+ 1201      00000201 
+ 1201      FB0E0D00 
+ 1201      01010101 
+ 1202              	.LASF19:
+ 1203 0000 5343425F 		.ascii	"SCB_EzI2CSetAddress1\000"
+ 1203      457A4932 
+ 1203      43536574 
+ 1203      41646472 
+ 1203      65737331 
+ 1204              	.LASF15:
+ 1205 0015 72656733 		.ascii	"reg32\000"
+ 1205      3200
+ 1206              	.LASF39:
+ 1207 001b 4379496E 		.ascii	"CyIntSetVector\000"
+ 1207      74536574 
+ 1207      56656374 
+ 1207      6F7200
+ 1208              	.LASF28:
+ 1209 002a 62756666 		.ascii	"buffer\000"
+ 1209      657200
+ 1210              	.LASF33:
+ 1211 0031 5343425F 		.ascii	"SCB_bufSizeBuf1\000"
+ 1211      62756653 
+ 1211      697A6542 
+ 1211      75663100 
+ 1212              	.LASF3:
+ 1213 0041 73686F72 		.ascii	"short unsigned int\000"
+ 1213      7420756E 
+ 1213      7369676E 
+ 1213      65642069 
+ 1213      6E7400
+ 1214              	.LASF27:
+ 1215 0054 7277426F 		.ascii	"rwBoundary\000"
+ 1215      756E6461 
+ 1215      727900
+ 1216              	.LASF44:
+ 1217 005f 5343425F 		.ascii	"SCB_EzI2CStop\000"
+ 1217      457A4932 
+ 1217      4353746F 
+ 1217      7000
+ 1218              	.LASF20:
+ 1219 006d 73746174 		.ascii	"status\000"
+ 1219      757300
+ 1220              	.LASF30:
+ 1221 0074 5343425F 		.ascii	"SCB_curStatus\000"
+ 1221      63757253 
+ 1221      74617475 
+ 1221      7300
+ 1222              	.LASF23:
+ 1223 0082 5343425F 		.ascii	"SCB_EzI2CGetAddress1\000"
+ 1223      457A4932 
+ 1223      43476574 
+ 1223      41646472 
+ 1223      65737331 
+ 1224              	.LASF12:
+ 1225 0097 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 32
+
+
+ 1225      7400
+ 1226              	.LASF18:
+ 1227 009d 5343425F 		.ascii	"SCB_EzI2CInit\000"
+ 1227      457A4932 
+ 1227      43496E69 
+ 1227      7400
+ 1228              	.LASF1:
+ 1229 00ab 756E7369 		.ascii	"unsigned char\000"
+ 1229      676E6564 
+ 1229      20636861 
+ 1229      7200
+ 1230              	.LASF5:
+ 1231 00b9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1231      20756E73 
+ 1231      69676E65 
+ 1231      6420696E 
+ 1231      7400
+ 1232              	.LASF9:
+ 1233 00cb 75696E74 		.ascii	"uint8\000"
+ 1233      3800
+ 1234              	.LASF29:
+ 1235 00d1 5343425F 		.ascii	"SCB_EzI2CSetReadBoundaryBuffer1\000"
+ 1235      457A4932 
+ 1235      43536574 
+ 1235      52656164 
+ 1235      426F756E 
+ 1236              	.LASF13:
+ 1237 00f1 646F7562 		.ascii	"double\000"
+ 1237      6C6500
+ 1238              	.LASF40:
+ 1239 00f8 4379496E 		.ascii	"CyIntEnable\000"
+ 1239      74456E61 
+ 1239      626C6500 
+ 1240              	.LASF10:
+ 1241 0104 75696E74 		.ascii	"uint16\000"
+ 1241      313600
+ 1242              	.LASF11:
+ 1243 010b 75696E74 		.ascii	"uint32\000"
+ 1243      333200
+ 1244              	.LASF26:
+ 1245 0112 62756653 		.ascii	"bufSize\000"
+ 1245      697A6500 
+ 1246              	.LASF8:
+ 1247 011a 756E7369 		.ascii	"unsigned int\000"
+ 1247      676E6564 
+ 1247      20696E74 
+ 1247      00
+ 1248              	.LASF24:
+ 1249 0127 61646472 		.ascii	"address\000"
+ 1249      65737300 
+ 1250              	.LASF7:
+ 1251 012f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1251      206C6F6E 
+ 1251      6720756E 
+ 1251      7369676E 
+ 1251      65642069 
+ 1252              	.LASF38:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 33
+
+
+ 1253 0146 4379496E 		.ascii	"CyIntSetPriority\000"
+ 1253      74536574 
+ 1253      5072696F 
+ 1253      72697479 
+ 1253      00
+ 1254              	.LASF36:
+ 1255 0157 5343425F 		.ascii	"SCB_indexBuf1\000"
+ 1255      696E6465 
+ 1255      78427566 
+ 1255      3100
+ 1256              	.LASF42:
+ 1257 0165 47656E65 		.ascii	"Generated_Source\\PSoC4\\SCB_EZI2C.c\000"
+ 1257      72617465 
+ 1257      645F536F 
+ 1257      75726365 
+ 1257      5C50536F 
+ 1258              	.LASF41:
+ 1259 0188 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1259      43313120 
+ 1259      352E342E 
+ 1259      31203230 
+ 1259      31363036 
+ 1260 01bb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1260      20726576 
+ 1260      6973696F 
+ 1260      6E203233 
+ 1260      37373135 
+ 1261 01ee 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1261      66756E63 
+ 1261      74696F6E 
+ 1261      2D736563 
+ 1261      74696F6E 
+ 1262              	.LASF17:
+ 1263 0216 73697A65 		.ascii	"sizetype\000"
+ 1263      74797065 
+ 1263      00
+ 1264              	.LASF31:
+ 1265 021f 5343425F 		.ascii	"SCB_fsmState\000"
+ 1265      66736D53 
+ 1265      74617465 
+ 1265      00
+ 1266              	.LASF22:
+ 1267 022c 5343425F 		.ascii	"SCB_EzI2CGetActivity\000"
+ 1267      457A4932 
+ 1267      43476574 
+ 1267      41637469 
+ 1267      76697479 
+ 1268              	.LASF6:
+ 1269 0241 6C6F6E67 		.ascii	"long long int\000"
+ 1269      206C6F6E 
+ 1269      6720696E 
+ 1269      7400
+ 1270              	.LASF25:
+ 1271 024f 5343425F 		.ascii	"SCB_EzI2CSetBuffer1\000"
+ 1271      457A4932 
+ 1271      43536574 
+ 1271      42756666 
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 34
+
+
+ 1271      65723100 
+ 1272              	.LASF14:
+ 1273 0263 63686172 		.ascii	"char\000"
+ 1273      00
+ 1274              	.LASF35:
+ 1275 0268 5343425F 		.ascii	"SCB_offsetBuf1\000"
+ 1275      6F666673 
+ 1275      65744275 
+ 1275      663100
+ 1276              	.LASF32:
+ 1277 0277 5343425F 		.ascii	"SCB_dataBuffer1\000"
+ 1277      64617461 
+ 1277      42756666 
+ 1277      65723100 
+ 1278              	.LASF37:
+ 1279 0287 4379496E 		.ascii	"CyIntDisable\000"
+ 1279      74446973 
+ 1279      61626C65 
+ 1279      00
+ 1280              	.LASF2:
+ 1281 0294 73686F72 		.ascii	"short int\000"
+ 1281      7420696E 
+ 1281      7400
+ 1282              	.LASF34:
+ 1283 029e 5343425F 		.ascii	"SCB_protectBuf1\000"
+ 1283      70726F74 
+ 1283      65637442 
+ 1283      75663100 
+ 1284              	.LASF43:
+ 1285 02ae 443A5C55 		.ascii	"D:\\Users\\jagumiel\\Documents\\PSoC Creator\\LIN-A"
+ 1285      73657273 
+ 1285      5C6A6167 
+ 1285      756D6965 
+ 1285      6C5C446F 
+ 1286 02dc 75746F6D 		.ascii	"utomotive\\3-LIN-Internal-Light-Control\\test-drive"
+ 1286      6F746976 
+ 1286      655C332D 
+ 1286      4C494E2D 
+ 1286      496E7465 
+ 1287 030d 724C6564 		.ascii	"rLed\\test-driverLed.cydsn\000"
+ 1287      5C746573 
+ 1287      742D6472 
+ 1287      69766572 
+ 1287      4C65642E 
+ 1288              	.LASF4:
+ 1289 0327 6C6F6E67 		.ascii	"long int\000"
+ 1289      20696E74 
+ 1289      00
+ 1290              	.LASF21:
+ 1291 0330 6D617463 		.ascii	"matchReg\000"
+ 1291      68526567 
+ 1291      00
+ 1292              	.LASF16:
+ 1293 0339 6C6F6E67 		.ascii	"long double\000"
+ 1293      20646F75 
+ 1293      626C6500 
+ 1294              	.LASF0:
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccn0Rtyk.s 			page 35
+
+
+ 1295 0345 7369676E 		.ascii	"signed char\000"
+ 1295      65642063 
+ 1295      68617200 
+ 1296              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
