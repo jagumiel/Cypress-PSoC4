@@ -11,20 +11,18 @@
 */
 #include "project.h"
 #include "alphabet.h"
-//#include <stdio.h>
+#include "boardStatusLEDs.h"
 
 /* Global Variables */
-int countCharChange=0;
-uint16_t character = 0x0000;
-uint16_t blank = 0x0000;
+static uint16_t character = 0x0000;
+
 int dutyCMP=5;
 int j=0;
 char charReceived='A';
 char lastCharReceived='A';
 
-//Botones de CapSense
-int buttonsVal[2]={0,0};
-int buttonsLastVal[2]={0,0};
+/* Capsense Buttons */
+int status=0; //Which is the CapSense Status? Button 1, 2...
 
 //Time Counters
 int msCounter=0;
@@ -52,8 +50,6 @@ void changeCharacter(){
 }
 
 void changeCharacterByLetter(char myCharacter){
-    //uint16 myLetter1='A';
-    //uint16 myLetter2='B';
     for(int i=0; i<50; i++){
         if(ALPHANUMR_CHAR_MATRIX[i][1]==myCharacter){
             character=ALPHANUMR_CHAR_MATRIX[i][0];
@@ -61,13 +57,13 @@ void changeCharacterByLetter(char myCharacter){
     }
 }
 
-void adjustBrightness(){ //Change the PWM comparator. (aka. Duty-Cycle).
+int adjustBrightness(){ //Change the PWM comparator. (aka. Duty-Cycle).
     if(dutyCMP<100){
         dutyCMP=dutyCMP+5;
     }else{
         dutyCMP=5;
     }
-    PWM_1_WriteCompare(dutyCMP);
+    return(dutyCMP);
 }
 
 
@@ -75,13 +71,12 @@ CY_ISR(TC_ISR_Handler){
     uint32 IrqSource=PWM_1_GetInterruptSource();
     
     if(IrqSource==PWM_1_INTR_MASK_CC_MATCH){
-        //PWM_1_ClearInterrupt(PWM_1_INTR_MASK_CC_MATCH);
-        writeChar(blank);
+        writeChar(BLANK);
         if (msCounter<50){ //50=1 second
             msCounter++;
         }else{
             msCounter=0;
-            if(STR_Read()==1){
+            if(status==1){
                 changeCharacterByLetter(lastCharReceived);
             }else{
                 changeCharacter();   
@@ -89,13 +84,12 @@ CY_ISR(TC_ISR_Handler){
         }
         PWM_1_ClearInterrupt(PWM_1_INTR_MASK_CC_MATCH);
     }else if(IrqSource==PWM_1_INTR_MASK_TC){
-        //PWM_1_ClearInterrupt(PWM_1_INTR_MASK_TC);
         writeChar(character);
         if(brightnessCounter<10){//Controls time to set the fadding effect.
             brightnessCounter++;
         }else{
             brightnessCounter=0;
-            adjustBrightness();
+            PWM_1_WriteCompare(adjustBrightness());
         }
         PWM_1_ClearInterrupt(PWM_1_INTR_MASK_TC);
     }
@@ -104,6 +98,7 @@ CY_ISR(TC_ISR_Handler){
 
 
 int main(void){
+    
     /* Enable global interrupts. */
     CyGlobalIntEnable;
     /* PWM-Timer Interrupt */
@@ -115,37 +110,40 @@ int main(void){
     PWM_1_Start();
     UART_Start();
     CapSense_Start();
-    UART_UartPutString("Hola!\n\r");
     CapSense_InitializeAllBaselines();
-    //CapSense_ScanEnabledWidgets();
     
-    STR_Write(1);
-    STG_Write(1);
-    STB_Write(1);
+    /*Turns off board LEDs*/
+    ST_OFF;
 
     for(;;){
         
+        /************ UART: GET CHARS FROM PC TERMINAL ************/
         charReceived=UART_UartGetChar();
-        if(charReceived!=_NULL && charReceived!=lastCharReceived){
+        if((charReceived!=_NULL) && (charReceived!=lastCharReceived) && (status==1)){
             lastCharReceived=charReceived;
             UART_UartPutString("Introduce a character!\n\r");
         }
+        /**********************************************************/
 
+        
+        /************ CAPSENSE: DETECTS IF A BUTTON WAS PRESSED ************/
         if(!CapSense_IsBusy()){
-            buttonsVal[0]=CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN);
-            buttonsVal[1]=CapSense_CheckIsWidgetActive(CapSense_BUTTON1__BTN); 
-            
-        if (CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN)){
-            STR_Write(0);
-            STG_Write(1);
-		}
-		if (CapSense_CheckIsWidgetActive(CapSense_BUTTON1__BTN)){
-            STG_Write(0);
-            STR_Write(1);
-		}
+            if (CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN)){
+                STR_ON;
+                status=1;
+    		}
+    		if (CapSense_CheckIsWidgetActive(CapSense_BUTTON1__BTN)){
+                STG_ON;
+                status=2;
+    		}
             CapSense_UpdateEnabledBaselines();
             CapSense_ScanEnabledWidgets();
         }
+        /*******************************************************************/
+        
+        
+        /************ LIN: RECEIVES COMMANDS THROUGH THE AUTOMOTIVE PROTOCOL ************/
+        
     }
 }
 

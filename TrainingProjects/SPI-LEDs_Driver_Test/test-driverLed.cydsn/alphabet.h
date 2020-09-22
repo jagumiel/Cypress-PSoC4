@@ -8,6 +8,9 @@
  * ========================================
 */
 #include <stdint.h>
+
+const uint16_t BLANK = 0x0000;
+
 const uint16_t ALPHANUMR_CHAR_TABLE[ 51 ] =
 {
  // 14segment bit order
