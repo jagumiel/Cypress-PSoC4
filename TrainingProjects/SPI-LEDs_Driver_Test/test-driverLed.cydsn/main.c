@@ -19,6 +19,8 @@ uint16_t character = 0x0000;
 uint16_t blank = 0x0000;
 int dutyCMP=5;
 int j=0;
+char charReceived='A';
+char lastCharReceived='A';
 
 //Botones de CapSense
 int buttonsVal[2]={0,0};
@@ -42,7 +44,6 @@ void writeChar(uint16_t myChar){
 values stored in the "alphabet" array. */
 void changeCharacter(){
     character=ALPHANUMR_CHAR_TABLE[j];
-    countCharChange=0;
     if(j<50){
         j++;
     }else{
@@ -50,14 +51,12 @@ void changeCharacter(){
     }
 }
 
-void changeCharacterByLetter(){
+void changeCharacterByLetter(char myCharacter){
     //uint16 myLetter1='A';
     //uint16 myLetter2='B';
     for(int i=0; i<50; i++){
-        if(ALPHANUMR_CHAR_MATRIX[i][1]=='A'){
+        if(ALPHANUMR_CHAR_MATRIX[i][1]==myCharacter){
             character=ALPHANUMR_CHAR_MATRIX[i][0];
-        }else{
-            i++;
         }
     }
 }
@@ -76,20 +75,21 @@ CY_ISR(TC_ISR_Handler){
     uint32 IrqSource=PWM_1_GetInterruptSource();
     
     if(IrqSource==PWM_1_INTR_MASK_CC_MATCH){
-        PWM_1_ClearInterrupt(PWM_1_INTR_MASK_CC_MATCH);
+        //PWM_1_ClearInterrupt(PWM_1_INTR_MASK_CC_MATCH);
         writeChar(blank);
         if (msCounter<50){ //50=1 second
             msCounter++;
         }else{
             msCounter=0;
             if(STR_Read()==1){
-                changeCharacterByLetter();
+                changeCharacterByLetter(lastCharReceived);
             }else{
                 changeCharacter();   
             }
         }
+        PWM_1_ClearInterrupt(PWM_1_INTR_MASK_CC_MATCH);
     }else if(IrqSource==PWM_1_INTR_MASK_TC){
-        PWM_1_ClearInterrupt(PWM_1_INTR_MASK_TC);
+        //PWM_1_ClearInterrupt(PWM_1_INTR_MASK_TC);
         writeChar(character);
         if(brightnessCounter<10){//Controls time to set the fadding effect.
             brightnessCounter++;
@@ -97,6 +97,7 @@ CY_ISR(TC_ISR_Handler){
             brightnessCounter=0;
             adjustBrightness();
         }
+        PWM_1_ClearInterrupt(PWM_1_INTR_MASK_TC);
     }
     PWM_1_ClearInterrupt(IrqSource);
 }
@@ -105,15 +106,14 @@ CY_ISR(TC_ISR_Handler){
 int main(void){
     /* Enable global interrupts. */
     CyGlobalIntEnable;
+    /* PWM-Timer Interrupt */
     TC_ISR_StartEx(TC_ISR_Handler);
-    
 
     /* Component initialization/startup */
     Clock_1_Start();
     SPI_1_Start();
     PWM_1_Start();
     UART_Start();
-    
     CapSense_Start();
     UART_UartPutString("Hola!\n\r");
     CapSense_InitializeAllBaselines();
@@ -124,6 +124,12 @@ int main(void){
     STB_Write(1);
 
     for(;;){
+        
+        charReceived=UART_UartGetChar();
+        if(charReceived!=_NULL && charReceived!=lastCharReceived){
+            lastCharReceived=charReceived;
+            UART_UartPutString("Introduce a character!\n\r");
+        }
 
         if(!CapSense_IsBusy()){
             buttonsVal[0]=CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN);
@@ -132,12 +138,10 @@ int main(void){
         if (CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN)){
             STR_Write(0);
             STG_Write(1);
-            UART_UartPutString("Hola1!\n\r");
 		}
 		if (CapSense_CheckIsWidgetActive(CapSense_BUTTON1__BTN)){
             STG_Write(0);
             STR_Write(1);
-            UART_UartPutString("Hola2!\n\r");
 		}
             CapSense_UpdateEnabledBaselines();
             CapSense_ScanEnabledWidgets();
