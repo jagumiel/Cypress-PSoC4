@@ -1,5 +1,5 @@
 # test-driverLed
-# 2020-09-18 10:33:37Z
+# 2020-09-22 06:44:44Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -21,18 +21,15 @@ set_io "\CapSense:Sns(1)\" iocell 2 5
 set_io "STR(0)" iocell 2 6
 set_io "STG(0)" iocell 3 6
 set_io "STB(0)" iocell 3 7
-set_location "\PWM_1:PWMUDB:status_2\" 0 0 0 1
+set_io "\UART:tx(0)\" iocell 3 5
+set_io "\UART:rx(0)\" iocell 3 4
+set_io "INTERRUPT(0)" iocell 0 1
 set_location "\SPI_1:SCB\" m0s8scbcell -1 -1 0
-set_location "__ONE__" 1 1 0 0
-set_location "\PWM_1:PWMUDB:genblk1:ctrlreg\" 0 0 6
-set_location "\PWM_1:PWMUDB:genblk8:stsreg\" 0 0 4
-set_location "\PWM_1:PWMUDB:sP16:pwmdp:u0\" 1 0 2
-set_location "\PWM_1:PWMUDB:sP16:pwmdp:u1\" 0 0 2
 set_location "\CapSense:CSD_FFB\" p4csdcell -1 -1 0
 set_location "\CapSense:ISR\" interrupt -1 -1 16
 set_location "\CapSense:IDAC2:cy_psoc4_idac\" p4csidac7cell -1 -1 0
+set_location "__ONE__" 0 1 0 0
 set_location "\CapSense:IDAC1:cy_psoc4_idac\" p4csidac8cell -1 -1 0
-set_location "\PWM_1:PWMUDB:runmode_enable\" 0 0 0 0
-set_location "\PWM_1:PWMUDB:prevCompare1\" 0 0 0 3
-set_location "\PWM_1:PWMUDB:status_0\" 0 0 1 0
-set_location "Net_246" 0 0 0 2
+set_location "\UART:SCB\" m0s8scbcell -1 -1 1
+set_location "TC_ISR" interrupt -1 -1 17
+set_location "\PWM_1:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 0

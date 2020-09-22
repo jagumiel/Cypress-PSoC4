@@ -74,7 +74,7 @@
 #define SPI_1_SCB_INTR_MODE_EXTERNAL (2u)
 
 /* Internal clock remove option */
-#define SPI_1_REMOVE_SCB_CLK     (1u)
+#define SPI_1_REMOVE_SCB_CLK     (0u)
 #define SPI_1_SCB_CLK_INTERNAL   (0u == SPI_1_REMOVE_SCB_CLK)
 
 

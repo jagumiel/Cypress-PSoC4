@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
   28:Generated_Source\PSoC4/CapSense_CSHL.c ****       (0u != (CapSense_RAW_FILTER_MASK & CapSense_AVERAGING_FILTER)) )
   29:Generated_Source\PSoC4/CapSense_CSHL.c **** 
   30:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint16 CapSense_rawFilterData1[CapSense_TOTAL_SENSOR_COUNT];
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 2
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 2
 
 
   31:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint16 CapSense_rawFilterData2[CapSense_TOTAL_SENSOR_COUNT];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
   85:Generated_Source\PSoC4/CapSense_CSHL.c **** static uint8 CapSense_debounceCounter[] = {
   86:Generated_Source\PSoC4/CapSense_CSHL.c ****     0u, 0u, 0u, 
   87:Generated_Source\PSoC4/CapSense_CSHL.c **** };
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 3
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 3
 
 
   88:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
   32              	.LVL0:
   33 0000 10B5     		push	{r4, lr}
   34              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 4
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 4
 
 
   35              		.cfi_offset 4, -8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  167:Generated_Source\PSoC4/CapSense_CSHL.c ****     #elif ((CapSense_RAW_FILTER_MASK & CapSense_IIR2_FILTER) ||\
  168:Generated_Source\PSoC4/CapSense_CSHL.c ****            (CapSense_RAW_FILTER_MASK & CapSense_IIR4_FILTER) ||\
  169:Generated_Source\PSoC4/CapSense_CSHL.c ****            (CapSense_RAW_FILTER_MASK & CapSense_JITTER_FILTER) ||\
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 5
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 5
 
 
  170:Generated_Source\PSoC4/CapSense_CSHL.c ****            (CapSense_RAW_FILTER_MASK & CapSense_IIR8_FILTER) ||\
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  203:Generated_Source\PSoC4/CapSense_CSHL.c **** *  None
  204:Generated_Source\PSoC4/CapSense_CSHL.c **** *
  205:Generated_Source\PSoC4/CapSense_CSHL.c **** * Global Variables:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 6
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 6
 
 
  206:Generated_Source\PSoC4/CapSense_CSHL.c **** *  None
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  117              	CapSense_InitializeAllBaselines:
  118              	.LFB36:
  224:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 7
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 7
 
 
  225:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  253:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
  141              		.loc 1 253 0 is_stmt 0 discriminator 1
  142 000e 012C     		cmp	r4, #1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 8
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 8
 
 
  143 0010 F9D9     		bls	.L8
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  286:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint32 i;
  287:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint32 isSensorEnabled;
  288:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 9
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 9
 
 
  289:Generated_Source\PSoC4/CapSense_CSHL.c ****     CapSense_ScanEnabledWidgets();
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  201              		.loc 1 306 0 is_stmt 1
  202              		@ sp needed
  203              	.LVL21:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 10
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 10
 
 
  204 002a 10BD     		pop	{r4, pc}
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  345:Generated_Source\PSoC4/CapSense_CSHL.c **** * Side Effects:
  346:Generated_Source\PSoC4/CapSense_CSHL.c **** *  None
  347:Generated_Source\PSoC4/CapSense_CSHL.c **** *
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 11
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 11
 
 
  348:Generated_Source\PSoC4/CapSense_CSHL.c **** *******************************************************************************/
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  368:Generated_Source\PSoC4/CapSense_CSHL.c ****     if(CapSense_enableRawFilters != 0u)
  369:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
  370:Generated_Source\PSoC4/CapSense_CSHL.c ****         #if (CapSense_RAW_FILTER_MASK & CapSense_MEDIAN_FILTER)
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 12
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 12
 
 
  371:Generated_Source\PSoC4/CapSense_CSHL.c ****             tempRaw = filteredRawData;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  262 0028 E95A     		ldrh	r1, [r5, r3]
  263 002a 8E42     		cmp	r6, r1
  264 002c 06D3     		bcc	.L17
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 13
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 13
 
 
  417:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  301 005a 9342     		cmp	r3, r2
  302 005c 06D3     		bcc	.L20
  435:Generated_Source\PSoC4/CapSense_CSHL.c ****         {
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 14
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 14
 
 
  436:Generated_Source\PSoC4/CapSense_CSHL.c ****             CapSense_BaseInit(sensor);
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  457:Generated_Source\PSoC4/CapSense_CSHL.c ****                    && (sign == 0u)))
  458:Generated_Source\PSoC4/CapSense_CSHL.c ****             {
  459:Generated_Source\PSoC4/CapSense_CSHL.c ****         #endif /* (CapSense_TUNING_METHOD != CapSense__TUNING_NONE) */
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 15
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 15
 
 
  460:Generated_Source\PSoC4/CapSense_CSHL.c ****         #endif /* (CapSense_AUTO_RESET == CapSense_AUTO_RESET_DISABLE) */
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  366 00aa 6B46     		mov	r3, sp
  367 00ac 9E88     		ldrh	r6, [r3, #4]
  368 00ae B542     		cmp	r5, r6
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 16
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 16
 
 
  369 00b0 0CD9     		bls	.L23
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  506:Generated_Source\PSoC4/CapSense_CSHL.c ****         }
  507:Generated_Source\PSoC4/CapSense_CSHL.c ****     #endif  /* CapSense_TOTAL_GENERICS_COUNT */
  508:Generated_Source\PSoC4/CapSense_CSHL.c **** }
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 17
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 17
 
 
  400              		.loc 1 508 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  533:Generated_Source\PSoC4/CapSense_CSHL.c **** *
  534:Generated_Source\PSoC4/CapSense_CSHL.c **** * Global Variables:
  535:Generated_Source\PSoC4/CapSense_CSHL.c **** *  CapSense_widgetNumber[]  - stores widget numbers.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 18
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 18
 
 
  536:Generated_Source\PSoC4/CapSense_CSHL.c **** *
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  456              		.global	CapSense_UpdateEnabledBaselines
  457              		.code	16
  458              		.thumb_func
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 19
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 19
 
 
  459              		.type	CapSense_UpdateEnabledBaselines, %function
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  601:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
  602:Generated_Source\PSoC4/CapSense_CSHL.c ****         isSensorEnabled = CapSense_GetBitValue(CapSense_sensorEnableMask, i);
  476              		.loc 1 602 0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 20
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 20
 
 
  477 0006 2100     		movs	r1, r4
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  616:Generated_Source\PSoC4/CapSense_CSHL.c **** *  Checks CapSense_sensorEnableMask[] array and calls the
  617:Generated_Source\PSoC4/CapSense_CSHL.c **** *  CapSense_UpdateSensorBaseline function to update the baselines
  618:Generated_Source\PSoC4/CapSense_CSHL.c **** *  for the enabled sensors that belong to widget.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 21
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 21
 
 
  619:Generated_Source\PSoC4/CapSense_CSHL.c **** *
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  653:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  654:Generated_Source\PSoC4/CapSense_CSHL.c ****     /* Get last sensor in widget */
  655:Generated_Source\PSoC4/CapSense_CSHL.c ****     lastSensor = (CapSense_rawDataIndex[widget] + sensorsPerWidget);
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 22
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 22
 
 
  536              		.loc 1 655 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  577              		.section	.text.CapSense_GetBaselineData,"ax",%progbits
  578              		.align	2
  579              		.global	CapSense_GetBaselineData
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 23
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 23
 
 
  580              		.code	16
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  608              		.global	CapSense_SetBaselineData
  609              		.code	16
  610              		.thumb_func
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 24
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 24
 
 
  611              		.type	CapSense_SetBaselineData, %function
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  638              		.code	16
  639              		.thumb_func
  640              		.type	CapSense_GetDiffCountData, %function
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 25
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 25
 
 
  641              	CapSense_GetDiffCountData:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  668              		.thumb_func
  669              		.type	CapSense_SetDiffCountData, %function
  670              	CapSense_SetDiffCountData:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 26
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 26
 
 
  671              	.LFB45:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  698              		.type	CapSense_GetFingerThreshold, %function
  699              	CapSense_GetFingerThreshold:
  700              	.LFB46:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 27
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 27
 
 
  774:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  728              	.LFB47:
  801:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  802:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 28
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 28
 
 
  803:Generated_Source\PSoC4/CapSense_CSHL.c **** /*******************************************************************************
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  829:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  830:Generated_Source\PSoC4/CapSense_CSHL.c **** /*******************************************************************************
  831:Generated_Source\PSoC4/CapSense_CSHL.c **** * Function Name: CapSense_GetFingerHysteresis
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 29
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 29
 
 
  832:Generated_Source\PSoC4/CapSense_CSHL.c **** ********************************************************************************
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  858:Generated_Source\PSoC4/CapSense_CSHL.c **** /*******************************************************************************
  859:Generated_Source\PSoC4/CapSense_CSHL.c **** * Function Name: CapSense_GetNegativeNoiseThreshold
  860:Generated_Source\PSoC4/CapSense_CSHL.c **** ********************************************************************************
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 30
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 30
 
 
  861:Generated_Source\PSoC4/CapSense_CSHL.c **** *
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  812              	.LFB50:
  888:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  889:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 31
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 31
 
 
  890:Generated_Source\PSoC4/CapSense_CSHL.c **** #if(CapSense_TUNING_METHOD != CapSense__TUNING_NONE)
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  917:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  918:Generated_Source\PSoC4/CapSense_CSHL.c **** 
  919:Generated_Source\PSoC4/CapSense_CSHL.c ****     /*******************************************************************************
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 32
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 32
 
 
  920:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Function Name: CapSense_SetNoiseThreshold
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  947:Generated_Source\PSoC4/CapSense_CSHL.c ****     /*******************************************************************************
  948:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Function Name: CapSense_SetFingerHysteresis
  949:Generated_Source\PSoC4/CapSense_CSHL.c ****     ********************************************************************************
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 33
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 33
 
 
  950:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  977:Generated_Source\PSoC4/CapSense_CSHL.c ****     ********************************************************************************
  978:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
  979:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Summary:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 34
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 34
 
 
  980:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  This API sets the Negative Noise Threshold value of a widget
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1007:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
 1008:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Summary:
 1009:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  This API sets the debounce value for a widget.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 35
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 35
 
 
 1010:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1037:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  This API sets the low baseline reset threshold value for the sensor.
 1038:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
 1039:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Parameters:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 36
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 36
 
 
 1040:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  value: low baseline reset threshold value.
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1065:Generated_Source\PSoC4/CapSense_CSHL.c **** * Summary:
 1066:Generated_Source\PSoC4/CapSense_CSHL.c **** *  Compares the CapSense_sensorSignal[sensor] array element to the finger
 1067:Generated_Source\PSoC4/CapSense_CSHL.c **** *  threshold of the widget it belongs to. The hysteresis and debounce are taken into
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 37
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 37
 
 
 1068:Generated_Source\PSoC4/CapSense_CSHL.c **** *  account. The hysteresis is added or subtracted from the finger threshold
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1105:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 1106:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint8 fingerThreshold;
 1107:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint8 hysteresis;
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 38
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 38
 
 
 1108:Generated_Source\PSoC4/CapSense_CSHL.c ****     
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1029 0036 3000     		movs	r0, r6
  1030 0038 1030     		adds	r0, r0, #16
  1031 003a 0022     		movs	r2, #0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 39
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 39
 
 
  1032 003c 2100     		movs	r1, r4
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1144:Generated_Source\PSoC4/CapSense_CSHL.c ****         {
 1145:Generated_Source\PSoC4/CapSense_CSHL.c ****             /* Sensor inactive - reset Debounce counter */
 1146:Generated_Source\PSoC4/CapSense_CSHL.c ****             CapSense_debounceCounter[debounceIndex] = debounce;
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 40
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 40
 
 
  1069              		.loc 1 1146 0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1158:Generated_Source\PSoC4/CapSense_CSHL.c **** * Summary:
 1159:Generated_Source\PSoC4/CapSense_CSHL.c **** *  Compares the CapSense_sensorSignal[] array element to the finger threshold of
 1160:Generated_Source\PSoC4/CapSense_CSHL.c **** * the widget it belongs to. The hysteresis and debounce are taken into account.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 41
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 41
 
 
 1161:Generated_Source\PSoC4/CapSense_CSHL.c **** * The hysteresis is added or subtracted from the finger threshold based on whether
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1191:Generated_Source\PSoC4/CapSense_CSHL.c ****         if(CapSense_CheckIsSensorActive((uint32)rawIndex) != 0u)
  1136              		.loc 1 1191 0
  1137 000e 2000     		movs	r0, r4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 42
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 42
 
 
  1138 0010 FFF7FEFF 		bl	CapSense_CheckIsSensorActive
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1210:Generated_Source\PSoC4/CapSense_CSHL.c **** *  Compares all the sensors of the CapSense_Signal[] array to their finger
 1211:Generated_Source\PSoC4/CapSense_CSHL.c **** *  threshold. Calls CapSense_CheckIsWidgetActive() for each widget so
 1212:Generated_Source\PSoC4/CapSense_CSHL.c **** *  the CapSense_sensorOnMask[] array is up to date after calling this
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 43
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 43
 
 
 1213:Generated_Source\PSoC4/CapSense_CSHL.c **** *  function.
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1234:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
  1202              		.loc 1 1234 0 discriminator 2
  1203 0014 0134     		adds	r4, r4, #1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 44
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 44
 
 
  1204              	.LVL120:
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1270:Generated_Source\PSoC4/CapSense_CSHL.c **** *
 1271:Generated_Source\PSoC4/CapSense_CSHL.c **** * Side Effects:
 1272:Generated_Source\PSoC4/CapSense_CSHL.c **** *  None
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 45
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 45
 
 
 1273:Generated_Source\PSoC4/CapSense_CSHL.c **** *
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1264              	.LVL129:
  1265              	.LVL130:
  1266 0020 70BD     		pop	{r4, r5, r6, pc}
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 46
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 46
 
 
  1267              	.L104:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1290              		.cfi_offset 4, -16
  1291              		.cfi_offset 5, -12
  1292              		.cfi_offset 6, -8
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 47
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 47
 
 
  1293              		.cfi_offset 14, -4
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1335              		.code	16
  1336              		.thumb_func
  1337              		.type	CapSense_MedianFilter, %function
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 48
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 48
 
 
  1338              	CapSense_MedianFilter:
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1384:Generated_Source\PSoC4/CapSense_CSHL.c ****         uint8 *startOfSlider = &CapSense_sensorSignal[offset];
 1385:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 1386:Generated_Source\PSoC4/CapSense_CSHL.c ****         #if (CapSense_IS_DIPLEX_SLIDER)
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 49
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 49
 
 
 1387:Generated_Source\PSoC4/CapSense_CSHL.c ****             if(diplex != 0u)
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1441:Generated_Source\PSoC4/CapSense_CSHL.c ****             else
 1442:Generated_Source\PSoC4/CapSense_CSHL.c ****             {
 1443:Generated_Source\PSoC4/CapSense_CSHL.c ****                 /* Without diplexing */
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 50
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 50
 
 
 1444:Generated_Source\PSoC4/CapSense_CSHL.c ****                 biggestCtrdSize = count;
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1498:Generated_Source\PSoC4/CapSense_CSHL.c ****     /*******************************************************************************
 1499:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Function Name: CapSense_CalcCentroid
 1500:Generated_Source\PSoC4/CapSense_CSHL.c ****     ********************************************************************************
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 51
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 51
 
 
 1501:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1555:Generated_Source\PSoC4/CapSense_CSHL.c ****         #if (CapSense_ADD_SLIDER_TYPE)
 1556:Generated_Source\PSoC4/CapSense_CSHL.c ****             if(type == CapSense_TYPE_RADIAL_SLIDER)
 1557:Generated_Source\PSoC4/CapSense_CSHL.c ****             {
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 52
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 52
 
 
 1558:Generated_Source\PSoC4/CapSense_CSHL.c ****         #endif /* (CapSense_ADD_SLIDER_TYPE) */
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1612:Generated_Source\PSoC4/CapSense_CSHL.c ****                     if (maximum >= 1u)
 1613:Generated_Source\PSoC4/CapSense_CSHL.c ****                     {
 1614:Generated_Source\PSoC4/CapSense_CSHL.c ****                         posPrev = maximum - 1u;
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 53
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 53
 
 
 1615:Generated_Source\PSoC4/CapSense_CSHL.c ****                     }
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1669:Generated_Source\PSoC4/CapSense_CSHL.c ****         }
 1670:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 1671:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 54
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 54
 
 
 1672:Generated_Source\PSoC4/CapSense_CSHL.c ****         /* Si+1 - Si-1 */
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1726:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  from zero to the API resolution value set in the CapSense customizer. If no
 1727:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  sensors are active, the function returns 0xFFFF. If an error occurs during
 1728:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  execution of the centroid/diplexing algorithm, the function returns 0xFFFF.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 55
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 55
 
 
 1729:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  There are no checks of the widget type argument provided to this function.
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1783:Generated_Source\PSoC4/CapSense_CSHL.c ****             /* Calculate centroid */
 1784:Generated_Source\PSoC4/CapSense_CSHL.c ****             position = (uint16) CapSense_CalcCentroid(maximum,
 1785:Generated_Source\PSoC4/CapSense_CSHL.c ****                          offset, count, CapSense_centroidMult[widget], CapSense_noiseThreshold[widg
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 56
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 56
 
 
 1786:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1840:Generated_Source\PSoC4/CapSense_CSHL.c ****                                                                 (uint16)CapSense_posFiltersData[pos
 1841:Generated_Source\PSoC4/CapSense_CSHL.c ****                                 CapSense_posFiltersData[posIndex+1u]=CapSense_posFiltersData[posInd
 1842:Generated_Source\PSoC4/CapSense_CSHL.c ****                                 CapSense_posFiltersData[posIndex] = tempPos;
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 57
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 57
 
 
 1843:Generated_Source\PSoC4/CapSense_CSHL.c ****                             }
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1897:Generated_Source\PSoC4/CapSense_CSHL.c ****         }
 1898:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 1899:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 58
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 58
 
 
 1900:Generated_Source\PSoC4/CapSense_CSHL.c ****         return (position);
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 1954:Generated_Source\PSoC4/CapSense_CSHL.c ****                */
 1955:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 1956:Generated_Source\PSoC4/CapSense_CSHL.c ****         uint8 maximum;
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 59
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 59
 
 
 1957:Generated_Source\PSoC4/CapSense_CSHL.c ****         uint16 position;
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2011:Generated_Source\PSoC4/CapSense_CSHL.c ****                                                                         CapSense_posFiltersData[pos
 2012:Generated_Source\PSoC4/CapSense_CSHL.c ****                                                                         CapSense_posFiltersData[pos
 2013:Generated_Source\PSoC4/CapSense_CSHL.c ****                                 CapSense_posFiltersData[posIndex + 1u] =
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 60
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 60
 
 
 2014:Generated_Source\PSoC4/CapSense_CSHL.c ****                                                                               CapSense_posFiltersDa
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2068:Generated_Source\PSoC4/CapSense_CSHL.c ****                     }
 2069:Generated_Source\PSoC4/CapSense_CSHL.c ****                 }
 2070:Generated_Source\PSoC4/CapSense_CSHL.c ****             #endif /* (0u != CapSense_RADIAL_SLIDERS_POS_FILTERS_MASK) */
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 61
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 61
 
 
 2071:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2125:Generated_Source\PSoC4/CapSense_CSHL.c ****     *   calculations.
 2126:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
 2127:Generated_Source\PSoC4/CapSense_CSHL.c ****     *******************************************************************************/
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 62
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 62
 
 
 2128:Generated_Source\PSoC4/CapSense_CSHL.c ****     uint32 CapSense_GetTouchCentroidPos(uint32 widget, uint16* pos)
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2182:Generated_Source\PSoC4/CapSense_CSHL.c ****                 count = CapSense_numberOfSensors[widget];
 2183:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 2184:Generated_Source\PSoC4/CapSense_CSHL.c ****                 posX = CapSense_CalcCentroid(MaxX, offset, count,
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 63
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 63
 
 
 2185:Generated_Source\PSoC4/CapSense_CSHL.c ****                             CapSense_centroidMult[widget],CapSense_noiseThreshold[widget]);
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2239:Generated_Source\PSoC4/CapSense_CSHL.c ****                                                                              CapSense_posFiltersDat
 2240:Generated_Source\PSoC4/CapSense_CSHL.c ****                                     CapSense_posFiltersData[posYIndex] = tempPos;
 2241:Generated_Source\PSoC4/CapSense_CSHL.c ****                                 }
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 64
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 64
 
 
 2242:Generated_Source\PSoC4/CapSense_CSHL.c **** 
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2296:Generated_Source\PSoC4/CapSense_CSHL.c ****                                     CapSense_posFiltersData[posYIndex] = posY;
 2297:Generated_Source\PSoC4/CapSense_CSHL.c ****                                 }
 2298:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 65
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 65
 
 
 2299:Generated_Source\PSoC4/CapSense_CSHL.c ****                             #endif /* (0u != (CapSense_IIR4_FILTER & \
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2353:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  median value.
 2354:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
 2355:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Parameters:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 66
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 66
 
 
 2356:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  x1:  Current value.
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2385:Generated_Source\PSoC4/CapSense_CSHL.c **** 
 2386:Generated_Source\PSoC4/CapSense_CSHL.c ****         return ((x1 > x2) ? x1 : x2);
  1364              		.loc 1 2386 0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 67
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 67
 
 
  1365 0010 031C     		adds	r3, r0, #0
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2420:Generated_Source\PSoC4/CapSense_CSHL.c ****     {
 2421:Generated_Source\PSoC4/CapSense_CSHL.c ****         uint32 tmp = ((uint32)x1 + (uint32)x2 + (uint32)x3) / 3u;
 2422:Generated_Source\PSoC4/CapSense_CSHL.c **** 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 68
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 68
 
 
 2423:Generated_Source\PSoC4/CapSense_CSHL.c ****         return ((uint16) tmp);
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2477:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  x1:  Current value.
 2478:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  x2:  Previous value.
 2479:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 69
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 69
 
 
 2480:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Return:
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2534:Generated_Source\PSoC4/CapSense_CSHL.c ****             x1--;
 2535:Generated_Source\PSoC4/CapSense_CSHL.c ****         }
 2536:Generated_Source\PSoC4/CapSense_CSHL.c ****         else
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 70
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 70
 
 
 2537:Generated_Source\PSoC4/CapSense_CSHL.c ****         {
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2591:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Function Name: CapSense_IIR16Filter
 2592:Generated_Source\PSoC4/CapSense_CSHL.c ****     ********************************************************************************
 2593:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 71
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 71
 
 
 2594:Generated_Source\PSoC4/CapSense_CSHL.c ****     * Summary:
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2648:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  CapSense_fingerThreshold[ ] - used to store the finger threshold for all widgets.
 2649:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  CapSense_sensorSignal[ ] - used to store a difference between the current value of
 2650:Generated_Source\PSoC4/CapSense_CSHL.c ****     *  raw data and a previous value of the baseline.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 72
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 72
 
 
 2651:Generated_Source\PSoC4/CapSense_CSHL.c ****     *
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2705:Generated_Source\PSoC4/CapSense_CSHL.c **** *
 2706:Generated_Source\PSoC4/CapSense_CSHL.c **** * Summary:
 2707:Generated_Source\PSoC4/CapSense_CSHL.c **** *  This API returns the widget number for the sensor.
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 73
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 73
 
 
 2708:Generated_Source\PSoC4/CapSense_CSHL.c **** *
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2734:Generated_Source\PSoC4/CapSense_CSHL.c **** *
 2735:Generated_Source\PSoC4/CapSense_CSHL.c **** * Parameters:
 2736:Generated_Source\PSoC4/CapSense_CSHL.c **** *  sensor: sensor index. The value of index can be
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 74
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 74
 
 
 2737:Generated_Source\PSoC4/CapSense_CSHL.c **** *  from 0 to (CapSense_TOTAL_SENSOR_COUNT-1).
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
 2762:Generated_Source\PSoC4/CapSense_CSHL.c **** *  sensor: sensor index. The value of index can be
 2763:Generated_Source\PSoC4/CapSense_CSHL.c **** *  from 0 to (CapSense_TOTAL_SENSOR_COUNT-1).
 2764:Generated_Source\PSoC4/CapSense_CSHL.c **** *
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 75
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 75
 
 
 2765:Generated_Source\PSoC4/CapSense_CSHL.c **** * Return:
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1483 0001 01       		.byte	1
  1484 0002 0000     		.space	2
  1485              		.type	CapSense_rawDataIndex, %object
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 76
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 76
 
 
  1486              		.size	CapSense_rawDataIndex, 2
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1540 000a 04       		.byte	0x4
  1541 000b 01       		.uleb128 0x1
  1542 000c 9F030000 		.4byte	.LASF124
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 77
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 77
 
 
  1543 0010 0C       		.byte	0xc
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1597 007d E501     		.2byte	0x1e5
  1598 007f 3A000000 		.4byte	0x3a
  1599 0083 04       		.uleb128 0x4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 78
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 78
 
 
  1600 0084 EC060000 		.4byte	.LASF11
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1654 00eb AC090000 		.4byte	.LASF21
  1655 00ef 03       		.byte	0x3
  1656 00f0 35       		.byte	0x35
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 79
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 79
 
 
  1657 00f1 CF010000 		.4byte	0x1cf
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1711 015d CF010000 		.4byte	0x1cf
  1712 0161 34       		.byte	0x34
  1713 0162 06       		.uleb128 0x6
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 80
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 80
 
 
  1714 0163 34000000 		.4byte	.LASF31
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1768 01cf 07       		.uleb128 0x7
  1769 01d0 04       		.byte	0x4
  1770 01d1 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 81
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 81
 
 
  1771 01d5 07       		.uleb128 0x7
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1825 024d 48       		.byte	0x48
  1826 024e B2000000 		.4byte	0xb2
  1827 0252 05       		.uleb128 0x5
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 82
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 82
 
 
  1828 0253 0C       		.byte	0xc
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1882 02bf 88       		.byte	0x88
  1883 02c0 00000000 		.4byte	.LFB34
  1884 02c4 34000000 		.4byte	.LFE34-.LFB34
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 83
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 83
 
 
  1885 02c8 01       		.uleb128 0x1
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1939 033d 00       		.byte	0
  1940 033e 00       		.byte	0
  1941 033f 0D       		.uleb128 0xd
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 84
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 84
 
 
  1942 0340 F0080000 		.4byte	.LASF51
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  1996 03bd 230D0000 		.4byte	0xd23
  1997 03c1 CC030000 		.4byte	0x3cc
  1998 03c5 11       		.uleb128 0x11
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 85
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 85
 
 
  1999 03c6 01       		.uleb128 0x1
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2053 043b 77000000 		.4byte	0x77
  2054 043f 5F010000 		.4byte	.LLST10
  2055 0443 19       		.uleb128 0x19
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 86
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 86
 
 
  2056 0444 FA020000 		.4byte	.LASF52
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2110 04b7 01       		.uleb128 0x1
  2111 04b8 50       		.byte	0x50
  2112 04b9 02       		.uleb128 0x2
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 87
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 87
 
 
  2113 04ba 74       		.byte	0x74
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2167 0524 00       		.sleb128 0
  2168 0525 00       		.byte	0
  2169 0526 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 88
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 88
 
 
  2170 0527 15       		.uleb128 0x15
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2224 05ad 00       		.sleb128 0
  2225 05ae 00       		.byte	0
  2226 05af 13       		.uleb128 0x13
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 89
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 89
 
 
  2227 05b0 20000000 		.4byte	.LVL64
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2281 0628 6B000000 		.4byte	0x6b
  2282 062c 00000000 		.4byte	.LFB44
  2283 0630 0C000000 		.4byte	.LFE44-.LFB44
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 90
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 90
 
 
  2284 0634 01       		.uleb128 0x1
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2338 06b3 6B000000 		.4byte	0x6b
  2339 06b7 00000000 		.4byte	.LFB47
  2340 06bb 0C000000 		.4byte	.LFE47-.LFB47
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 91
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 91
 
 
  2341 06bf 01       		.uleb128 0x1
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2395 0743 FA020000 		.4byte	.LASF52
  2396 0747 01       		.byte	0x1
  2397 0748 9103     		.2byte	0x391
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 92
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 92
 
 
  2398 074a 83000000 		.4byte	0x83
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2452 07bc C903     		.2byte	0x3c9
  2453 07be 6B000000 		.4byte	0x6b
  2454 07c2 01       		.uleb128 0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 93
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 93
 
 
  2455 07c3 51       		.byte	0x51
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2509 0833 00000000 		.4byte	.LFB55
  2510 0837 0C000000 		.4byte	.LFE55-.LFB55
  2511 083b 01       		.uleb128 0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 94
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 94
 
 
  2512 083c 9C       		.byte	0x9c
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2566 08c2 17       		.uleb128 0x17
  2567 08c3 73040000 		.4byte	.LASF87
  2568 08c7 01       		.byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 95
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 95
 
 
  2569 08c8 5304     		.2byte	0x453
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2623 0926 51       		.byte	0x51
  2624 0927 02       		.uleb128 0x2
  2625 0928 74       		.byte	0x74
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 96
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 96
 
 
  2626 0929 00       		.sleb128 0
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2680 0999 01       		.byte	0x1
  2681 099a A204     		.2byte	0x4a2
  2682 099c 83000000 		.4byte	0x83
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 97
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 97
 
 
  2683 09a0 CF040000 		.4byte	.LLST36
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2737 0a14 18       		.uleb128 0x18
  2738 0a15 FA020000 		.4byte	.LASF52
  2739 0a19 01       		.byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 98
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 98
 
 
  2740 0a1a FB04     		.2byte	0x4fb
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2794 0a95 01       		.byte	0x1
  2795 0a96 2905     		.2byte	0x529
  2796 0a98 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 99
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 99
 
 
  2797 0a9c FB050000 		.4byte	.LLST44
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2851 0b0d 01       		.byte	0x1
  2852 0b0e A30A     		.2byte	0xaa3
  2853 0b10 83000000 		.4byte	0x83
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 100
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 100
 
 
  2854 0b14 00000000 		.4byte	.LFB62
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2908 0b9a 1B000000 		.4byte	.LASF99
  2909 0b9e 01       		.byte	0x1
  2910 0b9f 55       		.byte	0x55
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 101
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 101
 
 
  2911 0ba0 890B0000 		.4byte	0xb89
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  2965 0c1b A4000000 		.4byte	0xa4
  2966 0c1f 01       		.byte	0x1
  2967 0c20 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 102
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 102
 
 
  2968 0c21 24       		.uleb128 0x24
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3022 0c93 03       		.byte	0x3
  3023 0c94 00000000 		.4byte	CapSense_noiseThreshold
  3024 0c98 24       		.uleb128 0x24
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 103
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 103
 
 
  3025 0c99 EC040000 		.4byte	.LASF111
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3079 0d0e AB010000 		.4byte	.LASF118
  3080 0d12 AB010000 		.4byte	.LASF118
  3081 0d16 04       		.byte	0x4
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 104
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 104
 
 
  3082 0d17 9C       		.byte	0x9c
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3136 0019 0B       		.uleb128 0xb
  3137 001a 03       		.uleb128 0x3
  3138 001b 0E       		.uleb128 0xe
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 105
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 105
 
 
  3139 001c 00       		.byte	0
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3193 0052 07       		.uleb128 0x7
  3194 0053 0F       		.uleb128 0xf
  3195 0054 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 106
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 106
 
 
  3196 0055 0B       		.uleb128 0xb
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3250 008b 2E       		.uleb128 0x2e
  3251 008c 01       		.byte	0x1
  3252 008d 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 107
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 107
 
 
  3253 008e 19       		.uleb128 0x19
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3307 00c7 11       		.uleb128 0x11
  3308 00c8 01       		.uleb128 0x1
  3309 00c9 31       		.uleb128 0x31
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 108
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 108
 
 
  3310 00ca 13       		.uleb128 0x13
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3364 0107 3A       		.uleb128 0x3a
  3365 0108 0B       		.uleb128 0xb
  3366 0109 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 109
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 109
 
 
  3367 010a 05       		.uleb128 0x5
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3421 0141 49       		.uleb128 0x49
  3422 0142 13       		.uleb128 0x13
  3423 0143 02       		.uleb128 0x2
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 110
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 110
 
 
  3424 0144 17       		.uleb128 0x17
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3478 017b 01       		.uleb128 0x1
  3479 017c 13       		.uleb128 0x13
  3480 017d 00       		.byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 111
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 111
 
 
  3481 017e 00       		.byte	0
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3535 01b4 05       		.uleb128 0x5
  3536 01b5 49       		.uleb128 0x49
  3537 01b6 13       		.uleb128 0x13
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 112
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 112
 
 
  3538 01b7 00       		.byte	0
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3592 01ed 00       		.byte	0
  3593 01ee 03       		.uleb128 0x3
  3594 01ef 0E       		.uleb128 0xe
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 113
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 113
 
 
  3595 01f0 3A       		.uleb128 0x3a
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3649 0034 00000000 		.4byte	.LVL4
  3650 0038 07000000 		.4byte	.LVL5-1
  3651 003c 0100     		.2byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 114
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 114
 
 
  3652 003e 50       		.byte	0x50
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3706 00c7 50       		.byte	0x50
  3707 00c8 9F       		.byte	0x9f
  3708 00c9 C4000000 		.4byte	.LVL39
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 115
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 115
 
 
  3709 00cd C8000000 		.4byte	.LVL40
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3763 0154 0100     		.2byte	0x1
  3764 0156 55       		.byte	0x55
  3765 0157 00000000 		.4byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 116
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 116
 
 
  3766 015b 00000000 		.4byte	0
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3820 01e6 01       		.uleb128 0x1
  3821 01e7 50       		.byte	0x50
  3822 01e8 9F       		.byte	0x9f
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 117
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 117
 
 
  3823 01e9 00000000 		.4byte	0
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3877 0252 9F       		.byte	0x9f
  3878 0253 00000000 		.4byte	0
  3879 0257 00000000 		.4byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 118
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 118
 
 
  3880              	.LLST17:
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3934 02cb 0C000000 		.4byte	.LFE42
  3935 02cf 0400     		.2byte	0x4
  3936 02d1 F3       		.byte	0xf3
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 119
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 119
 
 
  3937 02d2 01       		.uleb128 0x1
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  3991 0353 0400     		.2byte	0x4
  3992 0355 F3       		.byte	0xf3
  3993 0356 01       		.uleb128 0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 120
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 120
 
 
  3994 0357 50       		.byte	0x50
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4048 03d9 F3       		.byte	0xf3
  4049 03da 01       		.uleb128 0x1
  4050 03db 50       		.byte	0x50
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 121
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 121
 
 
  4051 03dc 9F       		.byte	0x9f
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4105 046a 50       		.byte	0x50
  4106 046b 0E000000 		.4byte	.LVL109
  4107 046f 28000000 		.4byte	.LFE57
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 122
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 122
 
 
  4108 0473 0400     		.2byte	0x4
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4162 04db 0E000000 		.4byte	.LVL109
  4163 04df 22000000 		.4byte	.LVL115
  4164 04e3 0100     		.2byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 123
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 123
 
 
  4165 04e5 56       		.byte	0x56
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4219 056e 1C000000 		.4byte	.LVL128
  4220 0572 20000000 		.4byte	.LVL129
  4221 0576 0100     		.2byte	0x1
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 124
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 124
 
 
  4222 0578 54       		.byte	0x54
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4276 05e5 0100     		.2byte	0x1
  4277 05e7 54       		.byte	0x54
  4278 05e8 1C000000 		.4byte	.LVL136
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 125
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 125
 
 
  4279 05ec 20000000 		.4byte	.LVL137
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4333 0659 50       		.byte	0x50
  4334 065a 00000000 		.4byte	0
  4335 065e 00000000 		.4byte	0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 126
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 126
 
 
  4336              	.LLST46:
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4390 0000 0C010000 		.4byte	0x10c
  4391 0004 0200     		.2byte	0x2
  4392 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 127
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 127
 
 
  4393 000a 04       		.byte	0x4
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4447 00d8 00000000 		.4byte	.LFB59
  4448 00dc 2C000000 		.4byte	.LFE59-.LFB59
  4449 00e0 00000000 		.4byte	.LFB60
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 128
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 128
 
 
  4450 00e4 2C000000 		.4byte	.LFE60-.LFB60
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4504 00a4 0C000000 		.4byte	.LFE54
  4505 00a8 00000000 		.4byte	.LFB55
  4506 00ac 0C000000 		.4byte	.LFE55
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 129
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 129
 
 
  4507 00b0 00000000 		.4byte	.LFB56
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4539      61746542 
  4539      6173656C 
  4540              	.LASF34:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 130
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 130
 
 
  4541 0081 6E756D62 		.ascii	"numberOfSensors\000"
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4561      6C654D61 
  4561      7854626C 
  4561      00
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 131
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 131
 
 
  4562              	.LASF53:
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4581      44617461 
  4581      496E6465 
  4582              	.LASF78:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 132
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 132
 
 
  4583 0237 43617053 		.ascii	"CapSense_SetNoiseThreshold\000"
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4603      656E7365 
  4603      5F66696E 
  4603      67657254 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 133
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 133
 
 
  4603      68726573 
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4621      44696666 
  4621      436F756E 
  4622              	.LASF57:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 134
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 134
 
 
  4623 0447 7369676E 		.ascii	"sign\000"
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4643      61746976 
  4643      654E6F69 
  4644              	.LASF41:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 135
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 135
 
 
  4645 050c 746F7461 		.ascii	"totalScanslotsNum\000"
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4668              	.LASF122:
  4669 05c4 43617053 		.ascii	"CapSense_UpdateThresholds\000"
  4669      656E7365 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 136
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 136
 
 
  4669      5F557064 
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4689      00
  4690              	.LASF100:
  4691 0699 43617053 		.ascii	"CapSense_sensorRaw\000"
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 137
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 137
 
 
  4691      656E7365 
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4713 076a 6C6F6E67 		.ascii	"long int\000"
  4713      20696E74 
  4713      00
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 138
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 138
 
 
  4714              	.LASF65:
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4733      74657273 
  4733      00
  4734              	.LASF60:
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 139
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 139
 
 
  4735 0869 6E6F6973 		.ascii	"noiseThreshold\000"
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4754              	.LASF82:
  4755 0929 43617053 		.ascii	"CapSense_SetLowBaselineReset\000"
  4755      656E7365 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 140
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 140
 
 
  4755      5F536574 
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 1
  4776              	.LASF58:
  4777 09fa 74656D70 		.ascii	"tempRaw\000"
  4777      52617700 
-ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccx0gHK6.s 			page 141
+ARM GAS  C:\Users\jagumiel\AppData\Local\Temp\ccET3Rhj.s 			page 141
 
 
  4778              	.LASF98:
