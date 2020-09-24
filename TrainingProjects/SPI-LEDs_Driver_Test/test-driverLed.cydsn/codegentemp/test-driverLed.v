@@ -1,6 +1,6 @@
 // ======================================================================
 // test-driverLed.v generated from TopDesign.cysch
-// 09/22/2020 at 15:13
+// 09/24/2020 at 11:33
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1012,6 +1012,9 @@ endmodule
 // top
 module top ;
 
+          wire  Net_642;
+    electrical  Net_640;
+    electrical  Net_638;
           wire  Net_563;
           wire  Net_561;
           wire  Net_560;
@@ -1678,21 +1681,39 @@ module top ;
         .line_n(Net_563),
         .clock(Net_38));
 
-	wire [0:0] tmpOE__INTERRUPT_net;
-	wire [0:0] tmpFB_0__INTERRUPT_net;
-	wire [0:0] tmpIO_0__INTERRUPT_net;
-	wire [0:0] tmpINTERRUPT_0__INTERRUPT_net;
-	electrical [0:0] tmpSIOVREF__INTERRUPT_net;
+    cy_annotation_universal_v1_0 GND_1 (
+        .connect({
+            Net_638
+        })
+    );
+    defparam GND_1.comp_name = "Gnd_v1_0";
+    defparam GND_1.port_names = "T1";
+    defparam GND_1.width = 1;
+
+    cy_annotation_universal_v1_0 SW2 (
+        .connect({
+            Net_638,
+            Net_640
+        })
+    );
+    defparam SW2.comp_name = "SwitchSPST_v1_0";
+    defparam SW2.port_names = "T1, T2";
+    defparam SW2.width = 2;
+
+	wire [0:0] tmpOE__Pin_SW2_net;
+	wire [0:0] tmpIO_0__Pin_SW2_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_SW2_net;
+	electrical [0:0] tmpSIOVREF__Pin_SW2_net;
 
 	cy_psoc3_pins_v1_10
-		#(.id("dd5c03cd-9ea7-4dbe-9936-ffaf4a148309"),
-		  .drive_mode(3'b110),
+		#(.id("24a74e76-4d13-41ae-9699-0307b04a9420"),
+		  .drive_mode(3'b010),
 		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
+		  .init_dr_st(1'b1),
 		  .input_clk_en(0),
 		  .input_sync(1'b1),
 		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
+		  .intr_mode(2'b10),
 		  .invert_in_clock(0),
 		  .invert_in_clock_en(0),
 		  .invert_in_reset(0),
@@ -1717,7 +1738,7 @@ module top ;
 		  .pa_out_clock_en(-1),
 		  .pa_out_reset(-1),
 		  .pin_aliases(""),
-		  .pin_mode("O"),
+		  .pin_mode("I"),
 		  .por_state(4),
 		  .sio_group_cnt(0),
 		  .sio_hyst(1'b1),
@@ -1730,20 +1751,21 @@ module top ;
 		  .sio_vohsel(""),
 		  .slew_rate(1'b0),
 		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
+		  .use_annotation(1'b1),
+		  .vtrip(2'b00),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		INTERRUPT
-		 (.oe(tmpOE__INTERRUPT_net),
+		Pin_SW2
+		 (.oe(tmpOE__Pin_SW2_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__INTERRUPT_net[0:0]}),
-		  .io({tmpIO_0__INTERRUPT_net[0:0]}),
-		  .siovref(tmpSIOVREF__INTERRUPT_net),
-		  .interrupt({tmpINTERRUPT_0__INTERRUPT_net[0:0]}),
+		  .fb({Net_642}),
+		  .io({tmpIO_0__Pin_SW2_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_SW2_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_SW2_net[0:0]}),
+		  .annotation({Net_640}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1751,7 +1773,14 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__INTERRUPT_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__Pin_SW2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		Pin_SW2_Int
+		 (.int_signal(Net_642));
+
 
 
 

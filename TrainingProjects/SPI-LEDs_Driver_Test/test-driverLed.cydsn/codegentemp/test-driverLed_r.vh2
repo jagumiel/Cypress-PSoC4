@@ -1,5 +1,5 @@
 -- Project:   test-driverLed
--- Generated: 09/22/2020 15:13:41
+-- Generated: 09/24/2020 11:33:57
 -- PSoC Creator  4.2
 
 ENTITY \test-driverLed\ IS
@@ -13,7 +13,7 @@ ENTITY \test-driverLed\ IS
         STB(0)_PAD : OUT std_ulogic;
         \UART:tx(0)_PAD\ : INOUT std_ulogic;
         \UART:rx(0)_PAD\ : IN std_ulogic;
-        INTERRUPT(0)_PAD : OUT std_ulogic);
+        Pin_SW2(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_VDDA_CTB OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDA_1 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO_0 OF __DEFAULT__ : ENTITY IS 3.3e0;
@@ -38,7 +38,6 @@ ARCHITECTURE __DEFAULT__ OF \test-driverLed\ IS
     SIGNAL ClockBlock_Routed1 : bit;
     SIGNAL ClockBlock_SysClk : bit;
     SIGNAL ClockBlock_WCO : bit;
-    SIGNAL INTERRUPT(0)__PA : bit;
     SIGNAL LE(0)__PA : bit;
     SIGNAL Net_11 : bit;
     SIGNAL Net_12 : bit;
@@ -56,7 +55,9 @@ ARCHITECTURE __DEFAULT__ OF \test-driverLed\ IS
     SIGNAL Net_561 : bit;
     SIGNAL Net_563 : bit;
     SIGNAL Net_6 : bit;
+    SIGNAL Net_642 : bit;
     SIGNAL PWM(0)__PA : bit;
+    SIGNAL Pin_SW2(0)__PA : bit;
     SIGNAL STB(0)__PA : bit;
     SIGNAL STG(0)__PA : bit;
     SIGNAL STR(0)__PA : bit;
@@ -130,8 +131,8 @@ ARCHITECTURE __DEFAULT__ OF \test-driverLed\ IS
     ATTRIBUTE Location OF \UART:tx(0)\ : LABEL IS "P3[5]";
     ATTRIBUTE lib_model OF \UART:rx(0)\ : LABEL IS "iocell12";
     ATTRIBUTE Location OF \UART:rx(0)\ : LABEL IS "P3[4]";
-    ATTRIBUTE lib_model OF INTERRUPT(0) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF INTERRUPT(0) : LABEL IS "P0[1]";
+    ATTRIBUTE lib_model OF Pin_SW2(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF Pin_SW2(0) : LABEL IS "P2[7]";
     ATTRIBUTE Location OF \SPI_1:SCB\ : LABEL IS "F(SCB,0)";
     ATTRIBUTE Location OF \CapSense:CSD_FFB\ : LABEL IS "F(CSD,0)";
     ATTRIBUTE Location OF \CapSense:ISR\ : LABEL IS "[IntrContainer=(0)][IntrId=(16)]";
@@ -142,6 +143,7 @@ ARCHITECTURE __DEFAULT__ OF \test-driverLed\ IS
     ATTRIBUTE Location OF \UART:SCB\ : LABEL IS "F(SCB,1)";
     ATTRIBUTE Location OF TC_ISR : LABEL IS "[IntrContainer=(0)][IntrId=(17)]";
     ATTRIBUTE Location OF \PWM_1:cy_m0s8_tcpwm_1\ : LABEL IS "F(TCPWM,0)";
+    ATTRIBUTE Location OF Pin_SW2_Int : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     COMPONENT interrupt
         PORT (
             interrupt : IN std_ulogic;
@@ -1444,17 +1446,17 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    INTERRUPT:logicalport
+    Pin_SW2:logicalport
         GENERIC MAP(
-            drive_mode => "110",
+            drive_mode => "010",
             ibuf_enabled => "1",
-            id => "dd5c03cd-9ea7-4dbe-9936-ffaf4a148309",
-            init_dr_st => "0",
+            id => "24a74e76-4d13-41ae-9699-0307b04a9420",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "1",
             input_sync_mode => "0",
-            intr_mode => "00",
+            intr_mode => "10",
             invert_in_clock => 0,
             invert_in_clock_en => 0,
             invert_in_reset => 0,
@@ -1482,7 +1484,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "O",
+            pin_mode => "I",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -1498,8 +1500,8 @@ BEGIN
             slew_rate => "0",
             spanning => 0,
             sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
+            use_annotation => "1",
+            vtrip => "00",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -1513,21 +1515,23 @@ BEGIN
             in_clock_en => open,
             in_reset => open,
             out_clock_en => open,
-            out_reset => open);
+            out_reset => open,
+            in_clock => open);
 
-    INTERRUPT(0):iocell
+    Pin_SW2(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "INTERRUPT",
+            logicalport => "Pin_SW2",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => INTERRUPT(0)__PA,
+            pa_out => Pin_SW2(0)__PA,
             oe => open,
-            pad_in => INTERRUPT(0)_PAD,
-            in_clock => open,
+            fb => Net_642,
+            pad_in => Pin_SW2(0)_PAD,
+            in_clock => ClockBlock_HFClk,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -1656,5 +1660,13 @@ BEGIN
             line => Net_246,
             line_compl => Net_563,
             interrupt => Net_558);
+
+    Pin_SW2_Int:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_642,
+            clock => ClockBlock_HFClk);
 
 END __DEFAULT__;

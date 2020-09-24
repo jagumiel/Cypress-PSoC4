@@ -85,10 +85,12 @@
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1.c" value="SOURCE_C;CortexM0;;;;PWM_1" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1.h" value="HEADER;;;;;PWM_1" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\PWM_1_PM.c" value="SOURCE_C;CortexM0;;;;PWM_1" />
-  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\INTERRUPT.c" value="SOURCE_C;CortexM0;;;;INTERRUPT" />
-  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\INTERRUPT.h" value="HEADER;;;;;INTERRUPT" />
-  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\INTERRUPT_aliases.h" value="HEADER;;;;;INTERRUPT" />
-  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\INTERRUPT_PM.c" value="SOURCE_C;CortexM0;;;;INTERRUPT" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2.c" value="SOURCE_C;CortexM0;;;;Pin_SW2" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2.h" value="HEADER;;;;;Pin_SW2" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2_aliases.h" value="HEADER;;;;;Pin_SW2" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2_PM.c" value="SOURCE_C;CortexM0;;;;Pin_SW2" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2_Int.c" value="SOURCE_C;CortexM0;;;;Pin_SW2_Int" />
+  <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\Pin_SW2_Int.h" value="HEADER;;;;;Pin_SW2_Int" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\SPI_1_SCBCLK.c" value="SOURCE_C;CortexM0;;;;SPI_1_SCBCLK" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\SPI_1_SCBCLK.h" value="HEADER;;;;;SPI_1_SCBCLK" />
   <file name="D:\Users\jagumiel\Documents\PSoC Creator\LIN-Automotive\3-LIN-Internal-Light-Control\test-driverLed\test-driverLed.cydsn\codegentemp\CapSense_SampleClk.c" value="SOURCE_C;CortexM0;;;;CapSense_SampleClk" />

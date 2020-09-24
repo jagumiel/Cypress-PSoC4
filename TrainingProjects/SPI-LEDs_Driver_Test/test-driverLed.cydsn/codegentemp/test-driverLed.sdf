@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2020-09-22T13:13:43Z")
+ (DATE "2020-09-24T09:33:57Z")
  (DESIGN "test-driverLed")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -12,13 +12,16 @@
   (INSTANCE *)
   (DELAY
    (ABSOLUTE
+    (INTERCONNECT ClockBlock.hfclk Pin_SW2\(0\).in_clock (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.hfclk \\CapSense\:ISR\\.clock (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.hfclk TC_ISR.clock (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.hfclk Pin_SW2_Int.clock (0.000:0.000:0.000))
     (INTERCONNECT \\SPI_1\:SCB\\.mosi_m mosi\(0\).pin_input (0.000:0.000:0.000))
     (INTERCONNECT \\SPI_1\:SCB\\.sclk_m sclk\(0\).pin_input (0.000:0.000:0.000))
     (INTERCONNECT \\PWM_1\:cy_m0s8_tcpwm_1\\.line PWM\(0\).pin_input (1.000:1.000:1.000))
     (INTERCONNECT ClockBlock.ff_div_7 \\PWM_1\:cy_m0s8_tcpwm_1\\.clock (0.000:0.000:0.000))
     (INTERCONNECT \\PWM_1\:cy_m0s8_tcpwm_1\\.interrupt TC_ISR.interrupt (1.000:1.000:1.000))
+    (INTERCONNECT Pin_SW2\(0\).fb Pin_SW2_Int.interrupt (1.000:1.000:1.000))
     (INTERCONNECT PWM\(0\).pad_out PWM\(0\).pad_in (0.000:0.000:0.000))
     (INTERCONNECT \\CapSense\:CSD_FFB\\.irq \\CapSense\:ISR\\.interrupt (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.ff_div_5 \\CapSense\:CSD_FFB\\.clk2 (0.000:0.000:0.000))
@@ -45,7 +48,7 @@
     (INTERCONNECT \\UART\:tx\(0\)\\.pad_out \\UART\:tx\(0\)_PAD\\ (0.000:0.000:0.000))
     (INTERCONNECT \\UART\:tx\(0\)_PAD\\ \\UART\:tx\(0\)\\.pad_in (0.000:0.000:0.000))
     (INTERCONNECT \\UART\:rx\(0\)_PAD\\ \\UART\:rx\(0\)\\.pad_in (0.000:0.000:0.000))
-    (INTERCONNECT INTERRUPT\(0\)_PAD INTERRUPT\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT Pin_SW2\(0\)_PAD Pin_SW2\(0\).pad_in (0.000:0.000:0.000))
    )
   )
  )

@@ -1,5 +1,5 @@
 # test-driverLed
-# 2020-09-22 13:13:41Z
+# 2020-09-24 09:33:57Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -23,7 +23,7 @@ set_io "STG(0)" iocell 3 6
 set_io "STB(0)" iocell 3 7
 set_io "\UART:tx(0)\" iocell 3 5
 set_io "\UART:rx(0)\" iocell 3 4
-set_io "INTERRUPT(0)" iocell 0 1
+set_io "Pin_SW2(0)" iocell 2 7
 set_location "\SPI_1:SCB\" m0s8scbcell -1 -1 0
 set_location "\CapSense:CSD_FFB\" p4csdcell -1 -1 0
 set_location "\CapSense:ISR\" interrupt -1 -1 16
@@ -33,3 +33,4 @@ set_location "\CapSense:IDAC1:cy_psoc4_idac\" p4csidac8cell -1 -1 0
 set_location "\UART:SCB\" m0s8scbcell -1 -1 1
 set_location "TC_ISR" interrupt -1 -1 17
 set_location "\PWM_1:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 0
+set_location "Pin_SW2_Int" interrupt -1 -1 1
