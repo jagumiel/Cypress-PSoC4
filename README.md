@@ -57,3 +57,5 @@ It does the same than the previous one, but the ADC value is used to modify the 
 There are 2 buttons atached to a IRS. This program detects which button has been pressed or release, and prints it on screen through UART communication. I have tried to represent it in the way car doors work, in case that the door is opened, the interior light turns on and a warning message appears to the driver.
 ### RGB UART Control
 In this project an RGB LED is controlled through commands using UART communication. User can send a command to set the value of all the colours or change the brightness of an specific LED.
+### SPI-LEDs_Driver_Test
+This project controls a 14-segments display, sending commands to a TLC5926 LED Driver via SPI. The evolution of the project is quite interesting, because since the first version major changes have been done. Finally, the brightness and the chars transitions can be controlled in time and some different patterns or dimming effects have been implemented.
