@@ -1,0 +1,22 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2020-09-28T06:54:53Z")
+ (DESIGN "StepperMotor-Test")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.2")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "StepperMotor-Test")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT motorPin1\(0\)_PAD motorPin1\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT motorPin2\(0\)_PAD motorPin2\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT motorPin3\(0\)_PAD motorPin3\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT motorPin4\(0\)_PAD motorPin4\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
