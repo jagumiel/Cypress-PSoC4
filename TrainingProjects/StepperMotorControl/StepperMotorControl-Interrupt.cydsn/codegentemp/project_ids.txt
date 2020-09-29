@@ -1,0 +1,6 @@
+D:\Users\jagumiel\Documents\PSoC Creator\PSoC-101\PSoC-101\TrainingProjects\StepperMotorControl-Interrupt.cydsn\StepperMotorControl-Interrupt.cyprj|97f6e7c9-4dfb-40ce-962b-8a1f344b5899
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5d570809-2ae7-4475-b4b2-06a1ba96e5ef
+D:\Users\jagumiel\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|36ce0a40-03dd-461b-a343-2eaddd8d5c95
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|29dd8094-7335-40c7-be7b-d044f5deaf6b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b3651da3-6ed2-472c-bc67-2d30e6ca2737
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|21237748-87b7-4f4c-b5b3-414629979b98
