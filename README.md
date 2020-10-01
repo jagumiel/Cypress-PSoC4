@@ -59,3 +59,10 @@ There are 2 buttons atached to a IRS. This program detects which button has been
 In this project an RGB LED is controlled through commands using UART communication. User can send a command to set the value of all the colours or change the brightness of an specific LED.
 ### SPI-LEDs_Driver_Test
 This project controls a 14-segments display, sending commands to a TLC5926 LED Driver via SPI. The evolution of the project is quite interesting, because since the first version major changes have been done. Finally, the brightness and the chars transitions can be controlled in time and some different patterns or dimming effects have been implemented.
+### StepperMotorControl-Test
+In this project I use the Cypress platform to control a 28BYJ-48 5Volts stepper motor, using the ULN2003A driver. It is a first approach to motor control, the intention is to rotate the motor. This project is intended to be a starting point for future projects.
+### StepperMotorControl
+Using the last project as the base, this is the application to rotate a motor controlling it. Rotation speed and angle can be introduced by the user via UART. The problem here is that the commands are sequential. New commands can't be introduced until the last was completed. That's why I decided to improve the program and use interruptions.
+#### StepperMotorControl-Interrupt
+The same program, but with interrutions, rotation speed or angle value can be changed on the run.
+
