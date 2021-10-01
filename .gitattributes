@@ -21,3 +21,32 @@
 *.htm linguist-detectable=false
 *.inc linguist-detectable=false
 *.v linguist-detectable=false
+
+# Ignoring auto-generated code
+Lesson1.cydsn/Generated_Source/** linguist-vendored
+Lesson2.cydsn/Generated_Source/** linguist-vendored
+Lesson3.cydsn/Generated_Source/** linguist-vendored
+Lesson4.cydsn/Generated_Source/** linguist-vendored
+Lesson5.cydsn/Generated_Source/** linguist-vendored
+Lesson6.cydsn/Generated_Source/** linguist-vendored
+Lesson7.cydsn/Generated_Source/** linguist-vendored
+Lesson8.cydsn/Generated_Source/** linguist-vendored
+Lesson9.cydsn/Generated_Source/** linguist-vendored
+Lesson10.cydsn/Generated_Source/** linguist-vendored
+Lesson11.cydsn/Generated_Source/** linguist-vendored
+Lesson12.cydsn/Generated_Source/** linguist-vendored
+Lesson13.cydsn/Generated_Source/** linguist-vendored
+Lesson14.cydsn/Generated_Source/** linguist-vendored
+Lesson15.cydsn/Generated_Source/** linguist-vendored
+Lesson16.cydsn/Generated_Source/** linguist-vendored
+Lesson17.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/ADC-PWM-UART.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/ADC-UART.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/Buttons-Leds-UART.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/CapSense_Led_Patterns.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/KITT.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/Led_PWM_meter.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/RGB-UART_Control.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/SPI-LEDs_Driver_Test/Generated_Source/** linguist-vendored
+TrainingProjects/StepperMotor-Test/StepperMotor-Test.cydsn/Generated_Source/** linguist-vendored
+TrainingProjects/StepperMotorControl/Generated_Source/** linguist-vendored
