@@ -1,6 +1,6 @@
 # Cypress-PSoC4
 
-This repository contains some **examples to start with Cypress PSoC 4** platform. I have followed the tutorials from **"Cypress Academy: PSoC 101"**, you can find them on the following YouTube's list: https://www.youtube.com/watch?v=LrXXpQr1itY&list=PLX6sqqUB8iOjsMfGEDcsPSuYLEFCh50Hr
+This repository contains some **examples to start with Cypress PSoC 4** platform. I have followed the tutorials from **"Cypress Academy: PSoC 101"**, you can find them on the following [YouTube's list](https://www.youtube.com/watch?v=LrXXpQr1itY&list=PLX6sqqUB8iOjsMfGEDcsPSuYLEFCh50Hr).
 
 I think Cypress made a great work, the tutorials were short and easy to follow, and are the base for more complex developments in the future. If you are getting familiar with the PSoC platform, I encourage you to watch them.
 
