@@ -23,12 +23,16 @@ In this lesson we learn about the software outputs. In this example we are progr
 This example was made to learn how to read from input pins. In this scenario we use the on-board switch. Additionally, the intention is to work with the schematics, adding new components  and configuring them. The program function is to read the input value and assigning it to a led, which is the output, as in the first example. All of this is made by software.
 
 ## Lesson 3: Interrupts
-
+This project demonstrates the usage of interrupts on the Cypress PSoC4 platform. It toggles an LED state whenever a switch (SW2) interrupt is triggered.
+The interrupt service routine (ISR) Pin_SW2_Handler is triggered whenever the switch (SW2) is pressed. Modify the ISR function Pin_SW2_Handler to perform additional actions if required.
 ## Lesson 4: Hardware Pins
 ## Lesson 5: Toggle Flip-Flop
 ## Lesson 6: Basic Counter
 ## Lesson 7: Timer, Counter and PWM Component
+This project features a counter that counts down from 2 to 0. To change the LED state, the switch needs to be pressed three times. Each time the switch is pressed, the LED toggles its state.When the counter reaches 0, it triggers an interrupt, which toggles the LED state.
 ## Lesson 8: Pulse Width-Modulator
+This project demonstrates Pulse Width Modulation (PWM) control using the Cypress PSoC4 platform. The PWM signal is generated to control an output with varying duty cycles.
+The program initializes a PWM component and gradually increases the duty cycle of the PWM signal from 0% to 95% with a step of 50 every 50 milliseconds. Once the duty cycle reaches 95%, it resets back to 0% and repeats the cycle.
 ## Lesson 9: Timer
 ## Lesson 10: I2C Receive
 ## Lesson 11: I2C Transmit
